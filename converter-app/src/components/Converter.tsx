@@ -1,0 +1,403 @@
+/**
+ * Classic StoryMap to ArcGIS StoryMaps Converter UI
+ * Minimal form interface for conversion
+ */
+
+import { useState, useEffect } from "react";
+import {
+  isValidTokenFormat,
+  getTokenInstructions,
+  getStoredToken,
+  storeToken,
+} from "../auth/auth";
+import {
+  getItemData,
+  getItemDetails,
+  getUsername,
+  findDraftResourceName,
+  removeResource,
+  addResource,
+  updateItemKeywords,
+} from "../api/arcgis-client";
+import { convertClassicToJson } from "../converter/converter-factory";
+import {
+  collectImageUrls,
+  transferImages,
+  updateImageUrlsInJson,
+} from "../api/image-transfer";
+
+type Status =
+  | "idle"
+  | "fetching"
+  | "converting"
+  | "transferring"
+  | "updating"
+  | "success"
+  | "error";
+
+export default function Converter() {
+  const [token, setToken] = useState("");
+  const [showTokenHelp, setShowTokenHelp] = useState(false);
+  const [classicItemId, setClassicItemId] = useState("");
+  const [targetStoryId, setTargetStoryId] = useState("");
+  const [status, setStatus] = useState<Status>("idle");
+  const [message, setMessage] = useState("");
+  const [convertedUrl, setConvertedUrl] = useState("");
+
+  // Load stored token on mount
+  useEffect(() => {
+    const stored = getStoredToken();
+    if (stored) {
+      setToken(stored);
+    }
+  }, []);
+
+  const handleConvert = async () => {
+    // Reset state
+    setStatus("idle");
+    setMessage("");
+    setConvertedUrl("");
+
+    // Validate token
+    if (!token.trim()) {
+      setStatus("error");
+      setMessage("Please enter your ArcGIS token");
+      return;
+    }
+
+    if (!isValidTokenFormat(token)) {
+      setStatus("error");
+      setMessage(
+        "Invalid token format. Token should be at least 20 characters."
+      );
+      return;
+    }
+
+    // Store token for future use (session only)
+    storeToken(token);
+
+    // Validate inputs
+    if (!classicItemId.trim()) {
+      setStatus("error");
+      setMessage("Please enter a Classic Story Item ID");
+      return;
+    }
+
+    if (!targetStoryId.trim()) {
+      setStatus("error");
+      setMessage("Please enter a Target StoryMap Draft ID");
+      return;
+    }
+
+    try {
+      // 1. Get username
+      setStatus("fetching");
+      setMessage("Getting user information...");
+      const username = await getUsername(token);
+
+      // 2. Fetch classic item data
+      setMessage("Fetching classic story data...");
+      const classicData = await getItemData(classicItemId, token);
+
+      // 3. Convert to new JSON
+      setStatus("converting");
+      setMessage("Converting classic story to new format...");
+      let newStorymapJson = convertClassicToJson(classicData, "summit");
+
+      // 4. Transfer images from classic to target story
+      const imageUrls = collectImageUrls(newStorymapJson);
+      if (imageUrls.length > 0) {
+        setStatus("transferring");
+        setMessage(
+          `Transferring ${imageUrls.length} image(s) from classic story...`
+        );
+
+        const transferResults = await transferImages(
+          imageUrls,
+          targetStoryId,
+          username,
+          token,
+          (current, total, msg) => {
+            setMessage(`Transferring images (${current}/${total}): ${msg}`);
+          }
+        );
+
+        // Update JSON to use proper resource structure
+        // (resourceId + provider for uploaded, src + provider for external)
+        newStorymapJson = updateImageUrlsInJson(
+          newStorymapJson,
+          transferResults
+        );
+      }
+
+      // 5. Fetch target draft details
+      setStatus("updating");
+      setMessage("Fetching target storymap details...");
+      const targetDetails = await getItemDetails(targetStoryId, token);
+
+      // 6. Find draft resource name
+      const draftResourceName = findDraftResourceName(targetDetails);
+      if (!draftResourceName) {
+        throw new Error(
+          "Could not find draft resource in target storymap. Make sure it is a draft storymap."
+        );
+      }
+
+      // 7. Remove old draft resource
+      setMessage(`Removing old draft resource (${draftResourceName})...`);
+      await removeResource(targetStoryId, username, draftResourceName, token);
+
+      // 8. Upload new draft resource (same name)
+      setMessage(`Uploading new draft resource (${draftResourceName})...`);
+      const jsonBlob = new Blob([JSON.stringify(newStorymapJson)], {
+        type: "application/json",
+      });
+      await addResource(
+        targetStoryId,
+        username,
+        jsonBlob,
+        draftResourceName,
+        token
+      );
+
+      // 9. Update keywords to add smconverter:online-app
+      setMessage("Updating keywords...");
+      const currentKeywords = targetDetails.typeKeywords || [];
+      if (!currentKeywords.includes("smconverter:online-app")) {
+        const newKeywords = [...currentKeywords, "smconverter:online-app"];
+        await updateItemKeywords(targetStoryId, username, newKeywords, token);
+      }
+
+      // Success!
+      setStatus("success");
+      setMessage("Conversion complete!");
+      setConvertedUrl(
+        `https://www.arcgis.com/apps/storymaps/stories/${targetStoryId}`
+      );
+    } catch (error: any) {
+      setStatus("error");
+      setMessage(`Error: ${error.message || "An unknown error occurred"}`);
+      console.error("Conversion error:", error);
+    }
+  };
+
+  return (
+    <div style={{ maxWidth: "600px", margin: "0 auto", padding: "20px" }}>
+      <h1>Classic StoryMap Converter</h1>
+      <p>
+        Convert Classic StoryMaps (MapJournal, MapSeries, Cascade) to ArcGIS
+        StoryMaps
+      </p>
+
+      <div style={{ marginBottom: "20px" }}>
+        <label
+          style={{ display: "block", marginBottom: "5px", fontWeight: "bold" }}
+        >
+          ArcGIS Token:
+          <button
+            type="button"
+            onClick={() => setShowTokenHelp(!showTokenHelp)}
+            style={{
+              marginLeft: "10px",
+              padding: "2px 8px",
+              fontSize: "12px",
+              background: "#E67A04",
+              border: "1px solid #ccc",
+              borderRadius: "3px",
+              cursor: "pointer",
+            }}
+          >
+            {showTokenHelp ? "Hide" : "How to find?"}
+          </button>
+        </label>
+        <input
+          type="password"
+          value={token}
+          onChange={(e) => setToken(e.target.value)}
+          placeholder="Paste your token from Network tab here"
+          style={{
+            width: "100%",
+            padding: "10px",
+            fontSize: "14px",
+            border: "1px solid #ccc",
+            borderRadius: "4px",
+            fontFamily: "monospace",
+          }}
+        />
+        {showTokenHelp && (
+          <div
+            style={{
+              marginTop: "10px",
+              padding: "15px",
+              background: "#E67A04",
+              border: "1px solid #0079c1",
+              borderRadius: "4px",
+              fontSize: "13px",
+              whiteSpace: "pre-line",
+              lineHeight: "1.6",
+              color: "#FFFFFF",
+              fontFamily: "system-ui, -apple-system, sans-serif",
+            }}
+          >
+            {getTokenInstructions()}
+          </div>
+        )}
+      </div>
+
+      <div style={{ marginBottom: "20px" }}>
+        <label
+          style={{ display: "block", marginBottom: "5px", fontWeight: "bold" }}
+        >
+          Classic Story Item ID:
+        </label>
+        <input
+          type="text"
+          value={classicItemId}
+          onChange={(e) => setClassicItemId(e.target.value)}
+          placeholder="e.g., 858c4126f0604d1a86dea06ffbdc23a3"
+          style={{
+            width: "100%",
+            padding: "10px",
+            fontSize: "14px",
+            border: "1px solid #ccc",
+            borderRadius: "4px",
+          }}
+        />
+      </div>
+
+      <div style={{ marginBottom: "20px" }}>
+        <label
+          style={{ display: "block", marginBottom: "5px", fontWeight: "bold" }}
+        >
+          Target StoryMap Draft ID:
+        </label>
+        <input
+          type="text"
+          value={targetStoryId}
+          onChange={(e) => setTargetStoryId(e.target.value)}
+          placeholder="e.g., abc123def456..."
+          style={{
+            width: "100%",
+            padding: "10px",
+            fontSize: "14px",
+            border: "1px solid #ccc",
+            borderRadius: "4px",
+          }}
+        />
+      </div>
+
+      <button
+        onClick={handleConvert}
+        disabled={
+          status !== "idle" && status !== "error" && status !== "success"
+        }
+        style={{
+          width: "100%",
+          padding: "12px",
+          fontSize: "16px",
+          fontWeight: "bold",
+          color: "white",
+          backgroundColor:
+            status !== "idle" && status !== "error" && status !== "success"
+              ? "#ccc"
+              : "#0079c1",
+          border: "none",
+          borderRadius: "4px",
+          cursor:
+            status !== "idle" && status !== "error" && status !== "success"
+              ? "not-allowed"
+              : "pointer",
+        }}
+      >
+        {status === "idle" || status === "error" || status === "success"
+          ? "Convert"
+          : "Converting..."}
+      </button>
+
+      {message && (
+        <div
+          style={{
+            marginTop: "20px",
+            padding: "15px",
+            borderRadius: "4px",
+            backgroundColor:
+              status === "error"
+                ? "#ffe6e6"
+                : status === "success"
+                ? "#e6ffe6"
+                : "#e6f3ff",
+            border: `1px solid ${
+              status === "error"
+                ? "#ff0000"
+                : status === "success"
+                ? "#00cc00"
+                : "#0079c1"
+            }`,
+            color:
+              status === "error"
+                ? "#cc0000"
+                : status === "success"
+                ? "#006600"
+                : "#003d5c",
+          }}
+        >
+          <strong>
+            {status === "error"
+              ? "Error:"
+              : status === "success"
+              ? "Success:"
+              : "Status:"}
+          </strong>{" "}
+          {message}
+        </div>
+      )}
+
+      {convertedUrl && (
+        <div style={{ marginTop: "10px" }}>
+          <a
+            href={convertedUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#0079c1", textDecoration: "underline" }}
+          >
+            Open Converted Story →
+          </a>
+        </div>
+      )}
+
+      <div style={{ marginTop: "40px", fontSize: "14px", color: "#666" }}>
+        <h3>Instructions:</h3>
+        <ol>
+          <li>Sign in to ArcGIS Online in another browser tab</li>
+          <li>
+            Copy your authentication token (esri_aopc cookie) using the "How to
+            find?" button above
+          </li>
+          <li>
+            Paste the token in the first field (stored temporarily in this tab
+            only)
+          </li>
+          <li>
+            Enter the Item ID of your Classic Story (MapJournal, MapSeries, or
+            Cascade)
+          </li>
+          <li>
+            Create a new draft ArcGIS StoryMap and enter its Item ID (you can
+            find this in the URL when editing)
+          </li>
+          <li>
+            Click Convert to transform your classic story into the new format
+          </li>
+          <li>Review the converted story and publish when ready</li>
+        </ol>
+
+        <p style={{ marginTop: "20px", fontSize: "12px", fontStyle: "italic" }}>
+          <strong>Note:</strong> Your token is stored only in this browser tab's
+          session storage and is automatically cleared when you close the tab.
+          It is never sent anywhere except directly to ArcGIS REST API
+          endpoints.
+        </p>
+      </div>
+    </div>
+  );
+}
