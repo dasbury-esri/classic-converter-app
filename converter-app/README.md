@@ -32,7 +32,7 @@ npm run preview
 ## How It Works
 
 1. User signs in to ArcGIS Online (in any browser tab)
-2. User manually copies their `esri_aopc` token from browser DevTools
+2. User manually copies their ArcGIS Online token from the 'traffic' network request in browser DevTools
 3. User provides:
    - **Classic Story Item ID**: The source classic story to convert
    - **Target StoryMap Draft ID**: An existing draft storymap to update

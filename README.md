@@ -15,356 +15,98 @@ This project provides three approaches for converting classic stories:
 ```
 classic-converter/
 ├── converter_v2.py              # API-based converter (original)
-├── converter_json.py            # JSON-to-JSON converter (Python)
-├── storymap_json_schema.py      # JSON schema templates and utilities
-├── test_converter.py            # Batch test script
-├── example_usage.py             # Usage examples
-├── .env.example                 # Example configuration file
-├── .gitignore                   # Git ignore rules
-├── converter-app/               # TypeScript web app (NEW)
-│   ├── src/
-│   │   ├── converter/          # TypeScript conversion logic
-│   │   │   ├── storymap-schema.ts
-│   │   │   ├── storymap-builder.ts
-│   │   │   ├── journal-converter.ts
-│   │   │   ├── cascade-converter.ts
-│   │   │   ├── converter-factory.ts
-│   │   │   └── utils.ts
-│   │   ├── api/                # ArcGIS REST API client
-│   │   │   └── arcgis-client.ts
-│   │   ├── auth/               # Authentication utilities
-│   │   │   └── auth.ts
-│   │   ├── components/         # React components
-│   │   │   └── Converter.tsx
-│   │   └── types/              # TypeScript type definitions
-│   │       └── storymap.d.ts
-│   ├── DIAGRAMS.md             # TypeScript conversion flow diagrams (7 diagrams)
-│   └── package.json
-├── schemas/                     # Official ArcGIS StoryMap schemas
-│   ├── embed.json
-│   ├── image.json
-│   ├── webmap.json
-│   └── gallery.json
-├── test_data/                   # Test files
-│   ├── classics/                # Classic story JSON files
-│   └── output/                  # Converted StoryMap JSON (generated)
-├── CONVERTER_LOGIC.md           # Detailed logic documentation
-├── CONVERTER_LOGIC_DIAGRAM.md   # Visual flowcharts (16 diagrams)
-├── IMPROVEMENTS.md              # Identified improvements and future enhancements
-└── README.md                    # This file
-```
+
+# Classic StoryMap to ArcGIS StoryMaps Converter
+
+A comprehensive tool for converting Classic ArcGIS StoryMaps (MapJournal, MapSeries, Cascade) to the new ArcGIS StoryMaps format.
+
+## Overview
+
+This project provides three approaches for converting classic stories:
+
+- **API-Based Conversion** (`converter_v2.py`): Uses the ArcGIS Python API to create StoryMaps
+- **JSON-to-JSON Conversion** (`converter_json.py`): Direct JSON transformation without API calls
+- **Client-Side Web App** (`converter-app/`): TypeScript/React app that converts stories directly in the browser
+
+## Project Structure
+
+See the folder tree for details on Python scripts, web app, schemas, and test data.
 
 ## Supported Classic StoryMap Types
 
-- **MapJournal**: Side panel navigation with main stage media
-- **MapSeries**: Tab-based navigation (treated identically to Journal)
-- **Cascade**: Scrolling narrative with immersive sections
+- **MapJournal**: Side panel navigation
+- **MapSeries**: Tab-based navigation
+- **Cascade**: Scrolling narrative
 
-All types convert to ArcGIS StoryMaps with sidecar layouts:
-
-- Journal/Series → Docked-panel sidecars
-- Cascade → Mixed content with floating-panel sidecars for immersive sections
+All types convert to ArcGIS StoryMaps with sidecar layouts.
 
 ## Requirements
 
-### For API-Based Conversion (converter_v2.py)
-
-```
-Python 3.11
-arcgis >= 2.1.0.2
-beautifulsoup4
-```
-
-### For JSON-to-JSON Conversion (converter_json.py)
-
-```
-Python 3.11
-beautifulsoup4
-```
-
-Note: The JSON converter does NOT require the arcgis package, making it more lightweight and portable.
-
-### For Testing (test_converter.py)
-
-```
-Python 3.11
-beautifulsoup4
-arcgis >= 2.1.0.2 (for creating actual StoryMap items)
-python-dotenv (optional, for .env file support)
-```
+- Python 3.11
+- arcgis >= 2.1.0.2 (for API-based conversion)
+- beautifulsoup4
+- python-dotenv (optional, for .env file support)
 
 ## Installation
 
 ```powershell
-# Create and activate virtual environment
 python -m venv .venv
 .venv\Scripts\activate
-
-# Install all dependencies from requirements.txt
 pip install -r requirements.txt
-
-# Or install individually:
-pip install arcgis beautifulsoup4 python-dotenv
 ```
 
-### Configuration
-
-Create a `.env` file in the project root for ArcGIS credentials:
-
-```
-GIS_PORTAL=https://www.arcgis.com
-GIS_USERNAME=your_username
-GIS_PASSWORD=your_password
-```
-
-Or leave `GIS_USERNAME` empty to use "home" authentication (ArcGIS Pro).
-
-**Note:** The `.env` file is gitignored for security. Never commit credentials!
+Create a `.env` file for ArcGIS credentials (see example in repo).
 
 ## Usage
 
 ### API-Based Conversion
 
-Edit the configuration variables at the top of `converter_v2.py`:
-
-```python
-classic_story_id = "YOUR_ITEM_ID_HERE"  # Classic story item ID
-theme_id = "summit"                      # Theme: summit, obsidian, mesa, ridgeline, tidal, slate
-portal = "https://www.arcgis.com"       # Portal URL
-username = ""                            # Leave empty to use "home" auth
-password = ""
-```
-
-Run the converter:
+Edit config variables in `converter_v2.py`, then run:
 
 ```powershell
 python converter_v2.py
 ```
 
-The script will:
-
-1. Fetch the classic story from ArcGIS
-2. Create a new StoryMap with converted content
-3. Save as an unpublished draft in your content
-4. Print the URL of the new story
-
 ### JSON-to-JSON Conversion
 
-```python
-from converter_json import convert_classic_to_json, save_json_to_file
-import json
+Import and use `convert_classic_to_json` and `save_json_to_file` in your Python code.
 
-# Load classic story JSON
-with open('classic_story.json', 'r') as f:
-    classic_json = json.load(f)
+### Testing
 
-# Convert to StoryMap JSON
-storymap_json = convert_classic_to_json(
-    classic_json,
-    theme_id="summit",
-    gis_token=None  # Optional: for downloading AGO images
-)
-
-# Save to file
-save_json_to_file(storymap_json, 'new_storymap.json')
-
-# The JSON can then be used to create a StoryMap item via REST API
-```
-
-### Testing Conversion
-
-Use the test script to batch-convert and validate multiple stories:
+Run batch conversions and validation:
 
 ```powershell
-# Convert all test files and create actual StoryMap items
 python test_converter.py
-
-# Convert to JSON only (no item creation)
-python test_converter.py --json-only
-
-# Analyze test data structure
-python test_converter.py --analyze
 ```
 
-The test script will:
-
-1. Load all classic story JSON files from `test_data/classics/`
-2. Convert each to StoryMap JSON format
-3. Validate against official schemas
-4. Create actual ArcGIS StoryMap items (full mode)
-5. Generate detailed test report
-6. Save outputs to `test_data/output/`
-
-**Configuration:** Uses `.env` file or environment variables for ArcGIS credentials (see Configuration section above).
-
-### Client-Side Web App (TypeScript/React)
-
-The web app provides a user-friendly interface for converting classic stories directly in the browser:
+### Client-Side Web App
 
 ```powershell
-# Navigate to the app directory
 cd converter-app
-
-# Install dependencies
 npm install
-
-# Start development server
 npm run dev
 ```
 
-The app will be available at `http://localhost:5173`
-
-**How it works:**
-
-1. User signs in to ArcGIS Online (in any tab/window)
-2. User manually copies their `esri_aopc` token from browser DevTools (cookies)
-3. User enters:
-   - ArcGIS token (copied from browser)
-   - Classic Story Item ID (source)
-   - Target StoryMap Draft ID (destination)
-4. App fetches classic story data via ArcGIS REST API
-5. Converts JSON client-side using TypeScript conversion logic
-6. Updates target storymap's draft resource with converted JSON
-7. Adds `smconverter:online-app` keyword to track conversions
-
-**Key Features:**
-
-- ✅ No backend required - runs entirely in browser
-- ✅ Manual token input (browser Same-Origin Policy prevents automatic cookie reading)
-- ✅ Direct REST API calls to ArcGIS Online
-- ✅ Same conversion logic as Python version (ported to TypeScript)
-- ✅ **Automatic image transfer** - downloads images from classic story and uploads to new story
-- ✅ Updates existing draft storymaps (preserves item ID)
-- ✅ Minimal UI with clear status messages and token help
-
-**Prerequisites:**
-
-- User must be signed in to ArcGIS Online
-- Target storymap must already exist as a draft
-- User must have edit permissions on target storymap
+Open `http://localhost:5173` in your browser. Sign in to ArcGIS Online, copy your token from the 'traffic' network request in DevTools, and follow the UI instructions.
 
 ## Key Features
 
-### API-Based Converter
+- No backend required for web app
+- Direct REST API calls to ArcGIS Online
+- Automatic image transfer
+- Schema-compliant output
 
-- ✅ Fully functional conversion using official API
-- ✅ Automatic image downloading and resource management
-- ✅ Map extent and layer visibility preservation
-- ✅ Theme detection from cascade settings
-- ✅ Automatic cleanup of temporary files
-- ⚠️ Requires ArcGIS Python API and authentication
-- ⚠️ Multiple save/reload cycles for complex stories
+## License
 
-### JSON-to-JSON Converter
+[Add license information here]
 
-- ✅ No ArcGIS API dependency
-- ✅ Direct JSON transformation
-- ✅ Identical output structure to API version
-- ✅ Faster processing (no API round-trips)
-- ✅ Easier to test and debug
-- ⚠️ Requires separate upload step to create item
-- ℹ️ Good for batch processing or custom workflows
+## Support
 
-## Conversion Process
+For issues or questions, see CONVERTER_LOGIC.md and IMPROVEMENTS.md.
 
-### Journal/Series Conversion
+---
 
-1. Creates empty StoryMap with docked-panel sidecar
-2. Iterates through sections/entries
-3. For each section:
-   - Processes media (map, image, video, webpage)
-   - Parses HTML content for narrative
-   - Creates slide with media + narrative content
-4. Post-processes:
-   - Applies map settings (extent, scale, layers)
-   - Cleans up resources
-   - Sets embed types
-   - Applies theme
-5. Saves as unpublished draft
-
-### Cascade Conversion
-
-1. Creates empty StoryMap
-2. Detects theme from cascade settings
-3. Processes sections by type:
-   - **Cover**: Sets title, subtitle, cover image
-   - **Sequence**: Adds blocks directly to story
-   - **Immersive**: Creates floating-panel sidecar with views as slides
-   - **Title**: Adds centered heading with optional image
-   - **Credits**: (Currently disabled due to API limitations)
-4. Cleans up temporary images
-5. Applies theme and saves
-
-## Content Mapping
-
-### Media Types
-
-| Classic Type | ArcGIS StoryMap Type | Notes                                     |
-| ------------ | -------------------- | ----------------------------------------- |
-| WebMap       | Map                  | Preserves extent, scale, layer visibility |
-| WebScene     | Map                  | Preserves extent, layer visibility        |
-| Image        | Image                | Downloads AGO resources locally           |
-| Video        | Embed                | embedlyType: video, display: inline       |
-| Webpage      | Embed                | embedlyType: link, display: card          |
-
-### Text Styles
-
-| Classic Tag    | StoryMap Style | Alignment             |
-| -------------- | -------------- | --------------------- |
-| `<h1>`         | Heading        | Center                |
-| `<h2>`         | Subheading     | Center                |
-| `<p>`          | Paragraph      | From text-align style |
-| `<blockquote>` | Quote          | Center                |
-
-### HTML Cleaning
-
-The converter preserves the following HTML tags:
-
-- `<strong>`, `<em>` (formatting)
-- `<ol>`, `<ul>`, `<li>` (lists)
-- `<a>` (links)
-- `<img>` (images)
-
-All other tags are removed (unwrapped), preserving content.
-
-## Known Issues and Limitations
-
-### Critical Bugs
-
-1. **Line 1164 in converter_v2.py**: Uses global `classic_story_id` instead of `itemid` parameter
-2. **Line 1111 in converter_v2.py**: Incorrect boolean logic in type detection
-3. **Line 793 in converter_v2.py**: Hardcoded node ID for credits
-
-### API Limitations
-
-1. **Sidecar creation**: Must manually construct node structure (v2.1.0.2)
-2. **Video covers**: Not supported in Python API for Cascade covers
-3. **Credits section**: Disabled due to API bug (scheduled fix mid-2023)
-4. **Map recursive issue**: Requires story reload when processing maps
-
-### Performance Issues
-
-1. Multiple story reloads for map processing (Journal/Series)
-2. Sequential image downloads (no parallelization)
-3. No resource pre-validation (may fail partway through)
-
-See `IMPROVEMENTS.md` for detailed improvement proposals addressing these issues.
-
-## Documentation
-
-- **CONVERTER_LOGIC.md**: Comprehensive technical documentation of the conversion logic, data flow, and architecture
-- **CONVERTER_LOGIC_DIAGRAM.md**: Visual flowcharts showing the conversion process for all story types
-- **IMPROVEMENTS.md**: Identified improvements in code organization, performance, and error handling with implementation proposals
-
-## Project Discoveries
-
-### Recent Changes (Latest Session - October 17, 2025)
-
-9. **Fixed Content Duplication Issues** (October 17, 2025 - Late Session)
-
-   - ✅ **Journal/Series Duplication Fixed:** Media and narrative content nodes were being added to both the sidecar slides AND the story root
-   - ✅ **Cascade Immersive Duplication Fixed:** Text, images, and other content in immersive sections were being added to both the narrative panels AND the story root
-   - ✅ **Solution:** Created detached node methods in StoryMapJSONBuilder:
+**Note**: This is a development tool for migrating classic stories. Always review converted stories before publishing to ensure content accuracy and completeness.
      - `addTextDetached()` - Creates text nodes without adding to story root
      - `addImageDetached()` - Creates image nodes without adding to story root
      - `addMapDetached()` - Creates map nodes without adding to story root
