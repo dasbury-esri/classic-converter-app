@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Environment variables
+.env
+
+# Test outputs
+test_data/output/
+test_data/test_report.txt
+
+# Downloaded images (temporary)
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.JPG
+*.JPEG
+*.PNG
+*.GIF
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+

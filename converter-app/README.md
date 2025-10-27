@@ -2,6 +2,8 @@
 
 A client-side web application for converting Classic ArcGIS StoryMaps (MapJournal, MapSeries, Cascade) to ArcGIS StoryMaps format.
 
+> **📚 For general project information, Python converters, and conversion logic details, see the [main README](../README.md).**
+
 ## Features
 
 - **Client-side conversion**: Runs entirely in the browser, no backend required
@@ -72,6 +74,20 @@ npm run preview
 ### `/src/types/` - TypeScript Types
 
 - `storymap.d.ts` - Interface definitions for StoryMap JSON structures
+
+## Visual Documentation
+
+For detailed conversion flow diagrams, see [DIAGRAMS.md](./DIAGRAMS.md).
+
+The diagrams include:
+
+- High-level TypeScript conversion flow
+- StoryMapJSONBuilder architecture
+- Journal/Series converter processing
+- Journal/Series content element handling
+- Cascade converter processing
+- Cascade block type dispatching
+- Utility functions (removeSpanTags, parseHtmlText, scale calculations)
 
 ## Prerequisites
 
