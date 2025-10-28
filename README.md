@@ -196,6 +196,10 @@ When making changes:
 3. Update IMPROVEMENTS.md if identifying new issues or solutions
 4. Maintain backward compatibility with existing conversions
 
+### davi6569
+Found that /converter-app/index.html contained hardcoded references to the ./assets folder which is only
+created after a production build. Edited those lines to point to /src/main.tsx so Vite can run successfully
+
 ## Environment Notes
 
 - **Operating System**: Windows 10+
