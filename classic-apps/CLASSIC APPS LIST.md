@@ -11,54 +11,29 @@ This app presents a sequential, place-based narrative in the form of a series of
 This app lets you create a compelling map-based narrative presented as a set of journal entries. It's ideal for creating multimedia stories that combine text, maps, images, and video, especially when you have lots of text or a rich array of content.
 
 ## Story Map Series: https://github.com/Esri/storymap-series
+### Tabbed
+<img src="images/tabbed-viewer.jpg" alt="Series - Tabbed" style="width:150px;">
 
-<table style="width:100%; border-collapse:separate; border-spacing:0 8px;">
-	<tr>
-		<td style="vertical-align: top; width: 180px; padding-top: 0;">
-			<img src="images/tabbed-viewer.jpg" alt="Series - Tabbed" style="width:150px;">
-		</td>
-		<td style="vertical-align: top; padding-top: 0;">
-			<strong>Tabbed Layout:</strong> The Tabbed layout presents a series of maps via a set of tabs. There's an optional description panel for presenting text and other content associated with each map.
-		</td>
-	</tr>
-	<tr>
-		<td style="vertical-align: top; width: 180px; padding-top: 0;">
-			<img src="images/side-accordion.jpg" alt="Series - Side Accordion" style="width:150px;">
-		</td>
-		<td style="vertical-align: top; padding-top: 0;">
-			<strong>Side Accordion Layout:</strong> The Side Accordion layout presents a series of maps, and accompanying text and other content for each map, in an expandable panel. Clicking a title selects the map and expands the panel to reveal the text.
-		</td>
-	</tr>
-	<tr>
-		<td style="vertical-align: top; width: 180px; padding-top: 0;">
-			<img src="images/bulleted.png" alt="Series - Bulleted" style="width:150px;">
-		</td>
-		<td style="vertical-align: top; padding-top: 0;">
-			<strong>Bulleted Layout:</strong> The Bulleted layout presents a series of maps via numbered bullets, one per map. It's a good choice when you have a large number of maps or locations to present. There's an optional description panel for presenting text and other content associated with each map.
-		</td>
-	</tr>
-</table>
+The Tabbed layout presents a series of maps via a set of tabs. There's an optional description panel for presenting text and other content associated with each map.
+
+### Side-Accordion
+<img src="images/side-accordion.jpg" alt="Series - Accordion" style="width:150px;">
+
+The Side Accordion layout presents a series of maps, and accompanying text and other content for each map, in an expandable panel. Clicking a title selects the map and expands the panel to reveal the text.
+
+### Bulleted
+<img src="images/bulleted.png" alt="Series - Bulleted" style="width:150px;">
+
+The Bulleted layout presents a series of maps via numbered bullets, one per map. It's a good choice when you have a large number of maps or locations to present. There's an optional description panel for presenting text and other content associated with each map.
 
 ## Story Map Swipe: https://github.com/Esri/storymap-swipe
+### Swipe
+<img src="images/swipe.jpg" alt="Swipe - Slider" style="width:150px;">
+The swipe tool displays either two separate web maps or two layers of a single web map. Users can slide the swipe tool back and forth to compare one map theme to a second, related theme.
 
-<table style="width:100%; border-collapse:separate; border-spacing:0 8px;">
-	<tr>
-		<td style="vertical-align: top; width: 180px; padding-top: 0;">
-			<img src="images/swipe.jpg" alt="Swipe - Slider" style="width:150px;">
-		</td>
-		<td style="vertical-align: top; padding-top: 0;">
-			<strong>Swipe Layout:</strong> The Side Accordion layout presents a series of maps, and accompanying text and other content for each map, in an expandable panel. Clicking a title selects the map and expands the panel to reveal the text.
-		</td>
-	</tr>
-	<tr>
-		<td style="vertical-align: top; width: 180px; padding-top: 0;">
-			<img src="images/spyglass.jpg" alt="Swipe - Spyglass" style="width:150px;">
-		</td>
-		<td style="vertical-align: top; padding-top: 0;">
-			<strong>Spyglass Layout:</strong> The Spyglass app is similar to Swipe but enables users to peer through one map to another by using a spyglass function. The app can display two layers of a single web map, or two separate web maps.
-		</td>
-	</tr>
-</table>
+### Spyglass
+<img src="images/spyglass.jpg" alt="Swipe - Spyglass" style="width:150px;">
+The Spyglass app is similar to Swipe but enables users to peer through one map to another by using a spyglass function. The app can display two layers of a single web map, or two separate web maps.
 
 ## Story Map Basic: https://github.com/Esri/storymap-basic
 <img src="images/basic.jpg" alt="Basic" style="width:150px;">
