@@ -196,9 +196,11 @@ When making changes:
 3. Update IMPROVEMENTS.md if identifying new issues or solutions
 4. Maintain backward compatibility with existing conversions
 
-### davi6569
+### davi6569/fix-npm-run-dev
 Found that /converter-app/index.html contained hardcoded references to the ./assets folder which is only
 created after a production build. Edited those lines to point to /src/main.tsx so Vite can run successfully
+### davi6569/AGO-oath2-integration
+To ease user workflow, added a button to do authentication via ArcGIS Online OAuth2. Removed the token input field and its references from index.html and Converter.tsx
 
 ## Environment Notes
 
