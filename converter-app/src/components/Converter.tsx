@@ -3,13 +3,14 @@
  * Minimal form interface for conversion
  */
 
-import { useState, useEffect } from "react";
-import {
-  isValidTokenFormat,
-  getTokenInstructions,
-  getStoredToken,
-  storeToken,
-} from "../auth/auth";
+import { useState } from "react";
+import { useAuth } from "../auth/AuthProvider";
+// import {
+//   isValidTokenFormat,
+//   getTokenInstructions,
+//   getStoredToken,
+//   storeToken,
+// } from "../auth/auth";
 import {
   getItemData,
   getItemDetails,
@@ -36,21 +37,12 @@ type Status =
   | "error";
 
 export default function Converter() {
-  const [token, setToken] = useState("");
-  const [showTokenHelp, setShowTokenHelp] = useState(false);
+  const { token } = useAuth();
   const [classicItemId, setClassicItemId] = useState("");
   const [targetStoryId, setTargetStoryId] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const [convertedUrl, setConvertedUrl] = useState("");
-
-  // Load stored token on mount
-  useEffect(() => {
-    const stored = getStoredToken();
-    if (stored) {
-      setToken(stored);
-    }
-  }, []);
 
   const handleConvert = async () => {
     // Reset state
@@ -59,22 +51,12 @@ export default function Converter() {
     setConvertedUrl("");
 
     // Validate token
-    if (!token.trim()) {
+    if (!token) {
       setStatus("error");
-      setMessage("Please enter your ArcGIS token");
+      setMessage("You must be signed in to ArcGIS Online or ArcGIS Enterprise");
       return;
     }
 
-    if (!isValidTokenFormat(token)) {
-      setStatus("error");
-      setMessage(
-        "Invalid token format. Token should be at least 20 characters."
-      );
-      return;
-    }
-
-    // Store token for future use (session only)
-    storeToken(token);
 
     // Validate inputs
     if (!classicItemId.trim()) {
@@ -188,61 +170,6 @@ export default function Converter() {
         Convert Classic StoryMaps (MapJournal, MapSeries, Cascade) to ArcGIS
         StoryMaps
       </p>
-
-      <div style={{ marginBottom: "20px" }}>
-        <label
-          style={{ display: "block", marginBottom: "5px", fontWeight: "bold" }}
-        >
-          ArcGIS Token:
-          <button
-            type="button"
-            onClick={() => setShowTokenHelp(!showTokenHelp)}
-            style={{
-              marginLeft: "10px",
-              padding: "2px 8px",
-              fontSize: "12px",
-              background: "#E67A04",
-              border: "1px solid #ccc",
-              borderRadius: "3px",
-              cursor: "pointer",
-            }}
-          >
-            {showTokenHelp ? "Hide" : "How to find?"}
-          </button>
-        </label>
-        <input
-          type="password"
-          value={token}
-          onChange={(e) => setToken(e.target.value)}
-          placeholder="Paste your token from Network tab here"
-          style={{
-            width: "100%",
-            padding: "10px",
-            fontSize: "14px",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-            fontFamily: "monospace",
-          }}
-        />
-        {showTokenHelp && (
-          <div
-            style={{
-              marginTop: "10px",
-              padding: "15px",
-              background: "#E67A04",
-              border: "1px solid #0079c1",
-              borderRadius: "4px",
-              fontSize: "13px",
-              whiteSpace: "pre-line",
-              lineHeight: "1.6",
-              color: "#FFFFFF",
-              fontFamily: "system-ui, -apple-system, sans-serif",
-            }}
-          >
-            {getTokenInstructions()}
-          </div>
-        )}
-      </div>
 
       <div style={{ marginBottom: "20px" }}>
         <label
@@ -368,15 +295,7 @@ export default function Converter() {
       <div style={{ marginTop: "40px", fontSize: "14px", color: "#666" }}>
         <h3>Instructions:</h3>
         <ol>
-          <li>Sign in to ArcGIS Online in another browser tab</li>
-          <li>
-            Copy your authentication token (esri_aopc cookie) using the "How to
-            find?" button above
-          </li>
-          <li>
-            Paste the token in the first field (stored temporarily in this tab
-            only)
-          </li>
+          <li>Sign in to ArcGIS Online using the sign-in button above.</li>
           <li>
             Enter the Item ID of your Classic Story (MapJournal, MapSeries, or
             Cascade)
@@ -390,13 +309,6 @@ export default function Converter() {
           </li>
           <li>Review the converted story and publish when ready</li>
         </ol>
-
-        <p style={{ marginTop: "20px", fontSize: "12px", fontStyle: "italic" }}>
-          <strong>Note:</strong> Your token is stored only in this browser tab's
-          session storage and is automatically cleared when you close the tab.
-          It is never sent anywhere except directly to ArcGIS REST API
-          endpoints.
-        </p>
       </div>
     </div>
   );
