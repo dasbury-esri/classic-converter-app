@@ -5,12 +5,6 @@
 
 import { useState } from "react";
 import { useAuth } from "../auth/AuthProvider";
-// import {
-//   isValidTokenFormat,
-//   getTokenInstructions,
-//   getStoredToken,
-//   storeToken,
-// } from "../auth/auth";
 import {
   getItemData,
   getItemDetails,
@@ -21,6 +15,7 @@ import {
   updateItemKeywords,
 } from "../api/arcgis-client";
 import { convertClassicToJson } from "../converter/converter-factory";
+import { createDraftStoryMap } from "../converter/storymap-draft-creator"
 import {
   collectImageUrls,
   transferImages,
@@ -39,7 +34,6 @@ type Status =
 export default function Converter() {
   const { token } = useAuth();
   const [classicItemId, setClassicItemId] = useState("");
-  const [targetStoryId, setTargetStoryId] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const [convertedUrl, setConvertedUrl] = useState("");
@@ -65,12 +59,6 @@ export default function Converter() {
       return;
     }
 
-    if (!targetStoryId.trim()) {
-      setStatus("error");
-      setMessage("Please enter a Target StoryMap Draft ID");
-      return;
-    }
-
     try {
       // 1. Get username
       setStatus("fetching");
@@ -85,6 +73,25 @@ export default function Converter() {
       setStatus("converting");
       setMessage("Converting classic story to new format...");
       let newStorymapJson = convertClassicToJson(classicData, "summit");
+
+      // 3.1 Find the cover node ID (first child of root) and retrieve story title
+      const rootNode = newStorymapJson.nodes[newStorymapJson.root];
+      const coverNodeId = rootNode.children?.[0];
+      let storyTitle = "Converted StoryMap";
+
+      if (coverNodeId) {
+        const coverNode = newStorymapJson.nodes[coverNodeId];
+        if (coverNode?.data?.title) {
+          storyTitle = coverNode.data.title;
+        }
+      }
+
+      console.log("StoryMap title:", storyTitle);
+
+      // 3.5 Create an empty draft StoryMap
+      setMessage("Creating new StoryMap draft...");
+      const targetStoryId = await createDraftStoryMap(token, username, storyTitle);
+
 
       // 4. Transfer images from classic to target story
       const imageUrls = collectImageUrls(newStorymapJson);
@@ -192,7 +199,7 @@ export default function Converter() {
         />
       </div>
 
-      <div style={{ marginBottom: "20px" }}>
+      {/* <div style={{ marginBottom: "20px" }}>
         <label
           style={{ display: "block", marginBottom: "5px", fontWeight: "bold" }}
         >
@@ -211,7 +218,7 @@ export default function Converter() {
             borderRadius: "4px",
           }}
         />
-      </div>
+      </div> */}
 
       <button
         onClick={handleConvert}
@@ -299,10 +306,6 @@ export default function Converter() {
           <li>
             Enter the Item ID of your Classic Story (MapJournal, MapSeries, or
             Cascade)
-          </li>
-          <li>
-            Create a new draft ArcGIS StoryMap and enter its Item ID (you can
-            find this in the URL when editing)
           </li>
           <li>
             Click Convert to transform your classic story into the new format
