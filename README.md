@@ -204,7 +204,6 @@ To ease user workflow, added a button to do authentication via ArcGIS Online OAu
 ### davi6569/minimal-test
 - Changed "Open Converted Story" to "Click to Finish Publishing" and modified the url to point to the story builder instead of the story viewer. This process won't work for integration into AGSM, but want to get it working for testing. 
 - Added folders to test_data/classics to ease identification of json files for testing.
-- Hard coded test json file in Converter.tsx
 
 ## Environment Notes
 
