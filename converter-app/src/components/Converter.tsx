@@ -5,12 +5,6 @@
 
 import { useState } from "react";
 import { useAuth } from "../auth/AuthProvider";
-// import {
-//   isValidTokenFormat,
-//   getTokenInstructions,
-//   getStoredToken,
-//   storeToken,
-// } from "../auth/auth";
 import {
   getItemData,
   getItemDetails,
@@ -21,6 +15,7 @@ import {
   updateItemKeywords,
 } from "../api/arcgis-client";
 import { convertClassicToJson } from "../converter/converter-factory";
+import { createDraftStoryMap } from "../converter/storymap-draft-creator"
 import {
   collectImageUrls,
   transferImages,
@@ -39,7 +34,6 @@ type Status =
 export default function Converter() {
   const { token } = useAuth();
   const [classicItemId, setClassicItemId] = useState("");
-  const [targetStoryId, setTargetStoryId] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const [convertedUrl, setConvertedUrl] = useState("");
@@ -57,19 +51,12 @@ export default function Converter() {
       return;
     }
 
-
     // // Validate inputs
     // if (!classicItemId.trim()) {
     //   setStatus("error");
     //   setMessage("Please enter a Classic Story Item ID");
     //   return;
     // }
-
-    if (!targetStoryId.trim()) {
-      setStatus("error");
-      setMessage("Please enter a Target StoryMap Draft ID");
-      return;
-    }
 
     try {
       // 1. Get username
@@ -79,17 +66,35 @@ export default function Converter() {
 
       // 2. Fetch classic item data
       setMessage("Fetching classic story data...");
-      // const classicData = await getItemData(classicItemId, token);
-      const response = await fetch("/b628131d8d3241bab21dab5bac7473be.json");
-      if (!response.ok) {
-        throw new Error(`Failed to fetch JSON: ${response.statusText}`);
-      }
-      const classicData = await response.json();
+      const classicData = await getItemData(classicItemId, token);
+      // const response = await fetch("/b628131d8d3241bab21dab5bac7473be.json");
+      // if (!response.ok) {
+      //   throw new Error(`Failed to fetch JSON: ${response.statusText}`);
+      // }
+      // const classicData = await response.json();
 
       // 3. Convert to new JSON
       setStatus("converting");
       setMessage("Converting classic story to new format...");
       let newStorymapJson = convertClassicToJson(classicData, "summit");
+
+      // 3.1 Find the cover node ID (first child of root) and retrieve story title
+      const rootNode = newStorymapJson.nodes[newStorymapJson.root];
+      const coverNodeId = rootNode.children?.[0];
+      let storyTitle = "Converted StoryMap";
+
+      if (coverNodeId) {
+        const coverNode = newStorymapJson.nodes[coverNodeId];
+        if (coverNode?.data?.title) {
+          storyTitle = coverNode.data.title;
+        }
+      }
+      console.log("StoryMap title:", storyTitle);
+
+      // 3.5 Create an empty draft StoryMap
+      setMessage("Creating new StoryMap draft...");
+      const targetStoryId = await createDraftStoryMap(token, username, storyTitle);
+
 
       // 4. Transfer images from classic to target story
       const imageUrls = collectImageUrls(newStorymapJson);
@@ -187,27 +192,6 @@ export default function Converter() {
           value={classicItemId}
           onChange={(e) => setClassicItemId(e.target.value)}
           placeholder="e.g., 858c4126f0604d1a86dea06ffbdc23a3"
-          style={{
-            width: "100%",
-            padding: "10px",
-            fontSize: "14px",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-          }}
-        />
-      </div>
-
-      <div style={{ marginBottom: "20px" }}>
-        <label
-          style={{ display: "block", marginBottom: "5px", fontWeight: "bold" }}
-        >
-          Target StoryMap Draft ID:
-        </label>
-        <input
-          type="text"
-          value={targetStoryId}
-          onChange={(e) => setTargetStoryId(e.target.value)}
-          placeholder="e.g., abc123def456..."
           style={{
             width: "100%",
             padding: "10px",
