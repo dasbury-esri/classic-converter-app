@@ -173,6 +173,7 @@ export async function transferImages(
 
 /**
  * Scan StoryMap JSON for all image URLs that need to be transferred
+ * Updated to scan for both 'url' and 'src' properties
  */
 export function collectImageUrls(storymapJson: any): string[] {
     const imageUrls = new Set<string>();
@@ -180,9 +181,9 @@ export function collectImageUrls(storymapJson: any): string[] {
     // Scan resources for image URLs
     if (storymapJson.resources) {
         for (const resource of Object.values<any>(storymapJson.resources)) {
-            if (resource.type === 'image' && resource.data?.url) {
-                const url = resource.data.url;
-                if (isAgoResource(url)) {
+            if (resource.type === 'image') {
+                const url = resource.data?.url || resource.data?.src;
+                if (url && isAgoResource(url)) {
                     imageUrls.add(url);
                 }
             }
@@ -197,47 +198,77 @@ export function collectImageUrls(storymapJson: any): string[] {
  * For transferred images: use resourceId + provider: "item-resource"
  * For external images: use src + provider: "uri"
  */
-export function updateImageUrlsInJson(
-    storymapJson: any,
-    transferResults: ImageTransferResult[]
-): any {
-    const updated = JSON.parse(JSON.stringify(storymapJson));
-
-    // Create lookup map
-    const resultMap = new Map<string, ImageTransferResult>();
-    for (const result of transferResults) {
-        resultMap.set(result.originalUrl, result);
-    }
-
-    // Update resources
-    if (updated.resources) {
-        for (const resource of Object.values<any>(updated.resources)) {
-            if (resource.type === 'image' && resource.data?.url) {
-                const oldUrl = resource.data.url;
-                const result = resultMap.get(oldUrl);
-
-                if (result && result.isTransferred) {
-                    // Image was transferred - use resourceId structure
-                    delete resource.data.url;
-                    delete resource.data.type;
-                    resource.data.resourceId = result.resourceName;
-                    resource.data.provider = 'item-resource';
-                    resource.data.height = 1024;
-                    resource.data.width = 1024;
-                } else {
-                    // External URL or transfer failed - use src structure
-                    const url = result ? result.resourceName : oldUrl;
-                    delete resource.data.url;
-                    delete resource.data.type;
-                    resource.data.src = url;
-                    resource.data.provider = 'uri';
-                    resource.data.height = 1024;
-                    resource.data.width = 1024;
-                }
-            }
+export function updateImageUrlsInJson(storymapJson: any, transferResults: Record<string, string>) {
+  // Normalize urls
+  const normalizeUrl = (url: string) => decodeURIComponent(url);  
+  // Log the keys for debugging
+  console.log("transferResults keys:", Object.keys(transferResults));
+  // For each image resource, if its src matches a transferred URL, update it
+  if (storymapJson.resources) {
+    console.log("Transfer results mapping:", transferResults);
+    for (const [resourceId, resource] of Object.entries<any>(storymapJson.resources)) {
+      if (resource.type === "image" && resource.data?.src) {
+        const originalUrl = resource.data.src;
+        // Try to match with normalized URLs
+        const matchKey = Object.keys(transferResults).find(
+          k => normalizeUrl(k) === normalizeUrl(originalUrl)
+        );
+        if (matchKey) {
+          console.log(`Updating resource ${resourceId}: ${originalUrl} -> ${transferResults[matchKey]}`);
+          // Update src to the new resource name (e.g., "whl07b8orh.jpg")
+          resource.data.src = transferResults[matchKey];
+          // Optionally, update provider to "resource"
+          resource.data.provider = "resource";
+        } else {
+          console.log(`No match for resource ${resourceId}: ${originalUrl}`);
         }
+      }
     }
-
-    return updated;
+  }
+  return storymapJson;
 }
+
+// export function updateImageUrlsInJson(
+//     storymapJson: any,
+//     transferResults: ImageTransferResult[]
+// ): any {
+//     const updated = JSON.parse(JSON.stringify(storymapJson));
+
+//     // Create lookup map
+//     const resultMap = new Map<string, ImageTransferResult>();
+//     for (const result of transferResults) {
+//         resultMap.set(result.originalUrl, result);
+//     }
+
+//     // Update resources
+//     if (updated.resources) {
+//         for (const resource of Object.values<any>(updated.resources)) {
+//             if (resource.type === 'image' && resource.data?.url) {
+//                 const oldUrl = resource.data.url;
+//                 const result = resultMap.get(oldUrl);
+
+//                 if (result && result.isTransferred) {
+//                     // Image was transferred - use resourceId structure
+//                     delete resource.data.url;
+//                     delete resource.data.type;
+//                     resource.data.resourceId = result.resourceName;
+//                     resource.data.provider = 'item-resource';
+//                     resource.data.height = 1024;
+//                     resource.data.width = 1024;
+//                 } else {
+//                     // External URL or transfer failed - use src structure
+//                     const url = result ? result.resourceName : oldUrl;
+//                     delete resource.data.url;
+//                     delete resource.data.type;
+//                     resource.data.src = url;
+//                     resource.data.provider = 'uri';
+//                     resource.data.height = 1024;
+//                     resource.data.width = 1024;
+//                 }
+//             }
+//         }
+//     }
+
+//     return updated;
+// }
 

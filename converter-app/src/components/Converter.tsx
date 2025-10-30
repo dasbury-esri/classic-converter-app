@@ -101,7 +101,7 @@ export default function Converter() {
           `Transferring ${imageUrls.length} image(s) from classic story...`
         );
 
-        const transferResults = await transferImages(
+        const transferResultsArray = await transferImages(
           imageUrls,
           targetStoryId,
           username,
@@ -110,6 +110,12 @@ export default function Converter() {
             setMessage(`Transferring images (${current}/${total}): ${msg}`);
           }
         );
+
+        // Convert array to mapping
+        const transferResults: Record<string, string> = {};
+        for (const result of transferResultsArray) {
+          transferResults[result.originalUrl] = result.resourceName;
+        }
 
         // Update JSON to use proper resource structure
         // (resourceId + provider for uploaded, src + provider for external)

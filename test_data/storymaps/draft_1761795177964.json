@@ -1,0 +1,980 @@
+{
+    "root": "n-xr8cb9",
+    "nodes": {
+        "n-xr8cb9": {
+            "type": "story",
+            "data": {
+                "storyTheme": "r-48hj2z"
+            },
+            "children": [
+                "n-cyaglo",
+                "n-atevdp",
+                "n-sk6v3y",
+                "n-pgepao",
+                "n-1hn94x",
+                "n-u9r8ra",
+                "n-56fc1e",
+                "n-e3cok6",
+                "n-fadi7n",
+                "n-alan5a",
+                "n-f8n9k9",
+                "n-4gapnd",
+                "n-fztqix",
+                "n-smjuz8",
+                "n-q9pefc",
+                "n-y6k7qz",
+                "n-16us9c",
+                "n-2j3h1n",
+                "n-tofawz",
+                "n-bi7g30",
+                "n-cahjao",
+                "n-nb7935",
+                "n-68sf90",
+                "n-mj7oy4",
+                "n-3v72dj",
+                "n-tujeoh",
+                "n-7i2hau",
+                "n-asr57t",
+                "n-rf1rsi",
+                "n-cuqvvu",
+                "n-e8cc0r",
+                "n-f8zylb",
+                "n-3tsl7q",
+                "n-cckc9r",
+                "n-ohh1nz",
+                "n-038o8s",
+                "n-d04abv",
+                "n-no4gu8",
+                "n-rehtmg",
+                "n-bdiynd",
+                "n-r3s9nu",
+                "n-tc1izp",
+                "n-e1anog",
+                "n-cgusfe",
+                "n-chs2ur",
+                "n-ahj8pm",
+                "n-fhnqzw",
+                "n-bjce1k",
+                "n-i2rmsg",
+                "n-luhl0s",
+                "n-fv73d5",
+                "n-qzxg93",
+                "n-ney5h0",
+                "n-c3pa8m",
+                "n-uoghc0",
+                "n-r3gsat",
+                "n-b9ebha",
+                "n-n3u6mo",
+                "n-ttwdms",
+                "n-8ofcje"
+            ]
+        },
+        "n-cyaglo": {
+            "type": "storycover",
+            "data": {
+                "type": "full",
+                "title": "(COPY) It Takes a Village",
+                "summary": "Implementing GIS in Small Cities in West Virginia",
+                "byline": "",
+                "image": "r-liuapc"
+            }
+        },
+        "n-atevdp": {
+            "type": "navigation",
+            "data": {
+                "links": []
+            },
+            "config": {
+                "isHidden": true
+            }
+        },
+        "n-8ofcje": {
+            "type": "credits",
+            "children": []
+        },
+        "n-sk6v3y": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Authors: Marvin A Davis, Barbara MacLennan, and Frank LaFone",
+                "textAlignment": "start"
+            }
+        },
+        "n-pgepao": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Oak Hill, WV is a small city in southern West Virginia, with a population under 8,000 as of 2010. Many cities in the state resemble Oak Hill in population, but one thing that sets Oak Hill apart from the others is the successful implementation and continuing growth of a municipal GIS. This story may be familiar when talking about large cities in other states, but many municipalities the size of Oak Hill do not have the resources to implement a municipal GIS, or they are led to believe that by staggering price tags for hardware, software, and personnel to operate it. The intention of this Story Map is to show the case study of Oak Hill GIS and how what was learned in its implementation can be applied to other small cities in West Virginia.",
+                "textAlignment": "start"
+            }
+        },
+        "n-1hn94x": {
+            "type": "text",
+            "data": {
+                "type": "h1",
+                "text": "Groundwork for Oak Hill GIS",
+                "textAlignment": "center"
+            }
+        },
+        "n-u9r8ra": {
+            "type": "image",
+            "config": {
+                "size": "float",
+                "floatAlignment": "start"
+            },
+            "data": {
+                "image": "r-hw4me5"
+            }
+        },
+        "n-56fc1e": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "In 2011, Oak Hill City Manager, Bill Hannabass, spearheaded the city's move to GIS. The idea was to position the GIS in the Oak Hill Police Department, with an officer to take the daily duties of operating the GIS. To that end, the city invested in a PC, an ESRI ArcGIS Desktop Standard license, and a Trimble handheld GPS unit. The officer had no formal training in GIS and relied on assisted training and self-learning to begin working with the technology. However, it was quickly realized that the back-end work with GIS was overwhelming the officer who had several other duties. Eventually, the experiment failed as Bill realized there needed to be a geospatial professional operating the GIS.",
+                "textAlignment": "start"
+            }
+        },
+        "n-e3cok6": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "The city created a GIS Coordinator position within the City Manager's Office. The GIS Coordinator would assume all GIS duties, along with working between all municipal departments to understand their specific GIS needs and determine the future of the GIS. Oak Hill could hire a GIS Coordinator in late 2014, who began in the position in January 2015.",
+                "textAlignment": "start"
+            }
+        },
+        "n-fadi7n": {
+            "type": "webmap",
+            "config": {
+                "size": "standard"
+            },
+            "data": {
+                "map": "r-jv01fp",
+                "mapLayers": [
+                    {
+                        "id": "locateLayer",
+                        "title": "",
+                        "visible": false
+                    }
+                ]
+            }
+        },
+        "n-alan5a": {
+            "type": "text",
+            "data": {
+                "type": "quote",
+                "text": "<blockquote class=\"block\">City of Oak Hill Municipal Departments: City Manager's Office, Public Works, Sanitary Board, Fire, and Police</blockquote>",
+                "textAlignment": "center"
+            }
+        },
+        "n-f8n9k9": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Unlike the early effort which started right into a GIS, the first year of Oak Hill GIS involved a lot of laying of groundwork and discussions with multiple departments. This included discussions about the current ESRI licensing available to Oak Hill, which was out of maintenance. However, many questions existed beyond just the software licensing to make the project a success.",
+                "textAlignment": "start"
+            }
+        },
+        "n-4gapnd": {
+            "type": "text",
+            "data": {
+                "type": "h1",
+                "text": "Understanding the City's Budget and Needs",
+                "textAlignment": "center"
+            }
+        },
+        "n-fztqix": {
+            "type": "image",
+            "config": {
+                "size": "float",
+                "floatAlignment": "start"
+            },
+            "data": {
+                "image": "r-r5l3zp"
+            }
+        },
+        "n-smjuz8": {
+            "type": "text",
+            "data": {
+                "type": "h1",
+                "text": "<h1 class=\"block\">\"Where does this GIS go?\"</h1>",
+                "textAlignment": "center"
+            }
+        },
+        "n-q9pefc": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Oak Hill GIS had a rough infancy because it was not known exactly <em>where</em>&nbsp;the GIS would be placed in the structure of the municipal government. Many municipalities house their GIS within their utility departments because managing assets are a well-known function of GIS. In Oak Hill's case, the initial decision to place the GIS in the Police Department was to begin crime mapping and tracking code enforcement. The same time the City Manager, Bill Hannabass, realized that the GIS needed a geospatial professional operating it, he also made the decision to relocate it into the City Manager's office, where it would operate in a \"central\" location and allow the geospatial professional to be a true \"GIS Coordinator.\"",
+                "textAlignment": "start"
+            }
+        },
+        "n-y6k7qz": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Any city that undertakes bringing GIS into its operations must first understand the proper location, physically and in the budget, for the GIS to be placed. Due to varying budgets and operations at the municipal government level, it may make better sense to begin GIS in the public utility department, such as water or sewer. However, the drawbacks are that other departments, such as streets, parks, police, and fire, feel they may not have the same access to the technology, as it may be seen more as a utility GIS instead of a municipal GIS. However, the question of the placement of GIS should be answered early into the discussions to avoid potential future growth issues.",
+                "textAlignment": "start"
+            }
+        },
+        "n-16us9c": {
+            "type": "text",
+            "data": {
+                "type": "h1",
+                "text": "<h1 class=\"block\">\"What do we need?\"</h1>",
+                "textAlignment": "center"
+            }
+        },
+        "n-2j3h1n": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Oak Hill GIS began with this question asked back in 2011, and it resulted in the purchase of a desktop PC, an ESRI ArcGIS Desktop Standard Concurrent license, and a Trimble GeoExplorer 6000XH handheld GPS unit. It was a major investment by Oak Hill. The first issue was the lack of need for a Concurrent ESRI license (this was a way ESRI would allow one machine to host all licenses for multiple computers to access). This type of license is more costly than a traditional Single Use license in both upfront and yearly maintenance price. The second issue was the purchase of a handheld GPS unit that no one at the time was trained to operate for the city. This added unnecessary upfront costs to start the GIS because two subsets to the above question were not asked: \"What do we need <em>now</em>?\" and \"What do we need <em>that can wait</em>?\"",
+                "textAlignment": "start"
+            }
+        },
+        "n-tofawz": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "The answer to the \"now\" question greatly depends on what a particular city wants to start immediately. Due to the advancement of technology from 2011 until today, it's a lot easier question to answer now than it was at the time. With the sophistication of mobile devices having improved exponentially, along with ESRI's heavy involvement in developing mobile applications to work with its ArcGIS Online interface, there may not be a need for a high-accuracy GPS device immediately for a municipality. Coincidentally, many existing GPS receivers now work in sync with mobile devices and applications, which greatly cuts upfront costs to get higher accuracy compared to a few years ago. A newly-born municipal GIS can answer the \"now\" question with simply a desktop machine and software licensing, as setup, sourcing existing data, georeferencing imagery and digitizing features can take a few months to a couple of years. There is plenty to do with the basics that is much more cost-effective to municipalities who have to be very careful in budgeting a GIS.",
+                "textAlignment": "start"
+            }
+        },
+        "n-bi7g30": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "The answer to the \"what can wait\" question is going to be unique to every municipality. Budgets change for better or worse. GIS evolves at such a breakneck pace that new solutions arrive all the time, presenting new opportunities for municipalities. It's at this stage where a municipality should be in constant communication with their software and hardware vendors, if that communication hasn't already been happening. Knowing beforehand what resources your municipality has available to expend on GIS is essential to seeking information for, in Oak Hill's case, new hardware, additional ESRI software,&nbsp;extensions, or Online Named Users. As an analogy for GIS, it is easy to buy an expensive tool kit from your local hardware store, when all you needed for the job was a screwdriver and hammer, if you don't understand what you need and when you need it.",
+                "textAlignment": "start"
+            }
+        },
+        "n-cahjao": {
+            "type": "text",
+            "data": {
+                "type": "h1",
+                "text": "<h1 class=\"block\">\"What can <em>you</em> do with GIS?\"</h1>",
+                "textAlignment": "center"
+            }
+        },
+        "n-nb7935": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Oak Hill had the benefit of a City Manager who understood what GIS can bring to the city's government, so there already existed an idea of what can be done before the GIS began growing. Still, group conversations with every department head and some individual employees from each department were critical in the first developments of the GIS. Initially, the conversation was, \"we could use a map of the city's boundary, the street layout, or the zoning.\" Paper maps were still a need at the beginning as the city hadn't realized what ArcGIS Online could provide. As beneficial as those paper maps were to these discussions, it was also essential to educate each person by speaking their language - translating the functions of GIS into examples of their needs. Instead of speaking about features, databases, and attributes, explaining \"this point could tell you <em>A, B, and C</em> about this manhole, street light, or stormwater inlet,\" could pay dividends.",
+                "textAlignment": "start"
+            }
+        },
+        "n-68sf90": {
+            "type": "image",
+            "config": {
+                "size": "standard"
+            },
+            "data": {
+                "image": "r-t4gbwj",
+                "caption": "OK, where do we go? (image is screenshot from www.youtube.com)"
+            }
+        },
+        "n-mj7oy4": {
+            "type": "immersive",
+            "data": {
+                "type": "sidecar",
+                "subtype": "floating-panel"
+            },
+            "children": [
+                "n-klg95n",
+                "n-h4s6ic",
+                "n-iwrcf5"
+            ]
+        },
+        "n-vtuhc7": {
+            "type": "webmap",
+            "config": {
+                "size": "standard"
+            },
+            "data": {
+                "map": "r-f2gb74",
+                "extent": {
+                    "xmin": -9040616.41827959,
+                    "ymin": 4574121.2910110615,
+                    "xmax": -9024822.617310187,
+                    "ymax": 4583121.751091629,
+                    "spatialReference": {
+                        "wkid": 102100
+                    }
+                },
+                "viewpoint": {
+                    "targetGeometry": {
+                        "xmin": -9040616.41827959,
+                        "ymin": 4574121.2910110615,
+                        "xmax": -9024822.617310187,
+                        "ymax": 4583121.751091629,
+                        "spatialReference": {
+                            "wkid": 102100
+                        }
+                    },
+                    "scale": 72223
+                },
+                "zoom": 13
+            }
+        },
+        "n-8io6qr": {
+            "type": "text",
+            "data": {
+                "type": "h2",
+                "text": "Story of Oak Hill 311",
+                "textAlignment": "start"
+            }
+        },
+        "n-86vj6r": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "One of the first projects for Oak Hill GIS was to devise a records system to track citizen complaints that were received by Oak Hill staff, typically by phone call. The goal was to eventually release the WebAppBuilder application of this map for the public to submit complaints themselves, however it ultimately ended up working better as the internal repository for Oak Hill's Code Enforcement Officer to record and track his day-to-day work with resolving these complaints.",
+                "textAlignment": "start"
+            }
+        },
+        "n-46ak0i": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "The view in this map shows all complaints from 2016, which was its first year of use.",
+                "textAlignment": "start"
+            }
+        },
+        "n-klg95n": {
+            "type": "immersive-slide",
+            "data": {
+                "transition": "fade"
+            },
+            "children": [
+                "n-36uony",
+                "n-vtuhc7"
+            ]
+        },
+        "n-36uony": {
+            "type": "immersive-narrative-panel",
+            "data": {
+                "position": "start",
+                "size": "small",
+                "panelStyle": "themed"
+            },
+            "children": [
+                "n-8io6qr",
+                "n-86vj6r",
+                "n-46ak0i"
+            ]
+        },
+        "n-6mupoz": {
+            "type": "webmap",
+            "config": {
+                "size": "standard"
+            },
+            "data": {
+                "map": "r-avcotc"
+            }
+        },
+        "n-g0gq0f": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "In early 2018, the Oak Hill 311 web application, map, and layer ceased updates as Oak Hill switched to ESRI's Local Government Solution, <em>Citizen Problem Reporter</em>, which provided the functionality initially sought back in 2016. However, these points do not go in the Recycle Bin. While not shown in this view, this layer contains the work of Code Enforcement from people he talked to, who the owner of the properties were, and his workflow to resolve the complaint or issue that was found at the property. The layer can now be a historical record for current and future staff to understand issues around Oak Hill.",
+                "textAlignment": "start"
+            }
+        },
+        "n-h4s6ic": {
+            "type": "immersive-slide",
+            "data": {
+                "transition": "fade"
+            },
+            "children": [
+                "n-617ey2",
+                "n-6mupoz"
+            ]
+        },
+        "n-617ey2": {
+            "type": "immersive-narrative-panel",
+            "data": {
+                "position": "start",
+                "size": "small",
+                "panelStyle": "themed"
+            },
+            "children": [
+                "n-g0gq0f"
+            ]
+        },
+        "n-yvubip": {
+            "type": "image",
+            "config": {
+                "size": "standard"
+            },
+            "data": {
+                "image": "r-w30sef"
+            }
+        },
+        "n-q2w44w": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Now, Oak Hill's Citizen Problem Reporter makes it possible for citizens to open this application straight from Oak Hill's web page, browse current issues around the city, and even submit their own complaints through a very easy-to-use form. On the back end, the GIS Coordinator is able to assign which department is responsible to handle the complaint, and then the department will update the status of the complaint, along with comments, as the complaint is addressed.",
+                "textAlignment": "start"
+            }
+        },
+        "n-3ij7r4": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "This is a screenshot of Oak Hill's Citizen Problem Reporter application. To see a sample of this application in action, please <a href=\"https://www.arcgis.com/apps/CrowdsourceReporter/index.html?appid=106f109bd2394496bcc69d486523ffc5\" target=\"_blank\" rel=\"noopener noreferrer\">click this link</a>.",
+                "textAlignment": "start"
+            }
+        },
+        "n-iwrcf5": {
+            "type": "immersive-slide",
+            "data": {
+                "transition": "fade"
+            },
+            "children": [
+                "n-g19hfo",
+                "n-yvubip"
+            ]
+        },
+        "n-g19hfo": {
+            "type": "immersive-narrative-panel",
+            "data": {
+                "position": "start",
+                "size": "small",
+                "panelStyle": "themed"
+            },
+            "children": [
+                "n-q2w44w",
+                "n-3ij7r4"
+            ]
+        },
+        "n-3v72dj": {
+            "type": "text",
+            "data": {
+                "type": "h1",
+                "text": "<h1 class=\"block\">\"Sticker Shock\"</h1>",
+                "textAlignment": "center"
+            }
+        },
+        "n-tujeoh": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Oak Hill has had conversations with several municipal government officials regarding GIS and the big question is always asked: \"how much does all of this cost?\" Ultimately, officials want numbers and the cost of hardware, software, and staffing a geospatial professional always triggers the dreaded <em>sticker shock</em>. As stated previously with regards to understanding what is needed \"now,\" and \"what can wait,\" a similar fundamental question that may help municipal governments overcome <em>sticker shock</em> is, \"what is one thing we absolutely need to have in a GIS?\" Identifying a critical asset or workflow that would greatly improve operations by being in GIS is a major example of the return-on-investment GIS provides. Additionally, understanding the essential hardware and software to accomplish that first project prevents seeing prices for unneeded items, thus easing any <em>sticker shock</em>.",
+                "textAlignment": "start"
+            }
+        },
+        "n-7i2hau": {
+            "type": "text",
+            "data": {
+                "type": "h1",
+                "text": "<h1 class=\"block\">Partnerships</h1>",
+                "textAlignment": "center"
+            }
+        },
+        "n-asr57t": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Another method to overcoming <em>sticker shock</em> is to consider partnerships with other governmental agencies, educational institutions, or private firms who utilize GIS. West Virginia has several universities that use and teach GIS courses, and the West Virginia GIS Technical Center, housed at West Virginia University, already provides a range of services to local government organizations. GIS is also operated at many of the state's Regional Planning &amp; Development Councils. Regarding licensing costs, such as costs Oak Hill incurs through its ESRI software, there are several options for organizations to share costs to help everyone have access to the software. However, when it comes to staffing, that cost may still be too great for many municipalities. So how could a municipal government have access to GIS and have someone able to utilize it with those considerations? Could a county geospatial professional handle the GIS of its cities that are unable to afford to staff their own? Could a regional organization's GIS handle the duties? Many West Virginia communities would run into these questions, and there is no clear answer to how this could best be handled.&nbsp;",
+                "textAlignment": "start"
+            }
+        },
+        "n-rf1rsi": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "One consideration for figuring out how municipal governments in West Virginia could have access to a geospatial professional, despite being unable to afford it, is determining who will house the maps and data for a municipality's GIS if the work is done at another governmental level. Will there be <em>One GIS to Rule Them All</em>? Another consideration is the amount of need between a <em>project</em> GIS versus a <em>daily</em> GIS. A <em>project</em> GIS exemplifies a lot of the current work done at the regional level, as GIS is used primarily for infrastructure projects that have a definitive beginning and end to them. A <em>daily</em> GIS involves applications, maps, and data that are updated on a constant basis, such as Oak Hill's Citizen Problem Reporter application or a layer tracking Code Enforcement complaints. The workload for a geospatial professional can vary between these two types of GIS as a <em>project</em> GIS could involve a lot of field collection and a <em>daily</em> GIS may only need initial set up and then the cities can operate them with minimal management by the geospatial professional, but the vice-versa could also be true.&nbsp;",
+                "textAlignment": "start"
+            }
+        },
+        "n-cuqvvu": {
+            "type": "image",
+            "config": {
+                "size": "standard"
+            },
+            "data": {
+                "image": "r-5rxzve",
+                "caption": "One GIS to Rule Them All? (from the <i>Lord of the Rings</i> and <i>Hobbit</i> trilogies, image from www.gundersons.com)"
+            }
+        },
+        "n-e8cc0r": {
+            "type": "text",
+            "data": {
+                "type": "h1",
+                "text": "<h1 class=\"block\">Collaborating with Non-GIS Personnel</h1>",
+                "textAlignment": "center"
+            }
+        },
+        "n-f8zylb": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "In the West Virginia municipalities that are able to do GIS, typically the GIS is a \"department of one,\" due to budget restrictions, but this may not fully represent the true size of what a municipal GIS can be, as it doesn't quite consider other staff members who utilize applications, maps, and data on a daily basis. While they may be considered non-GIS personnel, they can operate it at a competency that allows the geospatial professional to be more of a data manager on some projects and focus resources elsewhere. Prior to July 2018, Oak Hill operated an ArcGIS Online organization of six members, with each member coming from a different department (City Manager, GIS, Code Enforcement, Fire, Sanitary Board, and Public Works). The GIS Coordinator trained them on the Collector for ArcGIS mobile application, and provided them access to the specific maps they needed. This allowed the GIS Coordinator to have several projects working simultaneously because he was no longer just focused on data collection. If one employee of the Oak Hill Sanitary Board is collecting manhole points on his mobile device as he or she is working in the field, the GIS Coordinator can be working on the back end to provide quality control for the data, opening more time to focus on a street paving project or stormwater collection repair.&nbsp; Planned correctly, a municipal GIS is a more than a technology, it is a wholistic approach to municipal government, and most certainly more than a \"department of one.\"",
+                "textAlignment": "start"
+            }
+        },
+        "n-3tsl7q": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "As important as the creation of the GIS is continuation of what amounts to a significant investment in time and effort. If the municipality and the public are unaware of the costs and benefits involved with the workings of a dynamic GIS, it can go unappreciated, making it seem like an easy place to make cuts to a budget. Therefore, it is crucial, especially if a GIS is not a municipal budget line item, that it is not only useful but also that municipal departments, government, and the public feel involved and vested in its success.&nbsp;",
+                "textAlignment": "start"
+            }
+        },
+        "n-cckc9r": {
+            "type": "text",
+            "data": {
+                "type": "h1",
+                "text": "Smart Growth of GIS",
+                "textAlignment": "center"
+            }
+        },
+        "n-ohh1nz": {
+            "type": "image",
+            "config": {
+                "size": "float",
+                "floatAlignment": "start"
+            },
+            "data": {
+                "image": "r-8t4zoi"
+            }
+        },
+        "n-038o8s": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Getting a municipal GIS off the ground in West Virginia is no small feat, but to get it off the ground and have it thrive requires a <em>smart</em> approach to growing the operation over time. It requires geospatial professionals to understand their city's existing and future budgets, proper planning of software and hardware upgrades, and keeping several lines of communication open between managers, city officials, software providers, and municipal departments.",
+                "textAlignment": "start"
+            }
+        },
+        "n-d04abv": {
+            "type": "text",
+            "data": {
+                "type": "h1",
+                "text": "<h1 class=\"block\">Understanding the Landscape</h1>",
+                "textAlignment": "center"
+            }
+        },
+        "n-no4gu8": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Municipalities in West Virginia have known lean budgets and robust budgets at one time or another, and given a sizeable part of the state is classified some level of economically depressed by the <a href=\"https://www.arc.gov/research/MapsofAppalachia.asp?MAP_ID=137\" target=\"_blank\" rel=\"noopener noreferrer\">Appalachian Regional Commission</a>, each governmental organization has to be mindful of every cent spent. Oak Hill GIS had to be mindful of this rather early in its infancy as ArcGIS Online became much more prominent around the same time. There became a need to provide Named User access to multiple people in the city's organization beyond the one provided through their ESRI maintenance contract. The first consideration at the time was the cost per user ($500 per user in a five-user package for a total of $2,500). The second consideration was that this cost would add to the existing maintenance contract by $2,500 per year, increasing from $1,500 to $4,000. For small cities, that is a steep jump in a yearly cost when every cent matters. The GIS Coordinator made sure that any additional costs be planned-out to better grow the operation. Through a discount awarded from the 2016&nbsp;<a href=\"http://www.esri.com/esri-news/releases/16-3qtr/esri-and-leica-partner-to-offer-grants-to-governments\" target=\"_blank\" rel=\"noopener noreferrer\">ESRI Smart Community Innovation Challenge</a>, Oak Hill was able to secure the Spatial Analyst extension for ArcGIS Desktop at no upfront cost, and a $500 per year maintenance that was manageable, but it also allowed the GIS Coordinator to begin doing some analytical work, such as hydrology to better understand stormwater drainage.",
+                "textAlignment": "start"
+            }
+        },
+        "n-rehtmg": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "For <em>smart</em> growth, understanding the landscape is incredibly important for changing the conversation from \"if we grow\" to \"how do we grow?\" Firstly, understanding the budget for the upcoming fiscal year helps one know if growth could take place soon or longer-term. Secondly, understanding software and hardware needs, the \"now\" versus \"what can wait\" question mentioned earlier, is essential to better understand where growth can take place in the GIS operation. This can also include increasing Named User access to an ArcGIS Online or Enterprise organization, if a municipal government has either operational. Finally, an understanding of the current year-to-year costs of hardware and software must be maintained, so open dialogue with hardware and software providers is key if an organization wants to achieve <em>smart</em> growth.",
+                "textAlignment": "start"
+            }
+        },
+        "n-bdiynd": {
+            "type": "text",
+            "data": {
+                "type": "h1",
+                "text": "<h1 class=\"block\">Navigating the Driver(s)</h1>",
+                "textAlignment": "center"
+            }
+        },
+        "n-r3s9nu": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Once an understanding of the landscape is achieved, the geospatial professional must \"navigate the driver(s),\" as in keeping managers and officials abreast of the status of the municipal GIS, innovations taking place, and ultimately what needs the GIS has to continue <em>smart</em> growth. Since 2015, Oak Hill's GIS Coordinator has provided a map to almost every monthy Oak Hill City Council meeting for an agenda item or for general information purposes. One of the early impacts Oak Hill GIS had with City Council was establishing the land use zoning map for the newly-annexed area of Minden (seen below). One member of City Council mentioned \"if this wasn't on a map, I wouldn't have understood what I was voting on nearly as well.\"&nbsp;",
+                "textAlignment": "start"
+            }
+        },
+        "n-tc1izp": {
+            "type": "webmap",
+            "config": {
+                "size": "standard"
+            },
+            "data": {
+                "map": "r-rss29w"
+            }
+        },
+        "n-e1anog": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Over time, maps presented to City Council went from paper or static PDF maps to interactive web maps and applications, making them more informative for decision-making, but also keeping GIS at the forefront, ensuring City Council understood its importance to Oak Hill. In 2018, the GIS Coordinator began utilizing ESRI's Story Maps to showcase the <a href=\"http://www.esri.com/esri-news/arcwatch/0718/city-council-agendas-morph-into-story-maps\" target=\"_blank\" rel=\"noopener noreferrer\">Council Meeting agenda</a> each month, as it was realized that many agenda items had geographic context to them (simply put, they could be defined by a point, line, or polygon on a map). This opened up a brand new way to not only help guide and present during the meetings, but provided links to photos and documents that were included in each City Council member's digital information packet through Sharefile prior to every meeting. This level of interaction had not existed before, as agendas were typically a standard Microsoft Word document, with documents and photos loaded directly from the digital information packet prior to the start of the meeting. Additionally, if a question arose during discussion of an item, the interactive map allowed the person operating the presentation to explore the map to answer the question quicker than ever before. In summation, the GIS made the case itself with city officials before any growth opportunities were discussed.",
+                "textAlignment": "start"
+            }
+        },
+        "n-cgusfe": {
+            "type": "embed",
+            "config": {
+                "size": "standard"
+            },
+            "data": {
+                "url": "https://arcg.is/1m08LO",
+                "display": "card",
+                "embedType": "link",
+                "isEmbedSupported": true,
+                "embedSrc": "https://arcg.is/1m08LO",
+                "allowSmallEmbeds": true,
+                "caption": "June 2018 Oak Hill City Council Meeting Story Map (to see more, click or tap \"Explore\" in the bottom right).",
+                "providerUrl": "https://arcg.is"
+            }
+        },
+        "n-chs2ur": {
+            "type": "text",
+            "data": {
+                "type": "h1",
+                "text": "\"Now What?\"",
+                "textAlignment": "center"
+            }
+        },
+        "n-ahj8pm": {
+            "type": "image",
+            "config": {
+                "size": "float",
+                "floatAlignment": "start"
+            },
+            "data": {
+                "image": "r-neyqqt"
+            }
+        },
+        "n-fhnqzw": {
+            "type": "immersive",
+            "data": {
+                "type": "sidecar",
+                "subtype": "floating-panel"
+            },
+            "children": [
+                "n-4tyuak",
+                "n-wqbvqj"
+            ]
+        },
+        "n-ugg2qv": {
+            "type": "image",
+            "config": {
+                "size": "standard"
+            },
+            "data": {
+                "image": "r-auoiug"
+            }
+        },
+        "n-f4g9zg": {
+            "type": "text",
+            "data": {
+                "type": "h2",
+                "text": "Interest is High in Municipal GIS!",
+                "textAlignment": "start"
+            }
+        },
+        "n-pl1dqz": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "At the 2016 West Virginia Municipal League Conference, Oak Hill GIS held a presentation on getting started, current projects, and ideas for the future. The presentation was attended by representatives of municipalities all around West Virginia, many of whom were wanting to see how they could start doing municipal GIS.",
+                "textAlignment": "start"
+            }
+        },
+        "n-4tyuak": {
+            "type": "immersive-slide",
+            "data": {
+                "transition": "fade"
+            },
+            "children": [
+                "n-pzbmoj",
+                "n-ugg2qv"
+            ]
+        },
+        "n-pzbmoj": {
+            "type": "immersive-narrative-panel",
+            "data": {
+                "position": "start",
+                "size": "small",
+                "panelStyle": "themed"
+            },
+            "children": [
+                "n-f4g9zg",
+                "n-pl1dqz"
+            ]
+        },
+        "n-lbvywg": {
+            "type": "image",
+            "config": {
+                "size": "standard"
+            },
+            "data": {
+                "image": "r-kz0h7r"
+            }
+        },
+        "n-648i51": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "In February 2018, representatives from ESRI met with staff and officials from Oak Hill, Beckley, Charleston, Bluefield, and several other communities to showcase ways to get municipal departments to begin using GIS and to have a discussion on how to build and grow GIS operations for small cities in West Virginia. The presentation ignited ongoing discussions with ESRI about how to license software on small budgets, funding mechanisms, and expanding GIS operations at cities already utilizing the technology.",
+                "textAlignment": "start"
+            }
+        },
+        "n-wqbvqj": {
+            "type": "immersive-slide",
+            "data": {
+                "transition": "fade"
+            },
+            "children": [
+                "n-t0v2i7",
+                "n-lbvywg"
+            ]
+        },
+        "n-t0v2i7": {
+            "type": "immersive-narrative-panel",
+            "data": {
+                "position": "start",
+                "size": "small",
+                "panelStyle": "themed"
+            },
+            "children": [
+                "n-648i51"
+            ]
+        },
+        "n-bjce1k": {
+            "type": "text",
+            "data": {
+                "type": "quote",
+                "text": "<blockquote class=\"block\">\"However, involving citizens in government does not begin when a technological application is launched to the public; it starts with the act of wanting to involve citizens in the government process. The more transparent a local government, the more likely that local government wants the public to actively participate in its policy process and in turn the more likely the public will want to participate. Internally, when local government officials support innovation and transparency, government employees feels more comfortable in extending the resources to do so. Externally, when the public feels wanted in the policy process, it strengthens their trust in the legitimacy of policy decisions\"<span style=\"font-style: normal;\"> (MacLennan and Bergeron, 2012)&nbsp;</span></blockquote>",
+                "textAlignment": "center"
+            }
+        },
+        "n-i2rmsg": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "The above quote gets to the heart of Oak Hill GIS and its intended purpose. Before any purchase of technology, it was established <em>why</em> GIS needed to be utilized by Oak Hill: transparency and public participation. This same idea must be realized by any municipality thinking about GIS before getting to the questions of cost and how to implement. It must be the first statement within a GIS strategic plan a city must develop. It must be the first statement issued to individual departments and city officials when discussing GIS. If not, the right questions may not be asked, and the beginning and growth of a municipality's GIS could very well suffer because of it.",
+                "textAlignment": "start"
+            }
+        },
+        "n-luhl0s": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Interest has been expressed statewide for municipalities wishing to utilize GIS. There is a demand for outreach from all sectors where GIS is used - private, state, and regional - to increase municipal GIS use and to provide potential partnerships. One professional group that covers all of these sectors, the West Virginia Association of Geospatial Professionals, has a wealth of this information and has the capability to provide it. Another group, the West Virginia Municipal League, has shown in the past a very high interest in what Oak Hill GIS is doing and how it operates, and is properly positioned to distribute information on municipal GIS to those who need it. This presents an absolute need for collaboration between the groups for educational and potential employment opportunities for college graduates or established professionals seeking work.",
+                "textAlignment": "start"
+            }
+        },
+        "n-fv73d5": {
+            "type": "text",
+            "data": {
+                "type": "h1",
+                "text": "<h1 class=\"block\">GIS Strategic Plan</h1>",
+                "textAlignment": "center"
+            }
+        },
+        "n-qzxg93": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "A municipality wishing to begin its own GIS should begin by establishing a strategic plan to not only establish why it is doing GIS, but how it will implement it. The Strategic Plan can start with a short-term project in mind, with what hardware and software is needed for the project, and the projected costs, including personnel. The strategic plan should have the short-term project completed in a reasonable timeframe (between six months to a year), at which point a second short-term project is planned. Meanwhile, a longer-term project is also considered, such as utilizing one of ESRI's Local Government Solutions citywide or a similarly-complex undertaking. The goal of the strategic plan is to help guide the development of the GIS, but also doubles as a budget item for officials needing to know the numbers. If established properly, the strategic plan will help grow the GIS organically and not levy unneeded costs onto the organization due to excessive software.",
+                "textAlignment": "start"
+            }
+        },
+        "n-ney5h0": {
+            "type": "text",
+            "data": {
+                "type": "h1",
+                "text": "Future of Oak Hill GIS",
+                "textAlignment": "center"
+            }
+        },
+        "n-c3pa8m": {
+            "type": "image",
+            "config": {
+                "size": "float",
+                "floatAlignment": "start"
+            },
+            "data": {
+                "image": "r-ogplpg"
+            }
+        },
+        "n-uoghc0": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Oak Hill GIS has a very busy future as more and more of the city utilizes the technology. Also, there have been developments in software and ArcGIS Online licensing that will allow Oak Hill GIS to greatly expand its operation for the next three years and beyond. Considering the ongoing projects, potential future projects, and further development of Oak Hill GIS, it has grown from a basic ground-level operation to a full-fledged municipal GIS.",
+                "textAlignment": "start"
+            }
+        },
+        "n-r3gsat": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Several ongoing projects Oak Hill GIS is currently doing include: Needleseye Park (park development, Story Map, and a 3D Master Plan developed using CityEngine), beginning mapping of non-conforming and conditional uses around Oak Hill, further mapping of Oak Hill Sanitary Board's sewer network along with current improvements, continued enhancement of the city's vacant structure registration program, getting a better map of stormwater assets, and assisting the New River Gorge Trail Alliance with their six-county vision map. Future projects include, but aren't limited to: mapping of new and planned recreational trails, potential imagery and/or LiDAR data acquisition, and more work with CityEngine and 3D GeoDesign to assist Oak Hill's Planning Commission. Development of web applications has been a priority, as shown with the Citizen Problem Reporter. Other web applications in various levels of development are: a survey for the Oak Hill Comprehensive Plan update, a Parks and Recreation viewer, tracking of various permits issued by the city, and an application promoting tourism and commerce.",
+                "textAlignment": "start"
+            }
+        },
+        "n-b9ebha": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Oak Hill worked with ESRI between fall of 2017 and early 2018 regarding future growth of Oak Hill GIS, and this ultimately resulted in being offered the <a href=\"https://www.esri.com/en-us/industries/enterprise-agreement/government\" target=\"_blank\" rel=\"noopener noreferrer\">Small Municipal and County Government Enterprise License Agreement</a>. Building off of how Oak Hill GIS helped to \"navigate the driver(s),\" when the time came for budget requests for the upcoming fiscal year, there were two options presented to Oak Hill City Council: the first would be piecing together some needs for software and additional ArcGIS Online Named Users, the second was the Enterprise License Agreement. After presenting the information to City Council and a short discussion, they decided to move forward with the Enterprise License Agreement. This serious investment showed Oak Hill's commitment to GIS and their desire to continue growing the operation by expanding the GIS software suite along with providing Named User Access to Oak Hill's ArcGIS Online organization to City Council members, Oak Hill Fire Department officers, Oak Hill Police Department officers, all City Manager's Office staff, more staff members of each department already in the organization, and members of various committees and boards in the city.",
+                "textAlignment": "start"
+            }
+        },
+        "n-n3u6mo": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "As Oak Hill GIS continues into the future, it aims to not only continue leading the charge for GIS in small municipalities in West Virginia, but to become a smarter community in every facet. With proper development and guidance, small municipalities could also become smarter communities through the use of GIS.",
+                "textAlignment": "start"
+            }
+        },
+        "n-ttwdms": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Please visit the <a href=\"https://gis-cityoh.opendata.arcgis.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Oak Hill GIS Open Data</a> site to view more apps, maps, and data. You may also contact Marvin A Davis (<a href=\"mailto:cityohgis@gmail.com\" target=\"_blank\" rel=\"noopener noreferrer\">cityohgis@gmail.com</a>) or Bill Hannabass (<a href=\"mailto:w.hannabass@suddenlinkmail.com\" target=\"_blank\" rel=\"noopener noreferrer\">w.hannabass@suddenlinkmail.com</a>) for more information regarding Oak Hill GIS.",
+                "textAlignment": "start"
+            }
+        }
+    },
+    "resources": {
+        "r-48hj2z": {
+            "type": "story-theme",
+            "data": {
+                "themeId": "summit"
+            }
+        },
+        "r-liuapc": {
+            "type": "image",
+            "data": {
+                "src": "ym778uqh87m.jpg",
+                "provider": "resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-hw4me5": {
+            "type": "image",
+            "data": {
+                "src": "f5o0bwhakti.jpg",
+                "provider": "resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-jv01fp": {
+            "type": "webmap",
+            "data": {
+                "type": "minimal",
+                "itemId": "4bede01d42ee4b1581dd15ba39714c8a",
+                "itemType": "webmap"
+            }
+        },
+        "r-r5l3zp": {
+            "type": "image",
+            "data": {
+                "src": "f5o0bwhakti.jpg",
+                "provider": "resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-t4gbwj": {
+            "type": "image",
+            "data": {
+                "src": "jcrmiukqlf.png",
+                "provider": "resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-f2gb74": {
+            "type": "webmap",
+            "data": {
+                "type": "minimal",
+                "itemId": "d36f0c956a9745c0a689370b54b8207d",
+                "itemType": "webmap"
+            }
+        },
+        "r-avcotc": {
+            "type": "webmap",
+            "data": {
+                "type": "minimal",
+                "itemId": "1a6bb3769491405dbe13ed986db30550",
+                "itemType": "webmap"
+            }
+        },
+        "r-w30sef": {
+            "type": "image",
+            "data": {
+                "src": "jtk1elvhoe.png",
+                "provider": "resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-5rxzve": {
+            "type": "image",
+            "data": {
+                "src": "7j18beveqc8.jpg",
+                "provider": "resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-8t4zoi": {
+            "type": "image",
+            "data": {
+                "src": "f5o0bwhakti.jpg",
+                "provider": "resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-rss29w": {
+            "type": "webmap",
+            "data": {
+                "type": "minimal",
+                "itemId": "2add93503e0a4f9b8fc29c7eda6abe8b",
+                "itemType": "webmap"
+            }
+        },
+        "r-neyqqt": {
+            "type": "image",
+            "data": {
+                "src": "f5o0bwhakti.jpg",
+                "provider": "resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-auoiug": {
+            "type": "image",
+            "data": {
+                "src": "auf8j4ztiz.jpg",
+                "provider": "resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-kz0h7r": {
+            "type": "image",
+            "data": {
+                "src": "s8gpdu3fk1r.jpg",
+                "provider": "resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-ogplpg": {
+            "type": "image",
+            "data": {
+                "src": "f5o0bwhakti.jpg",
+                "provider": "resource",
+                "height": 1024,
+                "width": 1024
+            }
+        }
+    },
+    "config": {
+        "size": "large"
+    }
+}
