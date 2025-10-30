@@ -201,11 +201,8 @@ export function collectImageUrls(storymapJson: any): string[] {
 export function updateImageUrlsInJson(storymapJson: any, transferResults: Record<string, string>) {
   // Normalize urls
   const normalizeUrl = (url: string) => decodeURIComponent(url);  
-  // Log the keys for debugging
-  console.log("transferResults keys:", Object.keys(transferResults));
     // For each image resource, if its src matches a transferred URL, update it
     if (storymapJson.resources) {
-        console.log("Transfer results mapping:", transferResults);
         for (const [resourceId, resource] of Object.entries<any>(storymapJson.resources)) {
             if (resource.type === "image" && resource.data?.src) {
                 const originalUrl = resource.data.src;
@@ -214,7 +211,6 @@ export function updateImageUrlsInJson(storymapJson: any, transferResults: Record
                     k => normalizeUrl(k) === normalizeUrl(originalUrl)
                 );
                 if (matchKey) {
-                    console.log(`Updating resource ${resourceId}: ${originalUrl} -> ${transferResults[matchKey]}`);
                     // Change 'src' to 'resourceId' and set provider to 'item-resource'
                     resource.data.resourceId = transferResults[matchKey];
                     delete resource.data.src;
