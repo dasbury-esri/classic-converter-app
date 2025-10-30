@@ -201,6 +201,10 @@ Found that /converter-app/index.html contained hardcoded references to the ./ass
 created after a production build. Edited those lines to point to /src/main.tsx so Vite can run successfully
 ### davi6569/AGO-oath2-integration
 To ease user workflow, added a button to do authentication via ArcGIS Online OAuth2. Removed the token input field and its references from index.html and Converter.tsx also updated .gitignore to exclude the node_modules folder
+### davi6569/minimal-test
+- Changed "Open Converted Story" to "Click to Finish Publishing" and modified the url to point to the story builder instead of the story viewer. This process won't work for integration into AGSM, but want to get it working for testing. 
+- Added folders to test_data/classics to ease identification of json files for testing.
+- Hard coded test json file in Converter.tsx
 ### davi6569/create-draft-story-via-ArcGIS-REST-api
 - To ease user friction, create a target StoryMap using the ArcGIS REST api. Removed the target story input field and its references.
 - Normalized image resource urls during mapping when transferring images in image-transfer.ts
