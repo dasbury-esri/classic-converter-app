@@ -98,7 +98,7 @@ export class CascadeConverter {
     const foreground = section.foreground || {};
     const background = section.background || {};
 
-    const title = '(COPY) ' + (foreground.title || 'Untitled Story');
+    const title = foreground.title || 'Untitled Story';
     const subtitle = foreground.subtitle || '';
 
     // Handle cover image

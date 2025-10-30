@@ -47,7 +47,7 @@ export class JournalSeriesConverter {
    */
   convert(): any {
     // Get title
-    const title = this.classicJson.values?.title || 'Untitled Story';
+    const coverTitle = this.classicJson.values?.title || 'Untitled Story';
 
     // Create sidecar
     const { sidecarId, slideId: initialSlideId, narrativeId: initialNarrativeId } =
@@ -81,7 +81,7 @@ export class JournalSeriesConverter {
     }
 
     // Set cover
-    this.builder.setCover(`(COPY) ${title}`);
+    this.builder.setCover(`${coverTitle}`);
 
     // Set theme
     this.builder.setTheme(this.themeId);

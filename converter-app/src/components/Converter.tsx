@@ -78,23 +78,13 @@ export default function Converter() {
       setMessage("Converting classic story to new format...");
       let newStorymapJson = convertClassicToJson(classicData, "summit");
 
-      // 3.1 Find the cover node ID (first child of root) and retrieve story title
-      const rootNode = newStorymapJson.nodes[newStorymapJson.root];
-      const coverNodeId = rootNode.children?.[0];
-      let storyTitle = "Converted StoryMap";
-
-      if (coverNodeId) {
-        const coverNode = newStorymapJson.nodes[coverNodeId];
-        if (coverNode?.data?.title) {
-          storyTitle = coverNode.data.title;
-        }
-      }
-      console.log("StoryMap title:", storyTitle);
+      // 3.1 Retrieve story title
+      const coverTitle = classicData.values?.title || "Untitled Story";
 
       // 3.5 Create an empty draft StoryMap
       setMessage("Creating new StoryMap draft...");
-      const targetStoryId = await createDraftStoryMap(token, username, storyTitle);
-
+      const itemTitle = `(Converted) ${coverTitle}`;
+      const targetStoryId = await createDraftStoryMap(token, username, itemTitle);
 
       // 4. Transfer images from classic to target story
       const imageUrls = collectImageUrls(newStorymapJson);
@@ -104,7 +94,7 @@ export default function Converter() {
           `Transferring ${imageUrls.length} image(s) from classic story...`
         );
 
-        const transferResults = await transferImages(
+        const transferResultsArray = await transferImages(
           imageUrls,
           targetStoryId,
           username,
@@ -113,6 +103,12 @@ export default function Converter() {
             setMessage(`Transferring images (${current}/${total}): ${msg}`);
           }
         );
+
+        // Convert array to mapping
+        const transferResults: Record<string, string> = {};
+        for (const result of transferResultsArray) {
+          transferResults[result.originalUrl] = result.resourceName;
+        }
 
         // Update JSON to use proper resource structure
         // (resourceId + provider for uploaded, src + provider for external)
