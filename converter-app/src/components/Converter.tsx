@@ -52,12 +52,12 @@ export default function Converter() {
     }
 
 
-    // Validate inputs
-    if (!classicItemId.trim()) {
-      setStatus("error");
-      setMessage("Please enter a Classic Story Item ID");
-      return;
-    }
+    // // Validate inputs
+    // if (!classicItemId.trim()) {
+    //   setStatus("error");
+    //   setMessage("Please enter a Classic Story Item ID");
+    //   return;
+    // }
 
     try {
       // 1. Get username
@@ -67,7 +67,12 @@ export default function Converter() {
 
       // 2. Fetch classic item data
       setMessage("Fetching classic story data...");
-      const classicData = await getItemData(classicItemId, token);
+      // const classicData = await getItemData(classicItemId, token);
+      const response = await fetch("/b628131d8d3241bab21dab5bac7473be.json");
+      if (!response.ok) {
+        throw new Error(`Failed to fetch JSON: ${response.statusText}`);
+      }
+      const classicData = await response.json();
 
       // 3. Convert to new JSON
       setStatus("converting");
@@ -167,7 +172,7 @@ export default function Converter() {
       setStatus("success");
       setMessage("Conversion complete!");
       setConvertedUrl(
-        `https://www.arcgis.com/apps/storymaps/stories/${targetStoryId}`
+        `https://storymaps.arcgis.com/stories/${targetStoryId}/edit`
       );
     } catch (error: any) {
       setStatus("error");
@@ -300,7 +305,7 @@ export default function Converter() {
             rel="noopener noreferrer"
             style={{ color: "#0079c1", textDecoration: "underline" }}
           >
-            Open Converted Story →
+            Click to Finish Publishing →
           </a>
         </div>
       )}
