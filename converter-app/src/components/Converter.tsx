@@ -5,12 +5,6 @@
 
 import { useState } from "react";
 import { useAuth } from "../auth/AuthProvider";
-// import {
-//   isValidTokenFormat,
-//   getTokenInstructions,
-//   getStoredToken,
-//   storeToken,
-// } from "../auth/auth";
 import {
   getItemData,
   getItemDetails,
@@ -21,6 +15,7 @@ import {
   updateItemKeywords,
 } from "../api/arcgis-client";
 import { convertClassicToJson } from "../converter/converter-factory";
+import { createDraftStoryMap } from "../converter/storymap-draft-creator"
 import {
   collectImageUrls,
   transferImages,
@@ -39,7 +34,6 @@ type Status =
 export default function Converter() {
   const { token } = useAuth();
   const [classicItemId, setClassicItemId] = useState("");
-  const [targetStoryId, setTargetStoryId] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const [convertedUrl, setConvertedUrl] = useState("");
@@ -57,19 +51,12 @@ export default function Converter() {
       return;
     }
 
-
     // // Validate inputs
     // if (!classicItemId.trim()) {
     //   setStatus("error");
     //   setMessage("Please enter a Classic Story Item ID");
     //   return;
     // }
-
-    if (!targetStoryId.trim()) {
-      setStatus("error");
-      setMessage("Please enter a Target StoryMap Draft ID");
-      return;
-    }
 
     try {
       // 1. Get username
@@ -86,6 +73,14 @@ export default function Converter() {
       setMessage("Converting classic story to new format...");
       let newStorymapJson = convertClassicToJson(classicData, "summit");
 
+      // 3.1 Retrieve story title
+      const coverTitle = classicData.values?.title || "Untitled Story";
+
+      // 3.5 Create an empty draft StoryMap
+      setMessage("Creating new StoryMap draft...");
+      const itemTitle = `(Converted) ${coverTitle}`;
+      const targetStoryId = await createDraftStoryMap(token, username, itemTitle);
+
       // 4. Transfer images from classic to target story
       const imageUrls = collectImageUrls(newStorymapJson);
       if (imageUrls.length > 0) {
@@ -94,7 +89,7 @@ export default function Converter() {
           `Transferring ${imageUrls.length} image(s) from classic story...`
         );
 
-        const transferResults = await transferImages(
+        const transferResultsArray = await transferImages(
           imageUrls,
           targetStoryId,
           username,
@@ -103,6 +98,12 @@ export default function Converter() {
             setMessage(`Transferring images (${current}/${total}): ${msg}`);
           }
         );
+
+        // Convert array to mapping
+        const transferResults: Record<string, string> = {};
+        for (const result of transferResultsArray) {
+          transferResults[result.originalUrl] = result.resourceName;
+        }
 
         // Update JSON to use proper resource structure
         // (resourceId + provider for uploaded, src + provider for external)
@@ -182,27 +183,6 @@ export default function Converter() {
           value={classicItemId}
           onChange={(e) => setClassicItemId(e.target.value)}
           placeholder="e.g., 858c4126f0604d1a86dea06ffbdc23a3"
-          style={{
-            width: "100%",
-            padding: "10px",
-            fontSize: "14px",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-          }}
-        />
-      </div>
-
-      <div style={{ marginBottom: "20px" }}>
-        <label
-          style={{ display: "block", marginBottom: "5px", fontWeight: "bold" }}
-        >
-          Target StoryMap Draft ID:
-        </label>
-        <input
-          type="text"
-          value={targetStoryId}
-          onChange={(e) => setTargetStoryId(e.target.value)}
-          placeholder="e.g., abc123def456..."
           style={{
             width: "100%",
             padding: "10px",
@@ -299,10 +279,6 @@ export default function Converter() {
           <li>
             Enter the Item ID of your Classic Story (MapJournal, MapSeries, or
             Cascade)
-          </li>
-          <li>
-            Create a new draft ArcGIS StoryMap and enter its Item ID (you can
-            find this in the URL when editing)
           </li>
           <li>
             Click Convert to transform your classic story into the new format
