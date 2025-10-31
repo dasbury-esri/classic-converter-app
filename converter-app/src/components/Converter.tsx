@@ -67,11 +67,6 @@ export default function Converter() {
       // 2. Fetch classic item data
       setMessage("Fetching classic story data...");
       const classicData = await getItemData(classicItemId, token);
-      // const response = await fetch("/b628131d8d3241bab21dab5bac7473be.json");
-      // if (!response.ok) {
-      //   throw new Error(`Failed to fetch JSON: ${response.statusText}`);
-      // }
-      // const classicData = await response.json();
 
       // 3. Convert to new JSON
       setStatus("converting");
