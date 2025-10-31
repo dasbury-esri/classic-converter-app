@@ -286,10 +286,6 @@ export default function Converter() {
             Cascade)
           </li>
           <li>
-            Create a new draft ArcGIS StoryMap and enter its Item ID (you can
-            find this in the URL when editing)
-          </li>
-          <li>
             Click Convert to transform your classic story into the new format
           </li>
           <li>Review the converted story and publish when ready</li>
