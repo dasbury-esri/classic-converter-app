@@ -228,10 +228,10 @@ export class CascadeConverter {
       return this.builder.createDetachedNode(node);
     } else if (mediaType === 'webmap') {
       const webmapData = background.webmap || {};
-      return this.createDetachedMapNode(webmapData, 'webmap');
+      return this.createDetachedMapNode(webmapData, 'Web Map');
     } else if (mediaType === 'webscene') {
       const websceneData = background.webscene || {};
-      return this.createDetachedMapNode(websceneData, 'webscene');
+      return this.createDetachedMapNode(websceneData, 'Web Scene');
     }
 
     return undefined;
@@ -248,7 +248,7 @@ export class CascadeConverter {
     // Calculate viewpoint for webmaps
     let viewpoint;
     let zoom;
-    if (extent && mapType === 'webmap') {
+    if (extent && mapType === 'Web Map') {
       const result = determineScaleZoomLevel(extent);
       if (result) {
         viewpoint = {
@@ -288,7 +288,7 @@ export class CascadeConverter {
 
     // Add title text
     if (title) {
-      this.builder.addText(title, 'h1', 'center');
+      this.builder.addText(title, 'h2', 'center');
     }
 
     // Add image if present
@@ -553,8 +553,8 @@ export class CascadeConverter {
   private processWebmapBlock(block: any, returnIdOnly: boolean = false): string[] {
     const webmapData = block.webmap || {};
     const nodeId = returnIdOnly
-      ? this.createDetachedMapNode(webmapData, 'webmap')
-      : this.createMapNode(webmapData, 'webmap');
+      ? this.createDetachedMapNode(webmapData, 'Web Map')
+      : this.createMapNode(webmapData, 'Web Map');
     return returnIdOnly ? [nodeId] : [];
   }
 
@@ -580,7 +580,7 @@ export class CascadeConverter {
     // Calculate viewpoint for webmaps
     let viewpoint;
     let zoom;
-    if (extent && mapType === 'webmap') {
+    if (extent && mapType === 'Web Map') {
       const result = determineScaleZoomLevel(extent);
       if (result) {
         viewpoint = {

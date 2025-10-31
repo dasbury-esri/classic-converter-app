@@ -27,7 +27,7 @@ export interface StoryMapResource {
 export interface TextNode extends StoryMapNode {
   type: 'text';
   data: {
-    type: 'h1' | 'h2' | 'h3' | 'paragraph' | 'quote';
+    type: 'h2' | 'h3' | 'h4' | 'paragraph' | 'quote';
     text: string;
     textAlignment?: 'start' | 'center' | 'end';
   };
@@ -131,7 +131,7 @@ export interface MapResource extends StoryMapResource {
   data: {
     type: 'minimal';
     itemId: string;
-    itemType: 'webmap' | 'webscene';
+    itemType: 'Web Map' | 'Web Scene';
   };
 }
 
