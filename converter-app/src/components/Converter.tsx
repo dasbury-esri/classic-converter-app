@@ -58,12 +58,12 @@ export default function Converter() {
     }
 
 
-    // Validate inputs
-    if (!classicItemId.trim()) {
-      setStatus("error");
-      setMessage("Please enter a Classic Story Item ID");
-      return;
-    }
+    // // Validate inputs
+    // if (!classicItemId.trim()) {
+    //   setStatus("error");
+    //   setMessage("Please enter a Classic Story Item ID");
+    //   return;
+    // }
 
     if (!targetStoryId.trim()) {
       setStatus("error");
@@ -154,7 +154,7 @@ export default function Converter() {
       setStatus("success");
       setMessage("Conversion complete!");
       setConvertedUrl(
-        `https://www.arcgis.com/apps/storymaps/stories/${targetStoryId}`
+        `https://storymaps.arcgis.com/stories/${targetStoryId}/edit`
       );
     } catch (error: any) {
       setStatus("error");
@@ -287,7 +287,7 @@ export default function Converter() {
             rel="noopener noreferrer"
             style={{ color: "#0079c1", textDecoration: "underline" }}
           >
-            Open Converted Story →
+            Click to Finish Publishing →
           </a>
         </div>
       )}
