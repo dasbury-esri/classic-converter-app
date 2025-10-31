@@ -11,7 +11,8 @@ export async function createDraftStoryMap(token: string, username: string, title
   const typeKeywords = [
     "StoryMap",
     `smdraftresourceid:${draftResourceName}`,
-    "smstatus:draft"
+    "smstatus:draft",
+    "smeditorapp:converter-v3alpha"
   ];
 
   // Generate minimal valid StoryMap JSON
