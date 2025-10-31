@@ -11,7 +11,7 @@ export async function createDraftStoryMap(token: string, username: string, title
   const typeKeywords = [
     "StoryMap",
     `smdraftresourceid:${draftResourceName}`,
-    "smstatus:draft",
+    "smstatusdraft",
     "smeditorapp:converter-v3alpha"
   ];
 
