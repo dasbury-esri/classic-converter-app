@@ -26,9 +26,9 @@ export const STANDARD_THEMES = [
 
 // Text style mappings
 export const TEXT_STYLES: Record<string, string> = {
-  h1: 'h1',
-  h2: 'h2',
-  h3: 'h3',
+  h1: 'h2',
+  h2: 'h3',
+  h3: 'h4',
   p: 'paragraph',
   blockquote: 'quote'
 };
@@ -237,14 +237,14 @@ export function createMapNode(
  */
 export function createMapResource(
   itemId: string,
-  itemType: string = 'webmap'
+  itemType: string = 'Web Map'
 ): StoryMapResource {
   return {
     type: 'webmap',
     data: {
       type: 'minimal',
       itemId: itemId,
-      itemType: itemType as any
+      itemType: itemType as string
     }
   };
 }

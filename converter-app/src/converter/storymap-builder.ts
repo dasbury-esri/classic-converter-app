@@ -156,7 +156,7 @@ export class StoryMapJSONBuilder {
     viewpoint?: Viewpoint,
     zoom?: number,
     mapLayers?: MapLayer[],
-    itemType: string = 'webmap',
+    itemType: string = 'Web Map',
     parentId?: string
   ): { nodeId: string; resourceId: string } {
     // Create resource
@@ -179,7 +179,7 @@ export class StoryMapJSONBuilder {
     viewpoint?: Viewpoint,
     zoom?: number,
     mapLayers?: MapLayer[],
-    itemType: string = 'webmap'
+    itemType: string = 'Web Map'
   ): { nodeId: string; resourceId: string } {
     // Create resource
     const resource = createMapResource(mapItemId, itemType);

@@ -164,7 +164,7 @@ export class JournalSeriesConverter {
       viewpoint,
       zoom,
       mapLayers,
-      'webmap'
+      'Web Map'
     );
 
     return nodeId;
