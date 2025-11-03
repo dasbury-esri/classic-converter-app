@@ -283,7 +283,10 @@ export default function Converter() {
           <li>
             Click Convert to transform your classic story into the new format
           </li>
-          <li>Once completed, click the link to open the ArcGIS StoryMaps Builder. Review the converted story and publish when ready</li>
+          <li>Once completed, click the link to open the ArcGIS StoryMaps Builder
+          </li> 
+          <li>Review the converted story and publish when ready
+          </li>
         </ol>
       </div>
     </div>
