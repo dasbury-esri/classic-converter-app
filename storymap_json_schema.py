@@ -249,6 +249,134 @@ def create_embed_node(url: str, embed_type: str = "video",
 
     return node
 
+def create_tour_map_geometry(id: str, long: float, lat: float,
+                            type: str = "POINT_NUMBERED_TOUR",
+                            scale: float = None,
+                            viewpoint: dict = None) -> Dict[str, Any]:
+    """
+    Create a single geometry point for a tour-map node.
+
+    Args:
+        id: Unique geometry ID
+        long: Longitude value
+        lat: Latitude value
+        type: Geometry type (default "POINT_NUMBERED_TOUR")
+        scale: Optional scale value
+        viewpoint: Optional viewpoint dict
+
+    Returns:
+        Dict representing a geometry point
+    """
+    geometry = {
+        "id": id,
+        "type": type,
+        "nodes": [
+            {
+                "long": long,
+                "lat": lat
+            }
+        ]
+    }
+    if scale is not None:
+        geometry["scale"] = scale
+    if viewpoint is not None:
+        geometry["viewpoint"] = viewpoint
+    return geometry
+
+def create_tour_map_node(geometries: Dict[str, Any], mode: str = "2d", 
+                         basemap_type: str = "name", basemap_value: str = "worldImagery", 
+                         alt: Optional[str] = None) -> Dict[str, Any]:
+    """
+    Create a tour-map node matching the structure in tour-nativeAGSM.json
+
+    Args:
+        geometries: Dict of geometry objects (id: geometry dict)
+        mode: Map mode (default "2d")
+        basemap_type: Basemap type (default "name")
+        basemap_value: Basemap value (default "worldImagery")
+        alt: Optional alt text
+
+    Returns:
+        Dict representing a tour-map node
+    """
+    node = {
+        "type": "tour-map",
+        "data": {
+            "geometries": geometries,
+            "mode": mode,
+            "basemap": {
+                "type": basemap_type,
+                "value": basemap_value
+            }
+        }
+    }
+    if alt:
+        node["data"]["alt"] = alt
+    return node
+
+def create_tour_node(
+    places: List[str], map_node_id: str,
+    accent_color: str,
+    narrative_panel_position: str = "start", narrative_panel_size: str = "medium",
+    tour_type: str = "explorer", subtype: str = "list") -> Dict[str, Any]:
+    """
+    Create a tour node matching the structure in tour-nativeAGSM.json.
+
+    Args:
+        places: List of place dicts, each with keys: id, featureId, contents, media, title
+        map_node_id: Node ID of the associated tour-map node
+        narrative_panel_position: Position of the narrative panel ("start" by default)
+        narrative_panel_size: Size of the narrative panel ("medium" by default)
+        accent_color: Accent color hex string
+        tour_type: Type of tour ("explorer" by default)
+        subtype: Subtype of tour ("list" by default)
+
+    Returns:
+        Dict representing a tour node
+    """
+    node = {
+        "type": "tour",
+        "data": {
+            "type": tour_type,
+            "subtype": subtype,
+            "narrativePanelPosition": narrative_panel_position,
+            "map": map_node_id,
+            "places": places,
+            "narrativePanelSize": narrative_panel_size,
+            "accentColor": accent_color
+        }
+    }
+
+    return node
+
+def create_tour_place(
+    id: str,
+    feature_id: str,
+    contents: list,
+    media: str,
+    title: str
+) -> dict:
+    """
+    Create a single place dict for a tour node.
+
+    Args:
+        id: Node ID for the place
+        feature_id: Geometry feature ID
+        contents: List of node IDs for content
+        media: Node ID for media
+        title: Node ID for title
+
+    Returns:
+        Dict representing a place
+    """
+    place = {
+        "id": id,
+        "featureId": feature_id,
+        "contents": contents,
+        "media": media,
+        "title": title
+    }
+    return place
 
 def create_gallery_node(image_node_ids: List[str], caption: Optional[str] = None,
                        alt: Optional[str] = None,
@@ -621,6 +749,39 @@ def validate_node_against_schema(node: Dict[str, Any], node_type: str) -> List[s
     if node_type == "webmap":
         if "map" not in node.get("data", {}):
             errors.append("Map node missing data.map resource ID")
+
+    if node_type == "tour-map":
+        data = node.get("data", {})
+        if "geometries" not in data:
+            errors.append("Tour-map node missing data.geometries")
+        else:
+            for geom_id, geom in data["geometries"].items():
+                if "id" not in geom:
+                    errors.append(f"Geometry '{geom_id}' missing 'id'")
+                if "type" not in geom:
+                    errors.append(f"Geometry '{geom_id}' missing 'type'")
+                if "nodes" not in geom or not isinstance(geom["nodes"], list) or len(geom["nodes"]) == 0:
+                    errors.append(f"Geometry '{geom_id}' missing or invalid 'nodes' list")
+                for node_pt in geom["nodes"]:
+                    if "lat" not in node_pt or "long" not in node_pt:
+                        errors.append(f"Geometry '{geom_id}' node missing 'lat' or 'long'")
+
+    if node_type == "tour":
+        data = node.get("data", {})
+        if "places" not in data or not isinstance(data["places"], list) or len(data["places"]) == 0:
+            errors.append("Tour node missing or empty data.places list")
+        for place in data.get("places", []):
+            if "id" not in place:
+                errors.append("Place missing 'id'")
+            if "featureId" not in place:
+                errors.append(f"Place '{place.get('id', '?')}' missing 'featureId'")
+            if "contents" not in place or not isinstance(place["contents"], list) or len(place["contents"]) == 0:
+                errors.append(f"Place '{place.get('id', '?')}' missing or empty 'contents' list")
+            if "media" not in place:
+                errors.append(f"Place '{place.get('id', '?')}' missing 'media'")
+            if "title" not in place:
+                errors.append(f"Place '{place.get('id', '?')}' missing 'title'")
+
 
     return errors
 

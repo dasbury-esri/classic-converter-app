@@ -2,7 +2,7 @@
 JSON-to-JSON Classic StoryMap Converter
 
 This module provides direct JSON-to-JSON conversion from Classic StoryMaps
-(MapJournal, MapSeries, Cascade) to ArcGIS StoryMaps without using the ArcGIS Python API.
+(Map Tour, Map Journal, Map Series, Cascade) to ArcGIS StoryMaps without using the ArcGIS Python API.
 
 The converters build the StoryMap JSON structure directly, which can then be uploaded
 to create the new StoryMap item.
@@ -25,6 +25,8 @@ from storymap_json_schema import (ALIGNMENTS, EMBEDLY_TYPES, STANDARD_THEMES,
                                   create_map_resource, create_separator_node,
                                   create_sidecar_structure,
                                   create_slide_structure, create_text_node,
+                                  create_tour_map_geometry, create_tour_map_node,
+                                  create_tour_place, create_tour_node,
                                   generate_node_id, generate_resource_id,
                                   insert_node_before_credits, set_cover_data,
                                   set_theme, validate_node_against_schema,
@@ -1126,6 +1128,164 @@ class CascadeJSONConverter:
         """Get list of local images for cleanup"""
         return self.builder.get_local_images()
 
+# =====================================================================
+# Map Tour JSON Converter
+# =====================================================================
+
+class MapTourJSONConverter:
+    """Converts classic Map Tour stories to StoryMap JSON"""
+
+    def __init__(self, classic_json: Dict[str, Any], theme_id: str = "summit",
+                 gis_token: Optional[str] = None,
+                 image_resource_map: Optional[Dict[str, str]] = None,
+                 gis = None):
+        self.classic_json = classic_json
+        self.theme_id = theme_id
+        self.gis_token = gis_token
+        self.image_resource_map = image_resource_map or {}
+        self.gis = gis
+        self.builder = StoryMapJSONBuilder(theme_id, gis_token)
+        self._detect_theme()
+
+    def _detect_theme(self) -> None:
+        try:
+            theme_value = self.classic_json['values']['settings']['theme']['colors']['themeMajor']
+            theme_mapping = {
+                'dark': 'obsidian',
+                'light': 'summit'
+            }
+            self.theme_id = theme_mapping.get(theme_value, self.theme_id)
+        except (KeyError, TypeError):
+            pass
+
+    def _transfer_images(self) -> Dict[str, Any]:
+        # Get list of images to transfer
+        # - If externally hosted, use requests.get() to retrieve
+        # - If feature service attachments, figure out how to get them
+        # Upload to newly created item resources folder
+        # Update image_resource_map dict
+        image_resource_map = {}
+        return image_resource_map
+
+    def convert(self) -> Dict[str, Any]:
+        # Get title
+        title = self.classic_json.get('values', {}).get('title', 'Untitled Story')
+
+        # Get referenced webmap
+        webmap_json = self._get_webmap_json()
+
+        # Get features from webmap_json
+        feature_set = self._get_feature_set()
+        features = feature_set.get("features", []) if feature_set else []
+
+        # Generate node for tour-map
+        tour_map_node_id = self.builder.add_node({
+            "type": "tour-map",
+            "data": {
+                "geometries": {},
+                "mode": "2d",
+                "basemap": {
+                    "type": "name",
+                    "value": "worldImagery"
+                }
+            }
+        })
+
+        places = []
+        geometries = {}
+
+        for i, feature in enumerate(features):
+            geom_id = str(uuid.uuid4())
+            geom = create_tour_map_geometry(
+                id=geom_id,
+                long=feature["geometry"]["x"],
+                lat=feature["geometry"]["y"],
+                type="POINT_NUMBERED_TOUR"
+            )
+            geometries[geom_id] = geom
+
+            # Title node
+            title_text = feature["attributes"].get("name", "")
+            title_node_id = self.builder.add_text(title_text, style="h2", alignment="start")
+
+            # Description/content node(s)
+            description_text = feature["attributes"].get("description", "")
+            content_node_id = self.builder.add_text(description_text, style="paragraph", alignment="start")
+            contents = [content_node_id]
+
+            # Media node (image)
+            pic_filename = f"place_{i:03d}_img.jpg"
+            resource_name = self.image_resource_map.get(pic_filename, pic_filename)
+            media_node_id = self.builder.add_image(resource_name)
+
+            # Place node (references node IDs)
+            place_id = generate_node_id()
+            place = create_tour_place(
+                id=place_id,
+                feature_id=geom_id,
+                contents=contents,
+                media=media_node_id,
+                title=title_node_id
+            )
+            places.append(place)
+
+        # Update tour-map node with geometries
+        self.builder.storymap_json["nodes"][tour_map_node_id]["data"]["geometries"] = geometries
+
+        # Create tour node
+        tour_node_id = self.builder.add_node(create_tour_node(
+            places=places,
+            map_node_id=tour_map_node_id,
+            accent_color="#f9f794",
+            narrative_panel_position="start",
+            narrative_panel_size="medium",
+            tour_type="explorer",
+            subtype="list"
+        ))
+
+        # Set cover and theme
+        self.builder.set_cover(title)
+        self.builder.set_theme(self.theme_id)
+
+        return self.builder.get_json()
+
+    def _get_webmap_json(self) -> Optional[Dict[str, Any]]:
+        # Get json from the webmap that the classic Map Tour references
+        try:
+            if 'webmap_json' in self.classic_json:
+                return self.classic_json['webmap_json']
+            webmap_id = None
+            if self.gis and 'values' in self.classic_json and 'webmap' in self.classic_json['values']:
+                webmap_id = self.classic_json['values']['webmap']
+                webmap_item = self.gis.content.get(webmap_id)
+                webmap_json = webmap_item.get_data()
+                self.classic_json['webmap_json'] = webmap_json
+                return webmap_json
+        except Exception as ex:
+            print(f"Error fetching webmap JSON: {ex}")
+        return None
+
+
+    def _get_feature_set(self) -> Optional[Dict[str, Any]]:
+        # Try to extract featureSet from classic_json structure
+        # This assumes the classic_json is the full item JSON
+        try:
+            webmap = self._get_webmap_json()
+            if webmap:
+                layers = webmap.get('operationalLayers', [])
+                for layer in layers:
+                    if 'featureCollection' in layer:
+                        fc = layer['featureCollection']
+                        for fc_layer in fc.get('layers', []):
+                            if 'featureSet' in fc_layer:
+                                return fc_layer['featureSet']
+            # Fallback: look for featureSet directly
+            if 'featureSet' in self.classic_json:
+                return self.classic_json['featureSet']
+        except Exception as ex:
+            print(f"Error in _get_feature_set: {ex}")
+        return None
+
 
 # =====================================================================
 # Converter Factory
@@ -1163,7 +1323,6 @@ class JSONConverterFactory:
             return CascadeJSONConverter(classic_json, theme_id, gis_token)
 
         raise ValueError("Unknown classic story type")
-
 
 # =====================================================================
 # Main Conversion Functions
