@@ -1,0 +1,1390 @@
+{
+    "root": "n-uRMP9S",
+    "nodes": {
+        "n-bFYDLJ": {
+            "type": "image",
+            "data": {
+                "image": "r-6BpmN5",
+                "isExpandable": false,
+                "attribution": "Photo: Allen Carroll",
+                "alt": "A stone relief carving depicts a robed figure embracing and comforting a smaller figure, with another figure lying below them."
+            },
+            "config": {
+                "placement": {
+                    "type": "fit",
+                    "fit": {
+                        "color": "backgroundColor"
+                    },
+                    "fill": {
+                        "x": 0.5,
+                        "y": 0.5
+                    }
+                }
+            }
+        },
+        "n-DRLDK5": {
+            "type": "storycover",
+            "data": {
+                "type": "card",
+                "title": "(Guided, media, pt num) Final resting places",
+                "summary": "Great graveyards around the world",
+                "byline": "David Asbury",
+                "titlePanelVerticalPosition": "top",
+                "titlePanelHorizontalPosition": "end",
+                "titlePanelStyle": "gradient"
+            },
+            "config": {
+                "isHidden": false
+            },
+            "children": [
+                "n-bFYDLJ"
+            ]
+        },
+        "n-0Kn9JQ": {
+            "type": "navigation",
+            "data": {
+                "links": [
+                    {
+                        "nodeId": "n-Wau5t3"
+                    }
+                ]
+            },
+            "config": {
+                "isHidden": true
+            }
+        },
+        "n-DEmQji": {
+            "type": "text",
+            "data": {
+                "text": "<em>Let Not the Dead Forgotten Lie\nLest Living Men Forget to Die</em>",
+                "type": "quote"
+            }
+        },
+        "n-nVFrv7": {
+            "type": "text",
+            "data": {
+                "text": "The above words adorn a headstone in a rural Connecticut graveyard, symbolizing something that has been a part of human societies for millennia: the memorialization of the deceased. In many cultures throughout history, this has taken the form of setting aside land in which to place the dead, often accompanied by physical markers of remembrance. These spaces — most commonly called (in English) cemeteries or graveyards — can be found all across the globe.",
+                "type": "paragraph"
+            }
+        },
+        "n-ORKDyu": {
+            "type": "text",
+            "data": {
+                "text": "Use the map below to explore some of the more famous and memorable cities of the dead around the world.",
+                "type": "paragraph",
+                "textAlignment": "center",
+                "textSize": "large"
+            }
+        },
+        "n-27SQe6": {
+            "type": "image",
+            "data": {
+                "image": "r-NGS2EM",
+                "alt": "Aerial view of a vast cemetery with thousands of closely packed tombs and a prominent turquoise-domed mausoleum.",
+                "isExpandable": false
+            }
+        },
+        "n-vcNpGf": {
+            "type": "carousel",
+            "children": [
+                "n-27SQe6"
+            ]
+        },
+        "n-RZF1sB": {
+            "type": "text",
+            "data": {
+                "text": "Wadi-us-Salaam",
+                "type": "h3"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-Yk7OQK": {
+            "type": "text",
+            "data": {
+                "text": "<em>Najaf, Iraq</em>",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-nyPY8e": {
+            "type": "text",
+            "data": {
+                "text": "Wadi-us-Salaam is the largest cemetery in the world. Over 6 million bodies are entombed in the cemetery&apos;s 1,485 acres. The cemetery is located near a prominent Shia shrine.",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-y74jvu": {
+            "type": "text",
+            "data": {
+                "text": "Shia Muslims in Iraq and, increasingly, from around the world, seek to be interred here because of its association with Imam Ali ibn Abi Talib, who many believe will raise them from the dead on Judgment Day.",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-ZZA6tc": {
+            "type": "image",
+            "data": {
+                "image": "r-hYor8f",
+                "isExpandable": false,
+                "attribution": "Photo: Ploughboylifestyle, via <a href=\"https://commons.wikimedia.org/wiki/File:CalvaryCemeteryQueens_edit.jpg\" rel=\"noopener noreferrer\" target=\"_blank\">Wikimedia Commons</a>",
+                "alt": "A cemetery filled with gravestones in the foreground with the New York City skyline, including the Empire State Building, visible at sunset."
+            }
+        },
+        "n-e0TTWI": {
+            "type": "carousel",
+            "children": [
+                "n-ZZA6tc"
+            ]
+        },
+        "n-7ISgaD": {
+            "type": "text",
+            "data": {
+                "text": "Calvary Cemetery",
+                "type": "h3"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-bt4rXf": {
+            "type": "text",
+            "data": {
+                "text": "Queens, New York, USA",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-3UTKOT": {
+            "type": "text",
+            "data": {
+                "text": "One of the oldest cemeteries in the U.S., this Roman Catholic cemetery also has the largest number of burials: 3 million. It has appeared in a number of films, including <em>The Godfather </em>and <em>Zoolander</em>.",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-CIxnRx": {
+            "type": "image",
+            "data": {
+                "image": "r-XoocI3",
+                "isExpandable": false,
+                "attribution": "Photo: Allen Carroll",
+                "alt": "Rows of ornate gravestones and mausoleums in a cemetery, with flowers placed on several tombs."
+            }
+        },
+        "n-CkGXcF": {
+            "type": "carousel",
+            "children": [
+                "n-CIxnRx"
+            ]
+        },
+        "n-8eh0qV": {
+            "type": "text",
+            "data": {
+                "text": "Montmartre Cemetery",
+                "type": "h3"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-AQEqZ1": {
+            "type": "text",
+            "data": {
+                "text": "<em>Paris, France</em>",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-ZtreV0": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "The Montmartre Cemetery opened in 1825 on the site of a former gypsum quarry. The location had been used for mass burials during the French Revolution. Among the notables entombed here are Hector Berlioz, Edgar Degas, Vaslav Nijinksy, François Truffaut, and Émile Zola."
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-jdu5Se": {
+            "type": "image",
+            "data": {
+                "image": "r-tZQeWC",
+                "isExpandable": false,
+                "attribution": "Photo: Doris Antony, via <a href=\"https://en.wikipedia.org/wiki/Ohlsdorf_Jewish_Cemetery#/media/File:Hamburg_juedischer_Friedhof_Ohlsdorf.jpg\" rel=\"noopener noreferrer\" target=\"_blank\">Wikimedia Commons</a>",
+                "alt": "A snow-covered cemetery path lined with trees and gravestones."
+            }
+        },
+        "n-03om8i": {
+            "type": "carousel",
+            "children": [
+                "n-jdu5Se"
+            ]
+        },
+        "n-dvKxje": {
+            "type": "text",
+            "data": {
+                "text": "Ohlsdorf Cemetery",
+                "type": "h3"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-5eAPeV": {
+            "type": "text",
+            "data": {
+                "text": "<em>Hamburg, Germany</em>",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-FB2LJu": {
+            "type": "text",
+            "data": {
+                "text": "The fourth largest cemetery in the world, Ohlsdorf has 1.5 million burials. It doubles as a recreational site for Hamburg residents, and is served by over two dozen bus stops.",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-UwwguV": {
+            "type": "image",
+            "data": {
+                "image": "r-I0YoMD",
+                "isExpandable": false,
+                "attribution": "Photo: Allen Carroll",
+                "alt": "A weathered gravestone with the inscription 'In Memory' and carved angel wings at the top."
+            }
+        },
+        "n-90VyKe": {
+            "type": "carousel",
+            "children": [
+                "n-UwwguV"
+            ]
+        },
+        "n-S66zMk": {
+            "type": "text",
+            "data": {
+                "text": "Common Burying Ground",
+                "type": "h3"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-Tl0NlK": {
+            "type": "text",
+            "data": {
+                "text": "<em>Newport, Rhode Island, USA</em>",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-x90jQx": {
+            "type": "text",
+            "data": {
+                "text": "The Common Burying Ground was established in 1640. It and the nearby Island Cemetery include perhaps the largest number of colonial-era headstones of any U.S. cemetery.",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-kgIIva": {
+            "type": "image",
+            "data": {
+                "image": "r-3FH8xs",
+                "isExpandable": false,
+                "attribution": "Photo: Allen Carroll",
+                "alt": "Gravestones and monuments stand beneath a large tree with vibrant orange autumn leaves in a peaceful cemetery."
+            }
+        },
+        "n-Z2sPdz": {
+            "type": "carousel",
+            "children": [
+                "n-kgIIva"
+            ]
+        },
+        "n-w3UFwP": {
+            "type": "text",
+            "data": {
+                "text": "Mt. Auburn Cemetery",
+                "type": "h3"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-oWhNaO": {
+            "type": "text",
+            "data": {
+                "text": "<em>Cambridge/Watertown, Massachusetts, USA</em>",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-88qPDy": {
+            "type": "text",
+            "data": {
+                "text": "The final resting place of more than 93,000 people, Mount Auburn influenced the design of many cemeteries that followed it. Its rural, park-like design reflected an evolving view of death in the early nineteenth century as a peaceful, eternal sleep. It is well-known as an arboretum, and features some 700 varieties of trees.",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-E9kDaV": {
+            "type": "text",
+            "data": {
+                "text": "Among the many prominent people buried here are McGeorge Bundy, Felix Frankfurter, Buckminster Fuller, Winslow Homer, and Henry Wadsworth Longfellow.",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-rtpHph": {
+            "type": "image",
+            "data": {
+                "image": "r-nN4lM4",
+                "isExpandable": false,
+                "attribution": "Photo: Bernardo Galmarini, via <a href=\"https://stock.adobe.com/images/recoleta-public-cemetery-recoleta-buenos-aires-argentina/855210646?prev_url=detail\" rel=\"noopener noreferrer\" target=\"_blank\">Adobe Stock</a> © 2025",
+                "alt": "A row of ornate stone mausoleums and statues lines a narrow cemetery pathway with a distant white chapel and tall cypress trees."
+            }
+        },
+        "n-MJh3V6": {
+            "type": "carousel",
+            "children": [
+                "n-rtpHph"
+            ]
+        },
+        "n-l8YmYT": {
+            "type": "text",
+            "data": {
+                "text": "Recoleta Cemetery",
+                "type": "h3"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-hrqNor": {
+            "type": "text",
+            "data": {
+                "text": "<em>Buenos Aires, Argentina</em>",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-1VpoRk": {
+            "type": "text",
+            "data": {
+                "text": "Eva Perón is the most renowned name interred among the 4,691 vaults in this graveyard, considered by some as among the most beautiful in the world.",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-pz79Ev": {
+            "type": "image",
+            "data": {
+                "image": "r-6tzfvq",
+                "isExpandable": false,
+                "attribution": "Photo: MikeJiroch, via <a href=\"https://commons.wikimedia.org/wiki/Category:Hollywood_Forever_Cemetery#/media/File:Hollywood_Cemetery,_6000_Santa_Monica_Blvd_Hollywood_1773.jpg\" rel=\"noopener noreferrer\" target=\"_blank\">Wikimedia Commons</a>",
+                "alt": "A peaceful cemetery with gravestones surrounded by green grass, trees, and palm trees under a clear blue sky."
+            }
+        },
+        "n-ez3GTF": {
+            "type": "carousel",
+            "children": [
+                "n-pz79Ev"
+            ]
+        },
+        "n-GHh0pD": {
+            "type": "text",
+            "data": {
+                "text": "Hollywood Forever Cemetery",
+                "type": "h3"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-YxvuBe": {
+            "type": "text",
+            "data": {
+                "text": "<em>Los Angeles, California, USA</em>",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-jvAMOT": {
+            "type": "text",
+            "data": {
+                "text": "Founded in 1899, this graveyard is the resting place of many Hollywood notables. Immediately to its south are Paramount Studios, which occupy land that formerly belonged to the cemetery. Hollywood Forever hosts musical events and outdoor movie screenings.",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-BdO0wG": {
+            "type": "text",
+            "data": {
+                "text": "Burials include voice-over artist Mel Blanc, Cecil B. DeMille, Douglas Fairbanks Jr., Janet Gaynor, George Harrison, John Huston, Peter Lorre, Tyrone Power, Benjamin &quot;Bugsy&quot; Siegel, Rudolph Valentino, and Fay Wray.",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-nlFHxL": {
+            "type": "image",
+            "data": {
+                "image": "r-OwPFUY",
+                "isExpandable": false,
+                "attribution": "Photo: Zedla, via <a href=\"https://commons.wikimedia.org/wiki/File:Hcc-colma-dimaggio1.jpg\" rel=\"noopener noreferrer\" target=\"_blank\">Wikimedia Commons</a>",
+                "alt": "Marble gravestone of Joe DiMaggio adorned with flowers and baseball bats."
+            }
+        },
+        "n-KwrqAc": {
+            "type": "carousel",
+            "children": [
+                "n-nlFHxL"
+            ]
+        },
+        "n-m4YsSB": {
+            "type": "text",
+            "data": {
+                "text": "Holy Cross Cemetery",
+                "type": "h3"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-fH52dT": {
+            "type": "text",
+            "data": {
+                "text": "<em>Colma, California, USA</em>",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-wqb6wD": {
+            "type": "text",
+            "data": {
+                "text": "The informal motto of this small city just south of San Francisco is, &quot;It&apos;s great to be alive in Colma.&quot; The reason: for every one of its 1,800 or so residents, there are at least 1,000 dead people. Colma&apos;s concentration of cemeteries is the result of a 1900 San Francisco ordinance banning the establishment of new cemeteries with in its city limits, and a later ordinance expelling existing graveyards.",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-wXyFLT": {
+            "type": "text",
+            "data": {
+                "text": "Baseball Hall of Famer Joe DiMaggio is buried in Holy Cross Cemetery (his gravesite shown here), while newspaper tycoon William Randolph Hearst is interred in nearby Cypress Lawn Memorial Park.",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-kITUP7": {
+            "type": "image",
+            "data": {
+                "image": "r-Mqotjs",
+                "isExpandable": false,
+                "attribution": "Photo: Cavan, via <a href=\"https://stock.adobe.com/images/inside-the-famous-underground-catacombs-burial-area-in-paris/612696881?prev_url=detail\" rel=\"noopener noreferrer\" target=\"_blank\">Adobe Stock</a> © 2025",
+                "alt": "A wall made out of human bones and skulls arranged around a large stone cross in the Paris Catacombs."
+            }
+        },
+        "n-OHSL50": {
+            "type": "carousel",
+            "children": [
+                "n-kITUP7"
+            ]
+        },
+        "n-w6yVZk": {
+            "type": "text",
+            "data": {
+                "text": "Catacombs of Paris",
+                "type": "h3"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-mmVvHt": {
+            "type": "text",
+            "data": {
+                "text": "<em>Paris, France</em>",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-kOW1ae": {
+            "type": "text",
+            "data": {
+                "text": "The solution to overcrowded cemeteries in Paris around the turn of the 19<sup>th</sup> century was to move the remains of six million people underground, into what had been ancient stone quarries. Among them were a number of notable figures from the French Revolution, such as Georges Jacques Danton and Maximilien Robespierre. Visitors to Paris can tour the Catacombs today.",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-VWrpil": {
+            "type": "image",
+            "data": {
+                "image": "r-PZ6Yyc",
+                "isExpandable": false,
+                "attribution": "Photo: Anthony22, via <a href=\"https://commons.wikimedia.org/wiki/File:Hartsdale_Canine_Cemetery_October_2012.jpg\" rel=\"noopener noreferrer\" target=\"_blank\">Wikimedia Commons</a>",
+                "alt": "Entrance gate of Hartsdale Canine Cemetery, established in 1896, with tombstones and flowers visible beyond."
+            }
+        },
+        "n-saTr9H": {
+            "type": "carousel",
+            "children": [
+                "n-VWrpil"
+            ]
+        },
+        "n-7We6TZ": {
+            "type": "text",
+            "data": {
+                "text": "Hartsdale Pet Cemetery",
+                "type": "h3"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-chK7fX": {
+            "type": "text",
+            "data": {
+                "text": "<em>Hartsdale, New York, USA</em>",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-2zjx0H": {
+            "type": "text",
+            "data": {
+                "text": "Not all graveyards are for people. The largest and oldest cemetery dedicated to pets in the United States is in Westchester County, north of New York City. The remains of 70,000 furred and feathered (and perhaps even scaled) friends reside within its grounds.",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-BLPOU7": {
+            "type": "image",
+            "data": {
+                "image": "r-ZATsBH",
+                "isExpandable": false,
+                "attribution": "Photo: Amazur, via <a href=\"https://commons.wikimedia.org/wiki/File:Mallows-bay-shipwreck.jpg\" rel=\"noopener noreferrer\" target=\"_blank\">Wikimedia Commons</a>",
+                "alt": "Ruins of an old wooden boat are partially submerged in calm waters with bare trees lining the shore."
+            }
+        },
+        "n-AkLBwD": {
+            "type": "carousel",
+            "children": [
+                "n-BLPOU7"
+            ]
+        },
+        "n-kihRwS": {
+            "type": "text",
+            "data": {
+                "text": "Mallows Bay",
+                "type": "h3"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-s7f4Vz": {
+            "type": "text",
+            "data": {
+                "text": "<em>Nanjemoy, Maryland, USA</em>",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-QAAdMx": {
+            "type": "text",
+            "data": {
+                "text": "Human-created objects have a lifespan, too, and their remains also end up somewhere. The remnants of more than 230 ships reside in this inlet of the tidal Potomac River. Many were merchant vessels built during World War I to haul materiel across the Atlantic. They were often poorly constructed, and the quickly obsolete ships were scuttled and burned in 1925.",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-7Gknit": {
+            "type": "text",
+            "data": {
+                "text": "The site is now a park operated by Charles County, Maryland. Intrepid visitors can rent kayaks and paddle amongst the wrecked husks of this &quot;ghost fleet.&quot;",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-9v3Tp6": {
+            "type": "image",
+            "data": {
+                "image": "r-TnSj9H",
+                "isExpandable": false,
+                "attribution": "Photo: Vector and Photos, via <a href=\"https://stock.adobe.com/images/inside-of-ship-breaking-yard-chittaogng-bangldesh/551990021\" rel=\"noopener noreferrer\" target=\"_blank\">Adobe Stock</a> © 2025",
+                "alt": "Workers dismantle a large cargo ship for scrap metal at a shipbreaking yard."
+            }
+        },
+        "n-bxUhlZ": {
+            "type": "carousel",
+            "children": [
+                "n-9v3Tp6"
+            ]
+        },
+        "n-ePrDax": {
+            "type": "text",
+            "data": {
+                "text": "Shipbreaking yards",
+                "type": "h3"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-FeoBqe": {
+            "type": "text",
+            "data": {
+                "text": "<em>Chittagong, Bangladesh</em>",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-v4HODv": {
+            "type": "text",
+            "data": {
+                "text": "Ocean-going ships only last, on average, about 27 years, and these vessels — including some of the largest objects ever built by humans — need to go somewhere once they’ve outlived their usefulness. Often, decommissioned ships end up on beaches in South Asia, where they’re deconstructed piece by piece by hundreds of thousands of workers. This shipbreaking industry is unregulated, dangerous, and can be damaging to the environment, too (you can learn more about shipbreaking in <a href=\"https://storymaps.arcgis.com/stories/697e30d64a1540ca8e594cc9302e023e\" rel=\"noopener noreferrer\" target=\"_blank\">this story</a>).",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-xCKrnV": {
+            "type": "image",
+            "data": {
+                "image": "r-GJVzcg",
+                "isExpandable": false,
+                "attribution": "Photo: U.S. Navy, via <a href=\"https://commons.wikimedia.org/wiki/File:309th_AMARG_at_Davis-Monthan_Air_Force_Base_150327-N-MV308-544.jpg\" rel=\"noopener noreferrer\" target=\"_blank\">Wikimedia Commons</a>",
+                "alt": "Aerial view of hundreds of retired military planes lined up on a desert landscape."
+            }
+        },
+        "n-FuAsep": {
+            "type": "carousel",
+            "children": [
+                "n-xCKrnV"
+            ]
+        },
+        "n-OCoFOo": {
+            "type": "text",
+            "data": {
+                "text": "Davis-Monthan Air Force Base",
+                "type": "h3"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-AB4h4s": {
+            "type": "text",
+            "data": {
+                "text": "<em>Tucson, Arizona, USA</em>",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-hlfWuY": {
+            "type": "text",
+            "data": {
+                "text": "The 399th Aerospace Maintenance and Regeneration Group (AMARG) manages a &quot;boneyard&quot; of mothballed airplanes and missiles on this Air Force base in Tucson, Arizona. More than 4,400 aircraft are parked at the facility, established in 1946. The base&apos;s dry weather and hard soil are ideally suited for long-term storage of airplanes.",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-gFs76Y": {
+            "type": "tour-map",
+            "data": {
+                "geometries": {
+                    "767ae125-7074-44d6-b258-24ada9def948": {
+                        "id": "767ae125-7074-44d6-b258-24ada9def948",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": 43.8147854,
+                                "lat": 31.125643099999994
+                            }
+                        ]
+                    },
+                    "ff67cf65-3f34-421e-be53-9359390cb263": {
+                        "id": "ff67cf65-3f34-421e-be53-9359390cb263",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": 44.31323456560986,
+                                "lat": 32.004685679441856
+                            }
+                        ],
+                        "scale": 4514
+                    },
+                    "87620e6b-f08e-4f8a-a8d3-fc21fa430d19": {
+                        "id": "87620e6b-f08e-4f8a-a8d3-fc21fa430d19",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -73.91284226455281,
+                                "lat": 40.737144576326266
+                            }
+                        ],
+                        "scale": 9028
+                    },
+                    "fc593888-aaae-4c82-8104-93212b732273": {
+                        "id": "fc593888-aaae-4c82-8104-93212b732273",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": 2.330378177733046,
+                                "lat": 48.88757604895205
+                            }
+                        ],
+                        "scale": 4514
+                    },
+                    "a0256fae-7408-4c61-a2a5-2bd355c9baa5": {
+                        "id": "a0256fae-7408-4c61-a2a5-2bd355c9baa5",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": 10.069766359498459,
+                                "lat": 53.62535611673864
+                            }
+                        ],
+                        "scale": 9028
+                    },
+                    "24f90f01-06b5-422b-884c-18319bbc1222": {
+                        "id": "24f90f01-06b5-422b-884c-18319bbc1222",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -71.3156704929258,
+                                "lat": 41.49514429464243
+                            }
+                        ],
+                        "scale": 2257
+                    },
+                    "c12f4a84-f957-457e-acea-76b911cd3562": {
+                        "id": "c12f4a84-f957-457e-acea-76b911cd3562",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -71.14396443103779,
+                                "lat": 42.373049608257716
+                            }
+                        ],
+                        "scale": 4514
+                    },
+                    "6652ad12-1c82-441d-9b4d-e1b7ca8e5d62": {
+                        "id": "6652ad12-1c82-441d-9b4d-e1b7ca8e5d62",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -58.39341354431444,
+                                "lat": -34.58765579729539
+                            }
+                        ],
+                        "scale": 2257
+                    },
+                    "c674efad-458a-495d-8033-504f6118c544": {
+                        "id": "c674efad-458a-495d-8033-504f6118c544",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -118.31867063129081,
+                                "lat": 34.088523509928216
+                            }
+                        ],
+                        "scale": 4514
+                    },
+                    "af94b4c7-fb62-4876-bbbd-5e97592a7706": {
+                        "id": "af94b4c7-fb62-4876-bbbd-5e97592a7706",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -122.44520709296464,
+                                "lat": 37.6711454578347
+                            }
+                        ],
+                        "scale": 4514
+                    },
+                    "d59a056a-cc86-41e1-b165-79c6fd2e3120": {
+                        "id": "d59a056a-cc86-41e1-b165-79c6fd2e3120",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": 2.33258388645954,
+                                "lat": 48.83386384740671
+                            }
+                        ],
+                        "scale": 2257
+                    },
+                    "8e867874-772a-4e9d-846b-35a8d98efcd0": {
+                        "id": "8e867874-772a-4e9d-846b-35a8d98efcd0",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -73.79689434912594,
+                                "lat": 41.02152542615153
+                            }
+                        ],
+                        "scale": 593,
+                        "viewpoint": {
+                            "rotation": 0,
+                            "scale": 593.3759615280851,
+                            "targetGeometry": {
+                                "spatialReference": {
+                                    "latestWkid": 3857,
+                                    "wkid": 102100
+                                },
+                                "x": -8215082.039906624,
+                                "y": 5015517.983393713,
+                                "z": 73.41465254686773
+                            },
+                            "camera": {
+                                "position": {
+                                    "spatialReference": {
+                                        "latestWkid": 3857,
+                                        "wkid": 102100
+                                    },
+                                    "x": -8215082.039906624,
+                                    "y": 5015515.062803045,
+                                    "z": 325.9211132414639
+                                },
+                                "heading": 0,
+                                "tilt": 0.4999802059682203
+                            }
+                        }
+                    },
+                    "f8fae0e4-6ddf-48d9-8942-0896194d7e97": {
+                        "id": "f8fae0e4-6ddf-48d9-8942-0896194d7e97",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -77.26762283429063,
+                                "lat": 38.47386454862435
+                            }
+                        ],
+                        "scale": 2257
+                    },
+                    "9dcad44d-eee8-4aac-b3d5-06f119a19947": {
+                        "id": "9dcad44d-eee8-4aac-b3d5-06f119a19947",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": 91.72702319056066,
+                                "lat": 22.446884383889333
+                            }
+                        ],
+                        "scale": 2835,
+                        "viewpoint": {
+                            "rotation": 359.9994977502817,
+                            "scale": 2835.261972767384,
+                            "targetGeometry": {
+                                "spatialReference": {
+                                    "latestWkid": 3857,
+                                    "wkid": 102100
+                                },
+                                "x": 10210837.4769119,
+                                "y": 2565276.0105529735,
+                                "z": 3.1144767431542277
+                            },
+                            "camera": {
+                                "position": {
+                                    "spatialReference": {
+                                        "latestWkid": 3857,
+                                        "wkid": 102100
+                                    },
+                                    "x": 10210837.476811828,
+                                    "y": 2565264.5945376903,
+                                    "z": 1209.637646744959
+                                },
+                                "heading": 0.0005022497183000803,
+                                "tilt": 0.5010399823971188
+                            }
+                        }
+                    },
+                    "0dcbc577-80d2-4d2b-9c8f-04712be45329": {
+                        "id": "0dcbc577-80d2-4d2b-9c8f-04712be45329",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -110.8479864091674,
+                                "lat": 32.169916541326295
+                            }
+                        ],
+                        "scale": 5319,
+                        "viewpoint": {
+                            "rotation": 0.0001933491018917266,
+                            "scale": 5319.322838811646,
+                            "targetGeometry": {
+                                "spatialReference": {
+                                    "latestWkid": 3857,
+                                    "wkid": 102100
+                                },
+                                "x": -12339754.404953066,
+                                "y": 3785738.8911476717,
+                                "z": 826.7611379306763
+                            },
+                            "camera": {
+                                "position": {
+                                    "spatialReference": {
+                                        "latestWkid": 3857,
+                                        "wkid": 102100
+                                    },
+                                    "x": -12339754.404873881,
+                                    "y": 3785715.4259435395,
+                                    "z": 3090.3560149203986
+                                },
+                                "heading": 359.9998066508981,
+                                "tilt": 0.5028090767899761
+                            }
+                        }
+                    }
+                },
+                "mode": "2d",
+                "basemap": {
+                    "type": "name",
+                    "value": "worldImagery"
+                },
+                "alt": "A map depicting 14 noteworthy cemeteries around the world. The map navigates automatically to each of the points as you scroll through the tour."
+            }
+        },
+        "n-2SYzss": {
+            "type": "tour",
+            "data": {
+                "type": "guided-tour",
+                "subtype": "media-focused",
+                "narrativePanelPosition": "start",
+                "map": "n-gFs76Y",
+                "places": [
+                    {
+                        "id": "n-becYbB",
+                        "featureId": "ff67cf65-3f34-421e-be53-9359390cb263",
+                        "contents": [
+                            "n-Yk7OQK",
+                            "n-nyPY8e",
+                            "n-y74jvu"
+                        ],
+                        "media": "n-vcNpGf",
+                        "title": "n-RZF1sB"
+                    },
+                    {
+                        "id": "n-2Qhvcq",
+                        "featureId": "87620e6b-f08e-4f8a-a8d3-fc21fa430d19",
+                        "contents": [
+                            "n-bt4rXf",
+                            "n-3UTKOT"
+                        ],
+                        "media": "n-e0TTWI",
+                        "title": "n-7ISgaD"
+                    },
+                    {
+                        "id": "n-o6jsjf",
+                        "featureId": "fc593888-aaae-4c82-8104-93212b732273",
+                        "contents": [
+                            "n-AQEqZ1",
+                            "n-ZtreV0"
+                        ],
+                        "media": "n-CkGXcF",
+                        "title": "n-8eh0qV"
+                    },
+                    {
+                        "id": "n-74QnmI",
+                        "featureId": "a0256fae-7408-4c61-a2a5-2bd355c9baa5",
+                        "contents": [
+                            "n-5eAPeV",
+                            "n-FB2LJu"
+                        ],
+                        "media": "n-03om8i",
+                        "title": "n-dvKxje"
+                    },
+                    {
+                        "id": "n-T8YTj7",
+                        "featureId": "24f90f01-06b5-422b-884c-18319bbc1222",
+                        "contents": [
+                            "n-Tl0NlK",
+                            "n-x90jQx"
+                        ],
+                        "media": "n-90VyKe",
+                        "title": "n-S66zMk"
+                    },
+                    {
+                        "id": "n-M1Lqaq",
+                        "featureId": "c12f4a84-f957-457e-acea-76b911cd3562",
+                        "contents": [
+                            "n-oWhNaO",
+                            "n-88qPDy",
+                            "n-E9kDaV"
+                        ],
+                        "media": "n-Z2sPdz",
+                        "title": "n-w3UFwP"
+                    },
+                    {
+                        "id": "n-qP3P4B",
+                        "featureId": "6652ad12-1c82-441d-9b4d-e1b7ca8e5d62",
+                        "contents": [
+                            "n-hrqNor",
+                            "n-1VpoRk"
+                        ],
+                        "media": "n-MJh3V6",
+                        "title": "n-l8YmYT"
+                    },
+                    {
+                        "id": "n-12kEBS",
+                        "featureId": "c674efad-458a-495d-8033-504f6118c544",
+                        "contents": [
+                            "n-YxvuBe",
+                            "n-jvAMOT",
+                            "n-BdO0wG"
+                        ],
+                        "media": "n-ez3GTF",
+                        "title": "n-GHh0pD"
+                    },
+                    {
+                        "id": "n-o15FYW",
+                        "featureId": "af94b4c7-fb62-4876-bbbd-5e97592a7706",
+                        "contents": [
+                            "n-fH52dT",
+                            "n-wqb6wD",
+                            "n-wXyFLT"
+                        ],
+                        "media": "n-KwrqAc",
+                        "title": "n-m4YsSB"
+                    },
+                    {
+                        "id": "n-Y6w3uP",
+                        "featureId": "d59a056a-cc86-41e1-b165-79c6fd2e3120",
+                        "contents": [
+                            "n-mmVvHt",
+                            "n-kOW1ae"
+                        ],
+                        "media": "n-OHSL50",
+                        "title": "n-w6yVZk"
+                    },
+                    {
+                        "id": "n-LYTEHa",
+                        "featureId": "8e867874-772a-4e9d-846b-35a8d98efcd0",
+                        "contents": [
+                            "n-chK7fX",
+                            "n-2zjx0H"
+                        ],
+                        "media": "n-saTr9H",
+                        "title": "n-7We6TZ"
+                    },
+                    {
+                        "id": "n-hlDhO5",
+                        "featureId": "f8fae0e4-6ddf-48d9-8942-0896194d7e97",
+                        "contents": [
+                            "n-s7f4Vz",
+                            "n-QAAdMx",
+                            "n-7Gknit"
+                        ],
+                        "media": "n-AkLBwD",
+                        "title": "n-kihRwS"
+                    },
+                    {
+                        "id": "n-K112VK",
+                        "featureId": "9dcad44d-eee8-4aac-b3d5-06f119a19947",
+                        "contents": [
+                            "n-FeoBqe",
+                            "n-v4HODv"
+                        ],
+                        "media": "n-bxUhlZ",
+                        "title": "n-ePrDax"
+                    },
+                    {
+                        "id": "n-5Scmkl",
+                        "featureId": "0dcbc577-80d2-4d2b-9c8f-04712be45329",
+                        "contents": [
+                            "n-AB4h4s",
+                            "n-hlfWuY"
+                        ],
+                        "media": "n-FuAsep",
+                        "title": "n-OCoFOo"
+                    }
+                ],
+                "narrativePanelSize": "medium",
+                "accentColor": "#f9f794"
+            }
+        },
+        "n-Wau5t3": {
+            "type": "text",
+            "data": {
+                "text": "About this story",
+                "type": "h4"
+            }
+        },
+        "n-wMYOLX": {
+            "type": "text",
+            "data": {
+                "text": "This is a recreation of a story that was originally built using Esri&apos;s Classic Story Maps templates. The current story uses Esri&apos;s current-generation storytelling tool, ArcGIS StoryMaps. To learn more about ArcGIS StoryMaps, visit its <a href=\"https://www.esri.com/en-us/arcgis/products/arcgis-storymaps/overview\" rel=\"noopener noreferrer\" target=\"_blank\">product page</a>.",
+                "type": "paragraph"
+            }
+        },
+        "n-mO8IkJ": {
+            "type": "text",
+            "data": {
+                "text": "Credit for all photographs can be found by hovering over or clicking on the <strong>(i)</strong> symbol in the upper left-hand corner of each image.",
+                "type": "paragraph"
+            }
+        },
+        "n-hx3jEs": {
+            "type": "attribution",
+            "data": {
+                "content": "",
+                "attribution": ""
+            }
+        },
+        "n-z0Xs3N": {
+            "type": "credits",
+            "children": [
+                "n-Wau5t3",
+                "n-wMYOLX",
+                "n-mO8IkJ",
+                "n-hx3jEs"
+            ]
+        },
+        "n-uRMP9S": {
+            "type": "story",
+            "data": {
+                "storyTheme": "r-WCX7qK",
+                "storyLogoLink": "",
+                "storyLogoAlt": "",
+                "storyLogoResource": "r-GuyzK1"
+            },
+            "config": {
+                "coverDate": "none",
+                "isSocialIconsHidden": false,
+                "shouldHideSimilarItems": true,
+                "scriptEmbedDomains": [],
+                "isScriptEmbedEnabled": false,
+                "storyLocale": "en",
+                "shouldShowLogoOnCover": true
+            },
+            "children": [
+                "n-DRLDK5",
+                "n-0Kn9JQ",
+                "n-DEmQji",
+                "n-nVFrv7",
+                "n-ORKDyu",
+                "n-2SYzss",
+                "n-z0Xs3N"
+            ]
+        }
+    },
+    "resources": {
+        "r-6BpmN5": {
+            "type": "image",
+            "data": {
+                "resourceId": "ycYYjpDqgXpXM-ysFJjXD.jpg",
+                "provider": "item-resource",
+                "height": 683,
+                "width": 1024
+            }
+        },
+        "r-NGS2EM": {
+            "type": "image",
+            "data": {
+                "resourceId": "NwxABQdTUuG53V2D1zWYk.jpeg",
+                "provider": "item-resource",
+                "height": 1368,
+                "width": 1824
+            }
+        },
+        "r-hYor8f": {
+            "type": "image",
+            "data": {
+                "resourceId": "vW67rzyuXFNWbOIkQkPav.jpg",
+                "provider": "item-resource",
+                "height": 1000,
+                "width": 1504
+            }
+        },
+        "r-XoocI3": {
+            "type": "image",
+            "data": {
+                "resourceId": "vI0_vvJ0LmutRSNKabh3v.jpg",
+                "provider": "item-resource",
+                "height": 683,
+                "width": 1024
+            }
+        },
+        "r-tZQeWC": {
+            "type": "image",
+            "data": {
+                "resourceId": "DXMtvrshqR6P2NSsI0ArS.jpg",
+                "provider": "item-resource",
+                "height": 1929,
+                "width": 2560
+            }
+        },
+        "r-I0YoMD": {
+            "type": "image",
+            "data": {
+                "resourceId": "PBTho9lJ2RLEe5ERAgUJ7.jpg",
+                "provider": "item-resource",
+                "height": 683,
+                "width": 1024
+            }
+        },
+        "r-3FH8xs": {
+            "type": "image",
+            "data": {
+                "resourceId": "FVviqWTyDbWmnVNEXXdFb.jpg",
+                "provider": "item-resource",
+                "height": 746,
+                "width": 1024
+            }
+        },
+        "r-nN4lM4": {
+            "type": "image",
+            "data": {
+                "resourceId": "q1DUeUXg9FP6674HVbH_M.jpeg",
+                "provider": "item-resource",
+                "height": 1204,
+                "width": 1806
+            }
+        },
+        "r-6tzfvq": {
+            "type": "image",
+            "data": {
+                "resourceId": "llmMDPL8Ow-EUK4n0QIIO.jpg",
+                "provider": "item-resource",
+                "height": 1707,
+                "width": 2560
+            }
+        },
+        "r-OwPFUY": {
+            "type": "image",
+            "data": {
+                "resourceId": "d7sbjgc1WAWpXTEy__db9.jpg",
+                "provider": "item-resource",
+                "height": 684,
+                "width": 845
+            }
+        },
+        "r-Mqotjs": {
+            "type": "image",
+            "data": {
+                "resourceId": "H_M_TtepmVRrSwmJHC8AG.jpeg",
+                "provider": "item-resource",
+                "height": 1320,
+                "width": 1980
+            }
+        },
+        "r-PZ6Yyc": {
+            "type": "image",
+            "data": {
+                "resourceId": "8a5-WZ_9-PdowpQMHGQn_.jpg",
+                "provider": "item-resource",
+                "height": 1564,
+                "width": 2288
+            }
+        },
+        "r-ZATsBH": {
+            "type": "image",
+            "data": {
+                "resourceId": "fdy9vfgLA1SNcdRKbDQIy.jpg",
+                "provider": "item-resource",
+                "height": 1920,
+                "width": 2560
+            }
+        },
+        "r-TnSj9H": {
+            "type": "image",
+            "data": {
+                "resourceId": "cWHxiFshp6mDp3RedlGmh.jpeg",
+                "provider": "item-resource",
+                "height": 1320,
+                "width": 1980
+            }
+        },
+        "r-GJVzcg": {
+            "type": "image",
+            "data": {
+                "resourceId": "crP-YtE4TZcnpxVYKqYJ1.jpg",
+                "provider": "item-resource",
+                "height": 1703,
+                "width": 2560
+            }
+        },
+        "r-WCX7qK": {
+            "type": "story-theme",
+            "data": {
+                "themeId": "summit",
+                "themeBaseVariableOverrides": {},
+                "themeItemId": "bc61098a099d4245ab4d7d5fe126d68d"
+            }
+        },
+        "r-GuyzK1": {
+            "type": "image",
+            "data": {
+                "resourceId": "R9j1ZnZSngyEc1iXPvBlc.png",
+                "provider": "item-resource",
+                "height": 240,
+                "width": 240
+            }
+        }
+    }
+}

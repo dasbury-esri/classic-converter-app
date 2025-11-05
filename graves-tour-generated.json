@@ -1,0 +1,685 @@
+{
+  "root": "7caf9f5f-c588-4ab0-8cda-1c68c30e4f71",
+  "nodes": {
+    "n-tourMap": {
+      "type": "tour-map",
+      "data": {
+        "geometries": {
+          "e3f16f58-a5eb-498b-ad86-09811f2b417f": {
+            "id": "e3f16f58-a5eb-498b-ad86-09811f2b417f",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046183.90355752,
+                "lat": 4036582.45850615
+              }
+            ]
+          },
+          "0f0023c6-bebc-4005-96e2-018e7a188a63": {
+            "id": "0f0023c6-bebc-4005-96e2-018e7a188a63",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046165.090563577,
+                "lat": 4036466.6345152115
+              }
+            ]
+          },
+          "5f2bc837-24cf-4eca-b84a-de2230748d2c": {
+            "id": "5f2bc837-24cf-4eca-b84a-de2230748d2c",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046166.203758486,
+                "lat": 4036398.914305173
+              }
+            ]
+          },
+          "1fa5dce2-19ef-493a-8c69-671c44dcd1c0": {
+            "id": "1fa5dce2-19ef-493a-8c69-671c44dcd1c0",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046170.990496589,
+                "lat": 4036349.3336924287
+              }
+            ]
+          },
+          "31bcf5ce-cb1c-4f55-bb44-b40d14b6181f": {
+            "id": "31bcf5ce-cb1c-4f55-bb44-b40d14b6181f",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046173.105566915,
+                "lat": 4036338.853265336
+              }
+            ]
+          },
+          "315956c0-4db6-47fd-a570-686e7369b697": {
+            "id": "315956c0-4db6-47fd-a570-686e7369b697",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046188.356337152,
+                "lat": 4036325.148105998
+              }
+            ]
+          },
+          "d0c98579-b44e-4fcc-9d1f-361e67543d85": {
+            "id": "d0c98579-b44e-4fcc-9d1f-361e67543d85",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046165.647161031,
+                "lat": 4036334.1505127237
+              }
+            ]
+          },
+          "c9d40277-d7d9-4c9a-aa2f-ab07800fd441": {
+            "id": "c9d40277-d7d9-4c9a-aa2f-ab07800fd441",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046159.413269546,
+                "lat": 4036324.8793775486
+              }
+            ]
+          },
+          "8f68b14e-7547-4231-9a79-78aa76e5b02c": {
+            "id": "8f68b14e-7547-4231-9a79-78aa76e5b02c",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046098.521508083,
+                "lat": 4036410.872805052
+              }
+            ]
+          },
+          "c9acdd2f-83ba-4340-b257-de9b20c64054": {
+            "id": "c9acdd2f-83ba-4340-b257-de9b20c64054",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046002.89806549,
+                "lat": 4036426.3248178717
+              }
+            ]
+          },
+          "5dc69d3f-a564-400d-a05c-49327abda527": {
+            "id": "5dc69d3f-a564-400d-a05c-49327abda527",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046072.80670571,
+                "lat": 4036453.1979335803
+              }
+            ]
+          },
+          "e5f9850b-4469-4c3b-a79b-d8ac59f87f72": {
+            "id": "e5f9850b-4469-4c3b-a79b-d8ac59f87f72",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046130.69284092,
+                "lat": 4036426.3248178717
+              }
+            ]
+          },
+          "58080905-7f7b-4f29-af88-dd6d6a5c9fc4": {
+            "id": "58080905-7f7b-4f29-af88-dd6d6a5c9fc4",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046153.958614497,
+                "lat": 4036448.4951337543
+              }
+            ]
+          },
+          "2f36b39f-9248-4187-a17f-8cfab5e5f0b1": {
+            "id": "2f36b39f-9248-4187-a17f-8cfab5e5f0b1",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046203.607107392,
+                "lat": 4036451.988642012
+              }
+            ]
+          },
+          "c56bed54-6190-4135-853e-c6581e821d85": {
+            "id": "c56bed54-6190-4135-853e-c6581e821d85",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046240.565178335,
+                "lat": 4036468.7843697444
+              }
+            ]
+          },
+          "40e4110e-1d56-40e2-a990-d7f8bc2c91de": {
+            "id": "40e4110e-1d56-40e2-a990-d7f8bc2c91de",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046246.019833384,
+                "lat": 4036482.4897019267
+              }
+            ]
+          },
+          "865aa243-405f-4fd3-bee3-0c97ff1396a2": {
+            "id": "865aa243-405f-4fd3-bee3-0c97ff1396a2",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046267.504495107,
+                "lat": 4036486.65505125
+              }
+            ]
+          },
+          "6be16596-4d63-4990-87b7-92ef8d44083b": {
+            "id": "6be16596-4d63-4990-87b7-92ef8d44083b",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046317.598265963,
+                "lat": 4036472.9497140544
+              }
+            ]
+          },
+          "ac74678b-4498-492d-8d24-8c2d29c5a8d1": {
+            "id": "ac74678b-4498-492d-8d24-8c2d29c5a8d1",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046429.919632174,
+                "lat": 4036321.789000833
+              }
+            ]
+          },
+          "3ff3ee33-65fd-4bca-ad34-f9c044496043": {
+            "id": "3ff3ee33-65fd-4bca-ad34-f9c044496043",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046322.71896254,
+                "lat": 4036336.8377996925
+              }
+            ]
+          },
+          "846884ef-a422-4d62-b526-ce8f861ca53e": {
+            "id": "846884ef-a422-4d62-b526-ce8f861ca53e",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046340.307442086,
+                "lat": 4036392.330417339
+              }
+            ]
+          },
+          "bfaffb49-2caf-4932-82b6-1d2393a2a3a5": {
+            "id": "bfaffb49-2caf-4932-82b6-1d2393a2a3a5",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046199.043008268,
+                "lat": 4036399.4517655713
+              }
+            ]
+          },
+          "91c640ab-4e41-4930-8ff9-5ab6ecc1e138": {
+            "id": "91c640ab-4e41-4930-8ff9-5ab6ecc1e138",
+            "type": "POINT_NUMBERED_TOUR",
+            "nodes": [
+              {
+                "long": -13046158.52271362,
+                "lat": 4036369.6227517696
+              }
+            ]
+          }
+        },
+        "mode": "2d",
+        "basemap": {
+          "type": "name",
+          "value": "worldImagery"
+        }
+      }
+    },
+    "n-tour": {
+      "type": "tour",
+      "data": {
+        "type": "guided-tour",
+        "subtype": "media-focused",
+        "narrativePanelPosition": "start",
+        "map": "n-tourMap",
+        "places": [
+          {
+            "id": "00c89f3f-9aa4-4a89-a3bb-9e167234bc33",
+            "featureId": "e3f16f58-a5eb-498b-ad86-09811f2b417f",
+            "contents": [
+              "Sunrise streaks the New York Street sidewalk at the north edge of Esri's campus in Redlands, California."
+            ],
+            "media": "73501bb7-6b58-445a-8a85-6e75a6f1e7e6",
+            "title": "Sidewalk"
+          },
+          {
+            "id": "3cf10534-5a09-4f94-9761-9e3c33a03907",
+            "featureId": "0f0023c6-bebc-4005-96e2-018e7a188a63",
+            "contents": [
+              "The headquarters building, completed in 2010, unifies the campus. New York Street used to bisect the campus, but a portion of the street was closed, and the building straddles the old right of way."
+            ],
+            "media": "3d20beac-3204-4300-bbc8-5fedf618ef6d",
+            "title": "New York Street"
+          },
+          {
+            "id": "18d9fec8-c509-4a95-8eed-bd3adb8b52e3",
+            "featureId": "5f2bc837-24cf-4eca-b84a-de2230748d2c",
+            "contents": [
+              "Stately palm trees line New York Street and frame views of the headquarters building."
+            ],
+            "media": "9c17849c-4c1c-499c-b9f6-31e7705660d0",
+            "title": "Palms"
+          },
+          {
+            "id": "44467ab7-e545-4a2a-b1ac-b8f5fc351de7",
+            "featureId": "1fa5dce2-19ef-493a-8c69-671c44dcd1c0",
+            "contents": [
+              "An iris blooms in an artificial pond by the entrance to headquarters, called Building Q."
+            ],
+            "media": "0c1c90ef-6fd7-49cb-87c8-cd703ac2587d",
+            "title": "Wild iris"
+          },
+          {
+            "id": "acd89a7e-db21-4d52-9b69-9d78e5314553",
+            "featureId": "31bcf5ce-cb1c-4f55-bb44-b40d14b6181f",
+            "contents": [
+              "A four-story glass atrium affords views of New York Street and Redlands. A second-floor lounge faces north."
+            ],
+            "media": "796479bb-b755-4194-86a1-ef954cdc3558",
+            "title": "View from the atrium"
+          },
+          {
+            "id": "02aaecdc-4ce6-4630-a64e-0d4f6616e0ac",
+            "featureId": "315956c0-4db6-47fd-a570-686e7369b697",
+            "contents": [
+              "An intimate auditorium is used for company and Redlands community events."
+            ],
+            "media": "dfa6af0e-918e-4de6-9005-a6c2b3cbe49e",
+            "title": "Auditorium"
+          },
+          {
+            "id": "07a1f436-a305-40c7-a6d5-c2dc29ffd73f",
+            "featureId": "d0c98579-b44e-4fcc-9d1f-361e67543d85",
+            "contents": [
+              "Looking south through the glass atrium wall."
+            ],
+            "media": "e603b64e-ece7-48a2-8f5c-4f0f5612ffec",
+            "title": "Atrium view"
+          },
+          {
+            "id": "17ed96f0-c616-4331-948f-2123386d9b61",
+            "featureId": "c9d40277-d7d9-4c9a-aa2f-ab07800fd441",
+            "contents": [
+              "A dramatic cantilevered staircase dominates the Building Q Atrium."
+            ],
+            "media": "f908bb1c-8203-41d6-ad3b-f4b56eec6905",
+            "title": "Staircase"
+          },
+          {
+            "id": "28208c75-ece6-4c89-85a8-939ab6b74c89",
+            "featureId": "8f68b14e-7547-4231-9a79-78aa76e5b02c",
+            "contents": [
+              "Near a back entrance to Esri's Cafe is this ivy-framed paean to the discipline that underlies Esri's products."
+            ],
+            "media": "021d768a-3ef7-4cf9-a668-0fdd99200b61",
+            "title": "Geography"
+          },
+          {
+            "id": "d4729517-d27b-48f8-a793-6386531a855d",
+            "featureId": "c9acdd2f-83ba-4340-b257-de9b20c64054",
+            "contents": [
+              "Esri's campus has numerous outdoor seating areas to encourage impromptu al fresco meetings."
+            ],
+            "media": "22e2abde-9cfb-4d65-9a1f-cf8d850a53d2",
+            "title": "Landscaping for people"
+          },
+          {
+            "id": "78a53e47-6af9-4c15-bb77-69f80f7b537c",
+            "featureId": "5dc69d3f-a564-400d-a05c-49327abda527",
+            "contents": [
+              "A bright flowering plant accents the entrance to Building L on the east side of the campus."
+            ],
+            "media": "cfcccfc1-867f-4192-a314-28423ee4f97e",
+            "title": "Geranium and Building L"
+          },
+          {
+            "id": "2a8b8701-b093-41d2-af5b-c323345a7590",
+            "featureId": "e5f9850b-4469-4c3b-a79b-d8ac59f87f72",
+            "contents": [
+              "The Cafe is a light-filled gathering place for coffee, lunch, and special events."
+            ],
+            "media": "c7a90e4f-d0bd-4887-b917-0b63f98bcbd0",
+            "title": "Inside the Cafe"
+          },
+          {
+            "id": "0dec7f5c-072a-44da-b450-f716a7403fbb",
+            "featureId": "58080905-7f7b-4f29-af88-dd6d6a5c9fc4",
+            "contents": [
+              "Boulders provide a contrast to the clean lines of the Cafe. Landscape architect and Esri founder Jack Dangermond personally supervised their placement."
+            ],
+            "media": "04793eec-eea1-4c6d-890d-bf0e49965353",
+            "title": "Glass and rock"
+          },
+          {
+            "id": "f56ac4d2-ce6a-4f7a-9bc6-c93a1e9503d6",
+            "featureId": "2f36b39f-9248-4187-a17f-8cfab5e5f0b1",
+            "contents": [
+              "An ornamental palm near the entrance to building M"
+            ],
+            "media": "d905743b-272d-482a-9140-46e5ca43ab99",
+            "title": "Flowering palm"
+          },
+          {
+            "id": "81e1fa03-9f37-4a04-9978-85f2e60689a7",
+            "featureId": "c56bed54-6190-4135-853e-c6581e821d85",
+            "contents": [
+              "A typical Esri office area features wide hallways and small glassed-in offices, encouraging interaction among staff."
+            ],
+            "media": "67cae194-33f3-45e8-9b50-b681bb0959d2",
+            "title": "Building M hallway"
+          },
+          {
+            "id": "85df0b2c-12aa-49e4-96bb-259c646c140b",
+            "featureId": "40e4110e-1d56-40e2-a990-d7f8bc2c91de",
+            "contents": [
+              "The peaceful courtyard between Buildings M and MA includes this artifical wetland."
+            ],
+            "media": "5095397f-ae36-48e1-b30e-31cfa0d0e78d",
+            "title": "Courtyard pond"
+          },
+          {
+            "id": "1b5e922c-b870-4097-9d0b-4a0b83f5b8d5",
+            "featureId": "865aa243-405f-4fd3-bee3-0c97ff1396a2",
+            "contents": [
+              "The pond is home to several sun-seeking red-eared turtles."
+            ],
+            "media": "0ad413d9-b8ba-4d57-8ee2-95d9a93c77f2",
+            "title": "Sunning turtles"
+          },
+          {
+            "id": "e2f30080-9462-4aa2-9e04-424ef1584afe",
+            "featureId": "6be16596-4d63-4990-87b7-92ef8d44083b",
+            "contents": [
+              "Most of Esri's buildings are dark and unobtrusive, emphasizing the naturalistic landscape."
+            ],
+            "media": "18632041-6f78-4048-9f9d-9c725df422f1",
+            "title": "Architecture as backdrop"
+          },
+          {
+            "id": "274d9012-0a78-45f2-914c-6521d5cd8101",
+            "featureId": "ac74678b-4498-492d-8d24-8c2d29c5a8d1",
+            "contents": [
+              "An ivy-colored gym at the campus's west end provides exercise equipment."
+            ],
+            "media": "38674b7e-3d09-43c1-b809-e6c070db680e",
+            "title": "Working out"
+          },
+          {
+            "id": "e2948d87-642e-4535-a974-b932e4fe19d7",
+            "featureId": "3ff3ee33-65fd-4bca-ad34-f9c044496043",
+            "contents": [
+              "Building OA's dark walls set off a tree and a hummingbird feeder."
+            ],
+            "media": "a46ab1be-1245-43ee-b0b8-3c86d16dec43",
+            "title": "Living with nature"
+          },
+          {
+            "id": "471df26e-1a22-4115-aebf-8371df8e2828",
+            "featureId": "846884ef-a422-4d62-b526-ce8f861ca53e",
+            "contents": [
+              "A mobile stands near the entrance to Building O."
+            ],
+            "media": "8d8b4fa5-7f6e-4bc3-8cb9-d00cb182d221",
+            "title": "Artwork"
+          },
+          {
+            "id": "4dd1e38e-5131-4efc-8425-abde0ddba717",
+            "featureId": "bfaffb49-2caf-4932-82b6-1d2393a2a3a5",
+            "contents": [
+              "The headquarters building is a dramatic exception to the subdued architecture of most of the campus. It was designed by the Danish firm HVIDT ARKITEKTER."
+            ],
+            "media": "6fae543e-b2d6-43b7-be21-e5639b0753c4",
+            "title": "Building Q"
+          },
+          {
+            "id": "efef7564-d3e4-4c70-9294-519312d7284a",
+            "featureId": "91c640ab-4e41-4930-8ff9-5ab6ecc1e138",
+            "contents": [
+              "A return to the main entrance of Building Q brings our campus tour to a close. We hope you can visit in person soon!"
+            ],
+            "media": "7e3f64ce-1fed-4626-b951-2ef8246c1521",
+            "title": "Headquarters entrance"
+          }
+        ],
+        "narrativePanelSize": "medium",
+        "accentColor": "#f9f794"
+      }
+    },
+    "7caf9f5f-c588-4ab0-8cda-1c68c30e4f71": {
+      "type": "story",
+      "data": {
+        "storyTheme": "0957bd67-810e-4e8d-a194-c10ec76acb1e"
+      },
+      "children": [
+        "n-tour"
+      ]
+    }
+  },
+  "resources": {
+    "73501bb7-6b58-445a-8a85-6e75a6f1e7e6": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_0.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "3d20beac-3204-4300-bbc8-5fedf618ef6d": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_1.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "9c17849c-4c1c-499c-b9f6-31e7705660d0": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_2.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "0c1c90ef-6fd7-49cb-87c8-cd703ac2587d": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_3.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "796479bb-b755-4194-86a1-ef954cdc3558": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_4.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "dfa6af0e-918e-4de6-9005-a6c2b3cbe49e": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_5.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "e603b64e-ece7-48a2-8f5c-4f0f5612ffec": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_6.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "f908bb1c-8203-41d6-ad3b-f4b56eec6905": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_7.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "021d768a-3ef7-4cf9-a668-0fdd99200b61": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_8.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "22e2abde-9cfb-4d65-9a1f-cf8d850a53d2": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_9.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "cfcccfc1-867f-4192-a314-28423ee4f97e": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_10.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "c7a90e4f-d0bd-4887-b917-0b63f98bcbd0": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_11.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "04793eec-eea1-4c6d-890d-bf0e49965353": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_12.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "d905743b-272d-482a-9140-46e5ca43ab99": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_13.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "67cae194-33f3-45e8-9b50-b681bb0959d2": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_14.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "5095397f-ae36-48e1-b30e-31cfa0d0e78d": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_15.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "0ad413d9-b8ba-4d57-8ee2-95d9a93c77f2": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_16.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "18632041-6f78-4048-9f9d-9c725df422f1": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_17.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "38674b7e-3d09-43c1-b809-e6c070db680e": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_18.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "a46ab1be-1245-43ee-b0b8-3c86d16dec43": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_19.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "8d8b4fa5-7f6e-4bc3-8cb9-d00cb182d221": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_20.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "6fae543e-b2d6-43b7-be21-e5639b0753c4": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_21.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    },
+    "7e3f64ce-1fed-4626-b951-2ef8246c1521": {
+      "type": "image",
+      "data": {
+        "resourceId": "pic_22.jpg",
+        "provider": "item-resource",
+        "height": 1024,
+        "width": 1024
+      }
+    }
+  }
+}
