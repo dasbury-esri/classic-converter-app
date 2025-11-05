@@ -1,0 +1,63 @@
+{
+"n-mE06jY": {
+    "type": "tour-map",
+    "data": {
+        "geometries": {},
+        "mode": "3d",
+        "basemap": {
+            "type": "name",
+            "value": "oceans"
+        },
+        "operationalLayers": [],
+        "defaultScale": 1500000
+    }
+},
+"nodeId": {
+    "type": "tour",
+    "data": {
+        "type": "guided-tour",
+        "subtype": "map-focused",
+        "narrativePanelPosition": "start",
+        "narrativePanelSize": "large",
+        "map": "n-mE06jY",
+        "dataDriven": {
+            "placesLayerIdentifiers": {
+                "sublayerId": 0
+            },
+            "titleFieldName": "Name",
+            "descriptionFieldName": "Description",
+            "sortFieldName": "F__OBJECTID",
+            "sortDirection": "ascending",
+            "maximumPlaceCount": 100,
+            "maximumMediaPerPlace": 1,
+            "showPlacesWithoutMedia": true,
+            "supportedMediaTypes": [
+                "image"
+            ],
+            "mediaPlacement": {
+                "type": "fit",
+                "fill": {
+                    "x": 0.5,
+                    "y": 0.5
+                },
+                "fit": {
+                    "color": "backgroundColor"
+                }
+            },
+            "dataSource": "r-2NfwZn",
+            "imgUrlFieldName": "URL",
+            "thumbnailUrlFieldName": "Thumb_URL"
+        },
+        "accentColor": "accentColor1"
+    }
+},
+"resources": {
+    "r-2NfwZn": {
+        "type": "feature-layer",
+        "data": {
+            "itemId": "72be1984b790451cbce0d01c40b13b0e",
+            "source": "feature-service"
+        }
+    }
+}
+}

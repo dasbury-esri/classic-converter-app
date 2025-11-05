@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Map for MapTour Block",
+  "description": "A block that is used as the map for a MapTour block",
+  "type": "object",
+  "properties": {
+    "type": {
+      "const": "tour-map"
+    },
+    "data": {
+      "title": "MapPoints",
+      "description": "Points object to be shown and navigated to on the map",
+      "type": "object",
+      "properties": {
+        "geometries": {
+          "title": "Point",
+          "description": "Point object on the map",
+          "type": "object",
+          "properties": {
+            "pointId": {
+              "title": "id",
+              "description": "Randomly generated UUID?",
+              "type": "string"
+            },  
+            "ptType": {
+              "title": "type",
+              "description": "Type of tour point",
+              "type": "string"
+            },            
+            "nodes": {
+              "title": "nodes",
+              "description": "Long/Lat (x/y) location array for the point",
+              "type": "array",
+              "locArray": {
+                "type": "object",
+                "properties": {
+                  "long": {
+                    "type": "number"
+                  },
+                  "lat": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "lat",
+                  "long"
+                ]
+              }
+            },
+            "scale": {
+              "type": "number"
+            },
+            "required": [
+              "pointId",
+              "nodes",
+              "ptType"
+            ]
+          }
+        },
+        "mapMode": {
+          "title": "mode",
+          "description": "Map type 2D/3D",
+          "type": "string",
+          "enum": ["2d", "3d"]
+        },
+        "basemap": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ]
+        },
+        "alt": {
+          "type": "string"
+        }
+      },
+          "required": [
+            "alt",
+            "basemap",
+            "geometries",
+            "mode"
+          ]
+        }
+      },
+      "required": [
+        "data",
+        "type"
+      ]
+}

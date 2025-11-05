@@ -1,0 +1,41 @@
+{
+"nodeId": {
+    "type": "tour",
+    "data": {
+        "type": "guided-tour",
+        "subtype": "map-focused",
+        "narrativePanelPosition": "start",
+        "narrativePanelSize": "large",
+        "map": "n-mE06jY",
+        "dataDriven": {
+            "placesLayerIdentifiers": {
+                "sublayerId": 0
+            },
+            "titleFieldName": "Name",
+            "descriptionFieldName": "Description",
+            "sortFieldName": "F__OBJECTID",
+            "sortDirection": "ascending",
+            "maximumPlaceCount": 100,
+            "maximumMediaPerPlace": 1,
+            "showPlacesWithoutMedia": true,
+            "supportedMediaTypes": [
+                "image"
+            ],
+            "mediaPlacement": {
+                "type": "fit",
+                "fill": {
+                    "x": 0.5,
+                    "y": 0.5
+                },
+                "fit": {
+                    "color": "backgroundColor"
+                }
+            },
+            "dataSource": "r-2NfwZn",
+            "imgUrlFieldName": "URL",
+            "thumbnailUrlFieldName": "Thumb_URL"
+        },
+        "accentColor": "accentColor1"
+    }
+}
+}
