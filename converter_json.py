@@ -14,6 +14,7 @@ import re
 import urllib.request
 import uuid
 import requests
+from arcgis.gis import GIS
 from arcgis.apps.storymap import StoryMap 
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -1182,7 +1183,7 @@ class MapTourJSONConverter:
         if not feature_set or "features" not in feature_set:
             return image_resource_map
     
-        add_resource_url = f"https://www.arcgis.com/sharing/rest/content/users/{self.gis.username}/items/{self.target_story_id}/addResources"
+        add_resource_url = f"https://www.arcgis.com/sharing/rest/content/users/{self.gis.properties.user.username}/items/{self.target_story_id}/addResources"
         token = self.gis._con.token if self.gis else None
     
         for i, feature in enumerate(feature_set["features"]):
@@ -1218,12 +1219,14 @@ class MapTourJSONConverter:
         title = self.classic_json.get('values', {}).get('title', 'Untitled Story')
         image_resource_map = self._transfer_images()
         self.image_resource_map = image_resource_map
-
-        # Get referenced webmap
-        webmap_json = self._get_webmap_json()
+        print("Webmap ID:", self.classic_json['values']['webmap'])
 
         # Get features from webmap_json
         feature_set = self._get_feature_set()
+        if feature_set and 'features' in feature_set:
+            print(f"Number of features: {len(feature_set['features'])}")
+        else:
+            print("No feature set found or 'features' key missing.")
         features = feature_set.get("features", []) if feature_set else []
 
         # Generate node for tour-map
@@ -1296,34 +1299,61 @@ class MapTourJSONConverter:
         self.builder.set_theme(self.theme_id)
 
         return self.builder.get_json()
-
+  
     def _get_webmap_json(self) -> Optional[Dict[str, Any]]:
-        # Get json from the webmap that the classic Map Tour references
+        print("Entered _get_webmap_json")
         try:
             if 'webmap_json' in self.classic_json:
+                print("Found webmap_json in classic_json")
                 return self.classic_json['webmap_json']
-            webmap_id = None
-            if self.gis and 'values' in self.classic_json and 'webmap' in self.classic_json['values']:
+            elif 'values' in self.classic_json and 'webmap' in self.classic_json['values']:
                 webmap_id = self.classic_json['values']['webmap']
-                webmap_item = self.gis.content.get(webmap_id)
-                webmap_json = webmap_item.get_data()
-                self.classic_json['webmap_json'] = webmap_json
-                return webmap_json
+                # Check GIS authentication
+                print("self.gis:", self.gis)
+                print("isinstance(self.gis, GIS):", isinstance(self.gis, GIS))
+                print("hasattr(self.gis, 'properties'):", hasattr(self.gis, 'properties'))
+                print("hasattr(self.gis, '_con'):", hasattr(self.gis, '_con'))
+                print("getattr(self.gis._con, 'token', None):", getattr(self.gis._con, 'token', None))
+                if (
+                    self.gis is not None and
+                    isinstance(self.gis, GIS) and
+                    hasattr(self.gis, 'properties') and
+                    hasattr(self.gis, '_con') and
+                    getattr(self.gis._con, 'token', None)
+                ):
+                    print(f"GIS is authenticated as: {self.gis.properties.user.username}")
+                    print("Fetching json from webmap item")
+                    webmap_item = self.gis.content.get(webmap_id)
+                    webmap_json = webmap_item.get_data()
+                    self.classic_json['webmap_json'] = webmap_json
+                    return webmap_json
+                else:
+                    print("self.gis is not a valid authenticated GIS object")
+            else:
+                print("No webmap_json and cannot fetch from GIS")
         except Exception as ex:
             print(f"Error fetching webmap JSON: {ex}")
         return None
 
-
     def _get_feature_set(self) -> Optional[Dict[str, Any]]:
-        # Try to extract featureSet from classic_json structure
-        # This assumes the classic_json is the full item JSON
+        print("Entered _get_feature_set")
         try:
-            webmap = self._get_webmap_json()
-            if webmap:
-                layers = webmap.get('operationalLayers', [])
+            webmap_json = self._get_webmap_json()
+            if webmap_json:
+                layers = webmap_json.get('operationalLayers', [])
                 for layer in layers:
-                    if 'featureCollection' in layer:
-                        fc = layer['featureCollection']
+                    # Look for the layer with the correct title
+                    if layer.get('title') == "Map Tour layer":
+                        print("Found Map Tour layer")
+                        fc = layer.get('featureCollection')
+                        if fc:
+                            for fc_layer in fc.get('layers', []):
+                                if 'featureSet' in fc_layer:
+                                    return fc_layer['featureSet']
+                # If not found by title, fallback to first featureSet found
+                for layer in layers:
+                    fc = layer.get('featureCollection')
+                    if fc:
                         for fc_layer in fc.get('layers', []):
                             if 'featureSet' in fc_layer:
                                 return fc_layer['featureSet']
@@ -1344,7 +1374,7 @@ class JSONConverterFactory:
 
     @staticmethod
     def get_converter(classic_json: Dict[str, Any], theme_id: str = "summit",
-                     gis_token: Optional[str] = None):
+                     gis_token: Optional[str] = None, gis=None):
         """
         Get appropriate converter based on classic story type
 
@@ -1352,6 +1382,7 @@ class JSONConverterFactory:
             classic_json: Classic story JSON data
             theme_id: Theme to apply
             gis_token: Optional GIS authentication token
+            gis: Optional authenticated GIS object
 
         Returns:
             Appropriate converter instance
@@ -1361,7 +1392,7 @@ class JSONConverterFactory:
 
         # Check for Map Tour
         if 'template' in values and values['template'] == 'Map Tour':
-            return MapTourJSONConverter(classic_json, theme_id, gis_token)
+            return MapTourJSONConverter(classic_json, theme_id, gis_token, gis=gis)
        
         # Check for Journal/Series
         if 'story' in values:
@@ -1381,7 +1412,7 @@ class JSONConverterFactory:
 # =====================================================================
 
 def convert_classic_to_json(classic_json: Dict[str, Any], theme_id: str = "summit",
-                           gis_token: Optional[str] = None) -> Dict[str, Any]:
+                           gis_token: Optional[str] = None, gis = None) -> Dict[str, Any]:
     """
     Convert classic story JSON to StoryMap JSON
 
@@ -1393,7 +1424,7 @@ def convert_classic_to_json(classic_json: Dict[str, Any], theme_id: str = "summi
     Returns:
         StoryMap JSON structure
     """
-    converter = JSONConverterFactory.get_converter(classic_json, theme_id, gis_token)
+    converter = JSONConverterFactory.get_converter(classic_json, theme_id, gis_token, gis=gis)
     storymap_json = converter.convert()
 
     # Validate
