@@ -1298,7 +1298,7 @@ class MapTourJSONConverter:
         self.builder.set_cover(title)
         self.builder.set_theme(self.theme_id)
 
-        return self.builder.get_json()
+        return self.target_story_id, self.builder.get_json()
   
     def _get_webmap_json(self) -> Optional[Dict[str, Any]]:
         print("Entered _get_webmap_json")
@@ -1412,7 +1412,7 @@ class JSONConverterFactory:
 # =====================================================================
 
 def convert_classic_to_json(classic_json: Dict[str, Any], theme_id: str = "summit",
-                           gis_token: Optional[str] = None, gis = None) -> Dict[str, Any]:
+                           gis_token: Optional[str] = None, gis = None) -> Tuple[str, Dict[str, Any]]:
     """
     Convert classic story JSON to StoryMap JSON
 
@@ -1425,7 +1425,13 @@ def convert_classic_to_json(classic_json: Dict[str, Any], theme_id: str = "summi
         StoryMap JSON structure
     """
     converter = JSONConverterFactory.get_converter(classic_json, theme_id, gis_token, gis=gis)
-    storymap_json = converter.convert()
+    result = converter.convert()
+
+    # Unpack tuple if MapTourJSONConverter, else just JSON
+    if isinstance(result, tuple) and len(result) == 2:
+        target_story_id, storymap_json = result
+    else:
+        target_story_id, storymap_json = None, result
 
     # Validate
     errors = validate_storymap_json(storymap_json)
@@ -1434,7 +1440,7 @@ def convert_classic_to_json(classic_json: Dict[str, Any], theme_id: str = "summi
         for error in errors:
             print(f"  - {error}")
 
-    return storymap_json
+    return target_story_id,storymap_json
 
 
 def save_json_to_file(storymap_json: Dict[str, Any], output_path: str) -> None:
