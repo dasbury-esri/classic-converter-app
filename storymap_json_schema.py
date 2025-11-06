@@ -7,7 +7,7 @@ ArcGIS StoryMaps directly from JSON without using the Python API.
 
 import uuid
 from typing import Any, Dict, List, Optional
-
+import math
 
 def generate_node_id() -> str:
     """Generate a unique node ID in the format used by StoryMaps"""
@@ -379,6 +379,28 @@ def create_tour_place(
         "title": title
     }
     return place
+
+def webmercator_to_wgs84(x: float, y: float) -> (float, float):
+    """
+    Convert Web Mercator (EPSG:3857) x/y to WGS84 lon/lat.
+    Args:
+        x: X coordinate (meters)
+        y: Y coordinate (meters)
+    Returns:
+        (longitude, latitude) in degrees
+    """
+    R_MAJOR = 6378137.0
+    lon = (x / R_MAJOR) * 180.0 / math.pi
+    lat = (y / R_MAJOR) * 180.0 / math.pi
+    lat = 180.0 / math.pi * (2 * math.atan(math.exp(lat * math.pi / 180.0)) - math.pi / 2.0)
+    return lon, lat
+
+def is_webmercator(x: float, y: float) -> bool:
+    """
+    Heuristic to check if coordinates are in Web Mercator (meters).
+    Returns True if values are outside typical lon/lat ranges.
+    """
+    return abs(x) > 180 or abs(y) > 90
 
 def create_gallery_node(image_node_ids: List[str], caption: Optional[str] = None,
                        alt: Optional[str] = None,

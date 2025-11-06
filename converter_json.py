@@ -31,6 +31,7 @@ from storymap_json_schema import (ALIGNMENTS, EMBEDLY_TYPES, STANDARD_THEMES,
                                   create_slide_structure, create_text_node,
                                   create_tour_map_geometry, create_tour_map_node,
                                   create_tour_place, create_tour_node,
+                                  is_webmercator, webmercator_to_wgs84,
                                   generate_node_id, generate_resource_id,
                                   insert_node_before_credits, set_cover_data,
                                   set_theme, validate_node_against_schema,
@@ -1222,7 +1223,8 @@ class MapTourJSONConverter:
 
     def convert(self) -> Dict[str, Any]:
         # Get title
-        title = self.classic_json.get('values', {}).get('title', 'Untitled Story')
+        title = self.classic_json.get('values', {}).get('title', 'Untitled MapTour')
+        subtitle = self.classic_json.get('values', {}).get('subtitle', '')
         image_resource_map = self._transfer_images()
         self.image_resource_map = image_resource_map
         print("Webmap ID:", self.classic_json['values']['webmap'])
@@ -1243,7 +1245,7 @@ class MapTourJSONConverter:
                 "mode": "2d",
                 "basemap": {
                     "type": "name",
-                    "value": "worldImagery"
+                    "value": "topographic"
                 }
             }
         })
@@ -1264,10 +1266,18 @@ class MapTourJSONConverter:
 
         for i, feature in enumerate(features):
             geom_id = str(uuid.uuid4())
+            x = feature["geometry"]["x"]
+            y = feature["geometry"]["y"]
+            # Convert coordinate systems if necessary
+            if is_webmercator(x, y):
+                long, lat = webmercator_to_wgs84(x, y)
+            else:
+                long, lat = x, y
+
             geom = create_tour_map_geometry(
                 id=geom_id,
-                long=feature["geometry"]["x"],
-                lat=feature["geometry"]["y"],
+                long=long,
+                lat=lat,
                 type="POINT_NUMBERED_TOUR"
             )
             geometries[geom_id] = geom
@@ -1303,7 +1313,7 @@ class MapTourJSONConverter:
         self.builder.storymap_json["nodes"][tour_node_id]["data"]["places"] = places
 
         # Set cover and theme
-        self.builder.set_cover(title)
+        self.builder.set_cover(title=f"(CONVERSION) {title}", summary=subtitle)
         self.builder.set_theme(self.theme_id)
 
         return self.target_story_id, self.builder.get_json()

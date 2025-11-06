@@ -1,41 +1,41 @@
 {
-    "root": "n-4f1ed0",
+    "root": "n-00761b",
     "nodes": {
-        "n-4f1ed0": {
+        "n-00761b": {
             "type": "story",
             "data": {
-                "storyTheme": "r-4dabae"
+                "storyTheme": "r-709143"
             },
             "children": [
-                "n-4b37f0",
-                "n-423fa5",
-                "n-34f4e0",
-                "n-155cf2",
-                "n-9c67e4",
-                "n-9a149a",
-                "n-aac3bf",
-                "n-c90cd0",
-                "n-8f59b6",
-                "n-fa5a10",
-                "n-2f3a7e",
-                "n-366df1",
-                "n-5e8662",
-                "n-9ea45e",
-                "n-aa44b9",
-                "n-96889b",
-                "n-d9dbaa"
+                "n-b7ab10",
+                "n-470ba4",
+                "n-cc91a2",
+                "n-e5212c",
+                "n-069c7c",
+                "n-b91aff",
+                "n-2c3c61",
+                "n-12ddc1",
+                "n-2a7abd",
+                "n-9fe507",
+                "n-ded85a",
+                "n-9a7c27",
+                "n-5dbd20",
+                "n-7b2869",
+                "n-84ba8a",
+                "n-deec6d",
+                "n-bf8c6d"
             ]
         },
-        "n-4b37f0": {
+        "n-b7ab10": {
             "type": "storycover",
             "data": {
                 "type": "minimal",
-                "title": "Esri Campus Tour",
-                "summary": "",
+                "title": "(CONVERSION) Esri Campus Tour",
+                "summary": "An early morning walking tour of the Esri campus in Redlands, California",
                 "byline": ""
             }
         },
-        "n-423fa5": {
+        "n-470ba4": {
             "type": "navigation",
             "data": {
                 "links": []
@@ -44,41 +44,41 @@
                 "isHidden": true
             }
         },
-        "n-d9dbaa": {
+        "n-bf8c6d": {
             "type": "credits",
             "children": []
         },
-        "n-34f4e0": {
+        "n-cc91a2": {
             "type": "tour-map",
             "data": {
                 "geometries": {
-                    "ed4a8a8c-d774-4e98-a8e4-522c18bfd31d": {
-                        "id": "ed4a8a8c-d774-4e98-a8e4-522c18bfd31d",
+                    "1be5f3b5-b36a-43bf-9b22-15b2ff20f38a": {
+                        "id": "1be5f3b5-b36a-43bf-9b22-15b2ff20f38a",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -13046183.90355752,
-                                "lat": 4036582.45850615
+                                "long": -117.19586399999801,
+                                "lat": 34.05792399999942
                             }
                         ]
                     },
-                    "064481a1-8e41-4709-bc56-63d9d8be6131": {
-                        "id": "064481a1-8e41-4709-bc56-63d9d8be6131",
+                    "f6427cdd-89ff-4d5d-8c53-07967adcfd69": {
+                        "id": "f6427cdd-89ff-4d5d-8c53-07967adcfd69",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -13046165.090563577,
-                                "lat": 4036466.6345152115
+                                "long": -117.19569499999803,
+                                "lat": 34.05706199999942
                             }
                         ]
                     },
-                    "1abca168-57f0-4c73-9316-97227f526c6f": {
-                        "id": "1abca168-57f0-4c73-9316-97227f526c6f",
+                    "3ee0f7bf-ba29-4ab8-8d57-3983a5d53741": {
+                        "id": "3ee0f7bf-ba29-4ab8-8d57-3983a5d53741",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -13046166.203758486,
-                                "lat": 4036398.914305173
+                                "long": -117.19570499999801,
+                                "lat": 34.056557999999434
                             }
                         ]
                     }
@@ -86,51 +86,51 @@
                 "mode": "2d",
                 "basemap": {
                     "type": "name",
-                    "value": "worldImagery"
+                    "value": "topographic"
                 }
             }
         },
-        "n-155cf2": {
+        "n-e5212c": {
             "type": "tour",
             "data": {
                 "type": "explorer",
                 "subtype": "list",
                 "narrativePanelPosition": "start",
-                "map": "n-34f4e0",
+                "map": "n-cc91a2",
                 "places": [
                     {
-                        "id": "n-a2d7a8",
-                        "featureId": "ed4a8a8c-d774-4e98-a8e4-522c18bfd31d",
+                        "id": "n-1b7dcb",
+                        "featureId": "1be5f3b5-b36a-43bf-9b22-15b2ff20f38a",
                         "contents": [
-                            "n-9a149a"
+                            "n-b91aff"
                         ],
-                        "media": "n-c90cd0",
-                        "title": "n-9c67e4"
+                        "media": "n-12ddc1",
+                        "title": "n-069c7c"
                     },
                     {
-                        "id": "n-4ed457",
-                        "featureId": "064481a1-8e41-4709-bc56-63d9d8be6131",
+                        "id": "n-ebe0fa",
+                        "featureId": "f6427cdd-89ff-4d5d-8c53-07967adcfd69",
                         "contents": [
-                            "n-fa5a10"
+                            "n-9fe507"
                         ],
-                        "media": "n-366df1",
-                        "title": "n-8f59b6"
+                        "media": "n-9a7c27",
+                        "title": "n-2a7abd"
                     },
                     {
-                        "id": "n-e8b372",
-                        "featureId": "1abca168-57f0-4c73-9316-97227f526c6f",
+                        "id": "n-3437ac",
+                        "featureId": "3ee0f7bf-ba29-4ab8-8d57-3983a5d53741",
                         "contents": [
-                            "n-9ea45e"
+                            "n-7b2869"
                         ],
-                        "media": "n-96889b",
-                        "title": "n-5e8662"
+                        "media": "n-deec6d",
+                        "title": "n-5dbd20"
                     }
                 ],
                 "narrativePanelSize": "medium",
                 "accentColor": "#f9f794"
             }
         },
-        "n-9c67e4": {
+        "n-069c7c": {
             "type": "text",
             "data": {
                 "type": "h3",
@@ -138,7 +138,7 @@
                 "textAlignment": "start"
             }
         },
-        "n-9a149a": {
+        "n-b91aff": {
             "type": "text",
             "data": {
                 "type": "paragraph",
@@ -146,24 +146,24 @@
                 "textAlignment": "start"
             }
         },
-        "n-aac3bf": {
+        "n-2c3c61": {
             "type": "image",
             "config": {
                 "size": "standard"
             },
             "data": {
-                "image": "r-764509"
+                "image": "r-5fd4a7"
             }
         },
-        "n-c90cd0": {
+        "n-12ddc1": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-aac3bf"
+                "n-2c3c61"
             ]
         },
-        "n-8f59b6": {
+        "n-2a7abd": {
             "type": "text",
             "data": {
                 "type": "h3",
@@ -171,7 +171,7 @@
                 "textAlignment": "start"
             }
         },
-        "n-fa5a10": {
+        "n-9fe507": {
             "type": "text",
             "data": {
                 "type": "paragraph",
@@ -179,24 +179,24 @@
                 "textAlignment": "start"
             }
         },
-        "n-2f3a7e": {
+        "n-ded85a": {
             "type": "image",
             "config": {
                 "size": "standard"
             },
             "data": {
-                "image": "r-baeebf"
+                "image": "r-17bd33"
             }
         },
-        "n-366df1": {
+        "n-9a7c27": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-2f3a7e"
+                "n-ded85a"
             ]
         },
-        "n-5e8662": {
+        "n-5dbd20": {
             "type": "text",
             "data": {
                 "type": "h3",
@@ -204,7 +204,7 @@
                 "textAlignment": "start"
             }
         },
-        "n-9ea45e": {
+        "n-7b2869": {
             "type": "text",
             "data": {
                 "type": "paragraph",
@@ -212,32 +212,32 @@
                 "textAlignment": "start"
             }
         },
-        "n-aa44b9": {
+        "n-84ba8a": {
             "type": "image",
             "config": {
                 "size": "standard"
             },
             "data": {
-                "image": "r-05c9dd"
+                "image": "r-216e3c"
             }
         },
-        "n-96889b": {
+        "n-deec6d": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-aa44b9"
+                "n-84ba8a"
             ]
         }
     },
     "resources": {
-        "r-4dabae": {
+        "r-709143": {
             "type": "story-theme",
             "data": {
                 "themeId": "summit"
             }
         },
-        "r-764509": {
+        "r-5fd4a7": {
             "type": "image",
             "data": {
                 "resourceId": "place_000_img.jpg",
@@ -246,7 +246,7 @@
                 "width": 1024
             }
         },
-        "r-baeebf": {
+        "r-17bd33": {
             "type": "image",
             "data": {
                 "resourceId": "place_001_img.jpg",
@@ -255,7 +255,7 @@
                 "width": 1024
             }
         },
-        "r-05c9dd": {
+        "r-216e3c": {
             "type": "image",
             "data": {
                 "resourceId": "place_002_img.jpg",
