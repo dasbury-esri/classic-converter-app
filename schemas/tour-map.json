@@ -1,257 +1,97 @@
 {
-"n-gFs76Y": {
-            "type": "tour-map",
-            "data": {
-                "geometries": {
-                    "767ae125-7074-44d6-b258-24ada9def948": {
-                        "id": "767ae125-7074-44d6-b258-24ada9def948",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 43.8147854,
-                                "lat": 31.125643099999994
-                            }
-                        ]
-                    },
-                    "ff67cf65-3f34-421e-be53-9359390cb263": {
-                        "id": "ff67cf65-3f34-421e-be53-9359390cb263",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 44.31323456560986,
-                                "lat": 32.004685679441856
-                            }
-                        ],
-                        "scale": 4514
-                    },
-                    "87620e6b-f08e-4f8a-a8d3-fc21fa430d19": {
-                        "id": "87620e6b-f08e-4f8a-a8d3-fc21fa430d19",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -73.91284226455281,
-                                "lat": 40.737144576326266
-                            }
-                        ],
-                        "scale": 9028
-                    },
-                    "fc593888-aaae-4c82-8104-93212b732273": {
-                        "id": "fc593888-aaae-4c82-8104-93212b732273",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 2.330378177733046,
-                                "lat": 48.88757604895205
-                            }
-                        ],
-                        "scale": 4514
-                    },
-                    "a0256fae-7408-4c61-a2a5-2bd355c9baa5": {
-                        "id": "a0256fae-7408-4c61-a2a5-2bd355c9baa5",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 10.069766359498459,
-                                "lat": 53.62535611673864
-                            }
-                        ],
-                        "scale": 9028
-                    },
-                    "24f90f01-06b5-422b-884c-18319bbc1222": {
-                        "id": "24f90f01-06b5-422b-884c-18319bbc1222",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -71.3156704929258,
-                                "lat": 41.49514429464243
-                            }
-                        ],
-                        "scale": 2257
-                    },
-                    "c12f4a84-f957-457e-acea-76b911cd3562": {
-                        "id": "c12f4a84-f957-457e-acea-76b911cd3562",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -71.14396443103779,
-                                "lat": 42.373049608257716
-                            }
-                        ],
-                        "scale": 4514
-                    },
-                    "6652ad12-1c82-441d-9b4d-e1b7ca8e5d62": {
-                        "id": "6652ad12-1c82-441d-9b4d-e1b7ca8e5d62",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -58.39341354431444,
-                                "lat": -34.58765579729539
-                            }
-                        ],
-                        "scale": 2257
-                    },
-                    "c674efad-458a-495d-8033-504f6118c544": {
-                        "id": "c674efad-458a-495d-8033-504f6118c544",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -118.31867063129081,
-                                "lat": 34.088523509928216
-                            }
-                        ],
-                        "scale": 4514
-                    },
-                    "af94b4c7-fb62-4876-bbbd-5e97592a7706": {
-                        "id": "af94b4c7-fb62-4876-bbbd-5e97592a7706",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -122.44520709296464,
-                                "lat": 37.6711454578347
-                            }
-                        ],
-                        "scale": 4514
-                    },
-                    "d59a056a-cc86-41e1-b165-79c6fd2e3120": {
-                        "id": "d59a056a-cc86-41e1-b165-79c6fd2e3120",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 2.33258388645954,
-                                "lat": 48.83386384740671
-                            }
-                        ],
-                        "scale": 2257
-                    },
-                    "8e867874-772a-4e9d-846b-35a8d98efcd0": {
-                        "id": "8e867874-772a-4e9d-846b-35a8d98efcd0",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -73.79689434912594,
-                                "lat": 41.02152542615153
-                            }
-                        ],
-                        "scale": 593,
-                        "viewpoint": {
-                            "rotation": 0,
-                            "scale": 593.3759615280851,
-                            "targetGeometry": {
-                                "spatialReference": {
-                                    "latestWkid": 3857,
-                                    "wkid": 102100
-                                },
-                                "x": -8215082.039906624,
-                                "y": 5015517.983393713,
-                                "z": 73.41465254686773
-                            },
-                            "camera": {
-                                "position": {
-                                    "spatialReference": {
-                                        "latestWkid": 3857,
-                                        "wkid": 102100
-                                    },
-                                    "x": -8215082.039906624,
-                                    "y": 5015515.062803045,
-                                    "z": 325.9211132414639
-                                },
-                                "heading": 0,
-                                "tilt": 0.4999802059682203
-                            }
-                        }
-                    },
-                    "f8fae0e4-6ddf-48d9-8942-0896194d7e97": {
-                        "id": "f8fae0e4-6ddf-48d9-8942-0896194d7e97",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -77.26762283429063,
-                                "lat": 38.47386454862435
-                            }
-                        ],
-                        "scale": 2257
-                    },
-                    "9dcad44d-eee8-4aac-b3d5-06f119a19947": {
-                        "id": "9dcad44d-eee8-4aac-b3d5-06f119a19947",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 91.72702319056066,
-                                "lat": 22.446884383889333
-                            }
-                        ],
-                        "scale": 2835,
-                        "viewpoint": {
-                            "rotation": 359.9994977502817,
-                            "scale": 2835.261972767384,
-                            "targetGeometry": {
-                                "spatialReference": {
-                                    "latestWkid": 3857,
-                                    "wkid": 102100
-                                },
-                                "x": 10210837.4769119,
-                                "y": 2565276.0105529735,
-                                "z": 3.1144767431542277
-                            },
-                            "camera": {
-                                "position": {
-                                    "spatialReference": {
-                                        "latestWkid": 3857,
-                                        "wkid": 102100
-                                    },
-                                    "x": 10210837.476811828,
-                                    "y": 2565264.5945376903,
-                                    "z": 1209.637646744959
-                                },
-                                "heading": 0.0005022497183000803,
-                                "tilt": 0.5010399823971188
-                            }
-                        }
-                    },
-                    "0dcbc577-80d2-4d2b-9c8f-04712be45329": {
-                        "id": "0dcbc577-80d2-4d2b-9c8f-04712be45329",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -110.8479864091674,
-                                "lat": 32.169916541326295
-                            }
-                        ],
-                        "scale": 5319,
-                        "viewpoint": {
-                            "rotation": 0.0001933491018917266,
-                            "scale": 5319.322838811646,
-                            "targetGeometry": {
-                                "spatialReference": {
-                                    "latestWkid": 3857,
-                                    "wkid": 102100
-                                },
-                                "x": -12339754.404953066,
-                                "y": 3785738.8911476717,
-                                "z": 826.7611379306763
-                            },
-                            "camera": {
-                                "position": {
-                                    "spatialReference": {
-                                        "latestWkid": 3857,
-                                        "wkid": 102100
-                                    },
-                                    "x": -12339754.404873881,
-                                    "y": 3785715.4259435395,
-                                    "z": 3090.3560149203986
-                                },
-                                "heading": 359.9998066508981,
-                                "tilt": 0.5028090767899761
-                            }
-                        }
-                    }
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Map for MapTour Block",
+  "description": "A block that is used as the map for a MapTour block",
+  "type": "object",
+  "properties": {
+    "type": {
+      "const": "tour-map"
+    },
+    "data": {
+      "title": "MapPoints",
+      "description": "Points object to be shown and navigated to on the map",
+      "type": "object",
+      "properties": {
+        "geometries": {
+          "title": "Point",
+          "description": "Point object on the map",
+          "type": "object",
+          "properties": {
+            "pointId": {
+              "title": "id",
+              "description": "Randomly generated UUID?",
+              "type": "string"
+            },  
+            "ptType": {
+              "title": "type",
+              "description": "Type of tour point",
+              "type": "string"
+            },            
+            "nodes": {
+              "title": "nodes",
+              "description": "Long/Lat (x/y) location array for the point",
+              "type": "array",
+              "locArray": {
+                "type": "object",
+                "properties": {
+                  "long": {
+                    "type": "number"
+                  },
+                  "lat": {
+                    "type": "number"
+                  }
                 },
-                "mode": "2d",
-                "basemap": {
-                    "type": "name",
-                    "value": "worldImagery"
-                },
-                "alt": "A map depicting 14 noteworthy cemeteries around the world. The map navigates automatically to each of the points as you scroll through the tour."
+                "required": [
+                  "lat",
+                  "long"
+                ]
+              }
+            },
+            "scale": {
+              "type": "number"
+            },
+            "required": [
+              "pointId",
+              "nodes",
+              "ptType"
+            ]
+          }
+        },
+        "mapMode": {
+          "title": "mode",
+          "description": "Map type 2D/3D",
+          "type": "string",
+          "enum": ["2d", "3d"]
+        },
+        "basemap": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
             }
+          },
+          "required": [
+            "type",
+            "value"
+          ]
+        },
+        "alt": {
+          "type": "string"
         }
-    }
+      },
+          "required": [
+            "alt",
+            "basemap",
+            "geometries",
+            "mode"
+          ]
+        }
+      },
+      "required": [
+        "data",
+        "type"
+      ]
+}

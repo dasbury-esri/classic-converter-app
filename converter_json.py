@@ -13,6 +13,8 @@ import os
 import re
 import urllib.request
 import uuid
+import requests
+from arcgis.apps.storymap import StoryMap 
 from typing import Any, Dict, List, Optional, Tuple
 
 from bs4 import BeautifulSoup, Tag
@@ -35,6 +37,13 @@ from storymap_json_schema import (ALIGNMENTS, EMBEDLY_TYPES, STANDARD_THEMES,
 # =====================================================================
 # Utility Functions (reused from converter_v2.py)
 # =====================================================================
+
+def create_target_story(gis):
+    """Create an empty AGSM StoryMap as a target container"""
+    storymap = StoryMap(gis=gis)
+    storymap_item = storymap.save(publish=True)
+    target_story_id = storymap_item.id
+    return target_story_id
 
 def is_nonempty_string(string: str) -> bool:
     """Check if the string has non-whitespace content"""
@@ -1137,13 +1146,13 @@ class MapTourJSONConverter:
 
     def __init__(self, classic_json: Dict[str, Any], theme_id: str = "summit",
                  gis_token: Optional[str] = None,
-                 image_resource_map: Optional[Dict[str, str]] = None,
                  gis = None):
         self.classic_json = classic_json
         self.theme_id = theme_id
         self.gis_token = gis_token
-        self.image_resource_map = image_resource_map or {}
+        self.image_resource_map = {}
         self.gis = gis
+        self.target_story_id = None
         self.builder = StoryMapJSONBuilder(theme_id, gis_token)
         self._detect_theme()
 
@@ -1157,19 +1166,58 @@ class MapTourJSONConverter:
             self.theme_id = theme_mapping.get(theme_value, self.theme_id)
         except (KeyError, TypeError):
             pass
+    
+    def _transfer_images(self) -> Dict[str, str]:
+        """
+        Fetch externally hosted images and upload them to AGO resources in memory.
 
-    def _transfer_images(self) -> Dict[str, Any]:
-        # Get list of images to transfer
-        # - If externally hosted, use requests.get() to retrieve
-        # - If feature service attachments, figure out how to get them
-        # Upload to newly created item resources folder
-        # Update image_resource_map dict
+        ###TO DO - figure out how to modify this for feature service attachments###
+        
+        Returns a dict mapping local filenames to resource names.
+        """
+        if not self.target_story_id:
+            self.target_story_id = create_target_story(self.gis)
         image_resource_map = {}
+        feature_set = self._get_feature_set()
+        if not feature_set or "features" not in feature_set:
+            return image_resource_map
+    
+        add_resource_url = f"https://www.arcgis.com/sharing/rest/content/users/{self.gis.username}/items/{self.target_story_id}/addResources"
+        token = self.gis._con.token if self.gis else None
+    
+        for i, feature in enumerate(feature_set["features"]):
+            attrs = feature.get("attributes", {})
+            # Try both lowercase and uppercase keys
+            img_url = attrs.get("pic_url") or attrs.get("PIC_URL")
+            if not img_url:
+                continue
+            filename = f"place_{i:03d}_img.jpg"
+            try:
+                response = requests.get(img_url, timeout=10)
+                if response.status_code == 200:
+                    files = {"file": (filename, response.content)}
+                    params = {
+                        "f": "json",
+                        "token": token,
+                        "fileName": filename
+                    }
+                    upload_response = requests.post(add_resource_url, files=files, data=params)
+                    if upload_response.status_code == 200 and upload_response.json().get("success"):
+                        image_resource_map[filename] = filename
+                        print(f"Uploaded resource: {filename}")
+                    else:
+                        print(f"Failed to upload resource: {filename}. Response: {upload_response.text}")
+                else:
+                    print(f"Failed to fetch image: {img_url}")
+            except Exception as e:
+                print(f"Error fetching/uploading image {img_url}: {e}")
         return image_resource_map
 
     def convert(self) -> Dict[str, Any]:
         # Get title
         title = self.classic_json.get('values', {}).get('title', 'Untitled Story')
+        image_resource_map = self._transfer_images()
+        self.image_resource_map = image_resource_map
 
         # Get referenced webmap
         webmap_json = self._get_webmap_json()
@@ -1311,6 +1359,10 @@ class JSONConverterFactory:
         # Detect type from data structure
         values = classic_json.get('values', {})
 
+        # Check for Map Tour
+        if 'template' in values and values['template'] == 'Map Tour':
+            return MapTourJSONConverter(classic_json, theme_id, gis_token)
+       
         # Check for Journal/Series
         if 'story' in values:
             story = values['story']
