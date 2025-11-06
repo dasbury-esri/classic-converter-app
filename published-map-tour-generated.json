@@ -1,0 +1,301 @@
+{
+    "root": "n-ce4cdf",
+    "nodes": {
+        "n-44b468": {
+            "type": "storycover",
+            "data": {
+                "type": "full",
+                "title": "Esri Campus Tour",
+                "summary": "",
+                "byline": "",
+                "titlePanelVerticalPosition": "top",
+                "titlePanelHorizontalPosition": "center",
+                "titlePanelStyle": "gradient"
+            }
+        },
+        "n-46dc0c": {
+            "type": "navigation",
+            "data": {
+                "links": [
+                    {
+                        "nodeId": "n-942ce5"
+                    },
+                    {
+                        "nodeId": "n-98e6c6"
+                    },
+                    {
+                        "nodeId": "n-a4c60e"
+                    }
+                ]
+            },
+            "config": {
+                "isHidden": true
+            }
+        },
+        "n-d9cc6a": {
+            "type": "tour-map",
+            "data": {
+                "geometries": {
+                    "34725b69-f242-4eb3-b412-c4ffc659634c": {
+                        "id": "34725b69-f242-4eb3-b412-c4ffc659634c",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -13046183.90355752,
+                                "lat": 4036582.45850615
+                            }
+                        ]
+                    },
+                    "0fa5ae9d-4d36-4efb-8183-4b16cc13d9e1": {
+                        "id": "0fa5ae9d-4d36-4efb-8183-4b16cc13d9e1",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -13046165.090563577,
+                                "lat": 4036466.6345152115
+                            }
+                        ]
+                    },
+                    "9eaa1191-4528-434b-be0a-16408b082a95": {
+                        "id": "9eaa1191-4528-434b-be0a-16408b082a95",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -13046166.203758486,
+                                "lat": 4036398.914305173
+                            }
+                        ]
+                    }
+                },
+                "mode": "2d",
+                "basemap": {
+                    "type": "name",
+                    "value": "worldImagery"
+                }
+            }
+        },
+        "n-942ce5": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Sidewalk",
+                "textAlignment": "start"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-8b5c5f": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Sunrise streaks the New York Street sidewalk at the north edge of Esri's campus in Redlands, California.",
+                "textAlignment": "start"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-d6d565": {
+            "type": "image",
+            "data": {
+                "image": "r-8bb1fe"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-98e6c6": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "New York Street",
+                "textAlignment": "start"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-978f8a": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "The headquarters building, completed in 2010, unifies the campus. New York Street used to bisect the campus, but a portion of the street was closed, and the building straddles the old right of way.",
+                "textAlignment": "start"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-2c33cc": {
+            "type": "image",
+            "data": {
+                "image": "r-4c289b"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-a4c60e": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Palms",
+                "textAlignment": "start"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-20eda9": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Stately palm trees line New York Street and frame views of the headquarters building.",
+                "textAlignment": "start"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-7fdbe3": {
+            "type": "image",
+            "data": {
+                "image": "r-596686"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-48da3e": {
+            "type": "tour",
+            "data": {
+                "type": "explorer",
+                "subtype": "list",
+                "narrativePanelPosition": "start",
+                "map": "n-d9cc6a",
+                "places": [
+                    {
+                        "id": "n-695f08",
+                        "featureId": "34725b69-f242-4eb3-b412-c4ffc659634c",
+                        "contents": [
+                            "n-d6d565",
+                            "n-942ce5",
+                            "n-8b5c5f"
+                        ]
+                    },
+                    {
+                        "id": "n-2e6353",
+                        "featureId": "0fa5ae9d-4d36-4efb-8183-4b16cc13d9e1",
+                        "contents": [
+                            "n-2c33cc",
+                            "n-98e6c6",
+                            "n-978f8a"
+                        ]
+                    },
+                    {
+                        "id": "n-04acac",
+                        "featureId": "9eaa1191-4528-434b-be0a-16408b082a95",
+                        "contents": [
+                            "n-7fdbe3",
+                            "n-a4c60e",
+                            "n-20eda9"
+                        ]
+                    }
+                ],
+                "narrativePanelSize": "medium",
+                "accentColor": "#f9f794"
+            }
+        },
+        "n-RG0GuA": {
+            "type": "text",
+            "data": {
+                "text": "",
+                "type": "h4"
+            }
+        },
+        "n-0FVEtk": {
+            "type": "text",
+            "data": {
+                "text": "",
+                "type": "paragraph"
+            }
+        },
+        "n-dOJ3jW": {
+            "type": "attribution",
+            "data": {
+                "content": "",
+                "attribution": ""
+            }
+        },
+        "n-0a583b": {
+            "type": "credits",
+            "children": [
+                "n-RG0GuA",
+                "n-0FVEtk",
+                "n-dOJ3jW"
+            ]
+        },
+        "n-ce4cdf": {
+            "type": "story",
+            "data": {
+                "storyTheme": "r-27ba2a"
+            },
+            "config": {
+                "coverDate": "last-published"
+            },
+            "children": [
+                "n-44b468",
+                "n-46dc0c",
+                "n-d9cc6a",
+                "n-942ce5",
+                "n-8b5c5f",
+                "n-d6d565",
+                "n-98e6c6",
+                "n-978f8a",
+                "n-2c33cc",
+                "n-a4c60e",
+                "n-20eda9",
+                "n-7fdbe3",
+                "n-48da3e",
+                "n-0a583b"
+            ]
+        }
+    },
+    "resources": {
+        "r-8bb1fe": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_000_img.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-4c289b": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_001_img.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-596686": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_002_img.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-27ba2a": {
+            "type": "story-theme",
+            "data": {
+                "themeId": "summit",
+                "themeBaseVariableOverrides": {}
+            }
+        }
+    }
+}

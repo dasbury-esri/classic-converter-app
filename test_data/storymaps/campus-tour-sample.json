@@ -1,0 +1,285 @@
+{
+    "root": "n-UtGm0o",
+    "nodes": {
+        "n-43mXvL": {
+            "type": "storycover",
+            "data": {
+                "type": "minimal",
+                "title": "From scratch Esri Campus Tour",
+                "summary": "",
+                "byline": "David Asbury",
+                "titlePanelVerticalPosition": "top",
+                "titlePanelHorizontalPosition": "start",
+                "titlePanelStyle": "gradient"
+            }
+        },
+        "n-nPHMqJ": {
+            "type": "navigation",
+            "data": {
+                "links": []
+            },
+            "config": {
+                "isHidden": true
+            }
+        },
+        "n-aNLKjh": {
+            "type": "image",
+            "data": {
+                "image": "r-0MaXe4"
+            }
+        },
+        "n-MkVLDb": {
+            "type": "carousel",
+            "children": [
+                "n-aNLKjh"
+            ]
+        },
+        "n-x7xJx9": {
+            "type": "text",
+            "data": {
+                "text": "Sidewalk",
+                "type": "h3"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-rhmmjr": {
+            "type": "text",
+            "data": {
+                "text": "Sunrise streaks the New York Street sidewalk at the north edge of Esri&apos;s campus in Redlands, California.",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-cjGZj4": {
+            "type": "image",
+            "data": {
+                "image": "r-dTetOL"
+            }
+        },
+        "n-8Qq1zt": {
+            "type": "carousel",
+            "children": [
+                "n-cjGZj4"
+            ]
+        },
+        "n-8THVKT": {
+            "type": "text",
+            "data": {
+                "text": "New York Street",
+                "type": "h3"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-RPFX4h": {
+            "type": "text",
+            "data": {
+                "text": "The headquarters building, completed in 2010, unifies the campus. New York Street used to bisect the campus, but a portion of the street was closed, and the building straddles the old right of way.",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-xzJuUW": {
+            "type": "image",
+            "data": {
+                "image": "r-E4frCy"
+            }
+        },
+        "n-bKUvVN": {
+            "type": "carousel",
+            "children": [
+                "n-xzJuUW"
+            ]
+        },
+        "n-6AQt6w": {
+            "type": "text",
+            "data": {
+                "text": "Palms",
+                "type": "h3"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-v7nTjs": {
+            "type": "text",
+            "data": {
+                "text": "Stately palm trees line New York Street and frame views of the headquarters building.",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-VTxcJU": {
+            "type": "tour-map",
+            "data": {
+                "geometries": {
+                    "24569274-acb7-4fdb-bfb2-24b3b0db2d18": {
+                        "id": "24569274-acb7-4fdb-bfb2-24b3b0db2d18",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.19577638895046,
+                                "lat": 34.058008588291656
+                            }
+                        ],
+                        "scale": 2257
+                    },
+                    "d79f9ce4-93fc-4db2-91f9-1244eadd0306": {
+                        "id": "d79f9ce4-93fc-4db2-91f9-1244eadd0306",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.19570628480771,
+                                "lat": 34.057022029555405
+                            }
+                        ]
+                    },
+                    "76f077dd-2a73-48cf-b91a-a2b85fb9b429": {
+                        "id": "76f077dd-2a73-48cf-b91a-a2b85fb9b429",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.19566746611866,
+                                "lat": 34.05647706953539
+                            }
+                        ]
+                    }
+                },
+                "mode": "2d",
+                "basemap": {
+                    "type": "name",
+                    "value": "topographic"
+                }
+            }
+        },
+        "n-zlmkBH": {
+            "type": "tour",
+            "data": {
+                "type": "explorer",
+                "subtype": "list",
+                "narrativePanelPosition": "start",
+                "places": [
+                    {
+                        "id": "n-EvWRxf",
+                        "featureId": "24569274-acb7-4fdb-bfb2-24b3b0db2d18",
+                        "contents": [
+                            "n-rhmmjr"
+                        ],
+                        "media": "n-MkVLDb",
+                        "title": "n-x7xJx9"
+                    },
+                    {
+                        "id": "n-snjWcm",
+                        "featureId": "d79f9ce4-93fc-4db2-91f9-1244eadd0306",
+                        "contents": [
+                            "n-RPFX4h"
+                        ],
+                        "media": "n-8Qq1zt",
+                        "title": "n-8THVKT"
+                    },
+                    {
+                        "id": "n-fTTfaj",
+                        "featureId": "76f077dd-2a73-48cf-b91a-a2b85fb9b429",
+                        "contents": [
+                            "n-v7nTjs"
+                        ],
+                        "media": "n-bKUvVN",
+                        "title": "n-6AQt6w"
+                    }
+                ],
+                "narrativePanelSize": "small",
+                "accentColor": "accentColor1",
+                "map": "n-VTxcJU"
+            }
+        },
+        "n-exG7d7": {
+            "type": "text",
+            "data": {
+                "text": "",
+                "type": "h4"
+            }
+        },
+        "n-oBYZpm": {
+            "type": "text",
+            "data": {
+                "text": "",
+                "type": "paragraph"
+            }
+        },
+        "n-yMGbaC": {
+            "type": "attribution",
+            "data": {
+                "content": "",
+                "attribution": ""
+            }
+        },
+        "n-RBCePG": {
+            "type": "credits",
+            "children": [
+                "n-exG7d7",
+                "n-oBYZpm",
+                "n-yMGbaC"
+            ]
+        },
+        "n-UtGm0o": {
+            "type": "story",
+            "data": {
+                "storyTheme": "r-rVGGDX"
+            },
+            "config": {
+                "coverDate": "first-published"
+            },
+            "children": [
+                "n-43mXvL",
+                "n-nPHMqJ",
+                "n-zlmkBH",
+                "n-RBCePG"
+            ]
+        }
+    },
+    "resources": {
+        "r-0MaXe4": {
+            "type": "image",
+            "data": {
+                "resourceId": "QGMykfCSYeMq8C2-oUMgS.jpg",
+                "provider": "item-resource",
+                "height": 683,
+                "width": 1024
+            }
+        },
+        "r-dTetOL": {
+            "type": "image",
+            "data": {
+                "resourceId": "u8I7gzaDVb5PNxiGu62IK.jpg",
+                "provider": "item-resource",
+                "height": 683,
+                "width": 1024
+            }
+        },
+        "r-E4frCy": {
+            "type": "image",
+            "data": {
+                "resourceId": "J7R6kLqURjQT1JXqHuRug.jpg",
+                "provider": "item-resource",
+                "height": 683,
+                "width": 1024
+            }
+        },
+        "r-rVGGDX": {
+            "type": "story-theme",
+            "data": {
+                "themeId": "summit",
+                "themeBaseVariableOverrides": {}
+            }
+        }
+    }
+}

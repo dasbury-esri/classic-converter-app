@@ -369,6 +369,8 @@ def create_tour_place(
     Returns:
         Dict representing a place
     """
+    if media is None or title is None:
+        raise ValueError("Media and title are required for a tour place when converting")
     place = {
         "id": id,
         "featureId": feature_id,
@@ -423,6 +425,15 @@ def create_separator_node() -> Dict[str, Any]:
         "data": {}
     }
 
+def create_carousel_node(children: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """A component that handles rendering media items in a carousel layout."""
+    node = {
+        "type": 'carousel',
+        "config": {},
+        "data": {},
+        "children": children[:5]  # array of up to 5 images
+    }
+    return node
 
 def create_sidecar_structure(sidecar_type: str = "docked-panel") -> tuple:
     """
@@ -581,7 +592,7 @@ def create_cover_config(title: str, summary: str = "", by_line: str = "",
         image_resource_id: Optional background image resource ID
     """
     config = {
-        "type": "full",
+        "type": "minimal",
         "title": title,
         "summary": summary,
         "byline": by_line

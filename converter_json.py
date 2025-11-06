@@ -25,6 +25,7 @@ from storymap_json_schema import (ALIGNMENTS, EMBEDLY_TYPES, STANDARD_THEMES,
                                   create_base_storymap_json, create_embed_node,
                                   create_gallery_node, create_image_node,
                                   create_image_resource, create_map_node,
+                                  create_carousel_node,
                                   create_map_resource, create_separator_node,
                                   create_sidecar_structure,
                                   create_slide_structure, create_text_node,
@@ -350,6 +351,11 @@ class StoryMapJSONBuilder:
         add_child_to_node(self.storymap_json, sidecar_id, slide_id)
 
         return slide_id, narrative_id
+
+    def add_carousel(self, parent_id: Optional[str], children: List[Dict[str, Any]]) -> str:
+        """Add a carousel node"""
+        node = create_carousel_node(children)
+        return self.add_node(node, parent_id)
 
     def set_cover(self, title: str, summary: str = "", by_line: str = "",
                  image_path: Optional[str] = None) -> None:
@@ -1229,7 +1235,7 @@ class MapTourJSONConverter:
             print("No feature set found or 'features' key missing.")
         features = feature_set.get("features", []) if feature_set else []
 
-        # Generate node for tour-map
+        # Generate tour-map node
         tour_map_node_id = self.builder.add_node({
             "type": "tour-map",
             "data": {
@@ -1242,8 +1248,19 @@ class MapTourJSONConverter:
             }
         })
 
-        places = []
-        geometries = {}
+        # Generate tour node
+        tour_node_id = self.builder.add_node(create_tour_node(
+            places=[],
+            map_node_id=tour_map_node_id,
+            accent_color="#f9f794",
+            narrative_panel_position="start",
+            narrative_panel_size="medium",
+            tour_type="explorer",
+            subtype="list"
+        ))
+
+        geometries = {} # for tour-map node
+        places = [] # for tour node
 
         for i, feature in enumerate(features):
             geom_id = str(uuid.uuid4())
@@ -1254,23 +1271,23 @@ class MapTourJSONConverter:
                 type="POINT_NUMBERED_TOUR"
             )
             geometries[geom_id] = geom
-
-            # Title node
+            place_id = generate_node_id()
+            # Place Title node
             title_text = feature["attributes"].get("name", "")
-            title_node_id = self.builder.add_text(title_text, style="h2", alignment="start")
+            title_node_id = self.builder.add_text(title_text, style="h3", alignment="start")
 
-            # Description/content node(s)
+            # Place Description/content node(s)
             description_text = feature["attributes"].get("description", "")
             content_node_id = self.builder.add_text(description_text, style="paragraph", alignment="start")
             contents = [content_node_id]
 
-            # Media node (image)
+            # Place Media node (image)
             pic_filename = f"place_{i:03d}_img.jpg"
             resource_name = self.image_resource_map.get(pic_filename, pic_filename)
-            media_node_id = self.builder.add_image(resource_name)
+            image_node_id = self.builder.add_image(resource_name)
+            media_node_id = self.builder.add_carousel(parent_id=None, children=[image_node_id]) # create an carousel instead of just a single image
 
-            # Place node (references node IDs)
-            place_id = generate_node_id()
+            # Place node 
             place = create_tour_place(
                 id=place_id,
                 feature_id=geom_id,
@@ -1282,17 +1299,8 @@ class MapTourJSONConverter:
 
         # Update tour-map node with geometries
         self.builder.storymap_json["nodes"][tour_map_node_id]["data"]["geometries"] = geometries
-
-        # Create tour node
-        tour_node_id = self.builder.add_node(create_tour_node(
-            places=places,
-            map_node_id=tour_map_node_id,
-            accent_color="#f9f794",
-            narrative_panel_position="start",
-            narrative_panel_size="medium",
-            tour_type="explorer",
-            subtype="list"
-        ))
+        # Update the tour node's places list
+        self.builder.storymap_json["nodes"][tour_node_id]["data"]["places"] = places
 
         # Set cover and theme
         self.builder.set_cover(title)
@@ -1301,42 +1309,42 @@ class MapTourJSONConverter:
         return self.target_story_id, self.builder.get_json()
   
     def _get_webmap_json(self) -> Optional[Dict[str, Any]]:
-        print("Entered _get_webmap_json")
+        # print("Entered _get_webmap_json")
         try:
             if 'webmap_json' in self.classic_json:
                 print("Found webmap_json in classic_json")
                 return self.classic_json['webmap_json']
             elif 'values' in self.classic_json and 'webmap' in self.classic_json['values']:
                 webmap_id = self.classic_json['values']['webmap']
-                # Check GIS authentication
-                print("self.gis:", self.gis)
-                print("isinstance(self.gis, GIS):", isinstance(self.gis, GIS))
-                print("hasattr(self.gis, 'properties'):", hasattr(self.gis, 'properties'))
-                print("hasattr(self.gis, '_con'):", hasattr(self.gis, '_con'))
-                print("getattr(self.gis._con, 'token', None):", getattr(self.gis._con, 'token', None))
-                if (
-                    self.gis is not None and
-                    isinstance(self.gis, GIS) and
-                    hasattr(self.gis, 'properties') and
-                    hasattr(self.gis, '_con') and
-                    getattr(self.gis._con, 'token', None)
-                ):
-                    print(f"GIS is authenticated as: {self.gis.properties.user.username}")
-                    print("Fetching json from webmap item")
-                    webmap_item = self.gis.content.get(webmap_id)
-                    webmap_json = webmap_item.get_data()
-                    self.classic_json['webmap_json'] = webmap_json
-                    return webmap_json
-                else:
-                    print("self.gis is not a valid authenticated GIS object")
+                # # Check GIS authentication
+                # print("self.gis:", self.gis)
+                # print("isinstance(self.gis, GIS):", isinstance(self.gis, GIS))
+                # print("hasattr(self.gis, 'properties'):", hasattr(self.gis, 'properties'))
+                # print("hasattr(self.gis, '_con'):", hasattr(self.gis, '_con'))
+                # print("getattr(self.gis._con, 'token', None):", getattr(self.gis._con, 'token', None))
+                # if (
+                #     self.gis is not None and
+                #     isinstance(self.gis, GIS) and
+                #     hasattr(self.gis, 'properties') and
+                #     hasattr(self.gis, '_con') and
+                #     getattr(self.gis._con, 'token', None)
+                # ):
+                #     print(f"GIS is authenticated as: {self.gis.properties.user.username}")
+                print("Fetching json from webmap item")
+                webmap_item = self.gis.content.get(webmap_id)
+                webmap_json = webmap_item.get_data()
+                self.classic_json['webmap_json'] = webmap_json
+                return webmap_json
+                # else:
+                #     print("self.gis is not a valid authenticated GIS object")
             else:
-                print("No webmap_json and cannot fetch from GIS")
+                print("No webmap_json present")
         except Exception as ex:
             print(f"Error fetching webmap JSON: {ex}")
         return None
 
     def _get_feature_set(self) -> Optional[Dict[str, Any]]:
-        print("Entered _get_feature_set")
+        # print("Entered _get_feature_set")
         try:
             webmap_json = self._get_webmap_json()
             if webmap_json:
