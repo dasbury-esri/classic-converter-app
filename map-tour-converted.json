@@ -1,16 +1,16 @@
 {
-    "root": "n-9f4618",
+    "root": "n-cb8b41",
     "nodes": {
-        "n-221c85": {
+        "n-1a252d": {
             "type": "storycover",
             "data": {
                 "type": "minimal",
-                "title": "(CONVERSION) Monuments Men: Recovering Europe's Plundered Art",
-                "summary": "<i>The Monuments Men</i> movie depicts the Allied effort to protect, recover, and return priceless artifacts damaged in World War II or looted by the Nazis. Here's the real story of the desperate effort to save Europe's artistic and cultural heritage.",
+                "title": "(CONVERSION) Esri Campus Tour",
+                "summary": "An early morning walking tour of the Esri campus in Redlands, California",
                 "byline": ""
             }
         },
-        "n-a31900": {
+        "n-885587": {
             "type": "navigation",
             "data": {
                 "links": []
@@ -19,237 +19,37 @@
                 "isHidden": true
             }
         },
-        "n-8ff7bf": {
+        "n-24961b": {
             "type": "tour-map",
             "data": {
                 "geometries": {
-                    "1b34c71a-93a1-4822-833e-8d85d5bc5384": {
-                        "id": "1b34c71a-93a1-4822-833e-8d85d5bc5384",
+                    "28665524-5de4-4f28-a06d-0b7851b70717": {
+                        "id": "28665524-5de4-4f28-a06d-0b7851b70717",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": 10.019531249997351,
-                                "lat": 51.14344495467479
+                                "long": -117.19586399999801,
+                                "lat": 34.05792399999942
                             }
                         ]
                     },
-                    "38197c57-0560-4274-8b6a-8f8adbcb47b4": {
-                        "id": "38197c57-0560-4274-8b6a-8f8adbcb47b4",
+                    "cad30532-0b3c-4785-b77a-3c58fb225c8d": {
+                        "id": "cad30532-0b3c-4785-b77a-3c58fb225c8d",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": 11.572664642334269,
-                                "lat": 48.14096273980353
+                                "long": -117.19569499999803,
+                                "lat": 34.05706199999942
                             }
                         ]
                     },
-                    "bc311aef-bf45-450a-933c-73cfff9a68cf": {
-                        "id": "bc311aef-bf45-450a-933c-73cfff9a68cf",
+                    "ce3b2c59-6502-4327-bd5e-061549f8ecc5": {
+                        "id": "ce3b2c59-6502-4327-bd5e-061549f8ecc5",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": 14.29999999999976,
-                                "lat": 48.29999999999919
-                            }
-                        ]
-                    },
-                    "f3ff971e-4652-4400-890a-bffa78771708": {
-                        "id": "f3ff971e-4652-4400-890a-bffa78771708",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 19.980199999999662,
-                                "lat": 50.05749999999914
-                            }
-                        ]
-                    },
-                    "b37e869a-106b-4598-80b3-4bbe71ac9d3f": {
-                        "id": "b37e869a-106b-4598-80b3-4bbe71ac9d3f",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 2.3333299999999606,
-                                "lat": 48.86659999999917
-                            }
-                        ]
-                    },
-                    "e8b53efb-7028-4af0-ade6-68c9e7b90475": {
-                        "id": "e8b53efb-7028-4af0-ade6-68c9e7b90475",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 29.912537499999353,
-                                "lat": 59.88441037189279
-                            }
-                        ]
-                    },
-                    "f38d4348-12ba-4dce-9941-268c3f1e4fa7": {
-                        "id": "f38d4348-12ba-4dce-9941-268c3f1e4fa7",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 13.366599999999778,
-                                "lat": 38.11659999999935
-                            }
-                        ]
-                    },
-                    "afaa9405-7ced-4166-867e-b320dc93c7e5": {
-                        "id": "afaa9405-7ced-4166-867e-b320dc93c7e5",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 13.366599999999778,
-                                "lat": 38.11659999999935
-                            }
-                        ]
-                    },
-                    "7e523ad8-4163-4759-8773-d46b2a854356": {
-                        "id": "7e523ad8-4163-4759-8773-d46b2a854356",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 15.049999999999748,
-                                "lat": 40.73329999999932
-                            }
-                        ]
-                    },
-                    "f6d1ce9c-1745-4beb-aa09-bf7ec653da5d": {
-                        "id": "f6d1ce9c-1745-4beb-aa09-bf7ec653da5d",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 13.79999999999977,
-                                "lat": 41.483299999999296
-                            }
-                        ]
-                    },
-                    "51ad86d4-5d50-4073-8a62-635fdbfbd3d5": {
-                        "id": "51ad86d4-5d50-4073-8a62-635fdbfbd3d5",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 13.79999999999977,
-                                "lat": 41.483299999999296
-                            }
-                        ]
-                    },
-                    "b7645084-cf48-4c26-be70-6ccea7c3216c": {
-                        "id": "b7645084-cf48-4c26-be70-6ccea7c3216c",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 11.24999999999981,
-                                "lat": 43.76659999999925
-                            }
-                        ]
-                    },
-                    "cdd47aa3-9a2a-4f05-a73c-f531e21e6033": {
-                        "id": "cdd47aa3-9a2a-4f05-a73c-f531e21e6033",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 11.099999999999811,
-                                "lat": 43.66659999999926
-                            }
-                        ]
-                    },
-                    "5bcd2312-fa34-4338-8425-ac8b95c74daa": {
-                        "id": "5bcd2312-fa34-4338-8425-ac8b95c74daa",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 2.3333299999999606,
-                                "lat": 48.86659999999917
-                            }
-                        ]
-                    },
-                    "8ee501a9-2a54-4c9b-bd3b-e0245cdf5b6d": {
-                        "id": "8ee501a9-2a54-4c9b-bd3b-e0245cdf5b6d",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 2.134229999999964,
-                                "lat": 48.803499999999175
-                            }
-                        ]
-                    },
-                    "fd78906b-8be1-44fa-a621-34baf4c3ed3c": {
-                        "id": "fd78906b-8be1-44fa-a621-34baf4c3ed3c",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 6.084719999999898,
-                                "lat": 50.77409999999914
-                            }
-                        ]
-                    },
-                    "455614f3-9379-445a-a5e4-0237f5a18c07": {
-                        "id": "455614f3-9379-445a-a5e4-0237f5a18c07",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 13.766599999999766,
-                                "lat": 47.633299999999196
-                            }
-                        ]
-                    },
-                    "1a8b65c3-7cd6-42c5-9914-2d144be3de1c": {
-                        "id": "1a8b65c3-7cd6-42c5-9914-2d144be3de1c",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 8.024309999999863,
-                                "lat": 50.87479999999915
-                            }
-                        ]
-                    },
-                    "d2c222bd-a9a1-453f-bde3-32c64a4038c1": {
-                        "id": "d2c222bd-a9a1-453f-bde3-32c64a4038c1",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 10.749899999999819,
-                                "lat": 47.557599999999205
-                            }
-                        ]
-                    },
-                    "481aabad-9d6d-4649-a975-c32838fc82f1": {
-                        "id": "481aabad-9d6d-4649-a975-c32838fc82f1",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 11.583299999999804,
-                                "lat": 48.48299999999918
-                            }
-                        ]
-                    },
-                    "f92f7ddd-4cbd-4081-88a1-dbb374b84d78": {
-                        "id": "f92f7ddd-4cbd-4081-88a1-dbb374b84d78",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 10.131699999999832,
-                                "lat": 47.99949999999919
-                            }
-                        ]
-                    },
-                    "f2c495ec-293b-4b12-8386-ef62a70d5d6e": {
-                        "id": "f2c495ec-293b-4b12-8386-ef62a70d5d6e",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 11.583299999999804,
-                                "lat": 48.149999999999196
-                            }
-                        ]
-                    },
-                    "752f9fcd-0208-4252-8a26-13431d0f6d0c": {
-                        "id": "752f9fcd-0208-4252-8a26-13431d0f6d0c",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": 9.686349999999836,
-                                "lat": 53.4670999999991
+                                "long": -117.19570499999801,
+                                "lat": 34.056557999999434
                             }
                         ]
                     }
@@ -261,1103 +61,183 @@
                 }
             }
         },
-        "n-cd4503": {
+        "n-fe96a6": {
             "type": "image",
             "data": {
-                "image": "r-01408b"
+                "image": "r-aea082"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-fa0a90": {
+        "n-b017ca": {
             "type": "image",
             "data": {
-                "image": "r-e0e9e0"
+                "image": "r-c69804"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-e52209": {
+        "n-f47496": {
             "type": "image",
             "data": {
-                "image": "r-61aad5"
+                "image": "r-dbe4f4"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-50e46d": {
-            "type": "image",
-            "data": {
-                "image": "r-60bf64"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-68ab43": {
-            "type": "image",
-            "data": {
-                "image": "r-d9d3ee"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-db579d": {
-            "type": "image",
-            "data": {
-                "image": "r-f0ba82"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-56517b": {
-            "type": "image",
-            "data": {
-                "image": "r-46b84e"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-2b37d3": {
-            "type": "image",
-            "data": {
-                "image": "r-2ccdba"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-7b4d3c": {
-            "type": "image",
-            "data": {
-                "image": "r-3d1699"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-6acb81": {
-            "type": "image",
-            "data": {
-                "image": "r-5f4ef9"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-91acae": {
-            "type": "image",
-            "data": {
-                "image": "r-bd9de8"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-a8e81e": {
-            "type": "image",
-            "data": {
-                "image": "r-b1d47c"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-113bf5": {
-            "type": "image",
-            "data": {
-                "image": "r-a934b4"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-ff0870": {
-            "type": "image",
-            "data": {
-                "image": "r-e01d3b"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-547d57": {
-            "type": "image",
-            "data": {
-                "image": "r-acb170"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-50df6b": {
-            "type": "image",
-            "data": {
-                "image": "r-7c0586"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-f573c4": {
-            "type": "image",
-            "data": {
-                "image": "r-56e2f9"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-df2622": {
-            "type": "image",
-            "data": {
-                "image": "r-02b8a0"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-6d0a38": {
-            "type": "image",
-            "data": {
-                "image": "r-3b24aa"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-b54286": {
-            "type": "image",
-            "data": {
-                "image": "r-8f4486"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-94980b": {
-            "type": "image",
-            "data": {
-                "image": "r-7e5526"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-dba221": {
-            "type": "image",
-            "data": {
-                "image": "r-ec55b1"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-03f40a": {
-            "type": "image",
-            "data": {
-                "image": "r-3b0664"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-45ddf5": {
+        "n-7d16a5": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-cd4503"
+                "n-fe96a6"
             ]
         },
-        "n-026945": {
+        "n-c8f3f2": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-fa0a90"
+                "n-b017ca"
             ]
         },
-        "n-1a2e7c": {
+        "n-27e3b3": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-e52209"
+                "n-f47496"
             ]
         },
-        "n-512cd5": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-50e46d"
-            ]
-        },
-        "n-6e30d2": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-68ab43"
-            ]
-        },
-        "n-97e331": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-db579d"
-            ]
-        },
-        "n-105b75": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-56517b"
-            ]
-        },
-        "n-e28197": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-2b37d3"
-            ]
-        },
-        "n-ae400a": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-7b4d3c"
-            ]
-        },
-        "n-fa7a33": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-6acb81"
-            ]
-        },
-        "n-e8b36c": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-91acae"
-            ]
-        },
-        "n-2d0581": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-a8e81e"
-            ]
-        },
-        "n-9bf43d": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-113bf5"
-            ]
-        },
-        "n-ceaf13": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-ff0870"
-            ]
-        },
-        "n-b6dcaf": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-547d57"
-            ]
-        },
-        "n-257821": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-50df6b"
-            ]
-        },
-        "n-91a087": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-f573c4"
-            ]
-        },
-        "n-169d5c": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-df2622"
-            ]
-        },
-        "n-77341f": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-6d0a38"
-            ]
-        },
-        "n-1201ef": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-b54286"
-            ]
-        },
-        "n-7d2bd1": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-94980b"
-            ]
-        },
-        "n-1b342e": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-dba221"
-            ]
-        },
-        "n-63d78b": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-03f40a"
-            ]
-        },
-        "n-a3daf0": {
+        "n-f1eeba": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "Fighting to Preserve a Priceless Heritage",
+                "text": "Sidewalk",
                 "textAlignment": "start"
             }
         },
-        "n-7dbb8e": {
+        "n-92b962": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "Along with the millions of lives lost in World War II was an incalculable loss of artistic and cultural treasures. A bright spot in this grim tale is the story of the Monuments, Fine Arts, and Archives (MFAA) program. This month a new film, \"The Monuments Men,\" and an exhibit at the Archives of American Art describe the citizen-soldiers of the MFAA who, along with the Soviet Union's trophy brigades, worked to protect and preserve Europe's cultural heritage. <br><span style=\"color:gray; font-size: 12px;\"> Archives of American Art</span>",
+                "text": "Sunrise streaks the New York Street sidewalk at the north edge of Esri's campus in Redlands, California.",
                 "textAlignment": "start"
             }
         },
-        "n-9c6330": {
+        "n-5e4c8b": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "\"Degenerate Art\" Exhibit",
+                "text": "New York Street",
                 "textAlignment": "start"
             }
         },
-        "n-eb9dd3": {
+        "n-4330d7": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "In 1937 a state-sanctioned exhibit of \"Degenerate Art\" opened in Munich featuring objects stripped from German museums. Artwork was also seized from individuals (mainly Jews) to enrich the museums of the Reich and the private collections of Hitler and other Nazi officials. <span style=\"color:gray; font-size: 12px;\">German Federal Archive</span>",
+                "text": "The headquarters building, completed in 2010, unifies the campus. New York Street used to bisect the campus, but a portion of the street was closed, and the building straddles the old right of way.",
                 "textAlignment": "start"
             }
         },
-        "n-233fa2": {
+        "n-124909": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "Planning the Linz Museum",
+                "text": "Palms",
                 "textAlignment": "start"
             }
         },
-        "n-3fc351": {
+        "n-89b5a4": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "In 1936 Germany annexed Austria and overran what is now the Czech Republic. Again museums were stripped and personal possessions seized. In 1938 Hitler conceived a plan to build a vast \"Führermuseum\" in his home town of Linz, Austria, to house his growing collection of plundered art. Hitler spoke of his plans, and showed a model of the museum, until the end of the war. <span style=\"color:gray; font-size: 12px;\">Murray Barnard</span>",
+                "text": "Stately palm trees line New York Street and frame views of the headquarters building.",
                 "textAlignment": "start"
             }
         },
-        "n-89ae7e": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Subjugation of Poland",
-                "textAlignment": "start"
-            }
-        },
-        "n-8f618d": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "On September 1, 1939, Germany invaded Poland. With the occupation came a systematic effort to destroy Poland's art and architecture. Art deemed \"Germanic\" was confiscated and relocated to Germany, The Altar of Veit Stoss in Krakow was removed to Germany in 1941. It was recovered and returned to Poland in 1946.  <span style=\"color:gray; font-size: 12px;\">Robert Breuer</span>",
-                "textAlignment": "start"
-            }
-        },
-        "n-a67f9a": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Occupying Paris",
-                "textAlignment": "start"
-            }
-        },
-        "n-e9052c": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "In early 1940 German armies swept across Western Europe. The French government had moved its principal treasures into the countryside for safekeeping. Soon after the German armies occupied Paris, units of the Einsatzstab Reichsleiter Rosenberg (ERR) began looting the remaining artwork. German authorities collected materials at the Museum Jeu de Paume in Paris. Exhibitions were held for high-ranking officials, notably Hermann Göring, to choose pieces to send to Germany. <span style=\"color:gray; font-size: 12px;\">German Federal Archive</span>",
-                "textAlignment": "start"
-            }
-        },
-        "n-d4bff8": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "The Eastern Front",
-                "textAlignment": "start"
-            }
-        },
-        "n-ad8d16": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "Hitler's invasion of the Soviet Union in June 1941 vastly expanded the Nazis' effort to eradicate Slavic culture. Destruction of Russian and other Slavic treasures was unprecedented; any object deemed desirable was carted off. South of Leningrad the Peterhof Palace suffered damage and looting during its occupation. <span style=\"color:gray; font-size: 12px;\">en.paperblog.com</span>",
-                "textAlignment": "start"
-            }
-        },
-        "n-c3323d": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Roberts Commission: the Monuments Men",
-                "textAlignment": "start"
-            }
-        },
-        "n-00b6a1": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "Even before America entered the war, experts associated with American museums urged President Roosevelt to help safeguard Europe's treasures. FDR established the American Commission for the Protection and Salvage of Artistic and Historic Monuments in War Areas, also known as the Roberts Commission. The Commission prepared maps highlighting locations of monuments and religious sites. The maps were used by bombing crews and commanders in planning operations, and by army units in the field to preserve sites and artwork. <br><span style=\"color:gray; font-size: 12px;\"> Archives of American Art</span>",
-                "textAlignment": "start"
-            }
-        },
-        "n-54aaef": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Invading Sicily",
-                "textAlignment": "start"
-            }
-        },
-        "n-ea01d8": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "The Allies opened a southern front in Italy with the invasion of Sicily in July 1943. The bombing of Palermo damaged or destroyed many building of historic and artistic importance. <span style=\"color:gray; font-size: 12px;\"> National Archives </span>",
-                "textAlignment": "start"
-            }
-        },
-        "n-b94f08": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "The Italian Campaign",
-                "textAlignment": "start"
-            }
-        },
-        "n-b4a125": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "The slow, grinding campaign up the boot of Italy was enormously destructive to Italian art and heritage. This church in the southern Apennine town of Acerno suffered major bomb damage. <span style=\"color:gray; font-size: 12px;\"> National Archives </span>",
-                "textAlignment": "start"
-            }
-        },
-        "n-e8aa1d": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Destruction of Monte Cassino",
-                "textAlignment": "start"
-            }
-        },
-        "n-db3496": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "On February 15, 1944 Allied bombers destroyed the 14th century Abbey of Monte Cassino. Though the town of Cassino was a linchpin of the German defensive line, German commander Field Marshall Kesselring had ordered it not to be occupied. Prior to the battle the archives and art of the abbey had been moved to the Vatican for safekeeping.<br><span style=\"color:gray; font-size: 12px;\"> National Archives </span>",
-                "textAlignment": "start"
-            }
-        },
-        "n-c1ee90": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "The Abbey of Monte Cassino",
-                "textAlignment": "start"
-            }
-        },
-        "n-f87ff9": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "The Monuments Men followed closely behind the fighting to survey damage and to preserve what could be saved. Here officers Ernest De Wald and Roger Ellis sift through the rubble of the Abbey of Monte Cassino. <span style=\"color:gray; font-size: 12px;\"> National Archives </span>",
-                "textAlignment": "start"
-            }
-        },
-        "n-5591b2": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "The Bridges of Florence",
-                "textAlignment": "start"
-            }
-        },
-        "n-7e96e8": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "After breaking the Gustav line, Allied forces rapidly pursued the Germans northward. Nazi forces near Florence were ordered to resist Allied efforts to cross the river Arno. The Germans destroyed all but one of the river's medieval bridges. Fighting in the city compounded the destruction. After the Germans evacuated Florence, British forces dynamited the ruins to erect a temporary span. <span style=\"color:gray; font-size: 12px;\"> National Archives </span>",
-                "textAlignment": "start"
-            }
-        },
-        "n-bdcec4": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Montegufoni",
-                "textAlignment": "start"
-            }
-        },
-        "n-48bd83": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "Many of the treasures of Florence had been removed to rural hideaways. Allied Intelligence indicated that the repositories had been emptied and the art returned to the city. As Allied soldiers began to stumble upon art stashes, including this one at the castle of Montegufoni, the Monuments Men worked quickly to guard them. <span style=\"color:gray; font-size: 12px;\"> National Archives </span>",
-                "textAlignment": "start"
-            }
-        },
-        "n-128807": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Liberation of France",
-                "textAlignment": "start"
-            }
-        },
-        "n-56a864": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "Two months after D-Day Allied forces liberated Paris. The Louvre's collection was brought out of hiding. Thousands of pieces from other museums and private collections, however, had been sent to Germany. Many of these had been secretly catalogued by Rose Valland, who had worked with the Germans during the occupation.<br><span style=\"color:gray; font-size: 12px;\"> Monuments Men Foundation </span>",
-                "textAlignment": "start"
-            }
-        },
-        "n-b81378": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Versailles",
-                "textAlignment": "start"
-            }
-        },
-        "n-df3432": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "Military protection of art treasures sometimes made for odd juxtapositions. In the Gardens of Versailles three trucks and a sculpture shared camouflage netting. <br><span style=\"color:gray; font-size: 12px;\"> Archives of American Art </span>",
-                "textAlignment": "start"
-            }
-        },
-        "n-2071cb": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Germany Occupied",
-                "textAlignment": "start"
-            }
-        },
-        "n-ee2278": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "As the Allies entered Germany, the MFAA's mission shifted from preservation of artworks to search and retrieval. Massive caches of art were stored throughout Europe; most were at secret locations that required detective work to find. Ultimately over 1,400 repositories were discovered. <br><span style=\"color:gray; font-size: 12px;\"> Archives of American Art </span>",
-                "textAlignment": "start"
-            }
-        },
-        "n-3a9431": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Altaussee Salt Mine",
-                "textAlignment": "start"
-            }
-        },
-        "n-057cf7": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "The Altaussee Salt Mine was one of the larger Nazi repositories. Much of the art stored here was slated for the future Führermuseum in Linz, Austria. <br><span style=\"color:gray; font-size: 12px;\"> Archives of American Art </span>",
-                "textAlignment": "start"
-            }
-        },
-        "n-851fa7": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Seigen Copper Mine",
-                "textAlignment": "start"
-            }
-        },
-        "n-b54712": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "George Leslie Stout and Walker Hancock located a large cache of art and artifacts from German museums in the Siegen Copper Mine. This vast repository contained religious shrines and relics of Charlemagne from Aachen Cathedral along with paintings, sculpture, manuscripts, and other objects. <span style=\"color:gray; font-size: 12px;\"> Archives of American Art </span>",
-                "textAlignment": "start"
-            }
-        },
-        "n-1f415f": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Neuschwanstein Castle",
-                "textAlignment": "start"
-            }
-        },
-        "n-a5c4fb": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "James J. Rorimer, with advice from Rose Valland, discovered large caches of art and artifacts hidden in this picturesque castle in the Bavarian Alps. Rose Valland gave this postcard of the castle to Lieutenant Commander James J. Rorimer, who carried it in his pocket from Paris to the Bavarian Alps. <br><span style=\"color:gray; font-size: 12px;\"> Archives of American Art </span>",
-                "textAlignment": "start"
-            }
-        },
-        "n-6e3437": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Restitution",
-                "textAlignment": "start"
-            }
-        },
-        "n-aef284": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "In May 1945 the U.S. Army set up collection points where recovered art could be processed for return to its original owners. Munich and Weisenbach were primary sites. In Munich the collection point was located in the only relatively undamaged large building—Nazi Party headquarters. For a time these sites became the largest art \"museums\" in the world. By 1951 over five million items had been processed and returned. <span style=\"color:gray; font-size: 12px;\"> picture-alliance </span>",
-                "textAlignment": "start"
-            }
-        },
-        "n-613b49": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Processing",
-                "textAlignment": "start"
-            }
-        },
-        "n-ea2a1a": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "The photo above is of one of three packing shops at the Buxheim Monastery. Paintings and sculptures were not the only items the Nazis looted. Furniture, silver, and books were also among the millions of items stolen. This furniture came from one of the Rothschild residences in Paris. <span style=\"color:gray; font-size: 12px;\"> Archives of American Art </span>",
-                "textAlignment": "start"
-            }
-        },
-        "n-6b9f5a": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Transportation",
-                "textAlignment": "start"
-            }
-        },
-        "n-2bdf24": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "The logistics of organizing and transporting over 5 million items were staggering, especially given Europe's shattered infrastructure. This map shows locations of items looted from the Netherlands and the road route used for their return. Air and rail transport was also used. <span style=\"color:gray; font-size: 12px;\"> Archives of American Art </span>",
-                "textAlignment": "start"
-            }
-        },
-        "n-74af54": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "The Ongoing Search",
-                "textAlignment": "start"
-            }
-        },
-        "n-264069": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "Though the bulk of the Nazi loot was discovered and returned to its owners, many thousands of items have never been found. Efforts to identify stolen items in the art market are ongoing; many have been identified. This painting, stolen from the Polish National Museum in 1939, was found at auction in Germany in 2010. Many items remain in limbo as their original owners died in the war or in concentration camps. Definitive proof of ownership can be as difficult as the war was destructive. <br><span style=\"color:gray; font-size: 12px;\"> Kunst &amp; Auktionhaus Eva Aldag </span>",
-                "textAlignment": "start"
-            }
-        },
-        "n-0374e4": {
+        "n-e017bf": {
             "type": "tour",
             "data": {
                 "type": "explorer",
                 "subtype": "list",
                 "narrativePanelPosition": "start",
-                "map": "n-8ff7bf",
+                "map": "n-24961b",
                 "places": [
                     {
-                        "id": "n-f19751",
-                        "featureId": "1b34c71a-93a1-4822-833e-8d85d5bc5384",
+                        "id": "n-fbf9d8",
+                        "featureId": "28665524-5de4-4f28-a06d-0b7851b70717",
                         "contents": [
-                            "n-7dbb8e"
+                            "n-92b962"
                         ],
-                        "media": "n-45ddf5",
-                        "title": "n-a3daf0"
+                        "media": "n-7d16a5",
+                        "title": "n-f1eeba"
                     },
                     {
-                        "id": "n-f5e5ff",
-                        "featureId": "38197c57-0560-4274-8b6a-8f8adbcb47b4",
+                        "id": "n-91929e",
+                        "featureId": "cad30532-0b3c-4785-b77a-3c58fb225c8d",
                         "contents": [
-                            "n-eb9dd3"
+                            "n-4330d7"
                         ],
-                        "media": "n-026945",
-                        "title": "n-9c6330"
+                        "media": "n-c8f3f2",
+                        "title": "n-5e4c8b"
                     },
                     {
-                        "id": "n-1531ef",
-                        "featureId": "bc311aef-bf45-450a-933c-73cfff9a68cf",
+                        "id": "n-42814f",
+                        "featureId": "ce3b2c59-6502-4327-bd5e-061549f8ecc5",
                         "contents": [
-                            "n-3fc351"
+                            "n-89b5a4"
                         ],
-                        "media": "n-1a2e7c",
-                        "title": "n-233fa2"
-                    },
-                    {
-                        "id": "n-c08716",
-                        "featureId": "f3ff971e-4652-4400-890a-bffa78771708",
-                        "contents": [
-                            "n-8f618d"
-                        ],
-                        "media": "n-512cd5",
-                        "title": "n-89ae7e"
-                    },
-                    {
-                        "id": "n-6013d1",
-                        "featureId": "b37e869a-106b-4598-80b3-4bbe71ac9d3f",
-                        "contents": [
-                            "n-e9052c"
-                        ],
-                        "media": "n-6e30d2",
-                        "title": "n-a67f9a"
-                    },
-                    {
-                        "id": "n-689f65",
-                        "featureId": "e8b53efb-7028-4af0-ade6-68c9e7b90475",
-                        "contents": [
-                            "n-ad8d16"
-                        ],
-                        "media": "n-97e331",
-                        "title": "n-d4bff8"
-                    },
-                    {
-                        "id": "n-8db264",
-                        "featureId": "f38d4348-12ba-4dce-9941-268c3f1e4fa7",
-                        "contents": [
-                            "n-00b6a1"
-                        ],
-                        "media": "n-105b75",
-                        "title": "n-c3323d"
-                    },
-                    {
-                        "id": "n-a8411b",
-                        "featureId": "afaa9405-7ced-4166-867e-b320dc93c7e5",
-                        "contents": [
-                            "n-ea01d8"
-                        ],
-                        "media": "n-e28197",
-                        "title": "n-54aaef"
-                    },
-                    {
-                        "id": "n-da1e70",
-                        "featureId": "7e523ad8-4163-4759-8773-d46b2a854356",
-                        "contents": [
-                            "n-b4a125"
-                        ],
-                        "media": "n-ae400a",
-                        "title": "n-b94f08"
-                    },
-                    {
-                        "id": "n-0cf656",
-                        "featureId": "f6d1ce9c-1745-4beb-aa09-bf7ec653da5d",
-                        "contents": [
-                            "n-db3496"
-                        ],
-                        "media": "n-fa7a33",
-                        "title": "n-e8aa1d"
-                    },
-                    {
-                        "id": "n-74b598",
-                        "featureId": "51ad86d4-5d50-4073-8a62-635fdbfbd3d5",
-                        "contents": [
-                            "n-f87ff9"
-                        ],
-                        "media": "n-e8b36c",
-                        "title": "n-c1ee90"
-                    },
-                    {
-                        "id": "n-95e0a8",
-                        "featureId": "b7645084-cf48-4c26-be70-6ccea7c3216c",
-                        "contents": [
-                            "n-7e96e8"
-                        ],
-                        "media": "n-2d0581",
-                        "title": "n-5591b2"
-                    },
-                    {
-                        "id": "n-81d7d3",
-                        "featureId": "cdd47aa3-9a2a-4f05-a73c-f531e21e6033",
-                        "contents": [
-                            "n-48bd83"
-                        ],
-                        "media": "n-9bf43d",
-                        "title": "n-bdcec4"
-                    },
-                    {
-                        "id": "n-532e40",
-                        "featureId": "5bcd2312-fa34-4338-8425-ac8b95c74daa",
-                        "contents": [
-                            "n-56a864"
-                        ],
-                        "media": "n-ceaf13",
-                        "title": "n-128807"
-                    },
-                    {
-                        "id": "n-974077",
-                        "featureId": "8ee501a9-2a54-4c9b-bd3b-e0245cdf5b6d",
-                        "contents": [
-                            "n-df3432"
-                        ],
-                        "media": "n-b6dcaf",
-                        "title": "n-b81378"
-                    },
-                    {
-                        "id": "n-92336d",
-                        "featureId": "fd78906b-8be1-44fa-a621-34baf4c3ed3c",
-                        "contents": [
-                            "n-ee2278"
-                        ],
-                        "media": "n-257821",
-                        "title": "n-2071cb"
-                    },
-                    {
-                        "id": "n-2d177a",
-                        "featureId": "455614f3-9379-445a-a5e4-0237f5a18c07",
-                        "contents": [
-                            "n-057cf7"
-                        ],
-                        "media": "n-91a087",
-                        "title": "n-3a9431"
-                    },
-                    {
-                        "id": "n-1c9ca1",
-                        "featureId": "1a8b65c3-7cd6-42c5-9914-2d144be3de1c",
-                        "contents": [
-                            "n-b54712"
-                        ],
-                        "media": "n-169d5c",
-                        "title": "n-851fa7"
-                    },
-                    {
-                        "id": "n-a6b8fc",
-                        "featureId": "d2c222bd-a9a1-453f-bde3-32c64a4038c1",
-                        "contents": [
-                            "n-a5c4fb"
-                        ],
-                        "media": "n-77341f",
-                        "title": "n-1f415f"
-                    },
-                    {
-                        "id": "n-ed1068",
-                        "featureId": "481aabad-9d6d-4649-a975-c32838fc82f1",
-                        "contents": [
-                            "n-aef284"
-                        ],
-                        "media": "n-1201ef",
-                        "title": "n-6e3437"
-                    },
-                    {
-                        "id": "n-306390",
-                        "featureId": "f92f7ddd-4cbd-4081-88a1-dbb374b84d78",
-                        "contents": [
-                            "n-ea2a1a"
-                        ],
-                        "media": "n-7d2bd1",
-                        "title": "n-613b49"
-                    },
-                    {
-                        "id": "n-0f967c",
-                        "featureId": "f2c495ec-293b-4b12-8386-ef62a70d5d6e",
-                        "contents": [
-                            "n-2bdf24"
-                        ],
-                        "media": "n-1b342e",
-                        "title": "n-6b9f5a"
-                    },
-                    {
-                        "id": "n-2c411c",
-                        "featureId": "752f9fcd-0208-4252-8a26-13431d0f6d0c",
-                        "contents": [
-                            "n-264069"
-                        ],
-                        "media": "n-63d78b",
-                        "title": "n-74af54"
+                        "media": "n-27e3b3",
+                        "title": "n-124909"
                     }
                 ],
                 "narrativePanelSize": "medium",
                 "accentColor": "#f9f794"
             }
         },
-        "n-03e1ec": {
+        "n-448c27": {
             "type": "credits",
             "children": []
         },
-        "n-9f4618": {
+        "n-cb8b41": {
             "type": "story",
             "data": {
-                "storyTheme": "r-e95b02"
+                "storyTheme": "r-37beaf"
             },
             "children": [
-                "n-221c85",
-                "n-a31900",
-                "n-8ff7bf",
-                "n-0374e4",
-                "n-a3daf0",
-                "n-7dbb8e",
-                "n-cd4503",
-                "n-45ddf5",
-                "n-9c6330",
-                "n-eb9dd3",
-                "n-fa0a90",
-                "n-026945",
-                "n-233fa2",
-                "n-3fc351",
-                "n-e52209",
-                "n-1a2e7c",
-                "n-89ae7e",
-                "n-8f618d",
-                "n-50e46d",
-                "n-512cd5",
-                "n-a67f9a",
-                "n-e9052c",
-                "n-68ab43",
-                "n-6e30d2",
-                "n-d4bff8",
-                "n-ad8d16",
-                "n-db579d",
-                "n-97e331",
-                "n-c3323d",
-                "n-00b6a1",
-                "n-56517b",
-                "n-105b75",
-                "n-54aaef",
-                "n-ea01d8",
-                "n-2b37d3",
-                "n-e28197",
-                "n-b94f08",
-                "n-b4a125",
-                "n-7b4d3c",
-                "n-ae400a",
-                "n-e8aa1d",
-                "n-db3496",
-                "n-6acb81",
-                "n-fa7a33",
-                "n-c1ee90",
-                "n-f87ff9",
-                "n-91acae",
-                "n-e8b36c",
-                "n-5591b2",
-                "n-7e96e8",
-                "n-a8e81e",
-                "n-2d0581",
-                "n-bdcec4",
-                "n-48bd83",
-                "n-113bf5",
-                "n-9bf43d",
-                "n-128807",
-                "n-56a864",
-                "n-ff0870",
-                "n-ceaf13",
-                "n-b81378",
-                "n-df3432",
-                "n-547d57",
-                "n-b6dcaf",
-                "n-2071cb",
-                "n-ee2278",
-                "n-50df6b",
-                "n-257821",
-                "n-3a9431",
-                "n-057cf7",
-                "n-f573c4",
-                "n-91a087",
-                "n-851fa7",
-                "n-b54712",
-                "n-df2622",
-                "n-169d5c",
-                "n-1f415f",
-                "n-a5c4fb",
-                "n-6d0a38",
-                "n-77341f",
-                "n-6e3437",
-                "n-aef284",
-                "n-b54286",
-                "n-1201ef",
-                "n-613b49",
-                "n-ea2a1a",
-                "n-94980b",
-                "n-7d2bd1",
-                "n-6b9f5a",
-                "n-2bdf24",
-                "n-dba221",
-                "n-1b342e",
-                "n-74af54",
-                "n-264069",
-                "n-03f40a",
-                "n-63d78b",
-                "n-03e1ec"
+                "n-1a252d",
+                "n-885587",
+                "n-24961b",
+                "n-e017bf",
+                "n-f1eeba",
+                "n-92b962",
+                "n-fe96a6",
+                "n-7d16a5",
+                "n-5e4c8b",
+                "n-4330d7",
+                "n-b017ca",
+                "n-c8f3f2",
+                "n-124909",
+                "n-89b5a4",
+                "n-f47496",
+                "n-27e3b3",
+                "n-448c27"
             ]
         }
     },
     "resources": {
-        "r-e95b02": {
+        "r-37beaf": {
             "type": "story-theme",
             "data": {
                 "themeId": "summit"
             }
         },
-        "r-01408b": {
+        "r-aea082": {
             "type": "image",
             "data": {
                 "resourceId": "place_000_img.jpg",
@@ -1366,7 +246,7 @@
                 "width": 1024
             }
         },
-        "r-e0e9e0": {
+        "r-c69804": {
             "type": "image",
             "data": {
                 "resourceId": "place_001_img.jpg",
@@ -1375,190 +255,10 @@
                 "width": 1024
             }
         },
-        "r-61aad5": {
+        "r-dbe4f4": {
             "type": "image",
             "data": {
                 "resourceId": "place_002_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-60bf64": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_003_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-d9d3ee": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_004_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-f0ba82": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_005_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-46b84e": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_006_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-2ccdba": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_007_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-3d1699": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_008_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-5f4ef9": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_009_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-bd9de8": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_010_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-b1d47c": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_011_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-a934b4": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_012_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-e01d3b": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_013_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-acb170": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_014_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-7c0586": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_015_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-56e2f9": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_016_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-02b8a0": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_017_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-3b24aa": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_018_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-8f4486": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_019_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-7e5526": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_020_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-ec55b1": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_021_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-3b0664": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_022_img.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024

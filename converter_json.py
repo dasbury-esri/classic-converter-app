@@ -1175,101 +1175,6 @@ class MapTourJSONConverter:
             self.theme_id = theme_mapping.get(theme_value, self.theme_id)
         except (KeyError, TypeError):
             pass
-    
-    def _transfer_images(self) -> Dict[str, str]:
-        """
-        Fetch externally hosted images and upload them to AGO resources in memory.
-
-        ###TO DO - figure out how to modify this for feature service attachments###
-        
-        Returns a dict mapping local filenames to resource names.
-        """
-        if not self.target_story_id:
-            self.target_story_id = create_target_story(self.gis)
-        image_resource_map = {}
-        feature_set = self._get_feature_set()
-        if not feature_set or "features" not in feature_set:
-            return image_resource_map
-    
-        add_resource_url = f"https://www.arcgis.com/sharing/rest/content/users/{self.gis.properties.user.username}/items/{self.target_story_id}/addResources"
-        token = self.gis._con.token if self.gis else None
-    
-        # Get feature service URL if present
-        webmap_json = self._get_webmap_json()
-        feature_service_url = None
-        if webmap_json:
-            for layer in webmap_json.get('operationalLayers', []):
-                if layer.get('title') == "Map Tour layer" and 'url' in layer:
-                    feature_service_url = layer['url']
-
-        for i, feature in enumerate(feature_set["features"]):
-            attrs = feature.get("attributes", {})
-            objectid = attrs.get("objectid") or attrs.get("OBJECTID")
-            # Try both lowercase and uppercase keys
-            img_url = attrs.get("pic_url") or attrs.get("PIC_URL")
-
-            filename = f"place_{i:03d}_img.jpg"
-            # Case 1: image from URL
-            if img_url:
-                try:
-                    response = requests.get(img_url, timeout=10)
-                    if response.status_code == 200:
-                        files = {"file": (filename, response.content)}
-                        params = {
-                            "f": "json",
-                            "token": token,
-                            "fileName": filename
-                        }
-                        upload_response = requests.post(add_resource_url, files=files, data=params)
-                        if upload_response.status_code == 200 and upload_response.json().get("success"):
-                            image_resource_map[filename] = filename
-                            print(f"Uploaded resource: {filename}")
-                        else:
-                            print(f"Failed to upload resource: {filename}. Response: {upload_response.text}")
-                    else:
-                        print(f"Failed to fetch image: {img_url}")
-                except Exception as e:
-                    print(f"Error fetching/uploading image {img_url}: {e}")
-                pass
-            # Case 2: Feature service attachments
-            elif feature_service_url and objectid:
-                attachments_url = f"{feature_service_url}/{objectid}/attachments?f=json"
-                if token:
-                    attachments_url += f"&token={token}"
-                try:
-                    att_response = requests.get(attachments_url)
-                    if att_response.status_code == 200:
-                        att_json = att_response.json()
-                        for att in att_json.get("attachmentInfos", []):
-                            att_id = att["id"]
-                            att_content_type = att.get("contentType", "")
-                            # Only process valid image types
-                            if att_content_type not in ["image/jpeg", "image/png", "image/gif"]:
-                                print(f"Skipping attachment {att['name']} (unsupported type: {att_content_type})")
-                                continue    
-                            att_download_url = f"{feature_service_url}/{objectid}/attachments/{att_id}?token={token}"
-                            att_file_response = requests.get(att_download_url, stream=True)
-                            if att_file_response.status_code == 200:
-                                files = {"file": (filename, att_file_response.content)}
-                                params = {
-                                    "f": "json",
-                                    "token": token,
-                                    "fileName": filename
-                                }
-                                upload_response = requests.post(add_resource_url, files=files, data=params)
-                                if upload_response.status_code == 200 and upload_response.json().get("success"):
-                                    image_resource_map[filename] = filename
-                                    print(f"Uploaded attachment: {filename}")
-                                else:
-                                    print(f"Failed to upload attachment: {filename}. Response: {upload_response.text}")
-                            else:
-                                print(f"Failed to download attachment: {att_download_url}")
-                    else:
-                        print(f"Failed to fetch attachments for objectid {objectid}")
-                except Exception as e:
-                    print(f"Error fetching/uploading attachment for objectid {objectid}: {e}")
-        
-        return image_resource_map
 
     def convert(self) -> Dict[str, Any]:
         # Get title
@@ -1278,6 +1183,11 @@ class MapTourJSONConverter:
         image_resource_map = self._transfer_images()
         self.image_resource_map = image_resource_map
         print("Webmap ID:", self.classic_json['values']['webmap'])
+
+        # Get webmap
+        if 'values' in self.classic_json and 'webmap' in self.classic_json['values']:
+                webmap_id = self.classic_json['values']['webmap']
+        tour_map_resource = create_map_resource(webmap_id)
 
         # Get features 
         feature_set = self._get_feature_set()
@@ -1294,8 +1204,8 @@ class MapTourJSONConverter:
                 "geometries": {},
                 "mode": "2d",
                 "basemap": {
-                    "type": "name",
-                    "value": "topographic"
+                    "type": "resource",
+                    "value": tour_map_resource
                 }
             }
         })
@@ -1455,7 +1365,99 @@ class MapTourJSONConverter:
         except Exception as ex:
             print(f"Error in _get_feature_set: {ex}")
         return None
+    
+    def _transfer_images(self) -> Dict[str, str]:
+        """
+        Fetch externally hosted images and upload them to AGO resources in memory.
+        
+        Returns a dict mapping filenames to resource names.
+        """
+        if not self.target_story_id:
+            self.target_story_id = create_target_story(self.gis)
+        image_resource_map = {}
+        feature_set = self._get_feature_set()
+        if not feature_set or "features" not in feature_set:
+            return image_resource_map
+    
+        add_resource_url = f"https://www.arcgis.com/sharing/rest/content/users/{self.gis.properties.user.username}/items/{self.target_story_id}/addResources"
+        token = self.gis._con.token if self.gis else None
+    
+        # Get feature service URL if present
+        webmap_json = self._get_webmap_json()
+        feature_service_url = None
+        if webmap_json:
+            for layer in webmap_json.get('operationalLayers', []):
+                if layer.get('title') == "Map Tour layer" and 'url' in layer:
+                    feature_service_url = layer['url']
 
+        for i, feature in enumerate(feature_set["features"]):
+            attrs = feature.get("attributes", {})
+            objectid = attrs.get("objectid") or attrs.get("OBJECTID")
+            # Try both lowercase and uppercase keys
+            img_url = attrs.get("pic_url") or attrs.get("PIC_URL")
+
+            filename = f"place_{i:03d}_img.jpg"
+            # Case 1: image from URL
+            if img_url:
+                try:
+                    response = requests.get(img_url, timeout=10)
+                    if response.status_code == 200:
+                        files = {"file": (filename, response.content)}
+                        params = {
+                            "f": "json",
+                            "token": token,
+                            "fileName": filename
+                        }
+                        upload_response = requests.post(add_resource_url, files=files, data=params)
+                        if upload_response.status_code == 200 and upload_response.json().get("success"):
+                            image_resource_map[filename] = filename
+                            print(f"Uploaded resource: {filename}")
+                        else:
+                            print(f"Failed to upload resource: {filename}. Response: {upload_response.text}")
+                    else:
+                        print(f"Failed to fetch image: {img_url}")
+                except Exception as e:
+                    print(f"Error fetching/uploading image {img_url}: {e}")
+                pass
+            # Case 2: Feature service attachments
+            elif feature_service_url and objectid:
+                attachments_url = f"{feature_service_url}/{objectid}/attachments?f=json"
+                if token:
+                    attachments_url += f"&token={token}"
+                try:
+                    att_response = requests.get(attachments_url)
+                    if att_response.status_code == 200:
+                        att_json = att_response.json()
+                        for att in att_json.get("attachmentInfos", []):
+                            att_id = att["id"]
+                            att_content_type = att.get("contentType", "")
+                            # Only process valid image types
+                            if att_content_type not in ["image/jpeg", "image/png", "image/gif"]:
+                                print(f"Skipping attachment {att['name']} (unsupported type: {att_content_type})")
+                                continue    
+                            att_download_url = f"{feature_service_url}/{objectid}/attachments/{att_id}?token={token}"
+                            att_file_response = requests.get(att_download_url, stream=True)
+                            if att_file_response.status_code == 200:
+                                files = {"file": (filename, att_file_response.content)}
+                                params = {
+                                    "f": "json",
+                                    "token": token,
+                                    "fileName": filename
+                                }
+                                upload_response = requests.post(add_resource_url, files=files, data=params)
+                                if upload_response.status_code == 200 and upload_response.json().get("success"):
+                                    image_resource_map[filename] = filename
+                                    print(f"Uploaded attachment: {filename}")
+                                else:
+                                    print(f"Failed to upload attachment: {filename}. Response: {upload_response.text}")
+                            else:
+                                print(f"Failed to download attachment: {att_download_url}")
+                    else:
+                        print(f"Failed to fetch attachments for objectid {objectid}")
+                except Exception as e:
+                    print(f"Error fetching/uploading attachment for objectid {objectid}: {e}")
+        
+        return image_resource_map
 
 # =====================================================================
 # Converter Factory
