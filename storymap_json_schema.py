@@ -9,6 +9,8 @@ import uuid
 from typing import Any, Dict, List, Optional
 import math
 
+import requests
+
 def generate_node_id() -> str:
     """Generate a unique node ID in the format used by StoryMaps"""
     return f"n-{uuid.uuid4().hex[:6]}"
@@ -380,7 +382,7 @@ def create_tour_place(
     }
     return place
 
-def webmercator_to_wgs84(x: float, y: float) -> (float, float):
+def webmercator_to_wgs84(x: float, y: float) -> tuple[float, float]:
     """
     Convert Web Mercator (EPSG:3857) x/y to WGS84 lon/lat.
     Args:
@@ -401,6 +403,16 @@ def is_webmercator(x: float, y: float) -> bool:
     Returns True if values are outside typical lon/lat ranges.
     """
     return abs(x) > 180 or abs(y) > 90
+
+def fs_has_attachments(layer_url):
+    """
+    Check to see if a feature service has attachments
+    """
+    response = requests.get(f"{layer_url}?f=json")
+    if response.status_code == 200:
+        layer_info = response.json()
+        return layer_info.get("hasAttachments", False)
+    return False
 
 def create_gallery_node(image_node_ids: List[str], caption: Optional[str] = None,
                        alt: Optional[str] = None,
