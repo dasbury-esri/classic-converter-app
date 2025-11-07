@@ -585,8 +585,9 @@ def create_map_resource(item_id: str, item_type: str = "webmap") -> Dict[str, An
         item_id: ArcGIS item ID for the map
         item_type: Type of map (webmap, webscene)
     """
-    return {
-        "type": "webmap" if item_type == "webmap" else "webscene",
+
+    resource = {
+        "type": "webmap" if item_type == "webmap" else "webscene", 
         "data": {
             "type": "minimal",
             "itemId": item_id,
@@ -594,6 +595,7 @@ def create_map_resource(item_id: str, item_type: str = "webmap") -> Dict[str, An
         }
     }
 
+    return resource
 
 # NOTE: Embed resources removed - embeds use URL directly in node data per schema
 

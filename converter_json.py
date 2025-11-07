@@ -14,10 +14,10 @@ import re
 import urllib.request
 import uuid
 import requests
-from arcgis.apps.storymap import StoryMap 
+from arcgis.apps.storymap import StoryMap  # type: ignore
 from typing import Any, Dict, List, Optional, Tuple
 
-from bs4 import BeautifulSoup, Tag
+from bs4 import BeautifulSoup, Tag # type: ignore
 
 from storymap_json_schema import (ALIGNMENTS, EMBEDLY_TYPES, STANDARD_THEMES,
                                   TEXT_STYLES, add_child_to_node,
@@ -90,7 +90,7 @@ def remove_span_tags(data):
 
 def determine_scale_zoom_level(given_extent, scale_coefficient=4.4):
     """Calculate zoom level from map extent"""
-    from arcgis.apps.storymap import Scales
+    from arcgis.apps.storymap import Scales # type: ignore
 
     max_scale = 147914382
 
@@ -1194,11 +1194,6 @@ class MapTourJSONConverter:
         self.image_resource_map = image_resource_map
         print("Webmap ID:", self.classic_json['values']['webmap'])
 
-        # Get webmap and create resource for basemap if present
-        if 'values' in self.classic_json and 'webmap' in self.classic_json['values']:
-            webmap_id = self.classic_json['values']['webmap']
-            tour_map_resource_id = self.builder.add_resource(create_map_resource(webmap_id))
-
         # Get features 
         feature_set = self._get_feature_set()
         if feature_set and 'features' in feature_set:
@@ -1213,12 +1208,6 @@ class MapTourJSONConverter:
 
         # Create tour-map node (detached, not added to story root)
         tour_map_node = create_tour_map_node(geometries)
-        # If webmap resource exists, assign to basemap property
-        if tour_map_resource_id:
-            tour_map_node['data']['basemap'] = {
-                "type": "resource",
-                "resourceId": tour_map_resource_id
-            }
         tour_map_node_id = self.builder.create_detached_node(tour_map_node)
 
         # Create tour node (detached, not added to story root)
@@ -1292,6 +1281,17 @@ class MapTourJSONConverter:
             n for n in self.builder.storymap_json["nodes"][story_root_id]["children"]
             if self.builder.storymap_json["nodes"][n]["type"] not in ["tour-map", "tour", "text", "image", "carousel"]
         ]
+        # Get webmap and create resource for basemap if present
+        if 'values' in self.classic_json and 'webmap' in self.classic_json['values']:
+            webmap_id = self.classic_json['values']['webmap']
+            tour_map_resource_id = self.builder.add_resource(create_map_resource(item_id=webmap_id))
+            print(f"tour-map-id: {tour_map_resource_id} webmap: {webmap_id}")
+        # If webmap resource exists, assign to basemap property
+        if tour_map_resource_id:
+            tour_map_node['data']['basemap'] = {
+                "type": "resource",
+                "value": tour_map_resource_id # Key IS NOT "resourceId"
+            }
         # Insert tour-map and tour nodes
         self.builder.storymap_json["nodes"][story_root_id]["children"].extend([tour_map_node_id, tour_node_id])
 
