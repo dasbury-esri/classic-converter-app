@@ -100,6 +100,7 @@ def create_text_node(text: str, style: str = "paragraph", alignment: str = "star
 
 def create_image_node(resource_id: str, caption: Optional[str] = None,
                      alt: Optional[str] = None, display: str = "standard",
+                     isExpandable: Optional[str] = None, attribution: Optional[str] = None,
                      float_alignment: str = "start") -> Dict[str, Any]:
     """
     Create an image node
@@ -109,6 +110,8 @@ def create_image_node(resource_id: str, caption: Optional[str] = None,
         caption: Optional caption
         alt: Optional alt text (schema uses 'alt', not 'altText')
         display: Display mode (standard, wide, full, float)
+        isExpandable: boolean // Added with 23.31: https://devtopia.esri.com/WebGIS/arcgis-storymaps/issues/17492
+        attribution: Photo credit
         float_alignment: Alignment when display is 'float' (start, end)
     """
     node = {
@@ -130,6 +133,9 @@ def create_image_node(resource_id: str, caption: Optional[str] = None,
     if alt:
         node["data"]["alt"] = alt  # Schema uses 'alt', not 'altText'
 
+    if attribution:
+        node["data"]["attribution"] = attribution
+    
     return node
 
 

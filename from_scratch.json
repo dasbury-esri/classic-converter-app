@@ -1,0 +1,175 @@
+{
+    "root": "n-Hiqtjc",
+    "nodes": {
+        "n-1BO4rA": {
+            "type": "storycover",
+            "data": {
+                "type": "minimal",
+                "title": "(from scratch) San Diego Places to Eat",
+                "summary": "",
+                "byline": "David Asbury",
+                "titlePanelVerticalPosition": "top",
+                "titlePanelHorizontalPosition": "start",
+                "titlePanelStyle": "gradient"
+            }
+        },
+        "n-p3nirz": {
+            "type": "navigation",
+            "data": {
+                "links": []
+            },
+            "config": {
+                "isHidden": true
+            }
+        },
+        "n-C39HO8": {
+            "type": "image",
+            "data": {
+                "image": "r-j1NCEa",
+                "isExpandable": false,
+                "attribution": "Facebook/Carolines Seaside Cafe"
+            }
+        },
+        "n-njHxY6": {
+            "type": "carousel",
+            "children": [
+                "n-C39HO8"
+            ]
+        },
+        "n-pSKwkU": {
+            "type": "text",
+            "data": {
+                "text": "Caroline&apos;s Seaside Cafe",
+                "type": "h3"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-BTMkG2": {
+            "type": "text",
+            "data": {
+                "text": "This is the best place for breakfast or lunch at La Jolla Shores. Inexpensive and with an unbeatable view of the coast and surf. It is actually on the campus of the famous UCSD Scripps Institution of Oceanography, and that&apos;s their pier. ",
+                "type": "paragraph"
+            },
+            "config": {
+                "size": "wide"
+            }
+        },
+        "n-oXZo1f": {
+            "type": "tour-map",
+            "data": {
+                "geometries": {
+                    "1e70d9d7-fbf7-46db-8799-624351769e5e": {
+                        "id": "1e70d9d7-fbf7-46db-8799-624351769e5e",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.252928827541,
+                                "lat": 32.86832932982001
+                            }
+                        ],
+                        "scale": 2257
+                    }
+                },
+                "mode": "2d",
+                "basemap": {
+                    "type": "resource",
+                    "value": "r-urA7Ta"
+                }
+            }
+        },
+        "n-a2ZZVB": {
+            "type": "tour",
+            "data": {
+                "type": "explorer",
+                "subtype": "grid",
+                "narrativePanelPosition": "start",
+                "places": [
+                    {
+                        "id": "n-Pti4TA",
+                        "featureId": "1e70d9d7-fbf7-46db-8799-624351769e5e",
+                        "contents": [
+                            "n-BTMkG2"
+                        ],
+                        "media": "n-njHxY6",
+                        "title": "n-pSKwkU"
+                    }
+                ],
+                "narrativePanelSize": "small",
+                "map": "n-oXZo1f",
+                "accentColor": "accentColor1"
+            }
+        },
+        "n-ou0yRp": {
+            "type": "text",
+            "data": {
+                "text": "",
+                "type": "h4"
+            }
+        },
+        "n-KDR9Ca": {
+            "type": "text",
+            "data": {
+                "text": "",
+                "type": "paragraph"
+            }
+        },
+        "n-wjNm4z": {
+            "type": "attribution",
+            "data": {
+                "content": "",
+                "attribution": ""
+            }
+        },
+        "n-YkH3sM": {
+            "type": "credits",
+            "children": [
+                "n-ou0yRp",
+                "n-KDR9Ca",
+                "n-wjNm4z"
+            ]
+        },
+        "n-Hiqtjc": {
+            "type": "story",
+            "data": {
+                "storyTheme": "r-5mzyBL"
+            },
+            "config": {
+                "coverDate": "first-published"
+            },
+            "children": [
+                "n-1BO4rA",
+                "n-p3nirz",
+                "n-a2ZZVB",
+                "n-YkH3sM"
+            ]
+        }
+    },
+    "resources": {
+        "r-j1NCEa": {
+            "type": "image",
+            "data": {
+                "resourceId": "NzLUA5Hxqhq0nT4AA3bN6.jpg",
+                "provider": "item-resource",
+                "height": 750,
+                "width": 1000
+            }
+        },
+        "r-urA7Ta": {
+            "type": "webmap",
+            "data": {
+                "type": "minimal",
+                "itemType": "Web Map",
+                "itemId": "a2b7ddbc37d7462090353522e10b1b4a"
+            }
+        },
+        "r-5mzyBL": {
+            "type": "story-theme",
+            "data": {
+                "themeId": "summit",
+                "themeBaseVariableOverrides": {}
+            }
+        }
+    }
+}

@@ -14,7 +14,6 @@ import re
 import urllib.request
 import uuid
 import requests
-from arcgis.gis import GIS
 from arcgis.apps.storymap import StoryMap 
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -176,6 +175,16 @@ def ensure_https_protocol(url: str) -> str:
             return 'https://' + url
         return url
 
+def get_attr_from_list(attributes: dict, keys: list, default: str = "") -> str:
+    """
+    Return the first non-empty value found in attributes for the given list of keys.
+    Helps in maintaining the various attributes used in different versions of Map Tours
+    """
+    for key in keys:
+        value = attributes.get(key)
+        if value is not None and str(value).strip() != "":
+            return value
+    return default
 
 # =====================================================================
 # StoryMap JSON Builder
@@ -250,14 +259,15 @@ class StoryMapJSONBuilder:
 
     def add_image(self, image_path: str, caption: Optional[str] = None,
                  alt: Optional[str] = None, display: str = "standard",
-                 float_alignment: str = "start", parent_id: Optional[str] = None) -> str:
+                 float_alignment: str = "start", parent_id: Optional[str] = None,
+                 attribution: Optional[str] = None) -> str:
         """Add an image node with resource"""
         # Create resource
         resource = create_image_resource(image_path)
         resource_id = self.add_resource(resource)
 
         # Create node with resource_id (schema uses 'alt', not 'alt_text')
-        node = create_image_node(resource_id, caption, alt, display, float_alignment)
+        node = create_image_node(resource_id, caption=caption, alt=alt, display=display, attribution=attribution, float_alignment=float_alignment)
         return self.add_node(node, parent_id)
 
     def add_map(self, map_item_id: str, extent: Optional[Dict] = None,
@@ -1184,10 +1194,10 @@ class MapTourJSONConverter:
         self.image_resource_map = image_resource_map
         print("Webmap ID:", self.classic_json['values']['webmap'])
 
-        # Get webmap
+        # Get webmap and create resource for basemap if present
         if 'values' in self.classic_json and 'webmap' in self.classic_json['values']:
-                webmap_id = self.classic_json['values']['webmap']
-        tour_map_resource = create_map_resource(webmap_id)
+            webmap_id = self.classic_json['values']['webmap']
+            tour_map_resource_id = self.builder.add_resource(create_map_resource(webmap_id))
 
         # Get features 
         feature_set = self._get_feature_set()
@@ -1197,21 +1207,22 @@ class MapTourJSONConverter:
             print("No feature set found or 'features' key missing.")
         features = feature_set.get("features", []) if feature_set else []
 
-        # Generate tour-map node
-        tour_map_node_id = self.builder.add_node({
-            "type": "tour-map",
-            "data": {
-                "geometries": {},
-                "mode": "2d",
-                "basemap": {
-                    "type": "resource",
-                    "value": tour_map_resource
-                }
-            }
-        })
+        # Prepare geometries and places
+        geometries = {} # for tour-map node
+        places = [] # for tour node
 
-        # Generate tour node
-        tour_node_id = self.builder.add_node(create_tour_node(
+        # Create tour-map node (detached, not added to story root)
+        tour_map_node = create_tour_map_node(geometries)
+        # If webmap resource exists, assign to basemap property
+        if tour_map_resource_id:
+            tour_map_node['data']['basemap'] = {
+                "type": "resource",
+                "resourceId": tour_map_resource_id
+            }
+        tour_map_node_id = self.builder.create_detached_node(tour_map_node)
+
+        # Create tour node (detached, not added to story root)
+        tour_node = create_tour_node(
             places=[],
             map_node_id=tour_map_node_id,
             accent_color="#f9f794",
@@ -1219,11 +1230,10 @@ class MapTourJSONConverter:
             narrative_panel_size="medium",
             tour_type="explorer",
             subtype="list"
-        ))
+        )
+        tour_node_id = self.builder.create_detached_node(tour_node)
 
-        geometries = {} # for tour-map node
-        places = [] # for tour node
-
+        # For each feature, create content nodes and build place dict
         for i, feature in enumerate(features):
             geom_id = str(uuid.uuid4())
             x = feature["geometry"]["x"]
@@ -1233,7 +1243,7 @@ class MapTourJSONConverter:
                 long, lat = webmercator_to_wgs84(x, y)
             else:
                 long, lat = x, y
-
+            # Point geometry for tour-map node
             geom = create_tour_map_geometry(
                 id=geom_id,
                 long=long,
@@ -1241,25 +1251,28 @@ class MapTourJSONConverter:
                 type="POINT_NUMBERED_TOUR"
             )
             geometries[geom_id] = geom
-            place_id = generate_node_id()
-            # Place Title node
-            title_text = feature["attributes"].get("name", "")
-            title_node_id = self.builder.add_text(title_text, style="h3", alignment="start")
 
+            # Convert attributes
+            attrs = feature["attributes"]
+            title_text = get_attr_from_list(attrs, ["name", "NAME"])
+            description_text = get_attr_from_list(attrs, ["description", "DESCRIPTION", "DESC1"])
+            attribution_text = get_attr_from_list(attrs, ["PHOTO_CREDIT"])
+
+            # Place Title node (not added to story root)
+            title_node_id = self.builder.add_text(title_text, style="h3", alignment="start")
             # Place Description/content node(s)
-            description_text = feature["attributes"].get("description", "")
             content_node_id = self.builder.add_text(description_text, style="paragraph", alignment="start")
             contents = [content_node_id]
 
-            # Place Media node (image)
-            pic_filename = f"place_{i:03d}_img.jpg"
+            # Place Media node (image inside a carousel)
+            pic_filename = f"place_{i+1:03d}_img.jpg"
             resource_name = self.image_resource_map.get(pic_filename, pic_filename)
-            image_node_id = self.builder.add_image(resource_name)
-            media_node_id = self.builder.add_carousel(parent_id=None, children=[image_node_id]) # create an carousel instead of just a single image
+            image_node_id = self.builder.create_detached_node(create_image_node(resource_name, attribution=attribution_text))
+            media_node_id = self.builder.create_detached_node(create_carousel_node([image_node_id]))
 
             # Place node 
             place = create_tour_place(
-                id=place_id,
+                id=str(uuid.uuid4()),
                 feature_id=geom_id,
                 contents=contents,
                 media=media_node_id,
@@ -1271,6 +1284,16 @@ class MapTourJSONConverter:
         self.builder.storymap_json["nodes"][tour_map_node_id]["data"]["geometries"] = geometries
         # Update the tour node's places list
         self.builder.storymap_json["nodes"][tour_node_id]["data"]["places"] = places
+
+        # Add tour-map and tour nodes to story root (in correct order)
+        story_root_id = self.builder.storymap_json["root"]
+        # Remove any previously added orphaned nodes (if any)
+        self.builder.storymap_json["nodes"][story_root_id]["children"] = [
+            n for n in self.builder.storymap_json["nodes"][story_root_id]["children"]
+            if self.builder.storymap_json["nodes"][n]["type"] not in ["tour-map", "tour", "text", "image", "carousel"]
+        ]
+        # Insert tour-map and tour nodes
+        self.builder.storymap_json["nodes"][story_root_id]["children"].extend([tour_map_node_id, tour_node_id])
 
         # Set cover and theme
         self.builder.set_cover(title=f"(CONVERSION) {title}", summary=subtitle)
@@ -1286,27 +1309,11 @@ class MapTourJSONConverter:
                 return self.classic_json['webmap_json']
             elif 'values' in self.classic_json and 'webmap' in self.classic_json['values']:
                 webmap_id = self.classic_json['values']['webmap']
-                # # Check GIS authentication
-                # print("self.gis:", self.gis)
-                # print("isinstance(self.gis, GIS):", isinstance(self.gis, GIS))
-                # print("hasattr(self.gis, 'properties'):", hasattr(self.gis, 'properties'))
-                # print("hasattr(self.gis, '_con'):", hasattr(self.gis, '_con'))
-                # print("getattr(self.gis._con, 'token', None):", getattr(self.gis._con, 'token', None))
-                # if (
-                #     self.gis is not None and
-                #     isinstance(self.gis, GIS) and
-                #     hasattr(self.gis, 'properties') and
-                #     hasattr(self.gis, '_con') and
-                #     getattr(self.gis._con, 'token', None)
-                # ):
-                #     print(f"GIS is authenticated as: {self.gis.properties.user.username}")
                 print("Fetching json from webmap item")
                 webmap_item = self.gis.content.get(webmap_id)
                 webmap_json = webmap_item.get_data()
                 self.classic_json['webmap_json'] = webmap_json
                 return webmap_json
-                # else:
-                #     print("self.gis is not a valid authenticated GIS object")
             else:
                 print("No webmap_json present")
         except Exception as ex:
@@ -1396,7 +1403,7 @@ class MapTourJSONConverter:
             # Try both lowercase and uppercase keys
             img_url = attrs.get("pic_url") or attrs.get("PIC_URL")
 
-            filename = f"place_{i:03d}_img.jpg"
+            filename = f"place_{i+1:03d}_img.jpg"
             # Case 1: image from URL
             if img_url:
                 try:
@@ -1410,7 +1417,10 @@ class MapTourJSONConverter:
                         }
                         upload_response = requests.post(add_resource_url, files=files, data=params)
                         if upload_response.status_code == 200 and upload_response.json().get("success"):
-                            image_resource_map[filename] = filename
+                            # Create resource and store resource ID
+                            resource = create_image_resource(filename)
+                            resource_id = self.builder.add_resource(resource)
+                            image_resource_map[filename] = resource_id
                             print(f"Uploaded resource: {filename}")
                         else:
                             print(f"Failed to upload resource: {filename}. Response: {upload_response.text}")
@@ -1446,7 +1456,10 @@ class MapTourJSONConverter:
                                 }
                                 upload_response = requests.post(add_resource_url, files=files, data=params)
                                 if upload_response.status_code == 200 and upload_response.json().get("success"):
-                                    image_resource_map[filename] = filename
+                                    # Create resource and store resource ID
+                                    resource = create_image_resource(filename)
+                                    resource_id = self.builder.add_resource(resource)
+                                    image_resource_map[filename] = resource_id
                                     print(f"Uploaded attachment: {filename}")
                                 else:
                                     print(f"Failed to upload attachment: {filename}. Response: {upload_response.text}")
