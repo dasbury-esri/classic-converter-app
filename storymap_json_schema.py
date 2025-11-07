@@ -111,11 +111,11 @@ def create_image_node(resource_id: str, caption: Optional[str] = None,
     """
     node = {
         "type": "image",
-        "config": {
-            "size": display
-        },
         "data": {
             "image": resource_id
+        },
+        "config": {
+            "size": display
         }
     }
 

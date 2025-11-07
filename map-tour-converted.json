@@ -1,32 +1,7 @@
 {
-    "root": "n-00761b",
+    "root": "n-4d9b68",
     "nodes": {
-        "n-00761b": {
-            "type": "story",
-            "data": {
-                "storyTheme": "r-709143"
-            },
-            "children": [
-                "n-b7ab10",
-                "n-470ba4",
-                "n-cc91a2",
-                "n-e5212c",
-                "n-069c7c",
-                "n-b91aff",
-                "n-2c3c61",
-                "n-12ddc1",
-                "n-2a7abd",
-                "n-9fe507",
-                "n-ded85a",
-                "n-9a7c27",
-                "n-5dbd20",
-                "n-7b2869",
-                "n-84ba8a",
-                "n-deec6d",
-                "n-bf8c6d"
-            ]
-        },
-        "n-b7ab10": {
+        "n-c4d2b4": {
             "type": "storycover",
             "data": {
                 "type": "minimal",
@@ -35,7 +10,7 @@
                 "byline": ""
             }
         },
-        "n-470ba4": {
+        "n-59b804": {
             "type": "navigation",
             "data": {
                 "links": []
@@ -44,16 +19,12 @@
                 "isHidden": true
             }
         },
-        "n-bf8c6d": {
-            "type": "credits",
-            "children": []
-        },
-        "n-cc91a2": {
+        "n-a86a2c": {
             "type": "tour-map",
             "data": {
                 "geometries": {
-                    "1be5f3b5-b36a-43bf-9b22-15b2ff20f38a": {
-                        "id": "1be5f3b5-b36a-43bf-9b22-15b2ff20f38a",
+                    "c0a44f94-3523-436d-8f6f-18852511bb0a": {
+                        "id": "c0a44f94-3523-436d-8f6f-18852511bb0a",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
@@ -62,8 +33,8 @@
                             }
                         ]
                     },
-                    "f6427cdd-89ff-4d5d-8c53-07967adcfd69": {
-                        "id": "f6427cdd-89ff-4d5d-8c53-07967adcfd69",
+                    "a7b080d8-59e0-433b-ac9f-2fb1a77759a2": {
+                        "id": "a7b080d8-59e0-433b-ac9f-2fb1a77759a2",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
@@ -72,8 +43,8 @@
                             }
                         ]
                     },
-                    "3ee0f7bf-ba29-4ab8-8d57-3983a5d53741": {
-                        "id": "3ee0f7bf-ba29-4ab8-8d57-3983a5d53741",
+                    "9bc9bac8-e220-4c45-b886-c2eb5b5a3a1d": {
+                        "id": "9bc9bac8-e220-4c45-b886-c2eb5b5a3a1d",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
@@ -90,47 +61,58 @@
                 }
             }
         },
-        "n-e5212c": {
-            "type": "tour",
+        "n-c00fec": {
+            "type": "image",
             "data": {
-                "type": "explorer",
-                "subtype": "list",
-                "narrativePanelPosition": "start",
-                "map": "n-cc91a2",
-                "places": [
-                    {
-                        "id": "n-1b7dcb",
-                        "featureId": "1be5f3b5-b36a-43bf-9b22-15b2ff20f38a",
-                        "contents": [
-                            "n-b91aff"
-                        ],
-                        "media": "n-12ddc1",
-                        "title": "n-069c7c"
-                    },
-                    {
-                        "id": "n-ebe0fa",
-                        "featureId": "f6427cdd-89ff-4d5d-8c53-07967adcfd69",
-                        "contents": [
-                            "n-9fe507"
-                        ],
-                        "media": "n-9a7c27",
-                        "title": "n-2a7abd"
-                    },
-                    {
-                        "id": "n-3437ac",
-                        "featureId": "3ee0f7bf-ba29-4ab8-8d57-3983a5d53741",
-                        "contents": [
-                            "n-7b2869"
-                        ],
-                        "media": "n-deec6d",
-                        "title": "n-5dbd20"
-                    }
-                ],
-                "narrativePanelSize": "medium",
-                "accentColor": "#f9f794"
+                "image": "r-e28d72"
+            },
+            "config": {
+                "size": "standard"
             }
         },
-        "n-069c7c": {
+        "n-de376b": {
+            "type": "image",
+            "data": {
+                "image": "r-2fb7bc"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-ebb7d4": {
+            "type": "image",
+            "data": {
+                "image": "r-eb2123"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-9e4399": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-c00fec"
+            ]
+        },
+        "n-244d01": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-de376b"
+            ]
+        },
+        "n-48717d": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-ebb7d4"
+            ]
+        },
+        "n-e10e82": {
             "type": "text",
             "data": {
                 "type": "h3",
@@ -138,7 +120,7 @@
                 "textAlignment": "start"
             }
         },
-        "n-b91aff": {
+        "n-6bf09b": {
             "type": "text",
             "data": {
                 "type": "paragraph",
@@ -146,24 +128,7 @@
                 "textAlignment": "start"
             }
         },
-        "n-2c3c61": {
-            "type": "image",
-            "config": {
-                "size": "standard"
-            },
-            "data": {
-                "image": "r-5fd4a7"
-            }
-        },
-        "n-12ddc1": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-2c3c61"
-            ]
-        },
-        "n-2a7abd": {
+        "n-b89c96": {
             "type": "text",
             "data": {
                 "type": "h3",
@@ -171,7 +136,7 @@
                 "textAlignment": "start"
             }
         },
-        "n-9fe507": {
+        "n-0ee5dc": {
             "type": "text",
             "data": {
                 "type": "paragraph",
@@ -179,24 +144,7 @@
                 "textAlignment": "start"
             }
         },
-        "n-ded85a": {
-            "type": "image",
-            "config": {
-                "size": "standard"
-            },
-            "data": {
-                "image": "r-17bd33"
-            }
-        },
-        "n-9a7c27": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-ded85a"
-            ]
-        },
-        "n-5dbd20": {
+        "n-b89839": {
             "type": "text",
             "data": {
                 "type": "h3",
@@ -204,7 +152,7 @@
                 "textAlignment": "start"
             }
         },
-        "n-7b2869": {
+        "n-d4a92d": {
             "type": "text",
             "data": {
                 "type": "paragraph",
@@ -212,32 +160,84 @@
                 "textAlignment": "start"
             }
         },
-        "n-84ba8a": {
-            "type": "image",
-            "config": {
-                "size": "standard"
-            },
+        "n-c2b7a2": {
+            "type": "tour",
             "data": {
-                "image": "r-216e3c"
+                "type": "explorer",
+                "subtype": "list",
+                "narrativePanelPosition": "start",
+                "map": "n-a86a2c",
+                "places": [
+                    {
+                        "id": "n-ecf22a",
+                        "featureId": "c0a44f94-3523-436d-8f6f-18852511bb0a",
+                        "contents": [
+                            "n-6bf09b"
+                        ],
+                        "media": "n-9e4399",
+                        "title": "n-e10e82"
+                    },
+                    {
+                        "id": "n-85c234",
+                        "featureId": "a7b080d8-59e0-433b-ac9f-2fb1a77759a2",
+                        "contents": [
+                            "n-0ee5dc"
+                        ],
+                        "media": "n-244d01",
+                        "title": "n-b89c96"
+                    },
+                    {
+                        "id": "n-239150",
+                        "featureId": "9bc9bac8-e220-4c45-b886-c2eb5b5a3a1d",
+                        "contents": [
+                            "n-d4a92d"
+                        ],
+                        "media": "n-48717d",
+                        "title": "n-b89839"
+                    }
+                ],
+                "narrativePanelSize": "medium",
+                "accentColor": "#f9f794"
             }
         },
-        "n-deec6d": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
+        "n-4ee626": {
+            "type": "credits",
+            "children": []
+        },
+        "n-4d9b68": {
+            "type": "story",
+            "data": {
+                "storyTheme": "r-00990b"
+            },
             "children": [
-                "n-84ba8a"
+                "n-c4d2b4",
+                "n-59b804",
+                "n-a86a2c",
+                "n-c2b7a2",
+                "n-e10e82",
+                "n-6bf09b",
+                "n-c00fec",
+                "n-9e4399",
+                "n-b89c96",
+                "n-0ee5dc",
+                "n-de376b",
+                "n-244d01",
+                "n-b89839",
+                "n-d4a92d",
+                "n-ebb7d4",
+                "n-48717d",
+                "n-4ee626"
             ]
         }
     },
     "resources": {
-        "r-709143": {
+        "r-00990b": {
             "type": "story-theme",
             "data": {
                 "themeId": "summit"
             }
         },
-        "r-5fd4a7": {
+        "r-e28d72": {
             "type": "image",
             "data": {
                 "resourceId": "place_000_img.jpg",
@@ -246,7 +246,7 @@
                 "width": 1024
             }
         },
-        "r-17bd33": {
+        "r-2fb7bc": {
             "type": "image",
             "data": {
                 "resourceId": "place_001_img.jpg",
@@ -255,7 +255,7 @@
                 "width": 1024
             }
         },
-        "r-216e3c": {
+        "r-eb2123": {
             "type": "image",
             "data": {
                 "resourceId": "place_002_img.jpg",
