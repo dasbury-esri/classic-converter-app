@@ -1405,7 +1405,9 @@ class MapTourJSONConverter:
             attrs = feature.get("attributes", {})
             objectid = attrs.get("objectid") or attrs.get("OBJECTID")
             # Try both lowercase and uppercase keys
-            img_url = attrs.get("pic_url") or attrs.get("PIC_URL")
+            attrs = feature["attributes"]
+            img_url = get_attr_from_list(attrs, ["url", "URL", "pic_url", "PIC_URL"])
+
 
             filename = f"place_{i+1:03d}_img.jpg"
             # Case 1: image from URL
