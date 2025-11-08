@@ -1188,8 +1188,9 @@ class MapTourJSONConverter:
 
     def convert(self) -> Dict[str, Any]:
         # Get title
-        title = self.classic_json.get('values', {}).get('title', 'Untitled MapTour')
-        subtitle = self.classic_json.get('values', {}).get('subtitle', '')
+        item_attrs = self.classic_json.get('values', {})
+        title = get_attr_from_list(item_attrs, ['title',"headerLinkText"], 'Untitled MapTour')
+        subtitle = item_attrs.get('subtitle', '')
         image_resource_map = self._transfer_images()
         self.image_resource_map = image_resource_map
         print("Webmap ID:", self.classic_json['values']['webmap'])
