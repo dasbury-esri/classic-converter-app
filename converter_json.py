@@ -1216,7 +1216,7 @@ class MapTourJSONConverter:
             map_node_id=tour_map_node_id,
             accent_color="#f9f794", # point icon color (should be derived from theme)
             narrative_panel_position="start", # start or end. unsure what the difference is. arcgis-storymaps/packages/storymaps-builder/src/blocks/immersive/README.md
-            narrative_panel_size="medium", # small, medium or large
+            narrative_panel_size="large", # small, medium or large
             tour_type="explorer", # explorer or guided
             subtype="grid" # explorer[list or grid], guided[media or map]
         )
@@ -1244,13 +1244,15 @@ class MapTourJSONConverter:
             # Convert attributes
             attrs = feature["attributes"]
             title_text = get_attr_from_list(attrs, ["name", "NAME"])
-            description_text = get_attr_from_list(attrs, ["description", "DESCRIPTION", "DESC1"])
+            description_text = get_attr_from_list(attrs, ["description", "DESCRIPTION", "DESC1", "CAPTION"])
             attribution_text = get_attr_from_list(attrs, ["PHOTO_CREDIT"])
 
             # Place Title node (not added to story root)
-            title_node_id = self.builder.add_text(title_text, style="h3", alignment="start")
+            title_node = create_text_node(title_text, style="h3", alignment="start")
+            title_node_id = self.builder.create_detached_node(title_node)
             # Place Description/content node(s)
-            content_node_id = self.builder.add_text(description_text, style="paragraph", alignment="start")
+            content_node = create_text_node(description_text, style="paragraph", alignment="start")
+            content_node_id = self.builder.create_detached_node(content_node)
             contents = [content_node_id]
 
             # Place Media node (image inside a carousel)
@@ -1276,11 +1278,12 @@ class MapTourJSONConverter:
 
         # Add tour-map and tour nodes to story root (in correct order)
         story_root_id = self.builder.storymap_json["root"]
-        # Remove any previously added orphaned nodes (if any)
-        self.builder.storymap_json["nodes"][story_root_id]["children"] = [
-            n for n in self.builder.storymap_json["nodes"][story_root_id]["children"]
-            if self.builder.storymap_json["nodes"][n]["type"] not in ["tour-map", "tour", "text", "image", "carousel"]
-        ]
+        children = self.builder.storymap_json["nodes"][story_root_id]["children"]
+        # # Remove any previously added orphaned nodes (if any)
+        # self.builder.storymap_json["nodes"][story_root_id]["children"] = [
+        #     n for n in self.builder.storymap_json["nodes"][story_root_id]["children"]
+        #     if self.builder.storymap_json["nodes"][n]["type"] not in ["tour-map", "tour", "text", "image", "carousel"]
+        # ]
         # Get webmap and create resource for basemap if present
         if 'values' in self.classic_json and 'webmap' in self.classic_json['values']:
             webmap_id = self.classic_json['values']['webmap']
@@ -1293,7 +1296,8 @@ class MapTourJSONConverter:
                 "value": tour_map_resource_id # Key IS NOT "resourceId"
             }
         # Insert tour-map and tour nodes
-        self.builder.storymap_json["nodes"][story_root_id]["children"].extend([tour_node_id, tour_map_node_id])
+        children.extend([tour_node_id, tour_map_node_id])
+        self.builder.storymap_json["nodes"][story_root_id]["children"] = children
 
         # Set cover and theme
         self.builder.set_cover(title=f"(CONVERSION) {title}", summary=subtitle)

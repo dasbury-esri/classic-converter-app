@@ -1,7 +1,20 @@
 {
-    "root": "n-9b0ae9",
+    "root": "n-1f0451",
     "nodes": {
-        "n-df7b8b": {
+        "n-1f0451": {
+            "type": "story",
+            "data": {
+                "storyTheme": "r-3c306e"
+            },
+            "children": [
+                "n-b1226f",
+                "n-0190b3",
+                "n-78c0bd",
+                "n-98989e",
+                "n-8e8f78"
+            ]
+        },
+        "n-b1226f": {
             "type": "storycover",
             "data": {
                 "type": "minimal",
@@ -10,7 +23,7 @@
                 "byline": ""
             }
         },
-        "n-067dab": {
+        "n-0190b3": {
             "type": "navigation",
             "data": {
                 "links": []
@@ -19,64 +32,16 @@
                 "isHidden": true
             }
         },
-        "n-d5c36c": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Sidewalk",
-                "textAlignment": "start"
-            }
-        },
-        "n-6d90ac": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "Sunrise streaks the New York Street sidewalk at the north edge of Esri's campus in Redlands, California.",
-                "textAlignment": "start"
-            }
-        },
-        "n-afe172": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "New York Street",
-                "textAlignment": "start"
-            }
-        },
-        "n-8ddfaa": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "The headquarters building, completed in 2010, unifies the campus. New York Street used to bisect the campus, but a portion of the street was closed, and the building straddles the old right of way.",
-                "textAlignment": "start"
-            }
-        },
-        "n-75d14d": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Palms",
-                "textAlignment": "start"
-            }
-        },
-        "n-9437e9": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "Stately palm trees line New York Street and frame views of the headquarters building.",
-                "textAlignment": "start"
-            }
-        },
-        "n-9305bb": {
+        "n-78c0bd": {
             "type": "credits",
             "children": []
         },
-        "n-1e7e25": {
+        "n-8e8f78": {
             "type": "tour-map",
             "data": {
                 "geometries": {
-                    "ea909083-2930-4426-8367-5c8d20d81cca": {
-                        "id": "ea909083-2930-4426-8367-5c8d20d81cca",
+                    "51bb41c3-d0de-4c90-ae05-460c6492dc32": {
+                        "id": "51bb41c3-d0de-4c90-ae05-460c6492dc32",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
@@ -85,8 +50,8 @@
                             }
                         ]
                     },
-                    "8cc2cf71-b65f-447b-8f40-f1911603939c": {
-                        "id": "8cc2cf71-b65f-447b-8f40-f1911603939c",
+                    "2b0a64fa-4759-4d4c-8e84-ea5fb86bde1f": {
+                        "id": "2b0a64fa-4759-4d4c-8e84-ea5fb86bde1f",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
@@ -95,8 +60,8 @@
                             }
                         ]
                     },
-                    "a5e8a1dd-a49a-4dfc-a42f-e75a9c614b80": {
-                        "id": "a5e8a1dd-a49a-4dfc-a42f-e75a9c614b80",
+                    "25a47ccf-463c-424f-ba6e-4970a0cd12f4": {
+                        "id": "25a47ccf-463c-424f-ba6e-4970a0cd12f4",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
@@ -109,123 +74,158 @@
                 "mode": "2d",
                 "basemap": {
                     "type": "resource",
-                    "value": "r-32ecd9"
+                    "value": "r-3ba039"
                 }
             }
         },
-        "n-2a5690": {
-            "type": "image",
-            "data": {
-                "image": "r-23ebf9"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-f342e3": {
-            "type": "image",
-            "data": {
-                "image": "r-4ca075"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-2b19b5": {
-            "type": "image",
-            "data": {
-                "image": "r-e86338"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-362f72": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-2a5690"
-            ]
-        },
-        "n-023953": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-f342e3"
-            ]
-        },
-        "n-2edaba": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-2b19b5"
-            ]
-        },
-        "n-0170fa": {
+        "n-98989e": {
             "type": "tour",
             "data": {
                 "type": "explorer",
                 "subtype": "grid",
                 "narrativePanelPosition": "start",
-                "map": "n-1e7e25",
+                "map": "n-8e8f78",
                 "places": [
                     {
-                        "id": "b9e99ce7-1f5c-4654-8273-41c55b93dfc9",
-                        "featureId": "ea909083-2930-4426-8367-5c8d20d81cca",
+                        "id": "ec7507f0-eb93-46c7-965b-4295730eebc4",
+                        "featureId": "51bb41c3-d0de-4c90-ae05-460c6492dc32",
                         "contents": [
-                            "n-6d90ac"
+                            "n-75e129"
                         ],
-                        "media": "n-362f72",
-                        "title": "n-d5c36c"
+                        "media": "n-43f05d",
+                        "title": "n-52a9d6"
                     },
                     {
-                        "id": "39c78b22-6216-4bf8-b7eb-d2d98f42e117",
-                        "featureId": "8cc2cf71-b65f-447b-8f40-f1911603939c",
+                        "id": "015a8dec-c267-4102-864a-8968423d6017",
+                        "featureId": "2b0a64fa-4759-4d4c-8e84-ea5fb86bde1f",
                         "contents": [
-                            "n-8ddfaa"
+                            "n-bc2cac"
                         ],
-                        "media": "n-023953",
-                        "title": "n-afe172"
+                        "media": "n-828dcc",
+                        "title": "n-44b25a"
                     },
                     {
-                        "id": "1c43da51-d07a-4b0c-a839-ac336b719b1b",
-                        "featureId": "a5e8a1dd-a49a-4dfc-a42f-e75a9c614b80",
+                        "id": "6dfc4405-d03b-40d1-a1f1-b8ea5961b324",
+                        "featureId": "25a47ccf-463c-424f-ba6e-4970a0cd12f4",
                         "contents": [
-                            "n-9437e9"
+                            "n-b28bc6"
                         ],
-                        "media": "n-2edaba",
-                        "title": "n-75d14d"
+                        "media": "n-b5611b",
+                        "title": "n-d5bbb8"
                     }
                 ],
-                "narrativePanelSize": "medium",
+                "narrativePanelSize": "large",
                 "accentColor": "#f9f794"
             }
         },
-        "n-9b0ae9": {
-            "type": "story",
+        "n-52a9d6": {
+            "type": "text",
             "data": {
-                "storyTheme": "r-ce8774"
+                "type": "h3",
+                "text": "Sidewalk",
+                "textAlignment": "start"
+            }
+        },
+        "n-75e129": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Sunrise streaks the New York Street sidewalk at the north edge of Esri's campus in Redlands, California.",
+                "textAlignment": "start"
+            }
+        },
+        "n-9a3398": {
+            "type": "image",
+            "data": {
+                "image": "r-13005b"
             },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-43f05d": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
             "children": [
-                "n-df7b8b",
-                "n-067dab",
-                "n-9305bb",
-                "n-0170fa",
-                "n-1e7e25"
+                "n-9a3398"
+            ]
+        },
+        "n-44b25a": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "New York Street",
+                "textAlignment": "start"
+            }
+        },
+        "n-bc2cac": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "The headquarters building, completed in 2010, unifies the campus. New York Street used to bisect the campus, but a portion of the street was closed, and the building straddles the old right of way.",
+                "textAlignment": "start"
+            }
+        },
+        "n-709896": {
+            "type": "image",
+            "data": {
+                "image": "r-064663"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-828dcc": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-709896"
+            ]
+        },
+        "n-d5bbb8": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Palms",
+                "textAlignment": "start"
+            }
+        },
+        "n-b28bc6": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Stately palm trees line New York Street and frame views of the headquarters building.",
+                "textAlignment": "start"
+            }
+        },
+        "n-2ad80b": {
+            "type": "image",
+            "data": {
+                "image": "r-6efc5f"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-b5611b": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-2ad80b"
             ]
         }
     },
     "resources": {
-        "r-ce8774": {
+        "r-3c306e": {
             "type": "story-theme",
             "data": {
                 "themeId": "summit"
             }
         },
-        "r-23ebf9": {
+        "r-13005b": {
             "type": "image",
             "data": {
                 "resourceId": "place_001_img.jpg",
@@ -234,7 +234,7 @@
                 "width": 1024
             }
         },
-        "r-4ca075": {
+        "r-064663": {
             "type": "image",
             "data": {
                 "resourceId": "place_002_img.jpg",
@@ -243,7 +243,7 @@
                 "width": 1024
             }
         },
-        "r-e86338": {
+        "r-6efc5f": {
             "type": "image",
             "data": {
                 "resourceId": "place_003_img.jpg",
@@ -252,7 +252,7 @@
                 "width": 1024
             }
         },
-        "r-32ecd9": {
+        "r-3ba039": {
             "type": "webmap",
             "data": {
                 "type": "minimal",
