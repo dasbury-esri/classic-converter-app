@@ -1214,11 +1214,11 @@ class MapTourJSONConverter:
         tour_node = create_tour_node(
             places=[],
             map_node_id=tour_map_node_id,
-            accent_color="#f9f794",
-            narrative_panel_position="start",
-            narrative_panel_size="medium",
-            tour_type="explorer",
-            subtype="list"
+            accent_color="#f9f794", # point icon color (should be derived from theme)
+            narrative_panel_position="start", # start or end. unsure what the difference is. arcgis-storymaps/packages/storymaps-builder/src/blocks/immersive/README.md
+            narrative_panel_size="medium", # small, medium or large
+            tour_type="explorer", # explorer or guided
+            subtype="grid" # explorer[list or grid], guided[media or map]
         )
         tour_node_id = self.builder.create_detached_node(tour_node)
 
@@ -1293,7 +1293,7 @@ class MapTourJSONConverter:
                 "value": tour_map_resource_id # Key IS NOT "resourceId"
             }
         # Insert tour-map and tour nodes
-        self.builder.storymap_json["nodes"][story_root_id]["children"].extend([tour_map_node_id, tour_node_id])
+        self.builder.storymap_json["nodes"][story_root_id]["children"].extend([tour_node_id, tour_map_node_id])
 
         # Set cover and theme
         self.builder.set_cover(title=f"(CONVERSION) {title}", summary=subtitle)

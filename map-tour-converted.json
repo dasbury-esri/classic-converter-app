@@ -1,7 +1,7 @@
 {
-    "root": "n-e04084",
+    "root": "n-9b0ae9",
     "nodes": {
-        "n-65c2d3": {
+        "n-df7b8b": {
             "type": "storycover",
             "data": {
                 "type": "minimal",
@@ -10,7 +10,7 @@
                 "byline": ""
             }
         },
-        "n-32121b": {
+        "n-067dab": {
             "type": "navigation",
             "data": {
                 "links": []
@@ -19,12 +19,64 @@
                 "isHidden": true
             }
         },
-        "n-11dc60": {
+        "n-d5c36c": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Sidewalk",
+                "textAlignment": "start"
+            }
+        },
+        "n-6d90ac": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Sunrise streaks the New York Street sidewalk at the north edge of Esri's campus in Redlands, California.",
+                "textAlignment": "start"
+            }
+        },
+        "n-afe172": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "New York Street",
+                "textAlignment": "start"
+            }
+        },
+        "n-8ddfaa": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "The headquarters building, completed in 2010, unifies the campus. New York Street used to bisect the campus, but a portion of the street was closed, and the building straddles the old right of way.",
+                "textAlignment": "start"
+            }
+        },
+        "n-75d14d": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Palms",
+                "textAlignment": "start"
+            }
+        },
+        "n-9437e9": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Stately palm trees line New York Street and frame views of the headquarters building.",
+                "textAlignment": "start"
+            }
+        },
+        "n-9305bb": {
+            "type": "credits",
+            "children": []
+        },
+        "n-1e7e25": {
             "type": "tour-map",
             "data": {
                 "geometries": {
-                    "111ff98e-7df5-4370-a36f-bad127d66dc6": {
-                        "id": "111ff98e-7df5-4370-a36f-bad127d66dc6",
+                    "ea909083-2930-4426-8367-5c8d20d81cca": {
+                        "id": "ea909083-2930-4426-8367-5c8d20d81cca",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
@@ -33,8 +85,8 @@
                             }
                         ]
                     },
-                    "20a79074-18dc-4ab6-ae60-692abee859eb": {
-                        "id": "20a79074-18dc-4ab6-ae60-692abee859eb",
+                    "8cc2cf71-b65f-447b-8f40-f1911603939c": {
+                        "id": "8cc2cf71-b65f-447b-8f40-f1911603939c",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
@@ -43,8 +95,8 @@
                             }
                         ]
                     },
-                    "d36ee02e-d517-47fc-a68c-b77430206e4b": {
-                        "id": "d36ee02e-d517-47fc-a68c-b77430206e4b",
+                    "a5e8a1dd-a49a-4dfc-a42f-e75a9c614b80": {
+                        "id": "a5e8a1dd-a49a-4dfc-a42f-e75a9c614b80",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
@@ -52,1220 +104,128 @@
                                 "lat": 34.056557999999434
                             }
                         ]
-                    },
-                    "ec06fb81-3b75-4f45-80cb-cf2ddbc30ead": {
-                        "id": "ec06fb81-3b75-4f45-80cb-cf2ddbc30ead",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -117.195747999998,
-                                "lat": 34.05618899999943
-                            }
-                        ]
-                    },
-                    "06d9c159-4d02-4c30-b035-e91d5365c89a": {
-                        "id": "06d9c159-4d02-4c30-b035-e91d5365c89a",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -117.19576699999804,
-                                "lat": 34.056110999999426
-                            }
-                        ]
-                    },
-                    "1cadb1af-14fd-4334-9018-40e7da648e9d": {
-                        "id": "1cadb1af-14fd-4334-9018-40e7da648e9d",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -117.19590399999802,
-                                "lat": 34.05600899999943
-                            }
-                        ]
-                    },
-                    "ce0110a8-f85a-4313-b18f-385d75455340": {
-                        "id": "ce0110a8-f85a-4313-b18f-385d75455340",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -117.19569999999803,
-                                "lat": 34.056075999999415
-                            }
-                        ]
-                    },
-                    "c4f093c9-f7ac-4a5a-931b-5551f4341ab6": {
-                        "id": "c4f093c9-f7ac-4a5a-931b-5551f4341ab6",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -117.195643999998,
-                                "lat": 34.05600699999945
-                            }
-                        ]
-                    },
-                    "1ef29507-f2b7-4256-b126-9df87a8f04c1": {
-                        "id": "1ef29507-f2b7-4256-b126-9df87a8f04c1",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -117.19509699999803,
-                                "lat": 34.05664699999943
-                            }
-                        ]
-                    },
-                    "dde89e5f-58ed-4d17-9202-b066898042f5": {
-                        "id": "dde89e5f-58ed-4d17-9202-b066898042f5",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -117.19423799999802,
-                                "lat": 34.05676199999943
-                            }
-                        ]
-                    },
-                    "7b8bd639-9af5-4c76-99e8-2e0a433a959f": {
-                        "id": "7b8bd639-9af5-4c76-99e8-2e0a433a959f",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -117.19486599999803,
-                                "lat": 34.05696199999943
-                            }
-                        ]
-                    },
-                    "a061db74-2ed5-4be3-8a14-582c570835c4": {
-                        "id": "a061db74-2ed5-4be3-8a14-582c570835c4",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -117.195385999998,
-                                "lat": 34.05676199999943
-                            }
-                        ]
-                    },
-                    "19a9929c-33c0-4801-aeb5-a86726f28c42": {
-                        "id": "19a9929c-33c0-4801-aeb5-a86726f28c42",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -117.19559499999801,
-                                "lat": 34.05692699999942
-                            }
-                        ]
-                    },
-                    "01b62b1c-6795-4073-a0d9-6544c180f0ca": {
-                        "id": "01b62b1c-6795-4073-a0d9-6544c180f0ca",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -117.19604099999802,
-                                "lat": 34.056952999999446
-                            }
-                        ]
-                    },
-                    "ad345430-a8ff-4b90-a227-745feb911117": {
-                        "id": "ad345430-a8ff-4b90-a227-745feb911117",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -117.19637299999802,
-                                "lat": 34.05707799999943
-                            }
-                        ]
-                    },
-                    "70c9044b-cc87-43ad-bb66-f992c6989be6": {
-                        "id": "70c9044b-cc87-43ad-bb66-f992c6989be6",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -117.19642199999802,
-                                "lat": 34.05717999999943
-                            }
-                        ]
-                    },
-                    "f489ad87-09a0-49f2-b72b-53c0fefde68b": {
-                        "id": "f489ad87-09a0-49f2-b72b-53c0fefde68b",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -117.19661499999803,
-                                "lat": 34.05721099999942
-                            }
-                        ]
-                    },
-                    "16a5a07f-cd90-40d8-9254-ac1aa78b0f10": {
-                        "id": "16a5a07f-cd90-40d8-9254-ac1aa78b0f10",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -117.19706499999799,
-                                "lat": 34.05710899999943
-                            }
-                        ]
-                    },
-                    "e1b1d44a-0e1b-4154-8ead-8e6cdef93e23": {
-                        "id": "e1b1d44a-0e1b-4154-8ead-8e6cdef93e23",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -117.19807399999802,
-                                "lat": 34.055983999999434
-                            }
-                        ]
-                    },
-                    "75202d39-b281-40cf-a09d-7f101fd5ad79": {
-                        "id": "75202d39-b281-40cf-a09d-7f101fd5ad79",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -117.19711099999803,
-                                "lat": 34.05609599999944
-                            }
-                        ]
-                    },
-                    "1fc39af3-77fa-4d1d-a356-feb70b319350": {
-                        "id": "1fc39af3-77fa-4d1d-a356-feb70b319350",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -117.19726899999802,
-                                "lat": 34.05650899999942
-                            }
-                        ]
-                    },
-                    "f08675ad-f94e-47e8-b9c1-961ed3540abc": {
-                        "id": "f08675ad-f94e-47e8-b9c1-961ed3540abc",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -117.19599999999802,
-                                "lat": 34.056561999999424
-                            }
-                        ]
-                    },
-                    "5abf65a1-48c5-4f2f-a3eb-903a01d69d01": {
-                        "id": "5abf65a1-48c5-4f2f-a3eb-903a01d69d01",
-                        "type": "POINT_NUMBERED_TOUR",
-                        "nodes": [
-                            {
-                                "long": -117.19563599999802,
-                                "lat": 34.056339999999416
-                            }
-                        ]
                     }
                 },
                 "mode": "2d",
                 "basemap": {
                     "type": "resource",
-                    "value": "r-3eb4ba"
+                    "value": "r-32ecd9"
                 }
             }
         },
-        "n-c58ebd": {
+        "n-2a5690": {
             "type": "image",
             "data": {
-                "image": "r-029333"
+                "image": "r-23ebf9"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-2b50b5": {
+        "n-f342e3": {
             "type": "image",
             "data": {
-                "image": "r-17a9dd"
+                "image": "r-4ca075"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-bc020f": {
+        "n-2b19b5": {
             "type": "image",
             "data": {
-                "image": "r-10b164"
+                "image": "r-e86338"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-275f4d": {
-            "type": "image",
-            "data": {
-                "image": "r-9efb99"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-3cca46": {
-            "type": "image",
-            "data": {
-                "image": "r-2a9136"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-ce5578": {
-            "type": "image",
-            "data": {
-                "image": "r-109c84"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-579a30": {
-            "type": "image",
-            "data": {
-                "image": "r-6a5886"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-703b4c": {
-            "type": "image",
-            "data": {
-                "image": "r-d4a698"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-7e3f2f": {
-            "type": "image",
-            "data": {
-                "image": "r-76c2e4"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-4b7661": {
-            "type": "image",
-            "data": {
-                "image": "r-f69005"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-bbc255": {
-            "type": "image",
-            "data": {
-                "image": "r-f1be32"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-474e86": {
-            "type": "image",
-            "data": {
-                "image": "r-a34a1c"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-cf7c00": {
-            "type": "image",
-            "data": {
-                "image": "r-4a1849"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-2df88d": {
-            "type": "image",
-            "data": {
-                "image": "r-b49a9a"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-9e94c7": {
-            "type": "image",
-            "data": {
-                "image": "r-154906"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-a87802": {
-            "type": "image",
-            "data": {
-                "image": "r-8727e2"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-72cb01": {
-            "type": "image",
-            "data": {
-                "image": "r-2d14bc"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-3041fc": {
-            "type": "image",
-            "data": {
-                "image": "r-4d6384"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-4a5224": {
-            "type": "image",
-            "data": {
-                "image": "r-f1e388"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-c60453": {
-            "type": "image",
-            "data": {
-                "image": "r-928c7b"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-dec7de": {
-            "type": "image",
-            "data": {
-                "image": "r-3e402e"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-fe68cf": {
-            "type": "image",
-            "data": {
-                "image": "r-a24034"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-a60e69": {
-            "type": "image",
-            "data": {
-                "image": "r-265a3c"
-            },
-            "config": {
-                "size": "standard"
-            }
-        },
-        "n-d0a706": {
+        "n-362f72": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-c58ebd"
+                "n-2a5690"
             ]
         },
-        "n-fce199": {
+        "n-023953": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-2b50b5"
+                "n-f342e3"
             ]
         },
-        "n-7e42ab": {
+        "n-2edaba": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-bc020f"
+                "n-2b19b5"
             ]
         },
-        "n-f057b5": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-275f4d"
-            ]
-        },
-        "n-9b75f2": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-3cca46"
-            ]
-        },
-        "n-35bce2": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-ce5578"
-            ]
-        },
-        "n-d403fa": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-579a30"
-            ]
-        },
-        "n-e20d46": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-703b4c"
-            ]
-        },
-        "n-8b10c5": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-7e3f2f"
-            ]
-        },
-        "n-cc1aee": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-4b7661"
-            ]
-        },
-        "n-4d9e93": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-bbc255"
-            ]
-        },
-        "n-77e91c": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-474e86"
-            ]
-        },
-        "n-fa2828": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-cf7c00"
-            ]
-        },
-        "n-261d9f": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-2df88d"
-            ]
-        },
-        "n-7d8cfd": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-9e94c7"
-            ]
-        },
-        "n-ae50cb": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-a87802"
-            ]
-        },
-        "n-687b97": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-72cb01"
-            ]
-        },
-        "n-e7bbe3": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-3041fc"
-            ]
-        },
-        "n-1c7bb7": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-4a5224"
-            ]
-        },
-        "n-0feb82": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-c60453"
-            ]
-        },
-        "n-ee5f7b": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-dec7de"
-            ]
-        },
-        "n-90003c": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-fe68cf"
-            ]
-        },
-        "n-efb725": {
-            "type": "carousel",
-            "config": {},
-            "data": {},
-            "children": [
-                "n-a60e69"
-            ]
-        },
-        "n-728eca": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Sidewalk",
-                "textAlignment": "start"
-            }
-        },
-        "n-d8167f": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "Sunrise streaks the New York Street sidewalk at the north edge of Esri's campus in Redlands, California.",
-                "textAlignment": "start"
-            }
-        },
-        "n-48c0d0": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "New York Street",
-                "textAlignment": "start"
-            }
-        },
-        "n-3e0d49": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "The headquarters building, completed in 2010, unifies the campus. New York Street used to bisect the campus, but a portion of the street was closed, and the building straddles the old right of way.",
-                "textAlignment": "start"
-            }
-        },
-        "n-926af4": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Palms",
-                "textAlignment": "start"
-            }
-        },
-        "n-3f35a2": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "Stately palm trees line New York Street and frame views of the headquarters building.",
-                "textAlignment": "start"
-            }
-        },
-        "n-045aaa": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Wild iris",
-                "textAlignment": "start"
-            }
-        },
-        "n-e3126b": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "An iris blooms in an artificial pond by the entrance to headquarters, called Building Q.",
-                "textAlignment": "start"
-            }
-        },
-        "n-58fe11": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "View from the atrium",
-                "textAlignment": "start"
-            }
-        },
-        "n-a90d79": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "A four-story glass atrium affords views of New York Street and Redlands. A second-floor lounge faces north.",
-                "textAlignment": "start"
-            }
-        },
-        "n-e5118a": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Auditorium",
-                "textAlignment": "start"
-            }
-        },
-        "n-960d1c": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "An intimate auditorium is used for company and Redlands community events.",
-                "textAlignment": "start"
-            }
-        },
-        "n-4b868b": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Atrium view",
-                "textAlignment": "start"
-            }
-        },
-        "n-55c094": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "Looking south through the glass atrium wall.",
-                "textAlignment": "start"
-            }
-        },
-        "n-193058": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Staircase",
-                "textAlignment": "start"
-            }
-        },
-        "n-3a450c": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "A dramatic cantilevered staircase dominates the Building Q Atrium.",
-                "textAlignment": "start"
-            }
-        },
-        "n-58e67c": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Geography",
-                "textAlignment": "start"
-            }
-        },
-        "n-0b2a0f": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "Near a back entrance to Esri's Cafe is this ivy-framed paean to the discipline that underlies Esri's products.",
-                "textAlignment": "start"
-            }
-        },
-        "n-d826f6": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Landscaping for people",
-                "textAlignment": "start"
-            }
-        },
-        "n-1ec983": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "Esri's campus has numerous outdoor seating areas to encourage impromptu al fresco meetings.",
-                "textAlignment": "start"
-            }
-        },
-        "n-902fba": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Geranium and Building L",
-                "textAlignment": "start"
-            }
-        },
-        "n-738cb9": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "A bright flowering plant accents the entrance to Building L on the east side of the campus.",
-                "textAlignment": "start"
-            }
-        },
-        "n-004bcb": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Inside the Cafe",
-                "textAlignment": "start"
-            }
-        },
-        "n-f74915": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "The Cafe is a light-filled gathering place for coffee, lunch, and special events.",
-                "textAlignment": "start"
-            }
-        },
-        "n-6781ab": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Glass and rock",
-                "textAlignment": "start"
-            }
-        },
-        "n-f917ab": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "Boulders provide a contrast to the clean lines of the Cafe. Landscape architect and Esri founder Jack Dangermond personally supervised their placement.",
-                "textAlignment": "start"
-            }
-        },
-        "n-a3d5a5": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Flowering palm",
-                "textAlignment": "start"
-            }
-        },
-        "n-0203af": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "An ornamental palm near the entrance to building M",
-                "textAlignment": "start"
-            }
-        },
-        "n-bf1312": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Building M hallway",
-                "textAlignment": "start"
-            }
-        },
-        "n-1b0379": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "A typical Esri office area features wide hallways and small glassed-in offices, encouraging interaction among staff.",
-                "textAlignment": "start"
-            }
-        },
-        "n-8b4192": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Courtyard pond",
-                "textAlignment": "start"
-            }
-        },
-        "n-adad51": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "The peaceful courtyard between Buildings M and MA includes this artifical wetland.",
-                "textAlignment": "start"
-            }
-        },
-        "n-ada4a6": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Sunning turtles",
-                "textAlignment": "start"
-            }
-        },
-        "n-84ee48": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "The pond is home to several sun-seeking red-eared turtles.",
-                "textAlignment": "start"
-            }
-        },
-        "n-91cbdd": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Architecture as backdrop",
-                "textAlignment": "start"
-            }
-        },
-        "n-c4053d": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "Most of Esri's buildings are dark and unobtrusive, emphasizing the naturalistic landscape.",
-                "textAlignment": "start"
-            }
-        },
-        "n-4fb974": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Working out",
-                "textAlignment": "start"
-            }
-        },
-        "n-3146d2": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "An ivy-colored gym at the campus's west end provides exercise equipment.",
-                "textAlignment": "start"
-            }
-        },
-        "n-bd7256": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Living with nature",
-                "textAlignment": "start"
-            }
-        },
-        "n-0bf89b": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "Building OA's dark walls set off a tree and a hummingbird feeder.",
-                "textAlignment": "start"
-            }
-        },
-        "n-6560f9": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Artwork",
-                "textAlignment": "start"
-            }
-        },
-        "n-7d0a80": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "A mobile stands near the entrance to Building O.",
-                "textAlignment": "start"
-            }
-        },
-        "n-dec6ea": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Building Q",
-                "textAlignment": "start"
-            }
-        },
-        "n-985286": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "The headquarters building is a dramatic exception to the subdued architecture of most of the campus. It was designed by the Danish firm HVIDT ARKITEKTER.",
-                "textAlignment": "start"
-            }
-        },
-        "n-c4ea6e": {
-            "type": "text",
-            "data": {
-                "type": "h3",
-                "text": "Headquarters entrance",
-                "textAlignment": "start"
-            }
-        },
-        "n-1e4daa": {
-            "type": "text",
-            "data": {
-                "type": "paragraph",
-                "text": "A return to the main entrance of Building Q brings our campus tour to a close. We hope you can visit in person soon!",
-                "textAlignment": "start"
-            }
-        },
-        "n-c498be": {
+        "n-0170fa": {
             "type": "tour",
             "data": {
                 "type": "explorer",
-                "subtype": "list",
+                "subtype": "grid",
                 "narrativePanelPosition": "start",
-                "map": "n-11dc60",
+                "map": "n-1e7e25",
                 "places": [
                     {
-                        "id": "c2f0517d-2bf4-4890-bb00-e9838ace3ed6",
-                        "featureId": "111ff98e-7df5-4370-a36f-bad127d66dc6",
+                        "id": "b9e99ce7-1f5c-4654-8273-41c55b93dfc9",
+                        "featureId": "ea909083-2930-4426-8367-5c8d20d81cca",
                         "contents": [
-                            "n-d8167f"
+                            "n-6d90ac"
                         ],
-                        "media": "n-d0a706",
-                        "title": "n-728eca"
+                        "media": "n-362f72",
+                        "title": "n-d5c36c"
                     },
                     {
-                        "id": "3b752b85-5108-4f23-bb70-763a2f3ec2b0",
-                        "featureId": "20a79074-18dc-4ab6-ae60-692abee859eb",
+                        "id": "39c78b22-6216-4bf8-b7eb-d2d98f42e117",
+                        "featureId": "8cc2cf71-b65f-447b-8f40-f1911603939c",
                         "contents": [
-                            "n-3e0d49"
+                            "n-8ddfaa"
                         ],
-                        "media": "n-fce199",
-                        "title": "n-48c0d0"
+                        "media": "n-023953",
+                        "title": "n-afe172"
                     },
                     {
-                        "id": "9a4e38d2-0e31-4fd0-ab37-217170ed0862",
-                        "featureId": "d36ee02e-d517-47fc-a68c-b77430206e4b",
+                        "id": "1c43da51-d07a-4b0c-a839-ac336b719b1b",
+                        "featureId": "a5e8a1dd-a49a-4dfc-a42f-e75a9c614b80",
                         "contents": [
-                            "n-3f35a2"
+                            "n-9437e9"
                         ],
-                        "media": "n-7e42ab",
-                        "title": "n-926af4"
-                    },
-                    {
-                        "id": "1ead6064-edd9-4737-9bbe-f7a8fddadff2",
-                        "featureId": "ec06fb81-3b75-4f45-80cb-cf2ddbc30ead",
-                        "contents": [
-                            "n-e3126b"
-                        ],
-                        "media": "n-f057b5",
-                        "title": "n-045aaa"
-                    },
-                    {
-                        "id": "be2820e0-d648-457b-881a-01cfb0826d42",
-                        "featureId": "06d9c159-4d02-4c30-b035-e91d5365c89a",
-                        "contents": [
-                            "n-a90d79"
-                        ],
-                        "media": "n-9b75f2",
-                        "title": "n-58fe11"
-                    },
-                    {
-                        "id": "b358652d-c589-4a39-9046-9760245429f7",
-                        "featureId": "1cadb1af-14fd-4334-9018-40e7da648e9d",
-                        "contents": [
-                            "n-960d1c"
-                        ],
-                        "media": "n-35bce2",
-                        "title": "n-e5118a"
-                    },
-                    {
-                        "id": "bdc43cb2-2daa-437a-bd2f-4c44e8ef84fe",
-                        "featureId": "ce0110a8-f85a-4313-b18f-385d75455340",
-                        "contents": [
-                            "n-55c094"
-                        ],
-                        "media": "n-d403fa",
-                        "title": "n-4b868b"
-                    },
-                    {
-                        "id": "cc681f22-e977-48c8-8b2c-c5c19c186dae",
-                        "featureId": "c4f093c9-f7ac-4a5a-931b-5551f4341ab6",
-                        "contents": [
-                            "n-3a450c"
-                        ],
-                        "media": "n-e20d46",
-                        "title": "n-193058"
-                    },
-                    {
-                        "id": "f50d9f01-b485-47c0-ad02-a5319c6a71c6",
-                        "featureId": "1ef29507-f2b7-4256-b126-9df87a8f04c1",
-                        "contents": [
-                            "n-0b2a0f"
-                        ],
-                        "media": "n-8b10c5",
-                        "title": "n-58e67c"
-                    },
-                    {
-                        "id": "1555ebd7-8940-4e14-8782-1fa4230a2e05",
-                        "featureId": "dde89e5f-58ed-4d17-9202-b066898042f5",
-                        "contents": [
-                            "n-1ec983"
-                        ],
-                        "media": "n-cc1aee",
-                        "title": "n-d826f6"
-                    },
-                    {
-                        "id": "a864604b-9565-41c8-a6ae-efef9ad514ae",
-                        "featureId": "7b8bd639-9af5-4c76-99e8-2e0a433a959f",
-                        "contents": [
-                            "n-738cb9"
-                        ],
-                        "media": "n-4d9e93",
-                        "title": "n-902fba"
-                    },
-                    {
-                        "id": "dabb3d4f-6021-4e72-84b4-a526f789a817",
-                        "featureId": "a061db74-2ed5-4be3-8a14-582c570835c4",
-                        "contents": [
-                            "n-f74915"
-                        ],
-                        "media": "n-77e91c",
-                        "title": "n-004bcb"
-                    },
-                    {
-                        "id": "2935881b-a10d-4663-ba18-6b14af28dc19",
-                        "featureId": "19a9929c-33c0-4801-aeb5-a86726f28c42",
-                        "contents": [
-                            "n-f917ab"
-                        ],
-                        "media": "n-fa2828",
-                        "title": "n-6781ab"
-                    },
-                    {
-                        "id": "36b1bd1e-e1e4-4baa-a135-9fbbd738001e",
-                        "featureId": "01b62b1c-6795-4073-a0d9-6544c180f0ca",
-                        "contents": [
-                            "n-0203af"
-                        ],
-                        "media": "n-261d9f",
-                        "title": "n-a3d5a5"
-                    },
-                    {
-                        "id": "29c832ba-6dd3-4690-a5af-588cf96de16f",
-                        "featureId": "ad345430-a8ff-4b90-a227-745feb911117",
-                        "contents": [
-                            "n-1b0379"
-                        ],
-                        "media": "n-7d8cfd",
-                        "title": "n-bf1312"
-                    },
-                    {
-                        "id": "60840b11-23e5-404d-9bd7-0eb9480d6792",
-                        "featureId": "70c9044b-cc87-43ad-bb66-f992c6989be6",
-                        "contents": [
-                            "n-adad51"
-                        ],
-                        "media": "n-ae50cb",
-                        "title": "n-8b4192"
-                    },
-                    {
-                        "id": "a31648e0-6949-49f8-ad97-566e071d6389",
-                        "featureId": "f489ad87-09a0-49f2-b72b-53c0fefde68b",
-                        "contents": [
-                            "n-84ee48"
-                        ],
-                        "media": "n-687b97",
-                        "title": "n-ada4a6"
-                    },
-                    {
-                        "id": "c7ff9ada-d7b3-4948-8a67-b5c8cde76682",
-                        "featureId": "16a5a07f-cd90-40d8-9254-ac1aa78b0f10",
-                        "contents": [
-                            "n-c4053d"
-                        ],
-                        "media": "n-e7bbe3",
-                        "title": "n-91cbdd"
-                    },
-                    {
-                        "id": "33299b85-984a-4837-97b7-6a205eecc76e",
-                        "featureId": "e1b1d44a-0e1b-4154-8ead-8e6cdef93e23",
-                        "contents": [
-                            "n-3146d2"
-                        ],
-                        "media": "n-1c7bb7",
-                        "title": "n-4fb974"
-                    },
-                    {
-                        "id": "443b7c63-f266-408b-99be-2f71d29d5c03",
-                        "featureId": "75202d39-b281-40cf-a09d-7f101fd5ad79",
-                        "contents": [
-                            "n-0bf89b"
-                        ],
-                        "media": "n-0feb82",
-                        "title": "n-bd7256"
-                    },
-                    {
-                        "id": "35d01f1c-1f15-44a8-b54b-7c1bba8b1266",
-                        "featureId": "1fc39af3-77fa-4d1d-a356-feb70b319350",
-                        "contents": [
-                            "n-7d0a80"
-                        ],
-                        "media": "n-ee5f7b",
-                        "title": "n-6560f9"
-                    },
-                    {
-                        "id": "ce2ec85a-733e-43d1-ab09-759f51bf0667",
-                        "featureId": "f08675ad-f94e-47e8-b9c1-961ed3540abc",
-                        "contents": [
-                            "n-985286"
-                        ],
-                        "media": "n-90003c",
-                        "title": "n-dec6ea"
-                    },
-                    {
-                        "id": "6ef2b718-4817-4fe1-918a-0ea91b6017e1",
-                        "featureId": "5abf65a1-48c5-4f2f-a3eb-903a01d69d01",
-                        "contents": [
-                            "n-1e4daa"
-                        ],
-                        "media": "n-efb725",
-                        "title": "n-c4ea6e"
+                        "media": "n-2edaba",
+                        "title": "n-75d14d"
                     }
                 ],
                 "narrativePanelSize": "medium",
                 "accentColor": "#f9f794"
             }
         },
-        "n-9fe9ec": {
-            "type": "credits",
-            "children": []
-        },
-        "n-e04084": {
+        "n-9b0ae9": {
             "type": "story",
             "data": {
-                "storyTheme": "r-30aa9a"
+                "storyTheme": "r-ce8774"
             },
             "children": [
-                "n-65c2d3",
-                "n-32121b",
-                "n-9fe9ec",
-                "n-11dc60",
-                "n-c498be"
+                "n-df7b8b",
+                "n-067dab",
+                "n-9305bb",
+                "n-0170fa",
+                "n-1e7e25"
             ]
         }
     },
     "resources": {
-        "r-30aa9a": {
+        "r-ce8774": {
             "type": "story-theme",
             "data": {
                 "themeId": "summit"
             }
         },
-        "r-029333": {
+        "r-23ebf9": {
             "type": "image",
             "data": {
                 "resourceId": "place_001_img.jpg",
@@ -1274,7 +234,7 @@
                 "width": 1024
             }
         },
-        "r-17a9dd": {
+        "r-4ca075": {
             "type": "image",
             "data": {
                 "resourceId": "place_002_img.jpg",
@@ -1283,7 +243,7 @@
                 "width": 1024
             }
         },
-        "r-10b164": {
+        "r-e86338": {
             "type": "image",
             "data": {
                 "resourceId": "place_003_img.jpg",
@@ -1292,191 +252,11 @@
                 "width": 1024
             }
         },
-        "r-9efb99": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_004_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-2a9136": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_005_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-109c84": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_006_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-6a5886": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_007_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-d4a698": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_008_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-76c2e4": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_009_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-f69005": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_010_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-f1be32": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_011_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-a34a1c": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_012_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-4a1849": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_013_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-b49a9a": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_014_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-154906": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_015_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-8727e2": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_016_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-2d14bc": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_017_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-4d6384": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_018_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-f1e388": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_019_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-928c7b": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_020_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-3e402e": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_021_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-a24034": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_022_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-265a3c": {
-            "type": "image",
-            "data": {
-                "resourceId": "place_023_img.jpg",
-                "provider": "item-resource",
-                "height": 1024,
-                "width": 1024
-            }
-        },
-        "r-3eb4ba": {
+        "r-32ecd9": {
             "type": "webmap",
             "data": {
                 "type": "minimal",
-                "itemId": "680415c1370949f28bf03879cce97831",
+                "itemId": "bd22f0276f96433e945aefd5b4f48e03",
                 "itemType": "webmap"
             }
         }
