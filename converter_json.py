@@ -1227,6 +1227,7 @@ class MapTourJSONConverter:
             geom_id = str(uuid.uuid4())
             x = feature["geometry"]["x"]
             y = feature["geometry"]["y"]
+            sr = feature["geometry"]["spatialReference"] # Dict: can be {"wkid": int} or {"wkt": str}
             # Convert coordinate systems if necessary
             if is_webmercator(x, y):
                 long, lat = webmercator_to_wgs84(x, y)
@@ -1243,8 +1244,8 @@ class MapTourJSONConverter:
 
             # Convert attributes
             attrs = feature["attributes"]
-            title_text = get_attr_from_list(attrs, ["name", "NAME"])
-            description_text = get_attr_from_list(attrs, ["description", "DESCRIPTION", "DESC1", "CAPTION"])
+            title_text = get_attr_from_list(attrs, ["name", "NAME", "Name"])
+            description_text = get_attr_from_list(attrs, ["description", "DESCRIPTION", "Description", "DESC1", "CAPTION"])
             attribution_text = get_attr_from_list(attrs, ["PHOTO_CREDIT"])
 
             # Place Title node (not added to story root)
