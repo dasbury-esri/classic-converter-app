@@ -10,6 +10,7 @@ to create the new StoryMap item.
 
 import json
 import os
+import base64
 import re
 import urllib.request
 import uuid
@@ -1228,7 +1229,8 @@ class MapTourJSONConverter:
             geom_id = str(uuid.uuid4())
             x = feature["geometry"]["x"]
             y = feature["geometry"]["y"]
-            sr = feature["geometry"]["spatialReference"] # Dict: can be {"wkid": int} or {"wkt": str}
+            if "spatialReference" in feature["geometry"]:
+                sr = feature["geometry"]["spatialReference"] # Dict: can be {"wkid": int} or {"wkt": str}
             # Convert coordinate systems if necessary
             if is_webmercator(x, y):
                 long, lat = webmercator_to_wgs84(x, y)
@@ -1258,7 +1260,7 @@ class MapTourJSONConverter:
             contents = [content_node_id]
 
             # Place Media node (image inside a carousel)
-            pic_filename = f"place_{i+1:03d}_img.jpg"
+            pic_filename = self.filenames_per_feature[i]
             resource_name = self.image_resource_map.get(pic_filename, pic_filename)
             image_node_id = self.builder.create_detached_node(create_image_node(resource_name, attribution=attribution_text))
             media_node_id = self.builder.create_detached_node(create_carousel_node([image_node_id]))
@@ -1381,7 +1383,7 @@ class MapTourJSONConverter:
     
     def _transfer_images(self) -> Dict[str, str]:
         """
-        Fetch externally hosted images and upload them to AGO resources in memory.
+        Fetch externally hosted images and upload them to AGO resources (in memory).
         
         Returns a dict mapping filenames to resource names.
         """
@@ -1403,6 +1405,7 @@ class MapTourJSONConverter:
                 if layer.get('title') == "Map Tour layer" and 'url' in layer:
                     feature_service_url = layer['url']
 
+        filenames_per_feature = []
         for i, feature in enumerate(feature_set["features"]):
             attrs = feature.get("attributes", {})
             objectid = attrs.get("objectid") or attrs.get("OBJECTID")
@@ -1410,8 +1413,8 @@ class MapTourJSONConverter:
             attrs = feature["attributes"]
             img_url = get_attr_from_list(attrs, ["url", "URL", "pic_url", "PIC_URL"])
 
-
-            filename = f"place_{i+1:03d}_img.jpg"
+            uid = base64.urlsafe_b64encode(os.urandom(4)).decode()[:6]  # e.g. 'Qk9v1A'
+            filename = f"place_{i+1:03d}_{uid}.jpg"
             # Case 1: image from URL
             if img_url:
                 try:
