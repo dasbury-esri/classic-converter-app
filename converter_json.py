@@ -1384,7 +1384,7 @@ class MapTourJSONConverter:
     def _transfer_images(self) -> Dict[str, str]:
         """
         Fetch externally hosted images and upload them to AGO resources (in memory).
-        
+        Avoid uploading duplicate images; reuse resource for repeated references.
         Returns a dict mapping filenames to resource names.
         """
         if not self.target_story_id:
@@ -1392,11 +1392,12 @@ class MapTourJSONConverter:
         image_resource_map = {}
         feature_set = self._get_feature_set()
         if not feature_set or "features" not in feature_set:
+            self.filenames_per_feature = []
             return image_resource_map
-    
+
         add_resource_url = f"https://www.arcgis.com/sharing/rest/content/users/{self.gis.properties.user.username}/items/{self.target_story_id}/addResources"
         token = self.gis._con.token if self.gis else None
-    
+
         # Get feature service URL if present
         webmap_json = self._get_webmap_json()
         feature_service_url = None
@@ -1405,7 +1406,10 @@ class MapTourJSONConverter:
                 if layer.get('title') == "Map Tour layer" and 'url' in layer:
                     feature_service_url = layer['url']
 
+        # Track seen images by URL or attachment ID
+        seen_images = {}  # key: img_url or (feature_service_url, objectid, att_id) -> (filename, resource_id)
         filenames_per_feature = []
+
         for i, feature in enumerate(feature_set["features"]):
             attrs = feature.get("attributes", {})
             objectid = attrs.get("objectid") or attrs.get("OBJECTID")
@@ -1413,35 +1417,42 @@ class MapTourJSONConverter:
             attrs = feature["attributes"]
             img_url = get_attr_from_list(attrs, ["url", "URL", "pic_url", "PIC_URL"])
 
-            uid = base64.urlsafe_b64encode(os.urandom(4)).decode()[:6]  # e.g. 'Qk9v1A'
-            filename = f"place_{i+1:03d}_{uid}.jpg"
             # Case 1: image from URL
             if img_url:
-                try:
-                    response = requests.get(img_url, timeout=10)
-                    if response.status_code == 200:
-                        files = {"file": (filename, response.content)}
-                        params = {
-                            "f": "json",
-                            "token": token,
-                            "fileName": filename
-                        }
-                        upload_response = requests.post(add_resource_url, files=files, data=params)
-                        if upload_response.status_code == 200 and upload_response.json().get("success"):
-                            # Create resource and store resource ID
-                            resource = create_image_resource(filename)
-                            resource_id = self.builder.add_resource(resource)
-                            image_resource_map[filename] = resource_id
-                            print(f"Uploaded resource: {filename}")
+                if img_url in seen_images:
+                    filename, resource_id = seen_images[img_url]
+                else:
+                    uid = base64.urlsafe_b64encode(os.urandom(4)).decode()[:6]
+                    filename = f"place_{i+1:03d}_{uid}.jpg"
+                    try:
+                        response = requests.get(img_url, timeout=10)
+                        if response.status_code == 200:
+                            files = {"file": (filename, response.content)}
+                            params = {
+                                "f": "json",
+                                "token": token,
+                                "fileName": filename
+                            }
+                            upload_response = requests.post(add_resource_url, files=files, data=params)
+                            if upload_response.status_code == 200 and upload_response.json().get("success"):
+                                resource = create_image_resource(filename)
+                                resource_id = self.builder.add_resource(resource)
+                                print(f"Uploaded resource: {filename}")
+                            else:
+                                print(f"Failed to upload resource: {filename}. Response: {upload_response.text}")
+                                resource_id = filename  # fallback
                         else:
-                            print(f"Failed to upload resource: {filename}. Response: {upload_response.text}")
-                    else:
-                        print(f"Failed to fetch image: {img_url}")
-                except Exception as e:
-                    print(f"Error fetching/uploading image {img_url}: {e}")
-                pass
+                            print(f"Failed to fetch image: {img_url}")
+                            resource_id = filename  # fallback
+                    except Exception as e:
+                        print(f"Error fetching/uploading image {img_url}: {e}")
+                        resource_id = filename  # fallback
+                    seen_images[img_url] = (filename, resource_id)
+                filenames_per_feature.append(filename)
+                image_resource_map[filename] = resource_id
             # Case 2: Feature service attachments
             elif feature_service_url and objectid:
+                # Get attachment info
                 attachments_url = f"{feature_service_url}/{objectid}/attachments?f=json"
                 if token:
                     attachments_url += f"&token={token}"
@@ -1449,38 +1460,57 @@ class MapTourJSONConverter:
                     att_response = requests.get(attachments_url)
                     if att_response.status_code == 200:
                         att_json = att_response.json()
+                        found_valid = False
                         for att in att_json.get("attachmentInfos", []):
                             att_id = att["id"]
                             att_content_type = att.get("contentType", "")
                             # Only process valid image types
                             if att_content_type not in ["image/jpeg", "image/png", "image/gif"]:
                                 print(f"Skipping attachment {att['name']} (unsupported type: {att_content_type})")
-                                continue    
-                            att_download_url = f"{feature_service_url}/{objectid}/attachments/{att_id}?token={token}"
-                            att_file_response = requests.get(att_download_url, stream=True)
-                            if att_file_response.status_code == 200:
-                                files = {"file": (filename, att_file_response.content)}
-                                params = {
-                                    "f": "json",
-                                    "token": token,
-                                    "fileName": filename
-                                }
-                                upload_response = requests.post(add_resource_url, files=files, data=params)
-                                if upload_response.status_code == 200 and upload_response.json().get("success"):
-                                    # Create resource and store resource ID
-                                    resource = create_image_resource(filename)
-                                    resource_id = self.builder.add_resource(resource)
-                                    image_resource_map[filename] = resource_id
-                                    print(f"Uploaded attachment: {filename}")
-                                else:
-                                    print(f"Failed to upload attachment: {filename}. Response: {upload_response.text}")
+                                continue
+                            att_key = (feature_service_url, objectid, att_id)
+                            if att_key in seen_images:
+                                filename, resource_id = seen_images[att_key]
                             else:
-                                print(f"Failed to download attachment: {att_download_url}")
+                                uid = base64.urlsafe_b64encode(os.urandom(4)).decode()[:6]
+                                filename = f"place_{i+1:03d}_{uid}.jpg"
+                                att_download_url = f"{feature_service_url}/{objectid}/attachments/{att_id}?token={token}"
+                                att_file_response = requests.get(att_download_url, stream=True)
+                                if att_file_response.status_code == 200:
+                                    files = {"file": (filename, att_file_response.content)}
+                                    params = {
+                                        "f": "json",
+                                        "token": token,
+                                        "fileName": filename
+                                    }
+                                    upload_response = requests.post(add_resource_url, files=files, data=params)
+                                    if upload_response.status_code == 200 and upload_response.json().get("success"):
+                                        resource = create_image_resource(filename)
+                                        resource_id = self.builder.add_resource(resource)
+                                        print(f"Uploaded attachment: {filename}")
+                                    else:
+                                        print(f"Failed to upload attachment: {filename}. Response: {upload_response.text}")
+                                        resource_id = filename  # fallback
+                                else:
+                                    print(f"Failed to download attachment: {att_download_url}")
+                                    resource_id = filename  # fallback
+                                seen_images[att_key] = (filename, resource_id)
+                            filenames_per_feature.append(filename)
+                            image_resource_map[filename] = resource_id
+                            found_valid = True
+                            break  # Only use first valid image attachment per feature
+                        if not found_valid:
+                            filenames_per_feature.append("")  # No valid image
                     else:
                         print(f"Failed to fetch attachments for objectid {objectid}")
+                        filenames_per_feature.append("")
                 except Exception as e:
                     print(f"Error fetching/uploading attachment for objectid {objectid}: {e}")
-        
+                    filenames_per_feature.append("")
+            else:
+                filenames_per_feature.append("")  # No image for this feature
+
+        self.filenames_per_feature = filenames_per_feature
         return image_resource_map
 
 # =====================================================================
