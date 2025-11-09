@@ -1218,11 +1218,21 @@ class MapTourJSONConverter:
             pass
 
     def convert(self) -> Dict[str, Any]:
-        # Get title
+        # Get classic attibutes
         item_attrs = self.classic_json.get('values', {})
-        title = get_attr_from_list(item_attrs, ['title',"headerLinkText"], 'Untitled MapTour')
+        templateName = item_attrs.get('template') 
+        templateVersion = item_attrs.get('templateVersion')
+        templateCreationVersion = item_attrs.get('templateCreation', templateVersion)
+        title = get_attr_from_list(item_attrs, ['title', "headerLinkText"], 'Untitled MapTour')
         subtitle = item_attrs.get('subtitle', '')
-        print(f"MapTour title: {title}\nTour subtitle: {subtitle} \nWebmap ID: {self.classic_json['values']['webmap']}")
+        versionStr = f"(v{templateVersion})" if templateVersion else ""
+        versionCreationStr = f"(created with v{templateCreationVersion})" if templateCreationVersion else ""
+        print(
+            f"Template: {templateName} {versionStr} {versionCreationStr}\n"
+            f" / Classic title: {title}\n"
+            f" / Classic subtitle: {subtitle}\n"
+            f" / Webmap ID: {self.classic_json['values']['webmap']}"
+        )
 
         # Get features 
         feature_set = self._get_feature_set()
@@ -1247,15 +1257,15 @@ class MapTourJSONConverter:
         # classic "side-panel" to AGSM tour_type = "guided-tour", subtype = "media-focused"
         tour_type = None
         subtype = None
-        # if self.classic_json['values']['layout'] == 'three-panel':
-        #     tour_type = "guided-tour",
-        #     subtype = "media-focused"
-        # if self.classic_json['values']['layout'] == 'integrated':
-        #     tour_type = "guided-tour",
-        #     subtype = "map-focused"
-        # if self.classic_json['values']['layout'] == 'side-panel':
-        #     tour_type = "guided-tour",
-        #     subtype = "media-focused"
+        if self.classic_json['values']['layout'] == 'three-panel':
+            tour_type = "guided-tour"
+            subtype = "media-focused"
+        if self.classic_json['values']['layout'] == 'integrated':
+            tour_type = "guided-tour"
+            subtype = "map-focused"
+        if self.classic_json['values']['layout'] == 'side-panel':
+            tour_type = "guided-tour"
+            subtype = "media-focused"
 
         # Create tour node (detached, not added to story root)
         tour_node = create_tour_node(
@@ -1367,7 +1377,7 @@ class MapTourJSONConverter:
         self.builder.set_theme(self.theme_id)
 
         print(f"Conversion complete")
-        return self.target_story_id, self.builder.get_json()
+        return self.target_story_id, self.webmap_json, self.builder.get_json()
   
     def _get_webmap_json(self) -> Optional[Dict[str, Any]]:
         try:
@@ -1397,7 +1407,7 @@ class MapTourJSONConverter:
                     print("Warning: No 'sourceLayer' found in classic_json['values'].")
                 else:
                     for layer in layers:
-                        if layer.get('id') or layer.get('title') == source_layer:
+                        if layer.get('id') == source_layer or layer.get('title') == source_layer:
                             print(f"Found layer with title matching sourceLayer: {source_layer}")
                             # Case 1: featureCollection
                             if 'featureCollection' in layer:
@@ -1643,10 +1653,10 @@ def convert_classic_to_json(classic_json: Dict[str, Any], theme_id: str = "summi
     result = converter.convert()
 
     # Unpack tuple if MapTourJSONConverter, else just JSON
-    if isinstance(result, tuple) and len(result) == 2:
-        target_story_id, storymap_json = result
+    if isinstance(result, tuple) and len(result) == 3:
+        target_story_id, webmap_json, storymap_json = result
     else:
-        target_story_id, storymap_json = None, result
+        target_story_id, webmap_json, storymap_json = None, None, result
 
     # Validate
     errors = validate_storymap_json(storymap_json)
@@ -1655,7 +1665,7 @@ def convert_classic_to_json(classic_json: Dict[str, Any], theme_id: str = "summi
         for error in errors:
             print(f"  - {error}")
 
-    return target_story_id,storymap_json
+    return target_story_id, webmap_json, storymap_json
 
 
 def save_json_to_file(storymap_json: Dict[str, Any], output_path: str) -> None:

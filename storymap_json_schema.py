@@ -37,13 +37,6 @@ def create_base_storymap_json() -> Dict[str, Any]:
     return {
         "root": root_node_id,
         "nodes": {
-            root_node_id: {
-                "type": "story",
-                "data": {
-                    "storyTheme": theme_resource_id  # Link to theme resource
-                },
-                "children": [cover_node_id, nav_node_id, credits_node_id]
-            },
             cover_node_id: {
                 "type": "storycover",  # NOT "cover"
                 "data": {
@@ -62,7 +55,14 @@ def create_base_storymap_json() -> Dict[str, Any]:
             credits_node_id: {
                 "type": "credits",
                 "children": []
-            }
+            },
+            root_node_id: {
+                "type": "story",
+                "data": {
+                    "storyTheme": theme_resource_id  # Link to theme resource
+                },
+                "children": [cover_node_id, nav_node_id, credits_node_id]
+            },
         },
         "resources": {
             theme_resource_id: {

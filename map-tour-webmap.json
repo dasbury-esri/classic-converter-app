@@ -1,0 +1,125 @@
+{
+    "operationalLayers": [
+        {
+            "id": "Timeline2024_3043",
+            "layerType": "ArcGISTiledMapServiceLayer",
+            "url": "https://tiles.arcgis.com/tiles/LLVEmB8Lsae3Um4s/arcgis/rest/services/Timeline2024/MapServer",
+            "visibility": true,
+            "opacity": 1,
+            "title": "Timeline2024",
+            "itemId": "8b603c7c6b1c43d7a526512ff16b6516",
+            "showLegend": false
+        },
+        {
+            "id": "maptour-layer1375977145438",
+            "layerType": "ArcGISFeatureLayer",
+            "url": "https://services.arcgis.com/LLVEmB8Lsae3Um4s/arcgis/rest/services/Time_Line_NAIP/FeatureServer/0",
+            "visibility": true,
+            "opacity": 1,
+            "title": "Map Tour layer",
+            "itemId": "71d8707298fe48658a36a388a1e5f6f3",
+            "popupInfo": {
+                "title": "arcgis.arcgis.MAP_TOUR: {name}",
+                "fieldInfos": [
+                    {
+                        "fieldName": "objectid",
+                        "label": "ObjectID",
+                        "isEditable": false,
+                        "tooltip": "",
+                        "visible": false,
+                        "format": null,
+                        "stringFieldOption": "textbox"
+                    },
+                    {
+                        "fieldName": "name",
+                        "label": "Name",
+                        "isEditable": true,
+                        "tooltip": "",
+                        "visible": true,
+                        "format": null,
+                        "stringFieldOption": "textbox"
+                    },
+                    {
+                        "fieldName": "description",
+                        "label": "Description",
+                        "isEditable": true,
+                        "tooltip": "",
+                        "visible": true,
+                        "format": null,
+                        "stringFieldOption": "textbox"
+                    },
+                    {
+                        "fieldName": "icon_color",
+                        "label": "Icon color",
+                        "isEditable": true,
+                        "tooltip": "",
+                        "visible": true,
+                        "format": null,
+                        "stringFieldOption": "textbox"
+                    },
+                    {
+                        "fieldName": "pic_url",
+                        "label": "Picture URL",
+                        "isEditable": true,
+                        "tooltip": "",
+                        "visible": true,
+                        "format": null,
+                        "stringFieldOption": "textbox"
+                    },
+                    {
+                        "fieldName": "thumb_url",
+                        "label": "Thumbnail URL",
+                        "isEditable": true,
+                        "tooltip": "",
+                        "visible": true,
+                        "format": null,
+                        "stringFieldOption": "textbox"
+                    }
+                ],
+                "description": null,
+                "showAttachments": true,
+                "mediaInfos": []
+            }
+        }
+    ],
+    "baseMap": {
+        "baseMapLayers": [
+            {
+                "id": "World_Imagery_1930",
+                "layerType": "ArcGISTiledMapServiceLayer",
+                "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+                "visibility": true,
+                "opacity": 0.25,
+                "title": "World_Imagery"
+            }
+        ],
+        "title": "Imagery"
+    },
+    "spatialReference": {
+        "wkid": 102100,
+        "latestWkid": 3857
+    },
+    "authoringApp": "WebMapViewer",
+    "authoringAppVersion": "2024.1",
+    "version": "2.30",
+    "applicationProperties": {
+        "viewing": {
+            "routing": {
+                "enabled": true
+            },
+            "measure": {
+                "enabled": true
+            },
+            "basemapGallery": {
+                "enabled": true
+            },
+            "search": {
+                "enabled": true,
+                "disablePlaceFinder": false,
+                "hintText": "Place or Address",
+                "layers": []
+            }
+        }
+    },
+    "_ssl": true
+}

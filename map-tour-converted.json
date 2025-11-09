@@ -1,29 +1,16 @@
 {
-    "root": "n-7302c0",
+    "root": "n-a661e9",
     "nodes": {
-        "n-7302c0": {
-            "type": "story",
-            "data": {
-                "storyTheme": "r-915be6"
-            },
-            "children": [
-                "n-2ded26",
-                "n-c52462",
-                "n-53cb13",
-                "n-082ac5",
-                "n-00da75"
-            ]
-        },
-        "n-2ded26": {
+        "n-a12516": {
             "type": "storycover",
             "data": {
                 "type": "minimal",
-                "title": "(CONVERSION) Pacific Ocean Science and Exploration",
-                "summary": "Come with us on a tour of some of the wildest, most exciting places being explored and studied in the world's largest ocean, the Pacific. Map by \"Deepsea Dawn\" Wright, dwright@esri.com.",
+                "title": "(CONVERSION) National Agriculture Imagery Program (NAIP) History 2002-2024",
+                "summary": "A look at important NAIP program changes and milestones throughout its 23 year history.  ",
                 "byline": ""
             }
         },
-        "n-c52462": {
+        "n-f8486d": {
             "type": "navigation",
             "data": {
                 "links": []
@@ -32,1017 +19,1526 @@
                 "isHidden": true
             }
         },
-        "n-53cb13": {
+        "n-064d1d": {
             "type": "credits",
             "children": []
         },
-        "n-00da75": {
+        "n-a661e9": {
+            "type": "story",
+            "data": {
+                "storyTheme": "r-8a43f6"
+            },
+            "children": [
+                "n-a12516",
+                "n-f8486d",
+                "n-064d1d",
+                "n-ff2a18",
+                "n-a5c24d"
+            ]
+        },
+        "n-a5c24d": {
             "type": "tour-map",
             "data": {
                 "geometries": {
-                    "3e005646-5916-4f0f-abff-b98d10467aad": {
-                        "id": "3e005646-5916-4f0f-abff-b98d10467aad",
+                    "3f3816f8-6c45-4db5-afce-edc60c361068": {
+                        "id": "3f3816f8-6c45-4db5-afce-edc60c361068",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -154.55565999999996,
-                                "lat": 15.488970000000002
+                                "long": -101.64373177795255,
+                                "lat": 40.51792838659268
                             }
                         ]
                     },
-                    "a93d2d30-cce2-435f-b8e7-3b8285c6f8bf": {
-                        "id": "a93d2d30-cce2-435f-b8e7-3b8285c6f8bf",
+                    "6043a689-1780-4d20-906c-0a861e09d614": {
+                        "id": "6043a689-1780-4d20-906c-0a861e09d614",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": 142.61099,
-                                "lat": 11.353809999999996
+                                "long": -101.64114707946644,
+                                "lat": 40.51998614323261
                             }
                         ]
                     },
-                    "d1975959-d73a-46e1-ae4a-325599442e27": {
-                        "id": "d1975959-d73a-46e1-ae4a-325599442e27",
+                    "dcd03cd3-7d2b-411e-a228-eaf75a147623": {
+                        "id": "dcd03cd3-7d2b-411e-a228-eaf75a147623",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -174.72566999999998,
-                                "lat": -23.226699999999997
+                                "long": -101.63806695251309,
+                                "lat": 40.51805888390966
                             }
                         ]
                     },
-                    "c58f4997-31a7-43bc-8586-b1787925a050": {
-                        "id": "c58f4997-31a7-43bc-8586-b1787925a050",
+                    "318557c2-792e-44a5-b79d-6e74c5913547": {
+                        "id": "318557c2-792e-44a5-b79d-6e74c5913547",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -165.95668,
-                                "lat": 23.818040000000003
+                                "long": -101.63522476196138,
+                                "lat": 40.51998614323261
                             }
                         ]
                     },
-                    "5f85d75c-9cb1-4e68-9ea6-4056cc2532d9": {
-                        "id": "5f85d75c-9cb1-4e68-9ea6-4056cc2532d9",
+                    "60b81e13-7f87-4bcb-ada3-43d18ef575c5": {
+                        "id": "60b81e13-7f87-4bcb-ada3-43d18ef575c5",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -171.44900000000004,
-                                "lat": -33.6983
+                                "long": -101.63243526458582,
+                                "lat": 40.51806133738321
                             }
                         ]
                     },
-                    "54bfa3c9-0555-41c5-9c21-e2d3f7d9b1be": {
-                        "id": "54bfa3c9-0555-41c5-9c21-e2d3f7d9b1be",
+                    "9326e529-530b-4f76-bebe-25f624479cd4": {
+                        "id": "9326e529-530b-4f76-bebe-25f624479cd4",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -90.66543000000001,
-                                "lat": -0.8329499999999973
+                                "long": -101.62977451324298,
+                                "lat": 40.52001876658431
                             }
                         ]
                     },
-                    "4f9d81d5-b80e-4d76-bf3b-8dc3a4274e22": {
-                        "id": "4f9d81d5-b80e-4d76-bf3b-8dc3a4274e22",
+                    "d90c793f-8012-4544-94c4-3d5c4a01cf0f": {
+                        "id": "d90c793f-8012-4544-94c4-3d5c4a01cf0f",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": 142.07347,
-                                "lat": 26.83853
+                                "long": -101.62685626983472,
+                                "lat": 40.51806133738321
                             }
                         ]
                     },
-                    "f0a47a76-9928-4cdc-9809-4cb34bc71fb6": {
-                        "id": "f0a47a76-9928-4cdc-9809-4cb34bc71fb6",
+                    "b4da6751-0960-4db7-a0da-44d2be5611ef": {
+                        "id": "b4da6751-0960-4db7-a0da-44d2be5611ef",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -104.2967,
-                                "lat": 9.843329999999998
+                                "long": -101.6241948585079,
+                                "lat": 40.519985648071106
                             }
                         ]
                     },
-                    "37cfad61-c42b-4591-bc97-782a39455d24": {
-                        "id": "37cfad61-c42b-4591-bc97-782a39455d24",
+                    "464cbbee-7e95-4cec-beec-584e2cd303e9": {
+                        "id": "464cbbee-7e95-4cec-beec-584e2cd303e9",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": 144.775,
-                                "lat": 14.600000000000009
+                                "long": -101.62127727508359,
+                                "lat": 40.51799608875886
                             }
                         ]
                     },
-                    "d2484b7a-d33d-4795-9f87-0bb66a55bca8": {
-                        "id": "d2484b7a-d33d-4795-9f87-0bb66a55bca8",
+                    "f24c1f98-2a32-4ce0-ade2-da1ee08ef76a": {
+                        "id": "f24c1f98-2a32-4ce0-ade2-da1ee08ef76a",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -170.13738,
-                                "lat": -14.293929999999994
+                                "long": -101.61857610974701,
+                                "lat": 40.52002178390707
                             }
                         ]
                     },
-                    "fa6f4e4c-0e8f-4816-b195-f7c3e851a5ab": {
-                        "id": "fa6f4e4c-0e8f-4816-b195-f7c3e851a5ab",
+                    "df3fb11e-05d9-4b64-b6bf-bb8c00e508e0": {
+                        "id": "df3fb11e-05d9-4b64-b6bf-bb8c00e508e0",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -125.00000000000001,
-                                "lat": 45.0
+                                "long": -101.61552661895547,
+                                "lat": 40.51796346442288
                             }
                         ]
                     },
-                    "43104053-bf3f-4e11-b4f8-e0428271b980": {
-                        "id": "43104053-bf3f-4e11-b4f8-e0428271b980",
+                    "b5ffb77f-9968-44d4-a39f-212e9f29cd8c": {
+                        "id": "b5ffb77f-9968-44d4-a39f-212e9f29cd8c",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": 113.44570000000002,
-                                "lat": 13.081520000000006
+                                "long": -101.61299461364536,
+                                "lat": 40.52001876658431
                             }
                         ]
                     },
-                    "37221195-f58c-470f-a3fe-ba8c8bbf4803": {
-                        "id": "37221195-f58c-470f-a3fe-ba8c8bbf4803",
+                    "12bd541a-d9e1-45b2-85ea-2d96324f9b35": {
+                        "id": "12bd541a-d9e1-45b2-85ea-2d96324f9b35",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -113.2167,
-                                "lat": -17.43299999999999
+                                "long": -101.6099905395486,
+                                "lat": 40.51806133738321
                             }
                         ]
                     },
-                    "e5729b08-3449-465c-a0e8-a11b13facba5": {
-                        "id": "e5729b08-3449-465c-a0e8-a11b13facba5",
+                    "4650df77-9d24-4801-acb4-292725a1b5ec": {
+                        "id": "4650df77-9d24-4801-acb4-292725a1b5ec",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": 174.92706298823592,
-                                "lat": -36.03799493962833
+                                "long": -101.60766118240137,
+                                "lat": 40.51984039811685
                             }
                         ]
                     },
-                    "9fd62d68-82cb-4165-9a7a-2b9d5101f6d5": {
-                        "id": "9fd62d68-82cb-4165-9a7a-2b9d5101f6d5",
+                    "2fece7e8-6ecf-4976-b279-5f2d1d7e95f3": {
+                        "id": "2fece7e8-6ecf-4976-b279-5f2d1d7e95f3",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -130.29207123437493,
-                                "lat": -25.013756559114974
+                                "long": -101.60443080672995,
+                                "lat": 40.518096072505934
                             }
                         ]
                     },
-                    "73511389-646e-4a3a-bdda-f8d533be926e": {
-                        "id": "73511389-646e-4a3a-bdda-f8d533be926e",
+                    "d55165e3-217d-452f-be23-f4edf78a1bb2": {
+                        "id": "d55165e3-217d-452f-be23-f4edf78a1bb2",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": 166.78722082031229,
-                                "lat": -21.36104241253759
+                                "long": -101.6017655288671,
+                                "lat": 40.51980069350651
+                            }
+                        ]
+                    },
+                    "9ff9110b-95b8-4a65-96ff-5d922b1b65a7": {
+                        "id": "9ff9110b-95b8-4a65-96ff-5d922b1b65a7",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -101.6202999999983,
+                                "lat": 40.520701399925464
+                            }
+                        ]
+                    },
+                    "da04398f-ae56-4c37-b3f0-23e3246a175a": {
+                        "id": "da04398f-ae56-4c37-b3f0-23e3246a175a",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -101.59878601302859,
+                                "lat": 40.51804750946923
+                            }
+                        ]
+                    },
+                    "6adb9391-6d23-41e1-8559-395ef591918c": {
+                        "id": "6adb9391-6d23-41e1-8559-395ef591918c",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -101.59610111470366,
+                                "lat": 40.51985555890041
+                            }
+                        ]
+                    },
+                    "e3d56974-8aca-46a7-b152-9f41815bd0b7": {
+                        "id": "e3d56974-8aca-46a7-b152-9f41815bd0b7",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -101.59316410293322,
+                                "lat": 40.518210630785894
+                            }
+                        ]
+                    },
+                    "35e5b38d-15fc-4f61-a9e6-45faa3330650": {
+                        "id": "35e5b38d-15fc-4f61-a9e6-45faa3330650",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -101.59030252854132,
+                                "lat": 40.51994855316789
+                            }
+                        ]
+                    },
+                    "e8f1fb6c-f178-48e4-ae2d-072dd002e542": {
+                        "id": "e8f1fb6c-f178-48e4-ae2d-072dd002e542",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -101.58734136978876,
+                                "lat": 40.51828474024793
+                            }
+                        ]
+                    },
+                    "a15ac32e-6f43-40f9-82e8-ced6160a15eb": {
+                        "id": "a15ac32e-6f43-40f9-82e8-ced6160a15eb",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -101.5848093644791,
+                                "lat": 40.51988330638066
+                            }
+                        ]
+                    },
+                    "fe17155c-3dfa-4a0f-a205-3d5083632e65": {
+                        "id": "fe17155c-3dfa-4a0f-a205-3d5083632e65",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -101.58180529038243,
+                                "lat": 40.51805637054625
                             }
                         ]
                     }
                 },
                 "mode": "2d",
                 "basemap": {
-                    "type": "name",
-                    "value": "oceans"
+                    "type": "resource",
+                    "value": "r-819f05"
                 }
             }
         },
-        "n-082ac5": {
+        "n-ff2a18": {
             "type": "tour",
             "data": {
-                "type": "explorer",
-                "subtype": "grid",
+                "type": "guided-tour",
+                "subtype": "media-focused",
                 "narrativePanelPosition": "start",
-                "map": "n-00da75",
+                "map": "n-a5c24d",
                 "places": [
                     {
-                        "id": "f3627c43-7830-43f9-a8e2-147df19cac29",
-                        "featureId": "3e005646-5916-4f0f-abff-b98d10467aad",
+                        "id": "479844b9-ea9e-4347-868f-a7ab6555384b",
+                        "featureId": "3f3816f8-6c45-4db5-afce-edc60c361068",
                         "contents": [
-                            "n-908cc8"
+                            "n-5b9920"
                         ],
-                        "media": "n-61d251",
-                        "title": "n-15a08b"
+                        "media": "n-889814",
+                        "title": "n-00cd02"
                     },
                     {
-                        "id": "01bb4fe8-a977-4e77-a1a4-4a91b406b7fa",
-                        "featureId": "a93d2d30-cce2-435f-b8e7-3b8285c6f8bf",
+                        "id": "fd3a93af-dd3b-4bfe-9478-eeff73aea596",
+                        "featureId": "6043a689-1780-4d20-906c-0a861e09d614",
                         "contents": [
-                            "n-e38555"
+                            "n-5dbcb0"
                         ],
-                        "media": "n-430cfd",
-                        "title": "n-37d87b"
+                        "media": "n-30432b",
+                        "title": "n-037ae6"
                     },
                     {
-                        "id": "1b6d8e9c-a38e-4948-9cce-2ff729aa7442",
-                        "featureId": "d1975959-d73a-46e1-ae4a-325599442e27",
+                        "id": "7017ffcc-8e99-4675-a834-1d308e564ad1",
+                        "featureId": "dcd03cd3-7d2b-411e-a228-eaf75a147623",
                         "contents": [
-                            "n-86fcb0"
+                            "n-f133fb"
                         ],
-                        "media": "n-68872b",
-                        "title": "n-000795"
+                        "media": "n-898fcd",
+                        "title": "n-40c342"
                     },
                     {
-                        "id": "abaa0c62-330b-4785-b2ad-bf5bf63bfc9a",
-                        "featureId": "c58f4997-31a7-43bc-8586-b1787925a050",
+                        "id": "f8319dca-ca11-4e17-b9dd-b58db463a0ef",
+                        "featureId": "318557c2-792e-44a5-b79d-6e74c5913547",
                         "contents": [
-                            "n-a3d53a"
+                            "n-f358ee"
                         ],
-                        "media": "n-fb555b",
-                        "title": "n-f3f870"
+                        "media": "n-56d123",
+                        "title": "n-5a5bf6"
                     },
                     {
-                        "id": "382f9460-8b25-45d6-b772-86a8fdaf4528",
-                        "featureId": "5f85d75c-9cb1-4e68-9ea6-4056cc2532d9",
+                        "id": "4cf0431c-4cc1-4509-9889-0ccfb433fb0b",
+                        "featureId": "60b81e13-7f87-4bcb-ada3-43d18ef575c5",
                         "contents": [
-                            "n-e8bd1a"
+                            "n-eadb19"
                         ],
-                        "media": "n-ccd291",
-                        "title": "n-4805ac"
+                        "media": "n-bf49c9",
+                        "title": "n-63a60d"
                     },
                     {
-                        "id": "b8eea431-08a2-4da7-beab-bb9482da47e5",
-                        "featureId": "54bfa3c9-0555-41c5-9c21-e2d3f7d9b1be",
+                        "id": "697c512c-4e73-43ee-ad5e-e57fcd78e521",
+                        "featureId": "9326e529-530b-4f76-bebe-25f624479cd4",
                         "contents": [
-                            "n-fc5d7f"
+                            "n-65c0d5"
                         ],
-                        "media": "n-d98a16",
-                        "title": "n-6a7d29"
+                        "media": "n-6e49c6",
+                        "title": "n-7e03ac"
                     },
                     {
-                        "id": "2ef81d10-a49a-446a-a16f-b36551f875a7",
-                        "featureId": "4f9d81d5-b80e-4d76-bf3b-8dc3a4274e22",
+                        "id": "4e9ffa40-0219-41d9-b0f2-6995f0d3fbac",
+                        "featureId": "d90c793f-8012-4544-94c4-3d5c4a01cf0f",
                         "contents": [
-                            "n-29ff65"
+                            "n-16b44e"
                         ],
-                        "media": "n-cd9526",
-                        "title": "n-e83b18"
+                        "media": "n-10ef98",
+                        "title": "n-0f2ba1"
                     },
                     {
-                        "id": "bf859f64-5a2e-48ef-a3c8-4012ca4b35b7",
-                        "featureId": "f0a47a76-9928-4cdc-9809-4cb34bc71fb6",
+                        "id": "703f26d0-1e9a-4500-92d9-2011d84b0fa4",
+                        "featureId": "b4da6751-0960-4db7-a0da-44d2be5611ef",
                         "contents": [
-                            "n-5c8254"
+                            "n-2e40e5"
                         ],
-                        "media": "n-32fece",
-                        "title": "n-e189be"
+                        "media": "n-6af5a7",
+                        "title": "n-895159"
                     },
                     {
-                        "id": "4310826c-52b3-4c1e-9da7-371807a17d08",
-                        "featureId": "37cfad61-c42b-4591-bc97-782a39455d24",
+                        "id": "c05f74f5-212f-4138-9735-37117f0642fd",
+                        "featureId": "464cbbee-7e95-4cec-beec-584e2cd303e9",
                         "contents": [
-                            "n-43ada9"
+                            "n-42aa25"
                         ],
-                        "media": "n-702cb8",
-                        "title": "n-113d6b"
+                        "media": "n-b38b6f",
+                        "title": "n-d805bb"
                     },
                     {
-                        "id": "fb2d5b0c-7360-4041-8d37-3116142626e7",
-                        "featureId": "d2484b7a-d33d-4795-9f87-0bb66a55bca8",
+                        "id": "2784d268-a67d-4371-9e34-8a83675389a5",
+                        "featureId": "f24c1f98-2a32-4ce0-ade2-da1ee08ef76a",
                         "contents": [
-                            "n-74ec13"
+                            "n-2122a4"
                         ],
-                        "media": "n-d530a6",
-                        "title": "n-f74fa7"
+                        "media": "n-1a71cf",
+                        "title": "n-82f1c3"
                     },
                     {
-                        "id": "bfac1de4-ce4d-46f1-84c1-e167db708c33",
-                        "featureId": "fa6f4e4c-0e8f-4816-b195-f7c3e851a5ab",
+                        "id": "470b2461-cd87-4311-b5a3-98eb5824ad48",
+                        "featureId": "df3fb11e-05d9-4b64-b6bf-bb8c00e508e0",
                         "contents": [
-                            "n-5a9e37"
+                            "n-743130"
                         ],
-                        "media": "n-3b99e3",
-                        "title": "n-ce36b7"
+                        "media": "n-120264",
+                        "title": "n-f7ef1b"
                     },
                     {
-                        "id": "5c589a56-0af5-45f7-aad6-e2ef1e1b67a4",
-                        "featureId": "43104053-bf3f-4e11-b4f8-e0428271b980",
+                        "id": "923444c7-0ca9-429d-9798-d45c6417eea2",
+                        "featureId": "b5ffb77f-9968-44d4-a39f-212e9f29cd8c",
                         "contents": [
-                            "n-55d76f"
+                            "n-f5cb58"
                         ],
-                        "media": "n-f1fb3b",
-                        "title": "n-b0aada"
+                        "media": "n-60ad7c",
+                        "title": "n-84fe38"
                     },
                     {
-                        "id": "35ea4f3a-6069-4494-b9ca-87c7b627892b",
-                        "featureId": "37221195-f58c-470f-a3fe-ba8c8bbf4803",
+                        "id": "2c7f34de-8760-4d0e-a7c4-36e0576482a5",
+                        "featureId": "12bd541a-d9e1-45b2-85ea-2d96324f9b35",
                         "contents": [
-                            "n-de31c0"
+                            "n-f05341"
                         ],
-                        "media": "n-ef801d",
-                        "title": "n-49f97b"
+                        "media": "n-7dd356",
+                        "title": "n-f484ca"
                     },
                     {
-                        "id": "d670f0a0-707e-4f8c-ab7b-05ab93a47ca6",
-                        "featureId": "e5729b08-3449-465c-a0e8-a11b13facba5",
+                        "id": "2ec29017-f40d-4db2-b860-a48326fb5c2c",
+                        "featureId": "4650df77-9d24-4801-acb4-292725a1b5ec",
                         "contents": [
-                            "n-391cba"
+                            "n-4e2d9a"
                         ],
-                        "media": "n-4435bf",
-                        "title": "n-5ff083"
+                        "media": "n-78c4e8",
+                        "title": "n-ff8f26"
                     },
                     {
-                        "id": "39b102e0-e1e7-4775-ae53-31fb2aabfd63",
-                        "featureId": "9fd62d68-82cb-4165-9a7a-2b9d5101f6d5",
+                        "id": "abae267f-e218-45e1-869e-6f2caf17badf",
+                        "featureId": "2fece7e8-6ecf-4976-b279-5f2d1d7e95f3",
                         "contents": [
-                            "n-2234f8"
+                            "n-a2d061"
                         ],
-                        "media": "n-45b381",
-                        "title": "n-f08103"
+                        "media": "n-0c7038",
+                        "title": "n-8b9f61"
                     },
                     {
-                        "id": "e03f2846-8cb3-4803-bb5c-2fa1a0345738",
-                        "featureId": "73511389-646e-4a3a-bdda-f8d533be926e",
+                        "id": "cc2da385-0d58-4461-b0f7-e165bdfe0478",
+                        "featureId": "d55165e3-217d-452f-be23-f4edf78a1bb2",
                         "contents": [
-                            "n-5830f6"
+                            "n-1a2430"
                         ],
-                        "media": "n-662404",
-                        "title": "n-a5415c"
+                        "media": "n-6ee3af",
+                        "title": "n-4b59f4"
+                    },
+                    {
+                        "id": "62b01b49-2487-420e-ac87-9ac46e0ab7c9",
+                        "featureId": "9ff9110b-95b8-4a65-96ff-5d922b1b65a7",
+                        "contents": [
+                            "n-ccf61a"
+                        ],
+                        "media": "n-16f8fe",
+                        "title": "n-09c94d"
+                    },
+                    {
+                        "id": "0d20a1e5-63da-416e-b690-0473b5649955",
+                        "featureId": "da04398f-ae56-4c37-b3f0-23e3246a175a",
+                        "contents": [
+                            "n-06a564"
+                        ],
+                        "media": "n-3476fc",
+                        "title": "n-3d426f"
+                    },
+                    {
+                        "id": "a20585be-1311-4c3d-9114-a81e3e0c9b68",
+                        "featureId": "6adb9391-6d23-41e1-8559-395ef591918c",
+                        "contents": [
+                            "n-45a16e"
+                        ],
+                        "media": "n-afe2fd",
+                        "title": "n-73930e"
+                    },
+                    {
+                        "id": "a9cb65ef-41bc-4303-82c2-0ca569d10c88",
+                        "featureId": "e3d56974-8aca-46a7-b152-9f41815bd0b7",
+                        "contents": [
+                            "n-f7522f"
+                        ],
+                        "media": "n-2608c1",
+                        "title": "n-92b071"
+                    },
+                    {
+                        "id": "ce8a3546-9f68-47a8-ac6e-513e7c1350b1",
+                        "featureId": "35e5b38d-15fc-4f61-a9e6-45faa3330650",
+                        "contents": [
+                            "n-9738a3"
+                        ],
+                        "media": "n-2a233c",
+                        "title": "n-6263ff"
+                    },
+                    {
+                        "id": "9d54a17e-9f75-4d15-b423-92c4d37f1b2f",
+                        "featureId": "e8f1fb6c-f178-48e4-ae2d-072dd002e542",
+                        "contents": [
+                            "n-e66d17"
+                        ],
+                        "media": "n-b32c8c",
+                        "title": "n-d1cd93"
+                    },
+                    {
+                        "id": "3e16ae5a-3572-48f6-a858-3651b69efe08",
+                        "featureId": "a15ac32e-6f43-40f9-82e8-ced6160a15eb",
+                        "contents": [
+                            "n-861670"
+                        ],
+                        "media": "n-6a4b6a",
+                        "title": "n-10acb6"
+                    },
+                    {
+                        "id": "4ac6612c-8083-43c9-acdd-ecc5841c5027",
+                        "featureId": "fe17155c-3dfa-4a0f-a205-3d5083632e65",
+                        "contents": [
+                            "n-14d644"
+                        ],
+                        "media": "n-4ddc5d",
+                        "title": "n-371cec"
                     }
                 ],
                 "narrativePanelSize": "large",
                 "accentColor": "#f9f794"
             }
         },
-        "n-15a08b": {
+        "n-00cd02": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "No part of the ocean is unaffected by humans now!",
+                "text": "2002 NAIP begins as a pilot project",
                 "textAlignment": "start"
             }
         },
-        "n-908cc8": {
+        "n-5b9920": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "World governments are thus realizing that exploring and studying the ocean need to become higher priorities.",
+                "text": "The NAIP imagery program began as a pilot project in 2002. The pilot compared 35mm slides to imagery from mapping cameras. As illustrated on the map 1m and 2m partial natural color film photography was acquired.",
                 "textAlignment": "start"
             }
         },
-        "n-91068c": {
+        "n-86d28f": {
             "type": "image",
             "data": {
-                "image": "r-875dee"
+                "image": "r-13d631"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-61d251": {
+        "n-889814": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-91068c"
+                "n-86d28f"
             ]
         },
-        "n-37d87b": {
+        "n-037ae6": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "Challenger Deep",
+                "text": "2003 NAIP program begins.",
                 "textAlignment": "start"
             }
         },
-        "n-e38555": {
+        "n-5dbcb0": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "On March 26, 2012, James Cameron made his <a target=\"_blank\" href=\"http://deepseachallenge.com\" style=\"outline: none;\">record-breaking solo dive</a> to the Earth's DEEPEST point, at ~10,900 m or over 6.7 miles. Not since the historic dive of Captain Don Walsh and Jacques Piccard in 1961, had human beings descended this far. PHOTO: <i>Science magazine</i>\n",
+                "text": "The NAIP imagery is acquired on a 5 year cycle.  Imagery is natural color and color infrared collected at both 2m and 1m spatial resolution.  2m states were collected for compliance purposes.",
                 "textAlignment": "start"
             }
         },
-        "n-6e756c": {
+        "n-87690a": {
             "type": "image",
             "data": {
-                "image": "r-d92237"
+                "image": "r-494502"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-430cfd": {
+        "n-30432b": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-6e756c"
+                "n-87690a"
             ]
         },
-        "n-000795": {
+        "n-40c342": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "Horizon Deep",
+                "text": "2004 NAIP digital imagery acquisition takes hold.",
                 "textAlignment": "start"
             }
         },
-        "n-86fcb0": {
+        "n-f133fb": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "The SECOND deepest spot on the planet is <a target=\"new\" href=\"http://dusk.geo.orst.edu/tonga\" style=\"outline: none;\">Horizon Deep in the Tonga Trench</a>, at ~10,600 m deep or over 6.5 miles, dwarfing the U.S. Grand Canyon in area. IMAGE: <i>D Wright</i>",
+                "text": "Coverage for 2004 is mainly film based consisting of 1m and 2m acquisitions in both natural color and color infrared.  ID, LA, MT, TX, and WY are digital acquisitions.  2004 is also the beginning of a 3 year indefinite delivery, indefinite quantity (IDIQ) contract.  There were 10 vendors flying NAIP imagery under this contract.",
                 "textAlignment": "start"
             }
         },
-        "n-062c3c": {
+        "n-59c661": {
             "type": "image",
             "data": {
-                "image": "r-18611c"
+                "image": "r-46c6d3"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-68872b": {
+        "n-898fcd": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-062c3c"
+                "n-59c661"
             ]
         },
-        "n-f3f870": {
+        "n-5a5bf6": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "Papahanaumokuakea Marine National Monument ",
+                "text": "2005 NAIP",
                 "textAlignment": "start"
             }
         },
-        "n-a3d53a": {
+        "n-f358ee": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "When founded in 2006 it was the world's largest marine protected area, and is now also a <a target=\"new\" href=\"http://whc.unesco.org/en/list/1326/\" style=\"outline: none;\">UNESCO World Heritage site</a>. Many scientific studies here of coral and fish habitat are discovering new species. PHOTO of Red Pencil Urchin: <i>Wikimedia Commons</i>",
+                "text": "The 2005 NAIP acquisition features more states with full coverage and digital acquisition doubles to 10 states (CA, LA, FL, MS, MT, WA, ND, MI, TX, and SC).  Compressed county mosaics (CCM) compression ratio was changed from 50:1 to 15:1.",
                 "textAlignment": "start"
             }
         },
-        "n-9bb1a5": {
+        "n-f8116f": {
             "type": "image",
             "data": {
-                "image": "r-e5a47d"
+                "image": "r-329d55"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-fb555b": {
+        "n-56d123": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-9bb1a5"
+                "n-f8116f"
             ]
         },
-        "n-4805ac": {
+        "n-63a60d": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "Louisville Seamounts",
+                "text": "2006 NAIP pilot for absolute accuracy specification",
                 "textAlignment": "start"
             }
         },
-        "n-e8bd1a": {
+        "n-eadb19": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "More than 20,000 large seamounts form a biome equivalent to the size of Europe, but only a few dozen have ever been extensively studied. A <a target=\"new\" href=\"http://ceoas.oregonstate.edu/features/tectonic/\" style=\"outline: none;\">recent expedition</a> on the scientific drillship <i> JOIDES Resolution</i> uncovered new findings. PHOTO: <i>A Koppers by permission</i>",
+                "text": "Pilot is conducted using Utah imagery to test changing spatial accuracy determination from relative accuracy (image to image) to absolute control (photo identifiable ground control points). Testing spatial accuracy of imagery using absolute control methods is an industry standard and introduces less error than relative accuracy.",
                 "textAlignment": "start"
             }
         },
-        "n-82b3cb": {
+        "n-3973f1": {
             "type": "image",
             "data": {
-                "image": "r-c4dd9b"
+                "image": "r-ac6710"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-ccd291": {
+        "n-bf49c9": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-82b3cb"
+                "n-3973f1"
             ]
         },
-        "n-6a7d29": {
+        "n-7e03ac": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "Galapagos Islands",
+                "text": "2007 NAIP first 4 band spectral resolution state.",
                 "textAlignment": "start"
             }
         },
-        "n-fc5d7f": {
+        "n-65c0d5": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "An icon of wild places on land, the Galapagos is where important science takes place in the ocean too. It is also the focus of a new marine reserve as supported by <a href=\"http://www.seasketch.org\" target=\"_blank\" style=\"outline: none;\">SeaSketch</a>  IMAGE: <i>McClintock Lab, UCSB</i>",
+                "text": "The default spectral resolution for NAIP was natural color (Red, Green, and Blue, or RGB) but beginning in 2007 some states were delivered with four bands of data: RGB and Near Infrared.  Arizona was delivered as 1m 4 bands.",
                 "textAlignment": "start"
             }
         },
-        "n-738dec": {
+        "n-efe557": {
             "type": "image",
             "data": {
-                "image": "r-0f2059"
+                "image": "r-9c1b5f"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-d98a16": {
+        "n-6e49c6": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-738dec"
+                "n-efe557"
             ]
         },
-        "n-e83b18": {
+        "n-0f2ba1": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "Giant Squid",
+                "text": "2008 NAIP first year all states acquired with 1 meter ground sample distance",
                 "textAlignment": "start"
             }
         },
-        "n-29ff65": {
+        "n-16b44e": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "Humans have been looking for the giant squid since it was first possible to take pictures underwater. The quest to see one alive remained a holy grail of ocean science & technology until scientists <a target=\"new\" href=\"http://news.nationalgeographic.com/news/2006/12/061222-giant-squid.html\">finally captured one on film</a> off the coast of Japan. PHOTO: <i>Wikimedia Commons</i> ",
+                "text": "2008 marks the first year that the program acquires all imagery with a 1 meter ground sample distance (GSD).  ",
                 "textAlignment": "start"
             }
         },
-        "n-8f5b47": {
+        "n-dc6bf3": {
             "type": "image",
             "data": {
-                "image": "r-ff36a0"
+                "image": "r-e8eedb"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-cd9526": {
+        "n-10ef98": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-8f5b47"
+                "n-dc6bf3"
             ]
         },
-        "n-e189be": {
+        "n-895159": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "Tubeworm Barbecue",
+                "text": "2009 NAIP first year all states are acquired with complete coverage and all states move to the absolute accuracy specification.",
                 "textAlignment": "start"
             }
         },
-        "n-5c8254": {
+        "n-2e40e5": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "This is where humans first encountered on April 14, 1991, the recent aftermath of an undersea volcanic eruption. Tubeworm specimens carried to the surface still had freshly charred flesh, hence the name of the site.  <a href=\"http://dusk.geo.orst.edu/oceans/tubeworm_bbq.html\" target=\"new\">READ MORE</a> PHOTO: <i>W Lange, D Fornari, WHOI by permission</i> ",
+                "text": "2009 provides complete 1 meter coverage for all states acquired.  Absolute control is used to determine the spatial accuracy of the imagery in all states.  ",
                 "textAlignment": "start"
             }
         },
-        "n-2e575d": {
+        "n-8606ad": {
             "type": "image",
             "data": {
-                "image": "r-2a5bd4"
+                "image": "r-f5fdb1"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-32fece": {
+        "n-6af5a7": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-2e575d"
+                "n-8606ad"
             ]
         },
-        "n-113d6b": {
+        "n-d805bb": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "\"Fire and Brimstone\" at Rota Volcano | <a target=\"new\" href=\"http://1.usa.gov/1a4nHe2\">VIDEO</a>",
+                "text": "NAIP 2010 first year all states 4 band digital coverage",
                 "textAlignment": "start"
             }
         },
-        "n-43ada9": {
+        "n-42aa25": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "The <a href=\"http://n.pr/17sTSW3\" target=\"new\">first undersea eruption actually witnessed</a> in real-time by anyone was in 2006 on the NW Rota-1 volcano. Robotic vehicles with their cameras and sensors drew closer than anyone has ever been to ANY active volcano on land or undersea. IMAGE &amp; VIDEO: <i>NOAA by permission</i>",
+                "text": "2010 is the first year that all states are acquired digitally with four bands of data.  2010 is also the first year that imagery is served out as state based web services both internally to FSA and to the public.",
                 "textAlignment": "start"
             }
         },
-        "n-132ef8": {
+        "n-35a1cf": {
             "type": "image",
             "data": {
-                "image": "r-837e91"
+                "image": "r-0c3010"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-702cb8": {
+        "n-b38b6f": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-132ef8"
+                "n-35a1cf"
             ]
         },
-        "n-f74fa7": {
+        "n-82f1c3": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "Eastern Samoan Volcanic Province",
+                "text": "2011 NAIP first year state based seam line shapefile is available.",
                 "textAlignment": "start"
             }
         },
-        "n-74ec13": {
+        "n-2122a4": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "<a target=\"new\" href=\"http://www.esri.com/news/arcnews/summer11articles/exploring-the-deeper-reefs-and-volcanic-provinces-of-american-samoa.html\">GIS analyses</a> have helped to discover 50 new volcanoes and rift zones in this VERY geologically active part of the world where major earthquakes and tsunamis have caused great devastation. IMAGE: <i>J Roberts, D Wright</i>",
+                "text": "All coverage is 1m 4 band (Natural Color/Color Infrared).  First year a state based seam line shapefile is available providing information about imagery collection.  The information is available as a web service and as digital files.",
                 "textAlignment": "start"
             }
         },
-        "n-b7fafd": {
+        "n-cd6333": {
             "type": "image",
             "data": {
-                "image": "r-d5c31d"
+                "image": "r-30fb27"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-d530a6": {
+        "n-1a71cf": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-b7fafd"
+                "n-cd6333"
             ]
         },
-        "n-ce36b7": {
+        "n-f7ef1b": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "Endurance Array",
+                "text": "2012 NAIP ",
                 "textAlignment": "start"
             }
         },
-        "n-5a9e37": {
+        "n-743130": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "This site as part of the Ocean Observatories Initiative is one of the most comprehensive deployments of instruments and vehicles to study all aspects of the ocean from sea surface to seafloor. <a target=\"new\" href=\"http://www.whoi.edu/ooi_cgsn/page.do?pid=53332\">READ MORE</a> IMAGE: <i>U. Washington CEV by permission</i>",
+                "text": "2012 marks the beginning of a new five year IDIQ contract using three prime vendors.",
                 "textAlignment": "start"
             }
         },
-        "n-81ca87": {
+        "n-fd4b2b": {
             "type": "image",
             "data": {
-                "image": "r-4cf652"
+                "image": "r-3c2f49"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-3b99e3": {
+        "n-120264": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-81ca87"
+                "n-fd4b2b"
             ]
         },
-        "n-b0aada": {
+        "n-84fe38": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "South China Sea",
+                "text": "2013 NAIP first 1/2 meter state",
                 "textAlignment": "start"
             }
         },
-        "n-55d76f": {
+        "n-f5cb58": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "This is a very important place to watch politically, as well as scientificially.  The sovereignty claims of several nations are in conflict, but Singapore is an important peacemaker, and its <a href=\"http://www.fas.nus.edu.sg/geog/undergrads/minor_gis.htm\" target=\"new\">National University</a> is a leading adopter of GIS. IMAGE: <i>Wikimedia Commons</i>\n",
+                "text": "2013 marks the first 1/2 meter state (ID) to be delivered as part of the NAIP imagery program.  The 1/2 meter ground sample distance (GSD) was a buy-up option since 2011.",
                 "textAlignment": "start"
             }
         },
-        "n-5c7ad6": {
+        "n-8d1f51": {
             "type": "image",
             "data": {
-                "image": "r-b9bc92"
+                "image": "r-a589b2"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-f1fb3b": {
+        "n-60ad7c": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-5c7ad6"
+                "n-8d1f51"
             ]
         },
-        "n-49f97b": {
+        "n-f484ca": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "Southern East Pacific Rise",
+                "text": "2014 NAIP",
                 "textAlignment": "start"
             }
         },
-        "n-de31c0": {
+        "n-f05341": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "This is where some of the fastest seafloor spreading occurs on Earth, leading to extensive underwater hotspring activity. The area was first examined with the same underwater vehicle that discovered the wreck of the <i>Titanic</i>. <a target=\"new\" href=\"http://dusk.geo.orst.edu/sepr/\">READ MORE</a> IMAGE: <i>U. New Brunswick by permission</i>",
+                "text": "NAIP 2014 imagery coverage consists of 25 states at 1 meter resolution.  2014 marks a continuation of the FSA early access project which allows FSA employees and partner agencies access to imagery in a vendor produced web service 3 to 5 days after the imagery is acquired.  All states except OR, TN, MS, and NC are part of the early access pilot continuation.  2014 is also a transition year for NAIP status maps from ArcGIS Server web maps to ArcGIS Online hosted web maps.",
                 "textAlignment": "start"
             }
         },
-        "n-ca2ee9": {
+        "n-fbc921": {
             "type": "image",
             "data": {
-                "image": "r-c8414a"
+                "image": "r-faf44e"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-ef801d": {
+        "n-7dd356": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-ca2ee9"
+                "n-fbc921"
             ]
         },
-        "n-5ff083": {
+        "n-ff8f26": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "Hauraki Gulf",
+                "text": "2015 NAIP",
                 "textAlignment": "start"
             }
         },
-        "n-391cba": {
+        "n-4e2d9a": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "Esri supported UCSB in building SeaSketch as a new approach to marine spatial planning, based on the concepts of geodesign. <a target=\"new\" href=\"http://bit.ly/1gHK11S\">New Zealand government agencies are now using SeaSketch</a> to determine future uses of the Hauraki Gulf, where nearly every imaginable ocean user is fighting for space.",
+                "text": "NAIP 2015 imagery coverage consists of 2 states delivered as 1/2 meter resolution and 25 states at 1 meter resolution.",
                 "textAlignment": "start"
             }
         },
-        "n-8a6e9f": {
+        "n-29c68e": {
             "type": "image",
             "data": {
-                "image": "r-7b1be6"
+                "image": "r-1f942d"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-4435bf": {
+        "n-78c4e8": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-8a6e9f"
+                "n-29c68e"
             ]
         },
-        "n-f08103": {
+        "n-8b9f61": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "Pitcairn Island",
+                "text": "2016 NAIP first 60cm delivery",
                 "textAlignment": "start"
             }
         },
-        "n-2234f8": {
+        "n-a2d061": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "Pitcairn Island is well known as the place where the mutineers of the <i>HMS Bounty</i> settled in 1790, but a <a href=\"http://ocean.nationalgeographic.com/ocean/explore/pristine-seas/pitcairn/\" target=\"new\">recent scientific expedition</a> revealed the true bounty of these waters. IMAGE: <i>Wikimedia Commons</i>",
+                "text": "2016 marks the first 60cm NAIP acquisition.  14 states will be acquired at 60cm and 8 states at 1 meter.  This will be the final year of a 5 year IDIQ contract which started in 2012.",
                 "textAlignment": "start"
             }
         },
-        "n-f3bce4": {
+        "n-760dce": {
             "type": "image",
             "data": {
-                "image": "r-bd4b33"
+                "image": "r-d323c4"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-45b381": {
+        "n-0c7038": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-f3bce4"
+                "n-760dce"
             ]
         },
-        "n-a5415c": {
+        "n-4b59f4": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "Wave Gliders a New Boon to Science",
+                "text": "2017 NAIP",
                 "textAlignment": "start"
             }
         },
-        "n-5830f6": {
+        "n-1a2430": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "The <a target=\"new\" href=\"http://bit.ly/164Ldu8\">Liquid Robotics wave glider</a> is the first to use ocean wave energy for propulsion. It recently collected data even in the middle of Tropical Cyclone Freda (a category 3 storm)! <a href=\"http://dusk.geo.orst.edu/Pickup/Esri/OcnSolns/chap16.pdf\" target=\"new\">RELATED GIS STUDY</a>   IMAGE: <i>Liquid Robotics</i>",
+                "text": "NAIP 2017 imagery coverage includes 26 states. 3 are 60cm resolution and 23 are 1 meter resolution.  NAIP continues to be collected as 4 band imagery (RGBNIR).",
                 "textAlignment": "start"
             }
         },
-        "n-bd1689": {
+        "n-3cf20d": {
             "type": "image",
             "data": {
-                "image": "r-eeb569"
+                "image": "r-a37e40"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-662404": {
+        "n-6ee3af": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-bd1689"
+                "n-3cf20d"
+            ]
+        },
+        "n-09c94d": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "2018 NAIP",
+                "textAlignment": "start"
+            }
+        },
+        "n-ccf61a": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "NAIP",
+                "textAlignment": "start"
+            }
+        },
+        "n-1ddee0": {
+            "type": "image",
+            "data": {
+                "image": "r-0d4a54"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-16f8fe": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-1ddee0"
+            ]
+        },
+        "n-3d426f": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "2018 NAIP first year all imagery 60cm spatial resolution",
+                "textAlignment": "start"
+            }
+        },
+        "n-06a564": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "This is the first year that all NAIP imagery is 60cm spatial resolution.  This year there is a partnership with the State of Oregon where that state will be acquired through an agreement separate from the rest of the NAIP collection.  Oregon imagery will have a 30cm spatial resolution also a first for the NAIP program .  NAIP continues to be collected as 4 band imagery (RGBNIR).",
+                "textAlignment": "start"
+            }
+        },
+        "n-64861e": {
+            "type": "image",
+            "data": {
+                "image": "r-014b53"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-3476fc": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-64861e"
+            ]
+        },
+        "n-73930e": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "2019 NAIP",
+                "textAlignment": "start"
+            }
+        },
+        "n-45a16e": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "All NAIP imagery acquired in 2019 is 60cm spatial resolution.  60 centimeters is now the default spatial resolution for NAIP imagery.  NAIP continues to be collected as 4 band imagery (RGBNIR). ",
+                "textAlignment": "start"
+            }
+        },
+        "n-9b0edd": {
+            "type": "image",
+            "data": {
+                "image": "r-a96b73"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-afe2fd": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-9b0edd"
+            ]
+        },
+        "n-92b071": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "2020 NAIP",
+                "textAlignment": "start"
+            }
+        },
+        "n-f7522f": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "2020 NAIP imagery has a 60cm spatial resolution.  NAIP continues to be collected as 4 band imagery (RGBNIR).",
+                "textAlignment": "start"
+            }
+        },
+        "n-0a1754": {
+            "type": "image",
+            "data": {
+                "image": "r-bbe9b2"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-2608c1": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-0a1754"
+            ]
+        },
+        "n-6263ff": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "NAIP 2021",
+                "textAlignment": "start"
+            }
+        },
+        "n-9738a3": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "2021 NAIP imagery continues to be collected as 4 band imagery (RGBNIR) with a 60cm spatial resolution.  The 2021 collection includes 3 states flown for disaster response at 30cm (LA, MS, AL) spatial resolution. This will be the first year that Hawaii, Puerto Rico and the US Virgin Islands will be collected as part of the NAIP program.   ",
+                "textAlignment": "start"
+            }
+        },
+        "n-a78010": {
+            "type": "image",
+            "data": {
+                "image": "r-2e842b"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-2a233c": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-a78010"
+            ]
+        },
+        "n-d1cd93": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "NAIP 2022",
+                "textAlignment": "start"
+            }
+        },
+        "n-e66d17": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "2022 NAIP imagery is collected as 4 band imagery (RGBNIR) with a 60cm spatial resolution.  The 2022 collection includes 1 state flown at 30cm (OR) spatial resolution.  Oregon was acquired at this higher spatial resolution through a cooperative agreement with the state.",
+                "textAlignment": "start"
+            }
+        },
+        "n-908fb0": {
+            "type": "image",
+            "data": {
+                "image": "r-b7a907"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-b32c8c": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-908fb0"
+            ]
+        },
+        "n-10acb6": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "NAIP 2023 most 30cm states delivered in a year",
+                "textAlignment": "start"
+            }
+        },
+        "n-861670": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "2023 NAIP imagery is collected as 4 band imagery (RGBNIR) with 60cm or higher spatial resolution.  The 2022 collection is being acquired by 3 vendors with a variety of 30 to 60 cm imagery.  2023 has a record number of states being delivered at 30 cm spatial resolution.",
+                "textAlignment": "start"
+            }
+        },
+        "n-bd801a": {
+            "type": "image",
+            "data": {
+                "image": "r-218dd8"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-6a4b6a": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-bd801a"
+            ]
+        },
+        "n-371cec": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "NAIP 2024",
+                "textAlignment": "start"
+            }
+        },
+        "n-14d644": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "2024 NAIP imagery is collected as 4 band imagery (RGBNIR) with standard 60cm spatial resolution.  18 full states and 3 partial states are being acquired.  The partial states are will fill in areas of 3 states which were incomplete in 2023 due to weather conditions.  Two states (NM &amp; OR) are being collected at 30cm resolution as part of a contractual buy up.  2024 NAIP is acquired by 3 vendors through the Pine BPA imagery contract.",
+                "textAlignment": "start"
+            }
+        },
+        "n-f232dd": {
+            "type": "image",
+            "data": {
+                "image": "r-c008ae"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-4ddc5d": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-f232dd"
             ]
         }
     },
     "resources": {
-        "r-915be6": {
+        "r-8a43f6": {
             "type": "story-theme",
             "data": {
                 "themeId": "summit"
             }
         },
-        "r-875dee": {
+        "r-13d631": {
             "type": "image",
             "data": {
-                "resourceId": "place_001_Fn0BOg.jpg",
+                "resourceId": "place_001_YOa18w.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-d92237": {
+        "r-494502": {
             "type": "image",
             "data": {
-                "resourceId": "place_002_ksPqcQ.jpg",
+                "resourceId": "place_002_fxwyww.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-18611c": {
+        "r-46c6d3": {
             "type": "image",
             "data": {
-                "resourceId": "place_003_40dtfg.jpg",
+                "resourceId": "place_003_8gPaCA.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-e5a47d": {
+        "r-329d55": {
             "type": "image",
             "data": {
-                "resourceId": "place_004_l04t2w.jpg",
+                "resourceId": "place_004_sf4ENw.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-c4dd9b": {
+        "r-ac6710": {
             "type": "image",
             "data": {
-                "resourceId": "place_005_cqYRnQ.jpg",
+                "resourceId": "place_005_sB_NMw.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-0f2059": {
+        "r-9c1b5f": {
             "type": "image",
             "data": {
-                "resourceId": "place_006_SdVEfQ.jpg",
+                "resourceId": "place_006_E-mOsw.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-ff36a0": {
+        "r-e8eedb": {
             "type": "image",
             "data": {
-                "resourceId": "place_007_ZH2NFw.jpg",
+                "resourceId": "place_007_z-lHZg.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-2a5bd4": {
+        "r-f5fdb1": {
             "type": "image",
             "data": {
-                "resourceId": "place_008_7isJ_w.jpg",
+                "resourceId": "place_008_K_y3CA.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-837e91": {
+        "r-0c3010": {
             "type": "image",
             "data": {
-                "resourceId": "place_009_ggudwA.jpg",
+                "resourceId": "place_009_dhU4Ag.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-d5c31d": {
+        "r-30fb27": {
             "type": "image",
             "data": {
-                "resourceId": "place_010_mMzHuQ.jpg",
+                "resourceId": "place_010_FAyenA.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-4cf652": {
+        "r-3c2f49": {
             "type": "image",
             "data": {
-                "resourceId": "place_011_DE8apQ.jpg",
+                "resourceId": "place_011_qt1Iog.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-b9bc92": {
+        "r-a589b2": {
             "type": "image",
             "data": {
-                "resourceId": "place_012_YjSpmg.jpg",
+                "resourceId": "place_012_-UzWcg.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-c8414a": {
+        "r-faf44e": {
             "type": "image",
             "data": {
-                "resourceId": "place_013_BhI63g.jpg",
+                "resourceId": "place_013_-X-1Xg.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-7b1be6": {
+        "r-1f942d": {
             "type": "image",
             "data": {
-                "resourceId": "place_014_VbCF1w.jpg",
+                "resourceId": "place_014_laTl6g.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-bd4b33": {
+        "r-d323c4": {
             "type": "image",
             "data": {
-                "resourceId": "place_015_WW3zqw.jpg",
+                "resourceId": "place_015_oz6w2A.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-eeb569": {
+        "r-a37e40": {
             "type": "image",
             "data": {
-                "resourceId": "place_016_n7lI7Q.jpg",
+                "resourceId": "place_016_9G7kkA.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
+            }
+        },
+        "r-0d4a54": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_017_TQSZrw.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-014b53": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_018_qRDdhg.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-a96b73": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_019_PNbmAQ.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-bbe9b2": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_020_CfDdpA.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-2e842b": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_021_LT_tEQ.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-b7a907": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_022_7sCqqg.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-218dd8": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_023_7R_hqg.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-c008ae": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_024_aEmm0g.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-819f05": {
+            "type": "webmap",
+            "data": {
+                "type": "minimal",
+                "itemId": "6d117f2ede424ace93917e2bc88202b3",
+                "itemType": "webmap"
             }
         }
     },

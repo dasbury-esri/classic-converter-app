@@ -1,100 +1,123 @@
 {
     "source": "91d75e9b375e4e9b9b3a4004544bfadf",
-    "folderId": null,
+    "folderId": "5448d7d2bcf6402a926b6bc21676e5c9",
     "values": {
-        "webmap": "cb530d04876a4ec0b6f8ab3b40e36204",
+        "webmap": "6d117f2ede424ace93917e2bc88202b3",
         "order": [
             {
-                "id": 1,
+                "id": 20,
                 "visible": true
             },
             {
-                "id": 2,
+                "id": 22,
                 "visible": true
             },
             {
-                "id": 3,
+                "id": 24,
                 "visible": true
             },
             {
-                "id": 4,
+                "id": 25,
                 "visible": true
             },
             {
-                "id": 5,
+                "id": 27,
                 "visible": true
             },
             {
-                "id": 6,
+                "id": 31,
                 "visible": true
             },
             {
-                "id": 7,
+                "id": 32,
                 "visible": true
             },
             {
-                "id": 8,
+                "id": 33,
                 "visible": true
             },
             {
-                "id": 9,
+                "id": 34,
                 "visible": true
             },
             {
-                "id": 10,
+                "id": 35,
                 "visible": true
             },
             {
-                "id": 11,
+                "id": 36,
                 "visible": true
             },
             {
-                "id": 12,
+                "id": 37,
                 "visible": true
             },
             {
-                "id": 15,
+                "id": 38,
                 "visible": true
             },
             {
-                "id": 17,
+                "id": 39,
                 "visible": true
             },
             {
-                "id": 18,
+                "id": 40,
                 "visible": true
             },
             {
-                "id": 19,
+                "id": 41,
+                "visible": true
+            },
+            {
+                "id": 43,
+                "visible": true
+            },
+            {
+                "id": 44,
+                "visible": true
+            },
+            {
+                "id": 45,
+                "visible": true
+            },
+            {
+                "id": 46,
+                "visible": true
+            },
+            {
+                "id": 47,
+                "visible": true
+            },
+            {
+                "id": 48,
+                "visible": true
+            },
+            {
+                "id": 49,
                 "visible": true
             }
         ],
-        "layout": "integrated",
+        "firstRecordAsIntro": false,
+        "title": "National Agriculture Imagery Program (NAIP) History 2002-2024",
+        "subtitle": "A look at important NAIP program changes and milestones throughout its 23 year history.  ",
+        "layout": "three-panel",
+        "colors": "#444;#797979;#c2c2c2",
+        "headerLinkText": "More Information about NAIP",
+        "headerLinkURL": "https://www.fpacbc.usda.gov/geospatial-services",
+        "logoURL": "NO_LOGO",
+        "logoTarget": "https://www.fsa.usda.gov/programs-and-services/aerial-photography/index",
+        "zoomLevel": "14",
+        "template": "Map Tour",
+        "templateVersion": "2.28.0",
+        "sourceLayer": "maptour-layer1375977145438",
+        "templateCreation": "2.2.2",
         "placardPosition": "",
-        "colors": "#0e3867;#5d6f89;#9096a9",
-        "headerLinkText": "A story map",
-        "headerLinkURL": "http://esriurl.com/ocnres",
-        "logoURL": null,
-        "logoTarget": "",
+        "locationButton": false,
         "social": {
             "facebook": true,
             "twitter": true,
             "bitly": true
-        },
-        "fieldsOverride": {
-            "fieldID": "FID",
-            "fieldName": "Name",
-            "fieldDescription": "Caption",
-            "fieldURL": "URL",
-            "fieldThumb": "Thumb_URL",
-            "fieldIconColor": "Number"
-        },
-        "zoomLevel": "4",
-        "templateCreation": "2.1",
-        "title": "Pacific Ocean Science and Exploration",
-        "sourceLayer": "Pacific_StoryMap_Features_4383",
-        "template": "Map Tour",
-        "templateVersion": "2.5.1",
-        "subtitle": "Come with us on a tour of some of the wildest, most exciting places being explored and studied in the world's largest ocean, the Pacific. Map by \"Deepsea Dawn\" Wright, dwright@esri.com."
-    }
+        }
+    },
+    "_ssl": true
 }
