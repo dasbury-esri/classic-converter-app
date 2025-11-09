@@ -223,6 +223,8 @@ To ease user workflow, added a button to do authentication via ArcGIS Online OAu
 - temporarily using the ArcGIS Python API to create a target story. to be removed after testing
 - created a MapTourJSONConverter class and edited convert_classic_to_json() and JSONConverterFactory class to accommodate
 - added MapTourConverter notebook for testing
+- Conversion is _mostly_ working but there seems to be an issue with how the map instantiates and updates. Need to closely review json schema.
+- Guessing we'll need to add a secondary config page in the React app to allow users to modify AGSM MapTour layouts
 
 
 ## Environment Notes

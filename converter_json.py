@@ -32,7 +32,6 @@ from storymap_json_schema import (ALIGNMENTS, EMBEDLY_TYPES, STANDARD_THEMES,
                                   create_tour_map_geometry, create_tour_map_node,
                                   create_tour_place, create_tour_node,
                                   is_webmercator, webmercator_to_wgs84,
-                                  fs_has_attachments,
                                   generate_node_id, generate_resource_id,
                                   insert_node_before_credits, set_cover_data,
                                   set_theme, validate_node_against_schema,
@@ -1503,8 +1502,7 @@ class MapTourJSONConverter:
                             feature_service_url = layer.get('url') or layer.get('URL')
                             if feature_service_url:
                                 # Ensure https protocol
-                                if feature_service_url.startswith('http://'):
-                                    feature_service_url = 'https://' + feature_service_url[len('http://'):]
+                                feature_service_url = ensure_https_protocol(feature_service_url)
                                 print(f"Converting Feature Service: {feature_service_url}")
                                 query_url = f"{feature_service_url}/query"
                                 params = {
