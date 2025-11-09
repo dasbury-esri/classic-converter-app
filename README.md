@@ -222,6 +222,7 @@ To ease user workflow, added a button to do authentication via ArcGIS Online OAu
 - added helper function to create a carousel node for media in MapTour
 - temporarily using the ArcGIS Python API to create a target story. to be removed after testing
 - created a MapTourJSONConverter class and edited convert_classic_to_json() and JSONConverterFactory class to accommodate
+- added MapTourConverter notebook for testing
 
 
 ## Environment Notes
