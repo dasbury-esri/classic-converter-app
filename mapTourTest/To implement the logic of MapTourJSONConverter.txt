@@ -1,0 +1,50 @@
+To implement the logic of MapTourJSONConverter into your React converter-app, you need to:
+
+1. Create maptour-converter.ts
+Create a new file: converter-app/src/converter/maptour-converter.ts
+Port the logic from MapTourJSONConverter to a TypeScript class, e.g. MapTourConverter.
+Use the existing builder (storymap-builder.ts) and schema (storymap-schema.ts) utilities for node/resource creation.
+Implement methods for:
+Feature extraction and ordering
+Geometry creation for tour-map
+Place node creation (with detached content/media nodes)
+Image transfer logic (use or adapt transferImages from image-transfer.ts)
+Basemap resource creation and assignment
+2. Update converter-factory.ts
+In converter-factory.ts, add logic to detect "template": "Map Tour" in the classic JSON and instantiate your new MapTourConverter.
+Example:
+
+import { MapTourConverter } from './maptour-converter';
+// ...
+if (values.template === 'Map Tour') {
+    return new MapTourConverter(classicJson, themeId);}
+
+3. Update Main Conversion Flow
+In converter-factory.ts, ensure convertClassicToJson calls the new converter for Map Tour stories.
+In Converter.tsx, no major changes are needed unless you want to expose Map Tour-specific options.
+4. Image Transfer
+Use or adapt the existing image transfer logic (image-transfer.ts) to upload images and update references in the JSON.
+Ensure the mapping from classic image URLs/attachments to StoryMap resources matches the Python logic.
+5. Node/Resource Creation
+Use storymap-builder.ts for node/resource creation, mirroring the Python builder.
+Use storymap-schema.ts for node/resource schema functions.
+6. Testing and Validation
+Test with a variety of classic Map Tour JSONs.
+Validate output against map-tour-json-schema.json.
+Compare output to map-tour-converted.json and map-tour-from-scratch.json.
+7. Documentation
+Update README.md and CONVERTER_LOGIC.md to document the new Map Tour conversion logic.
+Summary Table
+File to Create/Modify	Purpose
+maptour-converter.ts	Port Map Tour conversion logic
+converter-factory.ts	Detect Map Tour and use new converter
+storymap-builder.ts	Use for node/resource creation
+storymap-schema.ts	Use for node/resource schema
+image-transfer.ts	Use/adapt for image upload
+Converter.tsx	No major changes needed
+Next Steps:
+
+Create maptour-converter.ts and port logic.
+Update converter-factory.ts to use it.
+Test and validate output.
+See MapTourJSONConverter for reference logic.
