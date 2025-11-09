@@ -15,7 +15,7 @@ import urllib.request
 import uuid
 from typing import Any, Dict, List, Optional, Tuple
 
-from bs4 import BeautifulSoup, Tag
+from bs4 import BeautifulSoup, Tag # type: ignore
 
 from storymap_json_schema import (ALIGNMENTS, EMBEDLY_TYPES, STANDARD_THEMES,
                                   TEXT_STYLES, add_child_to_node,
@@ -76,7 +76,7 @@ def remove_span_tags(data):
 
 def determine_scale_zoom_level(given_extent, scale_coefficient=4.4):
     """Calculate zoom level from map extent"""
-    from arcgis.apps.storymap import Scales
+    from arcgis.apps.storymap import Scales # type: ignore
 
     max_scale = 147914382
 
