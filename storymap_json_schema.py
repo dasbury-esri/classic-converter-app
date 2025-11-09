@@ -7,7 +7,8 @@ ArcGIS StoryMaps directly from JSON without using the Python API.
 
 import uuid
 from typing import Any, Dict, List, Optional
-
+import math
+import requests
 
 def generate_node_id() -> str:
     """Generate a unique node ID in the format used by StoryMaps"""
@@ -98,6 +99,7 @@ def create_text_node(text: str, style: str = "paragraph", alignment: str = "star
 
 def create_image_node(resource_id: str, caption: Optional[str] = None,
                      alt: Optional[str] = None, display: str = "standard",
+                     isExpandable: Optional[bool] = None, attribution: Optional[str] = None,
                      float_alignment: str = "start") -> Dict[str, Any]:
     """
     Create an image node
@@ -107,6 +109,8 @@ def create_image_node(resource_id: str, caption: Optional[str] = None,
         caption: Optional caption
         alt: Optional alt text (schema uses 'alt', not 'altText')
         display: Display mode (standard, wide, full, float)
+        isExpandable: boolean // Added with 23.31: https://devtopia.esri.com/WebGIS/arcgis-storymaps/issues/17492
+        attribution: Photo credit
         float_alignment: Alignment when display is 'float' (start, end)
     """
     node = {
@@ -119,6 +123,9 @@ def create_image_node(resource_id: str, caption: Optional[str] = None,
         }
     }
 
+    if isExpandable is not None:
+        node["data"]["isExpandable"] = isExpandable
+
     if display == "float":
         node["config"]["floatAlignment"] = float_alignment
 
@@ -128,6 +135,9 @@ def create_image_node(resource_id: str, caption: Optional[str] = None,
     if alt:
         node["data"]["alt"] = alt  # Schema uses 'alt', not 'altText'
 
+    if attribution:
+        node["data"]["attribution"] = attribution
+        
     return node
 
 
@@ -372,6 +382,173 @@ def create_slide_structure() -> tuple:
 
     return slide_id, narrative_id, nodes
 
+# create MapTour nodes
+def create_tour_map_geometry(id: str, long: float, lat: float,
+                            type: str = "POINT_NUMBERED_TOUR",
+                            scale: float = None,
+                            viewpoint: dict = None) -> Dict[str, Any]:
+    """
+    Create a single geometry point for a tour-map node.
+
+    Args:
+        id: Unique geometry ID
+        long: Longitude value
+        lat: Latitude value
+        type: Geometry type (default "POINT_NUMBERED_TOUR")
+        scale: Optional scale value
+        viewpoint: Optional viewpoint dict
+
+    Returns:
+        Dict representing a geometry point
+    """
+    geometry = {
+        "id": id,
+        "type": type,
+        "nodes": [
+            {
+                "long": long,
+                "lat": lat
+            }
+        ]
+    }
+    if scale is not None:
+        geometry["scale"] = scale
+    if viewpoint is not None:
+        geometry["viewpoint"] = viewpoint
+    return geometry
+
+def create_tour_map_node(geometries: Dict[str, Any], mode: str = "2d", 
+                         basemap_type: str = "name", basemap_value: str = "worldImagery", 
+                         alt: Optional[str] = None) -> Dict[str, Any]:
+    """
+    Create a tour-map node matching the structure in tour-nativeAGSM.json
+
+    Args:
+        geometries: Dict of geometry objects (id: geometry dict)
+        mode: Map mode (default "2d")
+        basemap_type: Basemap type (default "name")
+        basemap_value: Basemap value (default "worldImagery")
+        alt: Optional alt text
+
+    Returns:
+        Dict representing a tour-map node
+    """
+    node = {
+        "type": "tour-map",
+        "data": {
+            "geometries": geometries,
+            "mode": mode,
+            "basemap": {
+                "type": basemap_type,
+                "value": basemap_value
+            }
+        }
+    }
+    if alt:
+        node["data"]["alt"] = alt
+    return node
+
+def create_tour_node(
+    places: List[str], map_node_id: str,
+    accent_color: str,
+    narrative_panel_position: str = "start", narrative_panel_size: str = "medium",
+    tour_type: str = "guided-tour", subtype: str = "media-focused") -> Dict[str, Any]:
+    """
+    Create a tour node matching the structure in tour-nativeAGSM.json.
+
+    Args:
+        places: List of place dicts, each with keys: id, featureId, contents, media, title
+        map_node_id: Node ID of the associated tour-map node
+        narrative_panel_position: Position of the narrative panel ("start" by default)
+        narrative_panel_size: Size of the narrative panel ("medium" by default)
+        accent_color: Accent color hex string
+        tour_type: Type of tour ("guided-tour" by default) options: ["guided-tour", "explorer]
+        subtype: Subtype of tour ("media-focused" by default) options: guided-tour[media-focused or map-focused], explorer[list or grid] 
+
+    Returns:
+        Dict representing a tour node
+    """
+    node = {
+        "type": "tour",
+        "data": {
+            "type": tour_type,
+            "subtype": subtype,
+            "narrativePanelPosition": narrative_panel_position,
+            "map": map_node_id,
+            "places": places,
+            "narrativePanelSize": narrative_panel_size,
+            "accentColor": accent_color
+        }
+    }
+
+    return node
+
+def create_tour_place(
+    id: str,
+    feature_id: str,
+    contents: list,
+    media: str,
+    title: str,
+    visible: bool = True
+) -> dict:
+    """
+    Create a single place node for a tour.
+
+    Args:
+        id: Node ID for the place
+        feature_id: Geometry feature ID
+        contents: List of node IDs for content
+        media: Node ID for media
+        title: Node ID for title
+        visible: Whether the place is visible (default True)
+
+    Returns:
+        Dict representing a place
+    """
+    if media is None or title is None:
+        raise ValueError("Media and title are required for a tour place when converting")
+    place = {
+        "id": id,
+        "featureId": feature_id,
+        "contents": contents,
+        "media": media,
+        "title": title
+    }
+    if not visible:
+        place["config"] = {"isHidden": True}
+    return place
+
+def webmercator_to_wgs84(x: float, y: float) -> tuple[float, float]:
+    """
+    Convert Web Mercator (EPSG:3857) x/y to WGS84 lon/lat.
+    Args:
+        x: X coordinate (meters)
+        y: Y coordinate (meters)
+    Returns:
+        (longitude, latitude) in degrees
+    """
+    R_MAJOR = 6378137.0
+    lon = (x / R_MAJOR) * 180.0 / math.pi
+    lat = (y / R_MAJOR) * 180.0 / math.pi
+    lat = 180.0 / math.pi * (2 * math.atan(math.exp(lat * math.pi / 180.0)) - math.pi / 2.0)
+    return lon, lat
+
+def is_webmercator(x: float, y: float) -> bool:
+    """
+    Heuristic to check if coordinates are in Web Mercator (meters).
+    Returns True if values are outside typical lon/lat ranges.
+    """
+    return abs(x) > 180 or abs(y) > 90
+
+def fs_has_attachments(layer_url):
+    """
+    Check to see if a feature service has attachments
+    """
+    response = requests.get(f"{layer_url}?f=json")
+    if response.status_code == 200:
+        layer_info = response.json()
+        return layer_info.get("hasAttachments", False)
+    return False
 
 # Resource templates
 def create_image_resource(file_path: str, width: int = 1024, height: int = 1024) -> Dict[str, Any]:
@@ -453,7 +630,7 @@ def create_cover_config(title: str, summary: str = "", by_line: str = "",
         image_resource_id: Optional background image resource ID
     """
     config = {
-        "type": "full",
+        "type": "minimal",
         "title": title,
         "summary": summary,
         "byline": by_line
@@ -622,6 +799,38 @@ def validate_node_against_schema(node: Dict[str, Any], node_type: str) -> List[s
         if "map" not in node.get("data", {}):
             errors.append("Map node missing data.map resource ID")
 
+    if node_type == "tour-map":
+        data = node.get("data", {})
+        if "geometries" not in data:
+            errors.append("Tour-map node missing data.geometries")
+        else:
+            for geom_id, geom in data["geometries"].items():
+                if "id" not in geom:
+                    errors.append(f"Geometry '{geom_id}' missing 'id'")
+                if "type" not in geom:
+                    errors.append(f"Geometry '{geom_id}' missing 'type'")
+                if "nodes" not in geom or not isinstance(geom["nodes"], list) or len(geom["nodes"]) == 0:
+                    errors.append(f"Geometry '{geom_id}' missing or invalid 'nodes' list")
+                for node_pt in geom["nodes"]:
+                    if "lat" not in node_pt or "long" not in node_pt:
+                        errors.append(f"Geometry '{geom_id}' node missing 'lat' or 'long'")
+
+    if node_type == "tour":
+        data = node.get("data", {})
+        if "places" not in data or not isinstance(data["places"], list) or len(data["places"]) == 0:
+            errors.append("Tour node missing or empty data.places list")
+        for place in data.get("places", []):
+            if "id" not in place:
+                errors.append("Place missing 'id'")
+            if "featureId" not in place:
+                errors.append(f"Place '{place.get('id', '?')}' missing 'featureId'")
+            if "contents" not in place or not isinstance(place["contents"], list) or len(place["contents"]) == 0:
+                errors.append(f"Place '{place.get('id', '?')}' missing or empty 'contents' list")
+            if "media" not in place:
+                errors.append(f"Place '{place.get('id', '?')}' missing 'media'")
+            if "title" not in place:
+                errors.append(f"Place '{place.get('id', '?')}' missing 'title'")
+                
     return errors
 
 

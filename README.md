@@ -210,6 +210,16 @@ To ease user workflow, added a button to do authentication via ArcGIS Online OAu
 - Normalized image resource urls during mapping when transferring images in image-transfer.ts
 - Modified transferResults in Converter.tsx to handle the array
 - Preserve original story title while creating a unique AGO item name to prevent REST api errors
+### davi6569/maptour-converter
+- attempting to create a converter for classic Map Tours
+- testing first with Python before converting to React
+- added a few json samples from Classic Map Tours
+- tweaked create_base_storymap_json() to match json schema from AGSM builder
+- tweaked create_image_node() to add isExpandable and attribution keys
+- tweaked default conver config (changed from "full" to "minimal")
+- noticed that return patterns for functions is inconsistent within storymap_json_schema.py. Not sure how much that matters, just makes it easier to read when consistent
+- added helper functions to create MapTour nodes and added to schema validation
+
 
 ## Environment Notes
 
