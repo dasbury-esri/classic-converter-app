@@ -1161,6 +1161,35 @@ class CascadeJSONConverter:
 # Map Tour JSON Converter
 # =====================================================================
 
+# Pseudocode for node order
+# --------------------------
+# # Add cover node
+# cover_id = self.builder.add_node(cover_node)
+# # Add navigation node
+# navigation_id = self.builder.add_node(navigation_node)
+# # Add places, content, media nodes
+# for node in place_nodes + content_nodes + media_nodes:
+#     node_id = self.builder.add_node(node)
+# # Add tour-map and tour nodes
+# tour_map_id = self.builder.add_node(tour_map_node)
+# tour_id = self.builder.add_node(tour_node)
+# # Add credits nodes
+# for node in credits_nodes:
+#     node_id = self.builder.add_node(node)
+# # Add credits node
+# credits_id = self.builder.add_node(credits_node)
+# # Add story node last
+# story_id = self.builder.add_node(story_node)
+# # Add resources node
+# resources_id = self.builder.add_resource(resources_node)
+
+# # Update root children in desired order
+# self.builder.storymap_json["nodes"][root_id]["children"] = [
+#     cover_id, navigation_id, *place_node_ids, *content_node_ids, *media_node_ids,
+#     tour_map_id, tour_id, *credits_node_ids, credits_id, story_id
+# ]
+# -------------------------
+
 class MapTourJSONConverter:
     """Converts classic Map Tour stories to StoryMap JSON"""
 
@@ -1174,6 +1203,7 @@ class MapTourJSONConverter:
         self.gis = gis
         self.target_story_id = None
         self.builder = StoryMapJSONBuilder(theme_id, gis_token)
+        self.webmap_json = None
         self._detect_theme()
 
     def _detect_theme(self) -> None:
@@ -1192,9 +1222,7 @@ class MapTourJSONConverter:
         item_attrs = self.classic_json.get('values', {})
         title = get_attr_from_list(item_attrs, ['title',"headerLinkText"], 'Untitled MapTour')
         subtitle = item_attrs.get('subtitle', '')
-        image_resource_map = self._transfer_images()
-        self.image_resource_map = image_resource_map
-        print("Webmap ID:", self.classic_json['values']['webmap'])
+        print(f"MapTour title: {title}\nTour subtitle: {subtitle} \nWebmap ID: {self.classic_json['values']['webmap']}")
 
         # Get features 
         feature_set = self._get_feature_set()
@@ -1212,17 +1240,39 @@ class MapTourJSONConverter:
         tour_map_node = create_tour_map_node(geometries)
         tour_map_node_id = self.builder.create_detached_node(tour_map_node)
 
+        # Classic Map Tours had three layouts; "three-panel", "integrated", and "side-panel"
+        # We can map like this:
+        # classic "three-panel" to AGSM tour_type = "guided-tour", subtype = "media-focused"
+        # classic "integrated" to AGSM tour_type = "guided-tour", subtype = "map-focused"
+        # classic "side-panel" to AGSM tour_type = "guided-tour", subtype = "media-focused"
+        tour_type = None
+        subtype = None
+        # if self.classic_json['values']['layout'] == 'three-panel':
+        #     tour_type = "guided-tour",
+        #     subtype = "media-focused"
+        # if self.classic_json['values']['layout'] == 'integrated':
+        #     tour_type = "guided-tour",
+        #     subtype = "map-focused"
+        # if self.classic_json['values']['layout'] == 'side-panel':
+        #     tour_type = "guided-tour",
+        #     subtype = "media-focused"
+
         # Create tour node (detached, not added to story root)
         tour_node = create_tour_node(
-            places=[],
-            map_node_id=tour_map_node_id,
-            accent_color="#f9f794", # point icon color (should be derived from theme)
-            narrative_panel_position="start", # start or end. unsure what the difference is. arcgis-storymaps/packages/storymaps-builder/src/blocks/immersive/README.md
-            narrative_panel_size="large", # small, medium or large
-            tour_type="explorer", # explorer or guided
-            subtype="grid" # explorer[list or grid], guided[media or map]
+            tour_type = tour_type if tour_type else "explorer", # explorer or guided-tour
+            subtype = subtype if subtype else "grid", # explorer[list or grid], guided-tour[media-focused or map-focused]
+            narrative_panel_position = "start", # start or end. unsure what the difference is. arcgis-storymaps/packages/storymaps-builder/src/blocks/immersive/README.md
+            map_node_id = tour_map_node_id,
+            places = [],
+            narrative_panel_size = "large", # small, medium or large
+            accent_color = "#f9f794" # point icon color (should be derived from theme)
         )
         tour_node_id = self.builder.create_detached_node(tour_node)
+
+        # Transfer images
+        if feature_set:
+            image_resource_map = self._transfer_images(self.webmap_json, feature_set)
+            self.image_resource_map = image_resource_map
 
         # For each feature, create content nodes and build place dict
         for i, feature in enumerate(features):
@@ -1248,7 +1298,7 @@ class MapTourJSONConverter:
             # Convert attributes
             attrs = feature["attributes"]
             title_text = get_attr_from_list(attrs, ["name", "NAME", "Name"])
-            description_text = get_attr_from_list(attrs, ["description", "DESCRIPTION", "Description", "DESC1", "CAPTION"])
+            description_text = get_attr_from_list(attrs, ["description", "DESCRIPTION", "Description", "DESC1", "caption", "CAPTION", "Caption", "FULL_Caption"])
             attribution_text = get_attr_from_list(attrs, ["PHOTO_CREDIT"])
 
             # Place Title node (not added to story root)
@@ -1288,17 +1338,26 @@ class MapTourJSONConverter:
         #     n for n in self.builder.storymap_json["nodes"][story_root_id]["children"]
         #     if self.builder.storymap_json["nodes"][n]["type"] not in ["tour-map", "tour", "text", "image", "carousel"]
         # ]
-        # Get webmap and create resource for basemap if present
-        if 'values' in self.classic_json and 'webmap' in self.classic_json['values']:
-            webmap_id = self.classic_json['values']['webmap']
-            tour_map_resource_id = self.builder.add_resource(create_map_resource(item_id=webmap_id))
-            print(f"tour-map-id: {tour_map_resource_id} webmap: {webmap_id}")
-        # If webmap resource exists, assign to basemap property
-        if tour_map_resource_id:
+        # Get webmapId and create resource for basemap if present
+        webmap_version = float(self.webmap_json['version'])
+        if webmap_version < 2.0:
+            print(f"Web Map version is too old. Only using the basemap from the classic Map Tour. If you have layers you'd like included create a newer version of your Web Map and add it in the AGSM Map Tour builder")
+            basemap_title = self.webmap_json['baseMap']['title'].lower()
             tour_map_node['data']['basemap'] = {
-                "type": "resource",
-                "value": tour_map_resource_id # Key IS NOT "resourceId"
+                "type": "name",
+                "value": basemap_title
             }
+        elif webmap_version >= 2.0:
+            if 'values' in self.classic_json and 'webmap' in self.classic_json['values']:
+                webmap_id = self.classic_json['values']['webmap']
+                tour_map_resource_id = self.builder.add_resource(create_map_resource(item_id=webmap_id))
+                print(f"tour-map-id: {tour_map_resource_id} webmap: {webmap_id}")
+            # If webmap resource exists, assign to basemap property
+            if tour_map_resource_id:
+                tour_map_node['data']['basemap'] = {
+                    "type": "resource",
+                    "value": tour_map_resource_id # Key IS 'value' NOT 'resourceId'
+                }
         # Insert tour-map and tour nodes
         children.extend([tour_node_id, tour_map_node_id])
         self.builder.storymap_json["nodes"][story_root_id]["children"] = children
@@ -1307,21 +1366,20 @@ class MapTourJSONConverter:
         self.builder.set_cover(title=f"(CONVERSION) {title}", summary=subtitle)
         self.builder.set_theme(self.theme_id)
 
+        print(f"Conversion complete")
         return self.target_story_id, self.builder.get_json()
   
     def _get_webmap_json(self) -> Optional[Dict[str, Any]]:
-        # print("Entered _get_webmap_json")
         try:
-            if 'webmap_json' in self.classic_json:
-                print("Found webmap_json in classic_json")
-                return self.classic_json['webmap_json']
+            if self.webmap_json is not None:
+                print("Found webmap_json in self.webmap_json")
+                return self.webmap_json
             elif 'values' in self.classic_json and 'webmap' in self.classic_json['values']:
                 webmap_id = self.classic_json['values']['webmap']
-                print("Fetching json from webmap item")
+                print(f"Fetching json from: {webmap_id}")
                 webmap_item = self.gis.content.get(webmap_id)
-                webmap_json = webmap_item.get_data()
-                self.classic_json['webmap_json'] = webmap_json
-                return webmap_json
+                self.webmap_json = webmap_item.get_data()
+                return self.webmap_json
             else:
                 print("No webmap_json present")
         except Exception as ex:
@@ -1329,44 +1387,52 @@ class MapTourJSONConverter:
         return None
 
     def _get_feature_set(self) -> Optional[Dict[str, Any]]:
-        # print("Entered _get_feature_set")
         try:
             webmap_json = self._get_webmap_json()
             if webmap_json:
                 layers = webmap_json.get('operationalLayers', [])
-                for layer in layers:
-                    # Look for a layer with the title "Map Tour layer"
-                    if layer.get('title') == "Map Tour layer":
-                        print("Found Map Tour layer")
-                        # Case 1: featureCollection
-                        if 'featureCollection' in layer:
-                            fc = layer.get('featureCollection')
-                            if fc:
-                                for fc_layer in fc.get('layers', []):
-                                    if 'featureSet' in fc_layer:
-                                        return fc_layer['featureSet']
-                        # Case 2: Feature service 
-                        elif 'url' in layer and layer.get('layerType') == "ArcGISFeatureLayer":
-                            feature_service_url = layer['url']
-                            # Query all features (may want to add where=1=1, outFields=*, etc.)
-                            query_url = f"{feature_service_url}/query"
-                            params = {
-                                "where": "1=1",
-                                "outFields": "*",
-                                "f": "json"
-                            }
-                            response = requests.get(query_url, params=params)
-                            if response.status_code == 200:
-                                fs_json = response.json()
-                                # Return in featureSet format
-                                if "features" in fs_json:
-                                    return {"features": fs_json["features"]}
+                source_layer = self.classic_json.get('values', {}).get('sourceLayer')
+                print(f"Source layer name: {source_layer}")
+                if not source_layer:
+                    print("Warning: No 'sourceLayer' found in classic_json['values'].")
+                else:
+                    for layer in layers:
+                        if layer.get('id') or layer.get('title') == source_layer:
+                            print(f"Found layer with title matching sourceLayer: {source_layer}")
+                            # Case 1: featureCollection
+                            if 'featureCollection' in layer:
+                                print(f"Converting featureCollection")
+                                fc = layer.get('featureCollection')
+                                if fc:
+                                    for fc_layer in fc.get('layers', []):
+                                        if 'featureSet' in fc_layer:
+                                            return fc_layer['featureSet']
+                            # Case 2: Feature service (url or URL)
+                            feature_service_url = layer.get('url') or layer.get('URL')
+                            if feature_service_url:
+                                # Ensure https protocol
+                                if feature_service_url.startswith('http://'):
+                                    feature_service_url = 'https://' + feature_service_url[len('http://'):]
+                                print(f"Converting Feature Service: {feature_service_url}")
+                                query_url = f"{feature_service_url}/query"
+                                params = {
+                                    "where": "1=1",
+                                    "outFields": "*",
+                                    "f": "json"
+                                }
+                                headers = {"User-Agent": "Mozilla/5.0"}
+                                response = requests.get(query_url, params=params, headers=headers)
+                                if response.status_code == 200:
+                                    fs_json = response.json()
+                                    # print("Feature service response:", fs_json)
+                                    if "features" in fs_json:
+                                        return {"features": fs_json["features"]}
+                                    else:
+                                        print("Feature service response missing 'features' key.")
                                 else:
-                                    print("Feature service response missing 'features' key.")
-                            else:
-                                print(f"Failed to fetch feature service: {feature_service_url}")
-                        else:
-                            print("Failed to located features")
+                                    print(f"Failed to fetch feature service: {feature_service_url}")
+                            print("No featureCollection or url found in matched layer.")
+                            break
                 # If not found by title, fallback to first featureSet found
                 for layer in layers:
                     fc = layer.get('featureCollection')
@@ -1375,22 +1441,24 @@ class MapTourJSONConverter:
                             if 'featureSet' in fc_layer:
                                 return fc_layer['featureSet']
             # Fallback: look for featureSet directly
+            # Unsure, but I don't think this will ever be the case. Features were never stored in the MapTour item
+            # I think they were always stored in the webmap as a FeatureSet within a FeatureCollection or as a Feature Service
             if 'featureSet' in self.classic_json:
                 return self.classic_json['featureSet']
         except Exception as ex:
             print(f"Error in _get_feature_set: {ex}")
         return None
     
-    def _transfer_images(self) -> Dict[str, str]:
+    def _transfer_images(self, webmap_json: Optional[Dict[str, Any]], feature_set: Optional[Dict[str, Any]]) -> Dict[str, str]:
         """
         Fetch externally hosted images and upload them to AGO resources (in memory).
         Avoid uploading duplicate images; reuse resource for repeated references.
         Returns a dict mapping filenames to resource names.
         """
+        print("Uploading images...")
         if not self.target_story_id:
             self.target_story_id = create_target_story(self.gis)
         image_resource_map = {}
-        feature_set = self._get_feature_set()
         if not feature_set or "features" not in feature_set:
             self.filenames_per_feature = []
             return image_resource_map
@@ -1399,7 +1467,6 @@ class MapTourJSONConverter:
         token = self.gis._con.token if self.gis else None
 
         # Get feature service URL if present
-        webmap_json = self._get_webmap_json()
         feature_service_url = None
         if webmap_json:
             for layer in webmap_json.get('operationalLayers', []):

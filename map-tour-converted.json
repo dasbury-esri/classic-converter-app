@@ -1,29 +1,29 @@
 {
-    "root": "n-1f0451",
+    "root": "n-7302c0",
     "nodes": {
-        "n-1f0451": {
+        "n-7302c0": {
             "type": "story",
             "data": {
-                "storyTheme": "r-3c306e"
+                "storyTheme": "r-915be6"
             },
             "children": [
-                "n-b1226f",
-                "n-0190b3",
-                "n-78c0bd",
-                "n-98989e",
-                "n-8e8f78"
+                "n-2ded26",
+                "n-c52462",
+                "n-53cb13",
+                "n-082ac5",
+                "n-00da75"
             ]
         },
-        "n-b1226f": {
+        "n-2ded26": {
             "type": "storycover",
             "data": {
                 "type": "minimal",
-                "title": "(CONVERSION) Esri Campus Tour",
-                "summary": "An early morning walking tour of the Esri campus in Redlands, California",
+                "title": "(CONVERSION) Pacific Ocean Science and Exploration",
+                "summary": "Come with us on a tour of some of the wildest, most exciting places being explored and studied in the world's largest ocean, the Pacific. Map by \"Deepsea Dawn\" Wright, dwright@esri.com.",
                 "byline": ""
             }
         },
-        "n-0190b3": {
+        "n-c52462": {
             "type": "navigation",
             "data": {
                 "links": []
@@ -32,232 +32,1017 @@
                 "isHidden": true
             }
         },
-        "n-78c0bd": {
+        "n-53cb13": {
             "type": "credits",
             "children": []
         },
-        "n-8e8f78": {
+        "n-00da75": {
             "type": "tour-map",
             "data": {
                 "geometries": {
-                    "51bb41c3-d0de-4c90-ae05-460c6492dc32": {
-                        "id": "51bb41c3-d0de-4c90-ae05-460c6492dc32",
+                    "3e005646-5916-4f0f-abff-b98d10467aad": {
+                        "id": "3e005646-5916-4f0f-abff-b98d10467aad",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -117.19586399999801,
-                                "lat": 34.05792399999942
+                                "long": -154.55565999999996,
+                                "lat": 15.488970000000002
                             }
                         ]
                     },
-                    "2b0a64fa-4759-4d4c-8e84-ea5fb86bde1f": {
-                        "id": "2b0a64fa-4759-4d4c-8e84-ea5fb86bde1f",
+                    "a93d2d30-cce2-435f-b8e7-3b8285c6f8bf": {
+                        "id": "a93d2d30-cce2-435f-b8e7-3b8285c6f8bf",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -117.19569499999803,
-                                "lat": 34.05706199999942
+                                "long": 142.61099,
+                                "lat": 11.353809999999996
                             }
                         ]
                     },
-                    "25a47ccf-463c-424f-ba6e-4970a0cd12f4": {
-                        "id": "25a47ccf-463c-424f-ba6e-4970a0cd12f4",
+                    "d1975959-d73a-46e1-ae4a-325599442e27": {
+                        "id": "d1975959-d73a-46e1-ae4a-325599442e27",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -117.19570499999801,
-                                "lat": 34.056557999999434
+                                "long": -174.72566999999998,
+                                "lat": -23.226699999999997
+                            }
+                        ]
+                    },
+                    "c58f4997-31a7-43bc-8586-b1787925a050": {
+                        "id": "c58f4997-31a7-43bc-8586-b1787925a050",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -165.95668,
+                                "lat": 23.818040000000003
+                            }
+                        ]
+                    },
+                    "5f85d75c-9cb1-4e68-9ea6-4056cc2532d9": {
+                        "id": "5f85d75c-9cb1-4e68-9ea6-4056cc2532d9",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -171.44900000000004,
+                                "lat": -33.6983
+                            }
+                        ]
+                    },
+                    "54bfa3c9-0555-41c5-9c21-e2d3f7d9b1be": {
+                        "id": "54bfa3c9-0555-41c5-9c21-e2d3f7d9b1be",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -90.66543000000001,
+                                "lat": -0.8329499999999973
+                            }
+                        ]
+                    },
+                    "4f9d81d5-b80e-4d76-bf3b-8dc3a4274e22": {
+                        "id": "4f9d81d5-b80e-4d76-bf3b-8dc3a4274e22",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": 142.07347,
+                                "lat": 26.83853
+                            }
+                        ]
+                    },
+                    "f0a47a76-9928-4cdc-9809-4cb34bc71fb6": {
+                        "id": "f0a47a76-9928-4cdc-9809-4cb34bc71fb6",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -104.2967,
+                                "lat": 9.843329999999998
+                            }
+                        ]
+                    },
+                    "37cfad61-c42b-4591-bc97-782a39455d24": {
+                        "id": "37cfad61-c42b-4591-bc97-782a39455d24",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": 144.775,
+                                "lat": 14.600000000000009
+                            }
+                        ]
+                    },
+                    "d2484b7a-d33d-4795-9f87-0bb66a55bca8": {
+                        "id": "d2484b7a-d33d-4795-9f87-0bb66a55bca8",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -170.13738,
+                                "lat": -14.293929999999994
+                            }
+                        ]
+                    },
+                    "fa6f4e4c-0e8f-4816-b195-f7c3e851a5ab": {
+                        "id": "fa6f4e4c-0e8f-4816-b195-f7c3e851a5ab",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -125.00000000000001,
+                                "lat": 45.0
+                            }
+                        ]
+                    },
+                    "43104053-bf3f-4e11-b4f8-e0428271b980": {
+                        "id": "43104053-bf3f-4e11-b4f8-e0428271b980",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": 113.44570000000002,
+                                "lat": 13.081520000000006
+                            }
+                        ]
+                    },
+                    "37221195-f58c-470f-a3fe-ba8c8bbf4803": {
+                        "id": "37221195-f58c-470f-a3fe-ba8c8bbf4803",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -113.2167,
+                                "lat": -17.43299999999999
+                            }
+                        ]
+                    },
+                    "e5729b08-3449-465c-a0e8-a11b13facba5": {
+                        "id": "e5729b08-3449-465c-a0e8-a11b13facba5",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": 174.92706298823592,
+                                "lat": -36.03799493962833
+                            }
+                        ]
+                    },
+                    "9fd62d68-82cb-4165-9a7a-2b9d5101f6d5": {
+                        "id": "9fd62d68-82cb-4165-9a7a-2b9d5101f6d5",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -130.29207123437493,
+                                "lat": -25.013756559114974
+                            }
+                        ]
+                    },
+                    "73511389-646e-4a3a-bdda-f8d533be926e": {
+                        "id": "73511389-646e-4a3a-bdda-f8d533be926e",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": 166.78722082031229,
+                                "lat": -21.36104241253759
                             }
                         ]
                     }
                 },
                 "mode": "2d",
                 "basemap": {
-                    "type": "resource",
-                    "value": "r-3ba039"
+                    "type": "name",
+                    "value": "oceans"
                 }
             }
         },
-        "n-98989e": {
+        "n-082ac5": {
             "type": "tour",
             "data": {
                 "type": "explorer",
                 "subtype": "grid",
                 "narrativePanelPosition": "start",
-                "map": "n-8e8f78",
+                "map": "n-00da75",
                 "places": [
                     {
-                        "id": "ec7507f0-eb93-46c7-965b-4295730eebc4",
-                        "featureId": "51bb41c3-d0de-4c90-ae05-460c6492dc32",
+                        "id": "f3627c43-7830-43f9-a8e2-147df19cac29",
+                        "featureId": "3e005646-5916-4f0f-abff-b98d10467aad",
                         "contents": [
-                            "n-75e129"
+                            "n-908cc8"
                         ],
-                        "media": "n-43f05d",
-                        "title": "n-52a9d6"
+                        "media": "n-61d251",
+                        "title": "n-15a08b"
                     },
                     {
-                        "id": "015a8dec-c267-4102-864a-8968423d6017",
-                        "featureId": "2b0a64fa-4759-4d4c-8e84-ea5fb86bde1f",
+                        "id": "01bb4fe8-a977-4e77-a1a4-4a91b406b7fa",
+                        "featureId": "a93d2d30-cce2-435f-b8e7-3b8285c6f8bf",
                         "contents": [
-                            "n-bc2cac"
+                            "n-e38555"
                         ],
-                        "media": "n-828dcc",
-                        "title": "n-44b25a"
+                        "media": "n-430cfd",
+                        "title": "n-37d87b"
                     },
                     {
-                        "id": "6dfc4405-d03b-40d1-a1f1-b8ea5961b324",
-                        "featureId": "25a47ccf-463c-424f-ba6e-4970a0cd12f4",
+                        "id": "1b6d8e9c-a38e-4948-9cce-2ff729aa7442",
+                        "featureId": "d1975959-d73a-46e1-ae4a-325599442e27",
                         "contents": [
-                            "n-b28bc6"
+                            "n-86fcb0"
                         ],
-                        "media": "n-b5611b",
-                        "title": "n-d5bbb8"
+                        "media": "n-68872b",
+                        "title": "n-000795"
+                    },
+                    {
+                        "id": "abaa0c62-330b-4785-b2ad-bf5bf63bfc9a",
+                        "featureId": "c58f4997-31a7-43bc-8586-b1787925a050",
+                        "contents": [
+                            "n-a3d53a"
+                        ],
+                        "media": "n-fb555b",
+                        "title": "n-f3f870"
+                    },
+                    {
+                        "id": "382f9460-8b25-45d6-b772-86a8fdaf4528",
+                        "featureId": "5f85d75c-9cb1-4e68-9ea6-4056cc2532d9",
+                        "contents": [
+                            "n-e8bd1a"
+                        ],
+                        "media": "n-ccd291",
+                        "title": "n-4805ac"
+                    },
+                    {
+                        "id": "b8eea431-08a2-4da7-beab-bb9482da47e5",
+                        "featureId": "54bfa3c9-0555-41c5-9c21-e2d3f7d9b1be",
+                        "contents": [
+                            "n-fc5d7f"
+                        ],
+                        "media": "n-d98a16",
+                        "title": "n-6a7d29"
+                    },
+                    {
+                        "id": "2ef81d10-a49a-446a-a16f-b36551f875a7",
+                        "featureId": "4f9d81d5-b80e-4d76-bf3b-8dc3a4274e22",
+                        "contents": [
+                            "n-29ff65"
+                        ],
+                        "media": "n-cd9526",
+                        "title": "n-e83b18"
+                    },
+                    {
+                        "id": "bf859f64-5a2e-48ef-a3c8-4012ca4b35b7",
+                        "featureId": "f0a47a76-9928-4cdc-9809-4cb34bc71fb6",
+                        "contents": [
+                            "n-5c8254"
+                        ],
+                        "media": "n-32fece",
+                        "title": "n-e189be"
+                    },
+                    {
+                        "id": "4310826c-52b3-4c1e-9da7-371807a17d08",
+                        "featureId": "37cfad61-c42b-4591-bc97-782a39455d24",
+                        "contents": [
+                            "n-43ada9"
+                        ],
+                        "media": "n-702cb8",
+                        "title": "n-113d6b"
+                    },
+                    {
+                        "id": "fb2d5b0c-7360-4041-8d37-3116142626e7",
+                        "featureId": "d2484b7a-d33d-4795-9f87-0bb66a55bca8",
+                        "contents": [
+                            "n-74ec13"
+                        ],
+                        "media": "n-d530a6",
+                        "title": "n-f74fa7"
+                    },
+                    {
+                        "id": "bfac1de4-ce4d-46f1-84c1-e167db708c33",
+                        "featureId": "fa6f4e4c-0e8f-4816-b195-f7c3e851a5ab",
+                        "contents": [
+                            "n-5a9e37"
+                        ],
+                        "media": "n-3b99e3",
+                        "title": "n-ce36b7"
+                    },
+                    {
+                        "id": "5c589a56-0af5-45f7-aad6-e2ef1e1b67a4",
+                        "featureId": "43104053-bf3f-4e11-b4f8-e0428271b980",
+                        "contents": [
+                            "n-55d76f"
+                        ],
+                        "media": "n-f1fb3b",
+                        "title": "n-b0aada"
+                    },
+                    {
+                        "id": "35ea4f3a-6069-4494-b9ca-87c7b627892b",
+                        "featureId": "37221195-f58c-470f-a3fe-ba8c8bbf4803",
+                        "contents": [
+                            "n-de31c0"
+                        ],
+                        "media": "n-ef801d",
+                        "title": "n-49f97b"
+                    },
+                    {
+                        "id": "d670f0a0-707e-4f8c-ab7b-05ab93a47ca6",
+                        "featureId": "e5729b08-3449-465c-a0e8-a11b13facba5",
+                        "contents": [
+                            "n-391cba"
+                        ],
+                        "media": "n-4435bf",
+                        "title": "n-5ff083"
+                    },
+                    {
+                        "id": "39b102e0-e1e7-4775-ae53-31fb2aabfd63",
+                        "featureId": "9fd62d68-82cb-4165-9a7a-2b9d5101f6d5",
+                        "contents": [
+                            "n-2234f8"
+                        ],
+                        "media": "n-45b381",
+                        "title": "n-f08103"
+                    },
+                    {
+                        "id": "e03f2846-8cb3-4803-bb5c-2fa1a0345738",
+                        "featureId": "73511389-646e-4a3a-bdda-f8d533be926e",
+                        "contents": [
+                            "n-5830f6"
+                        ],
+                        "media": "n-662404",
+                        "title": "n-a5415c"
                     }
                 ],
                 "narrativePanelSize": "large",
                 "accentColor": "#f9f794"
             }
         },
-        "n-52a9d6": {
+        "n-15a08b": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "Sidewalk",
+                "text": "No part of the ocean is unaffected by humans now!",
                 "textAlignment": "start"
             }
         },
-        "n-75e129": {
+        "n-908cc8": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "Sunrise streaks the New York Street sidewalk at the north edge of Esri's campus in Redlands, California.",
+                "text": "World governments are thus realizing that exploring and studying the ocean need to become higher priorities.",
                 "textAlignment": "start"
             }
         },
-        "n-9a3398": {
+        "n-91068c": {
             "type": "image",
             "data": {
-                "image": "r-13005b"
+                "image": "r-875dee"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-43f05d": {
+        "n-61d251": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-9a3398"
+                "n-91068c"
             ]
         },
-        "n-44b25a": {
+        "n-37d87b": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "New York Street",
+                "text": "Challenger Deep",
                 "textAlignment": "start"
             }
         },
-        "n-bc2cac": {
+        "n-e38555": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "The headquarters building, completed in 2010, unifies the campus. New York Street used to bisect the campus, but a portion of the street was closed, and the building straddles the old right of way.",
+                "text": "On March 26, 2012, James Cameron made his <a target=\"_blank\" href=\"http://deepseachallenge.com\" style=\"outline: none;\">record-breaking solo dive</a> to the Earth's DEEPEST point, at ~10,900 m or over 6.7 miles. Not since the historic dive of Captain Don Walsh and Jacques Piccard in 1961, had human beings descended this far. PHOTO: <i>Science magazine</i>\n",
                 "textAlignment": "start"
             }
         },
-        "n-709896": {
+        "n-6e756c": {
             "type": "image",
             "data": {
-                "image": "r-064663"
+                "image": "r-d92237"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-828dcc": {
+        "n-430cfd": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-709896"
+                "n-6e756c"
             ]
         },
-        "n-d5bbb8": {
+        "n-000795": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "Palms",
+                "text": "Horizon Deep",
                 "textAlignment": "start"
             }
         },
-        "n-b28bc6": {
+        "n-86fcb0": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "Stately palm trees line New York Street and frame views of the headquarters building.",
+                "text": "The SECOND deepest spot on the planet is <a target=\"new\" href=\"http://dusk.geo.orst.edu/tonga\" style=\"outline: none;\">Horizon Deep in the Tonga Trench</a>, at ~10,600 m deep or over 6.5 miles, dwarfing the U.S. Grand Canyon in area. IMAGE: <i>D Wright</i>",
                 "textAlignment": "start"
             }
         },
-        "n-2ad80b": {
+        "n-062c3c": {
             "type": "image",
             "data": {
-                "image": "r-6efc5f"
+                "image": "r-18611c"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-b5611b": {
+        "n-68872b": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-2ad80b"
+                "n-062c3c"
+            ]
+        },
+        "n-f3f870": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Papahanaumokuakea Marine National Monument ",
+                "textAlignment": "start"
+            }
+        },
+        "n-a3d53a": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "When founded in 2006 it was the world's largest marine protected area, and is now also a <a target=\"new\" href=\"http://whc.unesco.org/en/list/1326/\" style=\"outline: none;\">UNESCO World Heritage site</a>. Many scientific studies here of coral and fish habitat are discovering new species. PHOTO of Red Pencil Urchin: <i>Wikimedia Commons</i>",
+                "textAlignment": "start"
+            }
+        },
+        "n-9bb1a5": {
+            "type": "image",
+            "data": {
+                "image": "r-e5a47d"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-fb555b": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-9bb1a5"
+            ]
+        },
+        "n-4805ac": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Louisville Seamounts",
+                "textAlignment": "start"
+            }
+        },
+        "n-e8bd1a": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "More than 20,000 large seamounts form a biome equivalent to the size of Europe, but only a few dozen have ever been extensively studied. A <a target=\"new\" href=\"http://ceoas.oregonstate.edu/features/tectonic/\" style=\"outline: none;\">recent expedition</a> on the scientific drillship <i> JOIDES Resolution</i> uncovered new findings. PHOTO: <i>A Koppers by permission</i>",
+                "textAlignment": "start"
+            }
+        },
+        "n-82b3cb": {
+            "type": "image",
+            "data": {
+                "image": "r-c4dd9b"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-ccd291": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-82b3cb"
+            ]
+        },
+        "n-6a7d29": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Galapagos Islands",
+                "textAlignment": "start"
+            }
+        },
+        "n-fc5d7f": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "An icon of wild places on land, the Galapagos is where important science takes place in the ocean too. It is also the focus of a new marine reserve as supported by <a href=\"http://www.seasketch.org\" target=\"_blank\" style=\"outline: none;\">SeaSketch</a>  IMAGE: <i>McClintock Lab, UCSB</i>",
+                "textAlignment": "start"
+            }
+        },
+        "n-738dec": {
+            "type": "image",
+            "data": {
+                "image": "r-0f2059"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-d98a16": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-738dec"
+            ]
+        },
+        "n-e83b18": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Giant Squid",
+                "textAlignment": "start"
+            }
+        },
+        "n-29ff65": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Humans have been looking for the giant squid since it was first possible to take pictures underwater. The quest to see one alive remained a holy grail of ocean science & technology until scientists <a target=\"new\" href=\"http://news.nationalgeographic.com/news/2006/12/061222-giant-squid.html\">finally captured one on film</a> off the coast of Japan. PHOTO: <i>Wikimedia Commons</i> ",
+                "textAlignment": "start"
+            }
+        },
+        "n-8f5b47": {
+            "type": "image",
+            "data": {
+                "image": "r-ff36a0"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-cd9526": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-8f5b47"
+            ]
+        },
+        "n-e189be": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Tubeworm Barbecue",
+                "textAlignment": "start"
+            }
+        },
+        "n-5c8254": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "This is where humans first encountered on April 14, 1991, the recent aftermath of an undersea volcanic eruption. Tubeworm specimens carried to the surface still had freshly charred flesh, hence the name of the site.  <a href=\"http://dusk.geo.orst.edu/oceans/tubeworm_bbq.html\" target=\"new\">READ MORE</a> PHOTO: <i>W Lange, D Fornari, WHOI by permission</i> ",
+                "textAlignment": "start"
+            }
+        },
+        "n-2e575d": {
+            "type": "image",
+            "data": {
+                "image": "r-2a5bd4"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-32fece": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-2e575d"
+            ]
+        },
+        "n-113d6b": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "\"Fire and Brimstone\" at Rota Volcano | <a target=\"new\" href=\"http://1.usa.gov/1a4nHe2\">VIDEO</a>",
+                "textAlignment": "start"
+            }
+        },
+        "n-43ada9": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "The <a href=\"http://n.pr/17sTSW3\" target=\"new\">first undersea eruption actually witnessed</a> in real-time by anyone was in 2006 on the NW Rota-1 volcano. Robotic vehicles with their cameras and sensors drew closer than anyone has ever been to ANY active volcano on land or undersea. IMAGE &amp; VIDEO: <i>NOAA by permission</i>",
+                "textAlignment": "start"
+            }
+        },
+        "n-132ef8": {
+            "type": "image",
+            "data": {
+                "image": "r-837e91"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-702cb8": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-132ef8"
+            ]
+        },
+        "n-f74fa7": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Eastern Samoan Volcanic Province",
+                "textAlignment": "start"
+            }
+        },
+        "n-74ec13": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "<a target=\"new\" href=\"http://www.esri.com/news/arcnews/summer11articles/exploring-the-deeper-reefs-and-volcanic-provinces-of-american-samoa.html\">GIS analyses</a> have helped to discover 50 new volcanoes and rift zones in this VERY geologically active part of the world where major earthquakes and tsunamis have caused great devastation. IMAGE: <i>J Roberts, D Wright</i>",
+                "textAlignment": "start"
+            }
+        },
+        "n-b7fafd": {
+            "type": "image",
+            "data": {
+                "image": "r-d5c31d"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-d530a6": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-b7fafd"
+            ]
+        },
+        "n-ce36b7": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Endurance Array",
+                "textAlignment": "start"
+            }
+        },
+        "n-5a9e37": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "This site as part of the Ocean Observatories Initiative is one of the most comprehensive deployments of instruments and vehicles to study all aspects of the ocean from sea surface to seafloor. <a target=\"new\" href=\"http://www.whoi.edu/ooi_cgsn/page.do?pid=53332\">READ MORE</a> IMAGE: <i>U. Washington CEV by permission</i>",
+                "textAlignment": "start"
+            }
+        },
+        "n-81ca87": {
+            "type": "image",
+            "data": {
+                "image": "r-4cf652"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-3b99e3": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-81ca87"
+            ]
+        },
+        "n-b0aada": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "South China Sea",
+                "textAlignment": "start"
+            }
+        },
+        "n-55d76f": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "This is a very important place to watch politically, as well as scientificially.  The sovereignty claims of several nations are in conflict, but Singapore is an important peacemaker, and its <a href=\"http://www.fas.nus.edu.sg/geog/undergrads/minor_gis.htm\" target=\"new\">National University</a> is a leading adopter of GIS. IMAGE: <i>Wikimedia Commons</i>\n",
+                "textAlignment": "start"
+            }
+        },
+        "n-5c7ad6": {
+            "type": "image",
+            "data": {
+                "image": "r-b9bc92"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-f1fb3b": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-5c7ad6"
+            ]
+        },
+        "n-49f97b": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Southern East Pacific Rise",
+                "textAlignment": "start"
+            }
+        },
+        "n-de31c0": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "This is where some of the fastest seafloor spreading occurs on Earth, leading to extensive underwater hotspring activity. The area was first examined with the same underwater vehicle that discovered the wreck of the <i>Titanic</i>. <a target=\"new\" href=\"http://dusk.geo.orst.edu/sepr/\">READ MORE</a> IMAGE: <i>U. New Brunswick by permission</i>",
+                "textAlignment": "start"
+            }
+        },
+        "n-ca2ee9": {
+            "type": "image",
+            "data": {
+                "image": "r-c8414a"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-ef801d": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-ca2ee9"
+            ]
+        },
+        "n-5ff083": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Hauraki Gulf",
+                "textAlignment": "start"
+            }
+        },
+        "n-391cba": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Esri supported UCSB in building SeaSketch as a new approach to marine spatial planning, based on the concepts of geodesign. <a target=\"new\" href=\"http://bit.ly/1gHK11S\">New Zealand government agencies are now using SeaSketch</a> to determine future uses of the Hauraki Gulf, where nearly every imaginable ocean user is fighting for space.",
+                "textAlignment": "start"
+            }
+        },
+        "n-8a6e9f": {
+            "type": "image",
+            "data": {
+                "image": "r-7b1be6"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-4435bf": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-8a6e9f"
+            ]
+        },
+        "n-f08103": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Pitcairn Island",
+                "textAlignment": "start"
+            }
+        },
+        "n-2234f8": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Pitcairn Island is well known as the place where the mutineers of the <i>HMS Bounty</i> settled in 1790, but a <a href=\"http://ocean.nationalgeographic.com/ocean/explore/pristine-seas/pitcairn/\" target=\"new\">recent scientific expedition</a> revealed the true bounty of these waters. IMAGE: <i>Wikimedia Commons</i>",
+                "textAlignment": "start"
+            }
+        },
+        "n-f3bce4": {
+            "type": "image",
+            "data": {
+                "image": "r-bd4b33"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-45b381": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-f3bce4"
+            ]
+        },
+        "n-a5415c": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Wave Gliders a New Boon to Science",
+                "textAlignment": "start"
+            }
+        },
+        "n-5830f6": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "The <a target=\"new\" href=\"http://bit.ly/164Ldu8\">Liquid Robotics wave glider</a> is the first to use ocean wave energy for propulsion. It recently collected data even in the middle of Tropical Cyclone Freda (a category 3 storm)! <a href=\"http://dusk.geo.orst.edu/Pickup/Esri/OcnSolns/chap16.pdf\" target=\"new\">RELATED GIS STUDY</a>   IMAGE: <i>Liquid Robotics</i>",
+                "textAlignment": "start"
+            }
+        },
+        "n-bd1689": {
+            "type": "image",
+            "data": {
+                "image": "r-eeb569"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-662404": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-bd1689"
             ]
         }
     },
     "resources": {
-        "r-3c306e": {
+        "r-915be6": {
             "type": "story-theme",
             "data": {
                 "themeId": "summit"
             }
         },
-        "r-13005b": {
+        "r-875dee": {
             "type": "image",
             "data": {
-                "resourceId": "place_001_img.jpg",
+                "resourceId": "place_001_Fn0BOg.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-064663": {
+        "r-d92237": {
             "type": "image",
             "data": {
-                "resourceId": "place_002_img.jpg",
+                "resourceId": "place_002_ksPqcQ.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-6efc5f": {
+        "r-18611c": {
             "type": "image",
             "data": {
-                "resourceId": "place_003_img.jpg",
+                "resourceId": "place_003_40dtfg.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-3ba039": {
-            "type": "webmap",
+        "r-e5a47d": {
+            "type": "image",
             "data": {
-                "type": "minimal",
-                "itemId": "bd22f0276f96433e945aefd5b4f48e03",
-                "itemType": "webmap"
+                "resourceId": "place_004_l04t2w.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-c4dd9b": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_005_cqYRnQ.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-0f2059": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_006_SdVEfQ.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-ff36a0": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_007_ZH2NFw.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-2a5bd4": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_008_7isJ_w.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-837e91": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_009_ggudwA.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-d5c31d": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_010_mMzHuQ.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-4cf652": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_011_DE8apQ.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-b9bc92": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_012_YjSpmg.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-c8414a": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_013_BhI63g.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-7b1be6": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_014_VbCF1w.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-bd4b33": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_015_WW3zqw.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-eeb569": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_016_n7lI7Q.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
             }
         }
     },

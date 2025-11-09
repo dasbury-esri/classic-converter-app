@@ -326,7 +326,7 @@ def create_tour_node(
     places: List[str], map_node_id: str,
     accent_color: str,
     narrative_panel_position: str = "start", narrative_panel_size: str = "medium",
-    tour_type: str = "explorer", subtype: str = "list") -> Dict[str, Any]:
+    tour_type: str = "guided-tour", subtype: str = "media-focused") -> Dict[str, Any]:
     """
     Create a tour node matching the structure in tour-nativeAGSM.json.
 
@@ -336,8 +336,8 @@ def create_tour_node(
         narrative_panel_position: Position of the narrative panel ("start" by default)
         narrative_panel_size: Size of the narrative panel ("medium" by default)
         accent_color: Accent color hex string
-        tour_type: Type of tour ("explorer" by default)
-        subtype: Subtype of tour ("list" by default)
+        tour_type: Type of tour ("guided-tour" by default) options: ["guided-tour", "explorer]
+        subtype: Subtype of tour ("media-focused" by default) options: guided-tour[media-focused or map-focused], explorer[list or grid] 
 
     Returns:
         Dict representing a tour node
