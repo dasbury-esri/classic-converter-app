@@ -70,3 +70,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# temp files
+storymap_json_schema_DA.py
