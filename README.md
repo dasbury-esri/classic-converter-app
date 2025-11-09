@@ -219,6 +219,7 @@ To ease user workflow, added a button to do authentication via ArcGIS Online OAu
 - tweaked default conver config (changed from "full" to "minimal")
 - noticed that return patterns for functions is inconsistent within storymap_json_schema.py. Not sure how much that matters, just makes it easier to read when consistent
 - added helper functions to create MapTour nodes and added to schema validation
+- added helper function to create a carousel node for media in MapTour
 
 
 ## Environment Notes

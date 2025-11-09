@@ -140,6 +140,15 @@ def create_image_node(resource_id: str, caption: Optional[str] = None,
         
     return node
 
+def create_carousel_node(children: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """A component that handles rendering media items in a carousel layout."""
+    node = {
+        "type": 'carousel',
+        "config": {},
+        "data": {},
+        "children": children[:5]  # array of up to 5 images
+    }
+    return node
 
 def create_map_node(resource_id: str, extent: Optional[Dict] = None,
                    viewpoint: Optional[Dict] = None, zoom: Optional[int] = None,
@@ -830,7 +839,7 @@ def validate_node_against_schema(node: Dict[str, Any], node_type: str) -> List[s
                 errors.append(f"Place '{place.get('id', '?')}' missing 'media'")
             if "title" not in place:
                 errors.append(f"Place '{place.get('id', '?')}' missing 'title'")
-                
+
     return errors
 
 
