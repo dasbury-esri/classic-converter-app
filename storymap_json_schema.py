@@ -362,10 +362,11 @@ def create_tour_place(
     feature_id: str,
     contents: list,
     media: str,
-    title: str
+    title: str,
+    visible: bool = True
 ) -> dict:
     """
-    Create a single place dict for a tour node.
+    Create a single place node for a tour.
 
     Args:
         id: Node ID for the place
@@ -373,6 +374,7 @@ def create_tour_place(
         contents: List of node IDs for content
         media: Node ID for media
         title: Node ID for title
+        visible: Whether the place is visible (default True)
 
     Returns:
         Dict representing a place
@@ -386,6 +388,8 @@ def create_tour_place(
         "media": media,
         "title": title
     }
+    if not visible:
+        place["config"] = {"isHidden": True}
     return place
 
 def webmercator_to_wgs84(x: float, y: float) -> tuple[float, float]:

@@ -1,16 +1,16 @@
 {
-    "root": "n-a661e9",
+    "root": "n-1b39e2",
     "nodes": {
-        "n-a12516": {
+        "n-e3bdc3": {
             "type": "storycover",
             "data": {
                 "type": "minimal",
-                "title": "(CONVERSION) National Agriculture Imagery Program (NAIP) History 2002-2024",
-                "summary": "A look at important NAIP program changes and milestones throughout its 23 year history.  ",
+                "title": "(CONVERSION) Some Places to Eat in San Diego, California",
+                "summary": "Esri Story Maps team member and San Diego resident Rupert Essinger selects some restaurants you might enjoy.",
                 "byline": ""
             }
         },
-        "n-f8486d": {
+        "n-3daa9e": {
             "type": "navigation",
             "data": {
                 "links": []
@@ -19,264 +19,594 @@
                 "isHidden": true
             }
         },
-        "n-064d1d": {
+        "n-e23602": {
             "type": "credits",
             "children": []
         },
-        "n-a661e9": {
+        "n-1b39e2": {
             "type": "story",
             "data": {
-                "storyTheme": "r-8a43f6"
+                "storyTheme": "r-2cd37f"
             },
             "children": [
-                "n-a12516",
-                "n-f8486d",
-                "n-064d1d",
-                "n-ff2a18",
-                "n-a5c24d"
+                "n-e3bdc3",
+                "n-3daa9e",
+                "n-e23602",
+                "n-4b081b",
+                "n-d29e81"
             ]
         },
-        "n-a5c24d": {
+        "n-d29e81": {
             "type": "tour-map",
             "data": {
                 "geometries": {
-                    "3f3816f8-6c45-4db5-afce-edc60c361068": {
-                        "id": "3f3816f8-6c45-4db5-afce-edc60c361068",
+                    "704cf042-4f66-4a66-9e0a-36a8c6d7fa15": {
+                        "id": "704cf042-4f66-4a66-9e0a-36a8c6d7fa15",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.64373177795255,
-                                "lat": 40.51792838659268
+                                "long": -117.17021699999802,
+                                "lat": 32.71072799999942
                             }
                         ]
                     },
-                    "6043a689-1780-4d20-906c-0a861e09d614": {
-                        "id": "6043a689-1780-4d20-906c-0a861e09d614",
+                    "35b52003-3ba3-4c14-8b7b-6a7d04224542": {
+                        "id": "35b52003-3ba3-4c14-8b7b-6a7d04224542",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.64114707946644,
-                                "lat": 40.51998614323261
+                                "long": -117.16902599999803,
+                                "lat": 32.71180699999941
                             }
                         ]
                     },
-                    "dcd03cd3-7d2b-411e-a228-eaf75a147623": {
-                        "id": "dcd03cd3-7d2b-411e-a228-eaf75a147623",
+                    "897c3d07-610b-4f28-8290-5f184867da93": {
+                        "id": "897c3d07-610b-4f28-8290-5f184867da93",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.63806695251309,
-                                "lat": 40.51805888390966
+                                "long": -117.17559359999802,
+                                "lat": 32.71260039999941
                             }
                         ]
                     },
-                    "318557c2-792e-44a5-b79d-6e74c5913547": {
-                        "id": "318557c2-792e-44a5-b79d-6e74c5913547",
+                    "e7a1ac37-1347-4519-b995-9aea87e52140": {
+                        "id": "e7a1ac37-1347-4519-b995-9aea87e52140",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.63522476196138,
-                                "lat": 40.51998614323261
+                                "long": -117.16264329999802,
+                                "lat": 32.710578419999415
                             }
                         ]
                     },
-                    "60b81e13-7f87-4bcb-ada3-43d18ef575c5": {
-                        "id": "60b81e13-7f87-4bcb-ada3-43d18ef575c5",
+                    "0bd0f4c9-9867-4287-a320-4b83caf1774f": {
+                        "id": "0bd0f4c9-9867-4287-a320-4b83caf1774f",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.63243526458582,
-                                "lat": 40.51806133738321
+                                "long": -117.16026689999802,
+                                "lat": 32.71076365999941
                             }
                         ]
                     },
-                    "9326e529-530b-4f76-bebe-25f624479cd4": {
-                        "id": "9326e529-530b-4f76-bebe-25f624479cd4",
+                    "e0673088-007a-454d-bdfa-40e92cc3dced": {
+                        "id": "e0673088-007a-454d-bdfa-40e92cc3dced",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.62977451324298,
-                                "lat": 40.52001876658431
+                                "long": -117.15990399999804,
+                                "lat": 32.711754999999435
                             }
                         ]
                     },
-                    "d90c793f-8012-4544-94c4-3d5c4a01cf0f": {
-                        "id": "d90c793f-8012-4544-94c4-3d5c4a01cf0f",
+                    "fb6479f2-b793-4071-bd1a-65381ed19095": {
+                        "id": "fb6479f2-b793-4071-bd1a-65381ed19095",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.62685626983472,
-                                "lat": 40.51806133738321
+                                "long": -117.16005304698788,
+                                "lat": 32.714781469541016
                             }
                         ]
                     },
-                    "b4da6751-0960-4db7-a0da-44d2be5611ef": {
-                        "id": "b4da6751-0960-4db7-a0da-44d2be5611ef",
+                    "61ad38b4-41dd-4e59-b3cb-74abf958e889": {
+                        "id": "61ad38b4-41dd-4e59-b3cb-74abf958e889",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.6241948585079,
-                                "lat": 40.519985648071106
+                                "long": -117.15633615208395,
+                                "lat": 32.71451231454933
                             }
                         ]
                     },
-                    "464cbbee-7e95-4cec-beec-584e2cd303e9": {
-                        "id": "464cbbee-7e95-4cec-beec-584e2cd303e9",
+                    "e716ce4e-4495-40cb-85e6-773e59e0b607": {
+                        "id": "e716ce4e-4495-40cb-85e6-773e59e0b607",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.62127727508359,
-                                "lat": 40.51799608875886
+                                "long": -117.15754829999803,
+                                "lat": 32.71245889999942
                             }
                         ]
                     },
-                    "f24c1f98-2a32-4ce0-ade2-da1ee08ef76a": {
-                        "id": "f24c1f98-2a32-4ce0-ade2-da1ee08ef76a",
+                    "48a381ae-0b67-4cf9-8fc9-3c5d0f9ae506": {
+                        "id": "48a381ae-0b67-4cf9-8fc9-3c5d0f9ae506",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.61857610974701,
-                                "lat": 40.52002178390707
+                                "long": -117.15626959999803,
+                                "lat": 32.7126939699994
                             }
                         ]
                     },
-                    "df3fb11e-05d9-4b64-b6bf-bb8c00e508e0": {
-                        "id": "df3fb11e-05d9-4b64-b6bf-bb8c00e508e0",
+                    "5cbd87a2-b84d-4dcc-ac36-01143f8ce1a9": {
+                        "id": "5cbd87a2-b84d-4dcc-ac36-01143f8ce1a9",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.61552661895547,
-                                "lat": 40.51796346442288
+                                "long": -117.15629258994932,
+                                "lat": 32.71171056602639
                             }
                         ]
                     },
-                    "b5ffb77f-9968-44d4-a39f-212e9f29cd8c": {
-                        "id": "b5ffb77f-9968-44d4-a39f-212e9f29cd8c",
+                    "18d8c6ed-b224-4f6c-afea-e50fba5acf3a": {
+                        "id": "18d8c6ed-b224-4f6c-afea-e50fba5acf3a",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.61299461364536,
-                                "lat": 40.52001876658431
+                                "long": -117.15298709999803,
+                                "lat": 32.70956585999943
                             }
                         ]
                     },
-                    "12bd541a-d9e1-45b2-85ea-2d96324f9b35": {
-                        "id": "12bd541a-d9e1-45b2-85ea-2d96324f9b35",
+                    "8cbeba44-fb86-4808-8a34-ba10c3fbe860": {
+                        "id": "8cbeba44-fb86-4808-8a34-ba10c3fbe860",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.6099905395486,
-                                "lat": 40.51806133738321
+                                "long": -117.16798079999802,
+                                "lat": 32.69830282999946
                             }
                         ]
                     },
-                    "4650df77-9d24-4801-acb4-292725a1b5ec": {
-                        "id": "4650df77-9d24-4801-acb4-292725a1b5ec",
+                    "e2ab126d-e172-44c8-8956-18e2a4a86737": {
+                        "id": "e2ab126d-e172-44c8-8956-18e2a4a86737",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.60766118240137,
-                                "lat": 40.51984039811685
+                                "long": -117.16579739999801,
+                                "lat": 32.720325829999396
                             }
                         ]
                     },
-                    "2fece7e8-6ecf-4976-b279-5f2d1d7e95f3": {
-                        "id": "2fece7e8-6ecf-4976-b279-5f2d1d7e95f3",
+                    "5d917d6a-d088-4ef9-91fc-ea65141b066f": {
+                        "id": "5d917d6a-d088-4ef9-91fc-ea65141b066f",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.60443080672995,
-                                "lat": 40.518096072505934
+                                "long": -117.16880239999803,
+                                "lat": 32.720768739999386
                             }
                         ]
                     },
-                    "d55165e3-217d-452f-be23-f4edf78a1bb2": {
-                        "id": "d55165e3-217d-452f-be23-f4edf78a1bb2",
+                    "e145849d-59d0-4dc0-9ed9-eb97d5eca8dd": {
+                        "id": "e145849d-59d0-4dc0-9ed9-eb97d5eca8dd",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.6017655288671,
-                                "lat": 40.51980069350651
+                                "long": -117.16668299999802,
+                                "lat": 32.7220869999994
                             }
                         ]
                     },
-                    "9ff9110b-95b8-4a65-96ff-5d922b1b65a7": {
-                        "id": "9ff9110b-95b8-4a65-96ff-5d922b1b65a7",
+                    "a50ea9e4-92ac-47fc-92bd-4ad8dbe995a6": {
+                        "id": "a50ea9e4-92ac-47fc-92bd-4ad8dbe995a6",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.6202999999983,
-                                "lat": 40.520701399925464
+                                "long": -117.16846399999802,
+                                "lat": 32.72251599999939
                             }
                         ]
                     },
-                    "da04398f-ae56-4c37-b3f0-23e3246a175a": {
-                        "id": "da04398f-ae56-4c37-b3f0-23e3246a175a",
+                    "cec7d31d-da90-473a-9b05-3746788194e2": {
+                        "id": "cec7d31d-da90-473a-9b05-3746788194e2",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.59878601302859,
-                                "lat": 40.51804750946923
+                                "long": -117.16853899999802,
+                                "lat": 32.7228029999994
                             }
                         ]
                     },
-                    "6adb9391-6d23-41e1-8559-395ef591918c": {
-                        "id": "6adb9391-6d23-41e1-8559-395ef591918c",
+                    "d556704a-2ce9-4d0a-9049-2bd2c2b92bf1": {
+                        "id": "d556704a-2ce9-4d0a-9049-2bd2c2b92bf1",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.59610111470366,
-                                "lat": 40.51985555890041
+                                "long": -117.16786425933634,
+                                "lat": 32.72197935865412
                             }
                         ]
                     },
-                    "e3d56974-8aca-46a7-b152-9f41815bd0b7": {
-                        "id": "e3d56974-8aca-46a7-b152-9f41815bd0b7",
+                    "d47e5c98-c5a3-46ec-a55e-6d0bdf6b3c97": {
+                        "id": "d47e5c98-c5a3-46ec-a55e-6d0bdf6b3c97",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.59316410293322,
-                                "lat": 40.518210630785894
+                                "long": -117.16847399999803,
+                                "lat": 32.723156999999404
                             }
                         ]
                     },
-                    "35e5b38d-15fc-4f61-a9e6-45faa3330650": {
-                        "id": "35e5b38d-15fc-4f61-a9e6-45faa3330650",
+                    "0a1af1e5-707b-46be-8790-6a2cf28ad359": {
+                        "id": "0a1af1e5-707b-46be-8790-6a2cf28ad359",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.59030252854132,
-                                "lat": 40.51994855316789
+                                "long": -117.16844779999803,
+                                "lat": 32.7232864399994
                             }
                         ]
                     },
-                    "e8f1fb6c-f178-48e4-ae2d-072dd002e542": {
-                        "id": "e8f1fb6c-f178-48e4-ae2d-072dd002e542",
+                    "3b4a1fe6-b08c-47d6-816f-8b604ca64730": {
+                        "id": "3b4a1fe6-b08c-47d6-816f-8b604ca64730",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.58734136978876,
-                                "lat": 40.51828474024793
+                                "long": -117.16932889999804,
+                                "lat": 32.7243084399994
                             }
                         ]
                     },
-                    "a15ac32e-6f43-40f9-82e8-ced6160a15eb": {
-                        "id": "a15ac32e-6f43-40f9-82e8-ced6160a15eb",
+                    "6803bef6-8160-49cb-8cc9-760500437463": {
+                        "id": "6803bef6-8160-49cb-8cc9-760500437463",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.5848093644791,
-                                "lat": 40.51988330638066
+                                "long": -117.16919599999804,
+                                "lat": 32.724352999999404
                             }
                         ]
                     },
-                    "fe17155c-3dfa-4a0f-a205-3d5083632e65": {
-                        "id": "fe17155c-3dfa-4a0f-a205-3d5083632e65",
+                    "af1566dd-1eb0-4ba8-991d-754b6483a515": {
+                        "id": "af1566dd-1eb0-4ba8-991d-754b6483a515",
                         "type": "POINT_NUMBERED_TOUR",
                         "nodes": [
                             {
-                                "long": -101.58180529038243,
-                                "lat": 40.51805637054625
+                                "long": -117.16893139999802,
+                                "lat": 32.7244254899994
+                            }
+                        ]
+                    },
+                    "279fb9bf-b718-4598-894e-ebbd2433eab0": {
+                        "id": "279fb9bf-b718-4598-894e-ebbd2433eab0",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.16878739999804,
+                                "lat": 32.7245347299994
+                            }
+                        ]
+                    },
+                    "9eced41a-4a71-4cc4-a180-59a1cd7fff11": {
+                        "id": "9eced41a-4a71-4cc4-a180-59a1cd7fff11",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.17106599999802,
+                                "lat": 32.7275889999994
+                            }
+                        ]
+                    },
+                    "aa8426e6-0399-442f-9779-f891c0d78e74": {
+                        "id": "aa8426e6-0399-442f-9779-f891c0d78e74",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.17120631886274,
+                                "lat": 32.72793101361617
+                            }
+                        ]
+                    },
+                    "d5771b88-ea10-47de-b79c-59b91cb8a840": {
+                        "id": "d5771b88-ea10-47de-b79c-59b91cb8a840",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.169788999998,
+                                "lat": 32.727710999999395
+                            }
+                        ]
+                    },
+                    "d23c1c21-3111-4e34-8564-b0b95e37b964": {
+                        "id": "d23c1c21-3111-4e34-8564-b0b95e37b964",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.16140619999803,
+                                "lat": 32.728490089999404
+                            }
+                        ]
+                    },
+                    "4a1f6783-fd7c-4e0a-a782-5ca9a4359187": {
+                        "id": "4a1f6783-fd7c-4e0a-a782-5ca9a4359187",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.14975369999803,
+                                "lat": 32.73096759999941
+                            }
+                        ]
+                    },
+                    "1420d8c9-b0a6-487f-b9a7-7baf94827b72": {
+                        "id": "1420d8c9-b0a6-487f-b9a7-7baf94827b72",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.12997499999803,
+                                "lat": 32.7212369999994
+                            }
+                        ]
+                    },
+                    "cb58c8da-ced4-4fbd-9d49-c55acb823fbe": {
+                        "id": "cb58c8da-ced4-4fbd-9d49-c55acb823fbe",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.12980679999801,
+                                "lat": 32.7287597599994
+                            }
+                        ]
+                    },
+                    "f1c45761-c716-417a-baf9-9f5b872be2f2": {
+                        "id": "f1c45761-c716-417a-baf9-9f5b872be2f2",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.13023809999802,
+                                "lat": 32.74136928999943
+                            }
+                        ]
+                    },
+                    "9c282168-f069-42df-8391-324a2d9b96ae": {
+                        "id": "9c282168-f069-42df-8391-324a2d9b96ae",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.12969599999803,
+                                "lat": 32.75508499999945
+                            }
+                        ]
+                    },
+                    "f38bf51b-b7ed-45ec-a42a-687e1ee31787": {
+                        "id": "f38bf51b-b7ed-45ec-a42a-687e1ee31787",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.12025509999802,
+                                "lat": 32.76348319999941
+                            }
+                        ]
+                    },
+                    "36a04f56-f35f-4423-a275-52db57b530fc": {
+                        "id": "36a04f56-f35f-4423-a275-52db57b530fc",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.13952459999803,
+                                "lat": 32.75550008999944
+                            }
+                        ]
+                    },
+                    "a0a635ed-6dad-405b-a99e-11bc46c13491": {
+                        "id": "a0a635ed-6dad-405b-a99e-11bc46c13491",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.16190809999802,
+                                "lat": 32.74837008999943
+                            }
+                        ]
+                    },
+                    "918e6fba-4400-47c6-bc40-65950b6a38cf": {
+                        "id": "918e6fba-4400-47c6-bc40-65950b6a38cf",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.17120299999802,
+                                "lat": 32.750569999999456
+                            }
+                        ]
+                    },
+                    "b9ae2686-e569-46eb-98d6-2aa71449f59f": {
+                        "id": "b9ae2686-e569-46eb-98d6-2aa71449f59f",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.16522099999801,
+                                "lat": 32.76883599999939
+                            }
+                        ]
+                    },
+                    "cc3b3134-b758-44f2-849c-fb1c89769ad7": {
+                        "id": "cc3b3134-b758-44f2-849c-fb1c89769ad7",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.17904499999801,
+                                "lat": 32.68129799999941
+                            }
+                        ]
+                    },
+                    "d9fbea44-a10a-4afd-aa42-d6a4133d8fd0": {
+                        "id": "d9fbea44-a10a-4afd-aa42-d6a4133d8fd0",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.21148799999803,
+                                "lat": 32.740699999999435
+                            }
+                        ]
+                    },
+                    "3a1b6f33-6285-48f2-8769-f72eba48c095": {
+                        "id": "3a1b6f33-6285-48f2-8769-f72eba48c095",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.21094738061446,
+                                "lat": 32.74026302560491
+                            }
+                        ]
+                    },
+                    "283cb5af-db27-4823-9d2f-1e4c7c2251c9": {
+                        "id": "283cb5af-db27-4823-9d2f-1e4c7c2251c9",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.21250299999802,
+                                "lat": 32.738101999999415
+                            }
+                        ]
+                    },
+                    "64dd072e-e33b-4013-8741-f78ff3deb2af": {
+                        "id": "64dd072e-e33b-4013-8741-f78ff3deb2af",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.21584179999802,
+                                "lat": 32.75482706999946
+                            }
+                        ]
+                    },
+                    "ed802056-5f0e-4936-acea-c81c59f69437": {
+                        "id": "ed802056-5f0e-4936-acea-c81c59f69437",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.24281409999803,
+                                "lat": 32.74941107999946
+                            }
+                        ]
+                    },
+                    "1c84c0cc-ea46-479b-a640-1afb61e8a462": {
+                        "id": "1c84c0cc-ea46-479b-a640-1afb61e8a462",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.25222879999802,
+                                "lat": 32.782518509999406
+                            }
+                        ]
+                    },
+                    "71556475-06de-4f32-836a-15547b75e9b6": {
+                        "id": "71556475-06de-4f32-836a-15547b75e9b6",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.25288859999803,
+                                "lat": 32.7851365499994
+                            }
+                        ]
+                    },
+                    "191642b6-5b6e-4e43-adc9-ce9313975e80": {
+                        "id": "191642b6-5b6e-4e43-adc9-ce9313975e80",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.25687839999804,
+                                "lat": 32.79714441999945
+                            }
+                        ]
+                    },
+                    "32216bab-fcb6-4529-b648-a866b606a154": {
+                        "id": "32216bab-fcb6-4529-b648-a866b606a154",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.25255499999803,
+                                "lat": 32.79838999999946
+                            }
+                        ]
+                    },
+                    "07662f82-7922-4845-b814-ec7268c747cf": {
+                        "id": "07662f82-7922-4845-b814-ec7268c747cf",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.25239999999803,
+                                "lat": 32.798446999999456
+                            }
+                        ]
+                    },
+                    "c91b6263-9201-478d-a211-535f7731c9bd": {
+                        "id": "c91b6263-9201-478d-a211-535f7731c9bd",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.23726389999803,
+                                "lat": 32.80037610999944
+                            }
+                        ]
+                    },
+                    "561769ae-208c-4236-8437-5c42fb0c8330": {
+                        "id": "561769ae-208c-4236-8437-5c42fb0c8330",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.2763441543559,
+                                "lat": 32.83977626584513
+                            }
+                        ]
+                    },
+                    "8e5bb8a5-c936-46c2-8376-3c9ef3861026": {
+                        "id": "8e5bb8a5-c936-46c2-8376-3c9ef3861026",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.27283999999803,
+                                "lat": 32.84622599999942
+                            }
+                        ]
+                    },
+                    "6360ccb3-218a-4e13-80cb-13c67acf57a8": {
+                        "id": "6360ccb3-218a-4e13-80cb-13c67acf57a8",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.27355779999803,
+                                "lat": 32.846941949999454
+                            }
+                        ]
+                    },
+                    "9860d296-c05f-45c2-ad9b-fbd245a9e9e9": {
+                        "id": "9860d296-c05f-45c2-ad9b-fbd245a9e9e9",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.27163269999802,
+                                "lat": 32.849309899999454
+                            }
+                        ]
+                    },
+                    "abcd81e0-610f-44e9-98c9-5706fe275dd4": {
+                        "id": "abcd81e0-610f-44e9-98c9-5706fe275dd4",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.26072699999803,
+                                "lat": 32.85218599999945
+                            }
+                        ]
+                    },
+                    "85b5e191-50e2-475a-a33b-bdd979e9c651": {
+                        "id": "85b5e191-50e2-475a-a33b-bdd979e9c651",
+                        "type": "POINT_NUMBERED_TOUR",
+                        "nodes": [
+                            {
+                                "long": -117.25422429999803,
+                                "lat": 32.86454234999942
                             }
                         ]
                     }
@@ -284,1260 +614,2995 @@
                 "mode": "2d",
                 "basemap": {
                     "type": "resource",
-                    "value": "r-819f05"
+                    "value": "r-cec512"
                 }
             }
         },
-        "n-ff2a18": {
+        "n-4b081b": {
             "type": "tour",
             "data": {
                 "type": "guided-tour",
                 "subtype": "media-focused",
                 "narrativePanelPosition": "start",
-                "map": "n-a5c24d",
+                "map": "n-d29e81",
                 "places": [
                     {
-                        "id": "479844b9-ea9e-4347-868f-a7ab6555384b",
-                        "featureId": "3f3816f8-6c45-4db5-afce-edc60c361068",
+                        "id": "fee7df8b-24af-414c-949e-1e22b7a53ee9",
+                        "featureId": "704cf042-4f66-4a66-9e0a-36a8c6d7fa15",
                         "contents": [
-                            "n-5b9920"
+                            "n-b8b2fb"
                         ],
-                        "media": "n-889814",
-                        "title": "n-00cd02"
+                        "media": "n-882d18",
+                        "title": "n-ef580f"
                     },
                     {
-                        "id": "fd3a93af-dd3b-4bfe-9478-eeff73aea596",
-                        "featureId": "6043a689-1780-4d20-906c-0a861e09d614",
+                        "id": "04d8160d-5671-4dbd-9f26-7b3d4db89eb8",
+                        "featureId": "35b52003-3ba3-4c14-8b7b-6a7d04224542",
                         "contents": [
-                            "n-5dbcb0"
+                            "n-884cb6"
                         ],
-                        "media": "n-30432b",
-                        "title": "n-037ae6"
+                        "media": "n-0bd1d1",
+                        "title": "n-ececb7"
                     },
                     {
-                        "id": "7017ffcc-8e99-4675-a834-1d308e564ad1",
-                        "featureId": "dcd03cd3-7d2b-411e-a228-eaf75a147623",
+                        "id": "139e8ba3-371a-4911-858c-9b3f3bb11151",
+                        "featureId": "897c3d07-610b-4f28-8290-5f184867da93",
                         "contents": [
-                            "n-f133fb"
+                            "n-10e811"
                         ],
-                        "media": "n-898fcd",
-                        "title": "n-40c342"
+                        "media": "n-5052f4",
+                        "title": "n-90487e"
                     },
                     {
-                        "id": "f8319dca-ca11-4e17-b9dd-b58db463a0ef",
-                        "featureId": "318557c2-792e-44a5-b79d-6e74c5913547",
+                        "id": "f54f4fbd-4c01-4278-8ec5-20cfc1588883",
+                        "featureId": "e7a1ac37-1347-4519-b995-9aea87e52140",
                         "contents": [
-                            "n-f358ee"
+                            "n-163d00"
                         ],
-                        "media": "n-56d123",
-                        "title": "n-5a5bf6"
+                        "media": "n-77fe34",
+                        "title": "n-7d952f"
                     },
                     {
-                        "id": "4cf0431c-4cc1-4509-9889-0ccfb433fb0b",
-                        "featureId": "60b81e13-7f87-4bcb-ada3-43d18ef575c5",
+                        "id": "e43f0692-a5dd-4a58-bf01-21c6fba01ca5",
+                        "featureId": "0bd0f4c9-9867-4287-a320-4b83caf1774f",
                         "contents": [
-                            "n-eadb19"
+                            "n-51f59e"
                         ],
-                        "media": "n-bf49c9",
-                        "title": "n-63a60d"
+                        "media": "n-4c4601",
+                        "title": "n-d75575"
                     },
                     {
-                        "id": "697c512c-4e73-43ee-ad5e-e57fcd78e521",
-                        "featureId": "9326e529-530b-4f76-bebe-25f624479cd4",
+                        "id": "5e44e7d2-9e0d-40c3-ae2d-8c637d280960",
+                        "featureId": "e0673088-007a-454d-bdfa-40e92cc3dced",
                         "contents": [
-                            "n-65c0d5"
+                            "n-888cef"
                         ],
-                        "media": "n-6e49c6",
-                        "title": "n-7e03ac"
+                        "media": "n-84401c",
+                        "title": "n-30da75"
                     },
                     {
-                        "id": "4e9ffa40-0219-41d9-b0f2-6995f0d3fbac",
-                        "featureId": "d90c793f-8012-4544-94c4-3d5c4a01cf0f",
+                        "id": "ac648ef1-eae3-4a77-9b18-b2c01dc10c0e",
+                        "featureId": "fb6479f2-b793-4071-bd1a-65381ed19095",
                         "contents": [
-                            "n-16b44e"
+                            "n-73300d"
                         ],
-                        "media": "n-10ef98",
-                        "title": "n-0f2ba1"
+                        "media": "n-1b6bb9",
+                        "title": "n-178fa4"
                     },
                     {
-                        "id": "703f26d0-1e9a-4500-92d9-2011d84b0fa4",
-                        "featureId": "b4da6751-0960-4db7-a0da-44d2be5611ef",
+                        "id": "154deace-0389-40f7-81bf-7643b26eace6",
+                        "featureId": "61ad38b4-41dd-4e59-b3cb-74abf958e889",
                         "contents": [
-                            "n-2e40e5"
+                            "n-306bae"
                         ],
-                        "media": "n-6af5a7",
-                        "title": "n-895159"
+                        "media": "n-f1e72e",
+                        "title": "n-bdde3b"
                     },
                     {
-                        "id": "c05f74f5-212f-4138-9735-37117f0642fd",
-                        "featureId": "464cbbee-7e95-4cec-beec-584e2cd303e9",
+                        "id": "1527221b-c051-49d7-87ae-ff5102726d59",
+                        "featureId": "e716ce4e-4495-40cb-85e6-773e59e0b607",
                         "contents": [
-                            "n-42aa25"
+                            "n-209126"
                         ],
-                        "media": "n-b38b6f",
-                        "title": "n-d805bb"
+                        "media": "n-592e87",
+                        "title": "n-a769b0"
                     },
                     {
-                        "id": "2784d268-a67d-4371-9e34-8a83675389a5",
-                        "featureId": "f24c1f98-2a32-4ce0-ade2-da1ee08ef76a",
+                        "id": "6028b83e-cb25-4b19-b448-c183d52cddcf",
+                        "featureId": "48a381ae-0b67-4cf9-8fc9-3c5d0f9ae506",
                         "contents": [
-                            "n-2122a4"
+                            "n-985f39"
                         ],
-                        "media": "n-1a71cf",
-                        "title": "n-82f1c3"
+                        "media": "n-a61f7b",
+                        "title": "n-5199ba"
                     },
                     {
-                        "id": "470b2461-cd87-4311-b5a3-98eb5824ad48",
-                        "featureId": "df3fb11e-05d9-4b64-b6bf-bb8c00e508e0",
+                        "id": "6de8ccbf-af6a-45db-a8f8-ece31b660d75",
+                        "featureId": "5cbd87a2-b84d-4dcc-ac36-01143f8ce1a9",
                         "contents": [
-                            "n-743130"
+                            "n-c89be7"
                         ],
-                        "media": "n-120264",
-                        "title": "n-f7ef1b"
+                        "media": "n-6d5df1",
+                        "title": "n-296218"
                     },
                     {
-                        "id": "923444c7-0ca9-429d-9798-d45c6417eea2",
-                        "featureId": "b5ffb77f-9968-44d4-a39f-212e9f29cd8c",
+                        "id": "3cd8f52a-6a57-46d7-879a-3a72a65db7ab",
+                        "featureId": "18d8c6ed-b224-4f6c-afea-e50fba5acf3a",
                         "contents": [
-                            "n-f5cb58"
+                            "n-55a111"
                         ],
-                        "media": "n-60ad7c",
-                        "title": "n-84fe38"
+                        "media": "n-f243ac",
+                        "title": "n-325ada"
                     },
                     {
-                        "id": "2c7f34de-8760-4d0e-a7c4-36e0576482a5",
-                        "featureId": "12bd541a-d9e1-45b2-85ea-2d96324f9b35",
+                        "id": "3c8d41f3-3999-4233-a688-eabc09db8332",
+                        "featureId": "8cbeba44-fb86-4808-8a34-ba10c3fbe860",
                         "contents": [
-                            "n-f05341"
+                            "n-34a53e"
                         ],
-                        "media": "n-7dd356",
-                        "title": "n-f484ca"
+                        "media": "n-fcdf16",
+                        "title": "n-b77628"
                     },
                     {
-                        "id": "2ec29017-f40d-4db2-b860-a48326fb5c2c",
-                        "featureId": "4650df77-9d24-4801-acb4-292725a1b5ec",
+                        "id": "c7ee6d4f-a6de-4ed6-be58-7ec92665c379",
+                        "featureId": "e2ab126d-e172-44c8-8956-18e2a4a86737",
                         "contents": [
-                            "n-4e2d9a"
+                            "n-e4bed7"
                         ],
-                        "media": "n-78c4e8",
-                        "title": "n-ff8f26"
+                        "media": "n-9ed7c9",
+                        "title": "n-93d2bf"
                     },
                     {
-                        "id": "abae267f-e218-45e1-869e-6f2caf17badf",
-                        "featureId": "2fece7e8-6ecf-4976-b279-5f2d1d7e95f3",
+                        "id": "178882b7-3477-4334-9daf-b1a7de3284a2",
+                        "featureId": "5d917d6a-d088-4ef9-91fc-ea65141b066f",
                         "contents": [
-                            "n-a2d061"
+                            "n-c409a6"
                         ],
-                        "media": "n-0c7038",
-                        "title": "n-8b9f61"
+                        "media": "n-e80336",
+                        "title": "n-1d97a0"
                     },
                     {
-                        "id": "cc2da385-0d58-4461-b0f7-e165bdfe0478",
-                        "featureId": "d55165e3-217d-452f-be23-f4edf78a1bb2",
+                        "id": "803a9061-01f0-402d-ab88-508fa78a7b24",
+                        "featureId": "e145849d-59d0-4dc0-9ed9-eb97d5eca8dd",
                         "contents": [
-                            "n-1a2430"
+                            "n-a59b98"
                         ],
-                        "media": "n-6ee3af",
-                        "title": "n-4b59f4"
+                        "media": "n-4f08ca",
+                        "title": "n-d5f14a"
                     },
                     {
-                        "id": "62b01b49-2487-420e-ac87-9ac46e0ab7c9",
-                        "featureId": "9ff9110b-95b8-4a65-96ff-5d922b1b65a7",
+                        "id": "f15bfcf9-189d-4818-9bbb-bfee11ab2a97",
+                        "featureId": "a50ea9e4-92ac-47fc-92bd-4ad8dbe995a6",
                         "contents": [
-                            "n-ccf61a"
+                            "n-996cb5"
                         ],
-                        "media": "n-16f8fe",
-                        "title": "n-09c94d"
+                        "media": "n-ace0a3",
+                        "title": "n-889e14"
                     },
                     {
-                        "id": "0d20a1e5-63da-416e-b690-0473b5649955",
-                        "featureId": "da04398f-ae56-4c37-b3f0-23e3246a175a",
+                        "id": "4c4508fb-e8a7-410e-b6ef-bc6518e4b95c",
+                        "featureId": "cec7d31d-da90-473a-9b05-3746788194e2",
                         "contents": [
-                            "n-06a564"
+                            "n-184afe"
                         ],
-                        "media": "n-3476fc",
-                        "title": "n-3d426f"
+                        "media": "n-f8cf35",
+                        "title": "n-8d2636"
                     },
                     {
-                        "id": "a20585be-1311-4c3d-9114-a81e3e0c9b68",
-                        "featureId": "6adb9391-6d23-41e1-8559-395ef591918c",
+                        "id": "9c8ed469-7286-44fc-b3d1-a5b6da68ff86",
+                        "featureId": "d556704a-2ce9-4d0a-9049-2bd2c2b92bf1",
                         "contents": [
-                            "n-45a16e"
+                            "n-545b3c"
                         ],
-                        "media": "n-afe2fd",
-                        "title": "n-73930e"
+                        "media": "n-dcb811",
+                        "title": "n-b5044a"
                     },
                     {
-                        "id": "a9cb65ef-41bc-4303-82c2-0ca569d10c88",
-                        "featureId": "e3d56974-8aca-46a7-b152-9f41815bd0b7",
+                        "id": "a178b13b-d96e-40d7-b615-712f17d871f1",
+                        "featureId": "d47e5c98-c5a3-46ec-a55e-6d0bdf6b3c97",
                         "contents": [
-                            "n-f7522f"
+                            "n-a2444b"
                         ],
-                        "media": "n-2608c1",
-                        "title": "n-92b071"
+                        "media": "n-95918f",
+                        "title": "n-159603"
                     },
                     {
-                        "id": "ce8a3546-9f68-47a8-ac6e-513e7c1350b1",
-                        "featureId": "35e5b38d-15fc-4f61-a9e6-45faa3330650",
+                        "id": "4537a813-b7a3-4183-8b1d-fc157cd65e50",
+                        "featureId": "0a1af1e5-707b-46be-8790-6a2cf28ad359",
                         "contents": [
-                            "n-9738a3"
+                            "n-3eed62"
                         ],
-                        "media": "n-2a233c",
-                        "title": "n-6263ff"
+                        "media": "n-20c0f5",
+                        "title": "n-e1253f"
                     },
                     {
-                        "id": "9d54a17e-9f75-4d15-b423-92c4d37f1b2f",
-                        "featureId": "e8f1fb6c-f178-48e4-ae2d-072dd002e542",
+                        "id": "82ed2d65-a7fa-47c8-8b7d-a63512c99f4a",
+                        "featureId": "3b4a1fe6-b08c-47d6-816f-8b604ca64730",
                         "contents": [
-                            "n-e66d17"
+                            "n-a4bf73"
                         ],
-                        "media": "n-b32c8c",
-                        "title": "n-d1cd93"
+                        "media": "n-e0138f",
+                        "title": "n-bfe562"
                     },
                     {
-                        "id": "3e16ae5a-3572-48f6-a858-3651b69efe08",
-                        "featureId": "a15ac32e-6f43-40f9-82e8-ced6160a15eb",
+                        "id": "33ff20bf-d9da-4d6a-887d-2230494a6cf3",
+                        "featureId": "6803bef6-8160-49cb-8cc9-760500437463",
                         "contents": [
-                            "n-861670"
+                            "n-25ef13"
                         ],
-                        "media": "n-6a4b6a",
-                        "title": "n-10acb6"
+                        "media": "n-b5765a",
+                        "title": "n-77ceef"
                     },
                     {
-                        "id": "4ac6612c-8083-43c9-acdd-ecc5841c5027",
-                        "featureId": "fe17155c-3dfa-4a0f-a205-3d5083632e65",
+                        "id": "c4944049-45a1-4be7-b353-1be9279475aa",
+                        "featureId": "af1566dd-1eb0-4ba8-991d-754b6483a515",
                         "contents": [
-                            "n-14d644"
+                            "n-06c999"
                         ],
-                        "media": "n-4ddc5d",
-                        "title": "n-371cec"
+                        "media": "n-b32b37",
+                        "title": "n-8c5e6b"
+                    },
+                    {
+                        "id": "39d7be08-f995-4303-a0c8-a2696439d34c",
+                        "featureId": "279fb9bf-b718-4598-894e-ebbd2433eab0",
+                        "contents": [
+                            "n-e2ac3e"
+                        ],
+                        "media": "n-fca9c5",
+                        "title": "n-c300b7"
+                    },
+                    {
+                        "id": "bcc939b9-ad59-4902-b906-3feafbd37655",
+                        "featureId": "9eced41a-4a71-4cc4-a180-59a1cd7fff11",
+                        "contents": [
+                            "n-85e38c"
+                        ],
+                        "media": "n-60a0fe",
+                        "title": "n-c4b1f2"
+                    },
+                    {
+                        "id": "7306613d-23c8-40ee-8251-96e54d839687",
+                        "featureId": "aa8426e6-0399-442f-9779-f891c0d78e74",
+                        "contents": [
+                            "n-39d621"
+                        ],
+                        "media": "n-951d77",
+                        "title": "n-ec9788"
+                    },
+                    {
+                        "id": "d985f6b6-b997-4a3f-9cf1-b1e06ff7248e",
+                        "featureId": "d5771b88-ea10-47de-b79c-59b91cb8a840",
+                        "contents": [
+                            "n-af021c"
+                        ],
+                        "media": "n-8aa3cd",
+                        "title": "n-a55b5e"
+                    },
+                    {
+                        "id": "62c79996-d27b-4e40-b5d2-7f5c48f41677",
+                        "featureId": "d23c1c21-3111-4e34-8564-b0b95e37b964",
+                        "contents": [
+                            "n-760cf0"
+                        ],
+                        "media": "n-fd7b56",
+                        "title": "n-93dd21"
+                    },
+                    {
+                        "id": "b3d44ddd-a8f4-4612-b2a9-601427f241f7",
+                        "featureId": "4a1f6783-fd7c-4e0a-a782-5ca9a4359187",
+                        "contents": [
+                            "n-fd1388"
+                        ],
+                        "media": "n-f628b1",
+                        "title": "n-e2d7d6"
+                    },
+                    {
+                        "id": "ebfd29de-87ae-4041-9e22-4541e11d954b",
+                        "featureId": "1420d8c9-b0a6-487f-b9a7-7baf94827b72",
+                        "contents": [
+                            "n-be4ff2"
+                        ],
+                        "media": "n-a1021c",
+                        "title": "n-e8a9d5"
+                    },
+                    {
+                        "id": "0d4b95e9-efdc-40cf-a91d-1ff8e1a7621c",
+                        "featureId": "cb58c8da-ced4-4fbd-9d49-c55acb823fbe",
+                        "contents": [
+                            "n-ab2271"
+                        ],
+                        "media": "n-6a5ed2",
+                        "title": "n-a09470"
+                    },
+                    {
+                        "id": "8a353c6c-3840-4678-a684-eb5fef02fd82",
+                        "featureId": "f1c45761-c716-417a-baf9-9f5b872be2f2",
+                        "contents": [
+                            "n-fb92af"
+                        ],
+                        "media": "n-b5996a",
+                        "title": "n-ed90ea"
+                    },
+                    {
+                        "id": "89cffcf5-9ea9-4c40-9d74-70b037c894e2",
+                        "featureId": "9c282168-f069-42df-8391-324a2d9b96ae",
+                        "contents": [
+                            "n-3a6334"
+                        ],
+                        "media": "n-b38350",
+                        "title": "n-408e6e"
+                    },
+                    {
+                        "id": "5d996bcf-07ed-4407-b967-62907f3867fd",
+                        "featureId": "f38bf51b-b7ed-45ec-a42a-687e1ee31787",
+                        "contents": [
+                            "n-a4d85f"
+                        ],
+                        "media": "n-834abb",
+                        "title": "n-5ee474"
+                    },
+                    {
+                        "id": "0c609185-0b67-4b7e-b74d-82d205109f7f",
+                        "featureId": "36a04f56-f35f-4423-a275-52db57b530fc",
+                        "contents": [
+                            "n-a96487"
+                        ],
+                        "media": "n-b22b91",
+                        "title": "n-ae1c62"
+                    },
+                    {
+                        "id": "165c3097-771b-4663-aab2-ff5bfc16c2c5",
+                        "featureId": "a0a635ed-6dad-405b-a99e-11bc46c13491",
+                        "contents": [
+                            "n-129306"
+                        ],
+                        "media": "n-008789",
+                        "title": "n-f4ac85"
+                    },
+                    {
+                        "id": "6c2d9472-6b4f-4587-b3fb-efd9758399b3",
+                        "featureId": "918e6fba-4400-47c6-bc40-65950b6a38cf",
+                        "contents": [
+                            "n-0b6275"
+                        ],
+                        "media": "n-d2589e",
+                        "title": "n-26b0de"
+                    },
+                    {
+                        "id": "e5132061-d64a-4ad2-9a52-b1c67e1b7184",
+                        "featureId": "b9ae2686-e569-46eb-98d6-2aa71449f59f",
+                        "contents": [
+                            "n-e71d64"
+                        ],
+                        "media": "n-e66b2d",
+                        "title": "n-f3a947"
+                    },
+                    {
+                        "id": "53597b44-74b3-4239-971e-1aba98737b02",
+                        "featureId": "cc3b3134-b758-44f2-849c-fb1c89769ad7",
+                        "contents": [
+                            "n-525bbf"
+                        ],
+                        "media": "n-8a2620",
+                        "title": "n-12fa5b"
+                    },
+                    {
+                        "id": "100020e4-ac2c-407f-9ab1-bd06e24a8550",
+                        "featureId": "d9fbea44-a10a-4afd-aa42-d6a4133d8fd0",
+                        "contents": [
+                            "n-ecabec"
+                        ],
+                        "media": "n-06812e",
+                        "title": "n-9bd1fc"
+                    },
+                    {
+                        "id": "6e05e161-1d2c-4795-83b7-6eace168f07d",
+                        "featureId": "3a1b6f33-6285-48f2-8769-f72eba48c095",
+                        "contents": [
+                            "n-7babba"
+                        ],
+                        "media": "n-6bb911",
+                        "title": "n-eb406c"
+                    },
+                    {
+                        "id": "448cc1c7-e89a-4c80-a574-4169884ad587",
+                        "featureId": "283cb5af-db27-4823-9d2f-1e4c7c2251c9",
+                        "contents": [
+                            "n-82e316"
+                        ],
+                        "media": "n-0fd73c",
+                        "title": "n-cc2b42"
+                    },
+                    {
+                        "id": "ecd3735a-b3db-4a9a-a4d7-6ae21927cb12",
+                        "featureId": "64dd072e-e33b-4013-8741-f78ff3deb2af",
+                        "contents": [
+                            "n-d267a8"
+                        ],
+                        "media": "n-ff3d7b",
+                        "title": "n-509970"
+                    },
+                    {
+                        "id": "4772c62e-1af3-46d3-857e-94a1bc7ecb44",
+                        "featureId": "ed802056-5f0e-4936-acea-c81c59f69437",
+                        "contents": [
+                            "n-bb8f24"
+                        ],
+                        "media": "n-956eb8",
+                        "title": "n-a744e2"
+                    },
+                    {
+                        "id": "0eea5466-ea8d-4780-b89a-2ff7db9bfb37",
+                        "featureId": "1c84c0cc-ea46-479b-a640-1afb61e8a462",
+                        "contents": [
+                            "n-b5bf8b"
+                        ],
+                        "media": "n-bbb70a",
+                        "title": "n-0cf3d4"
+                    },
+                    {
+                        "id": "ae7feb14-d97a-4772-88d2-a751c48386cb",
+                        "featureId": "71556475-06de-4f32-836a-15547b75e9b6",
+                        "contents": [
+                            "n-6c0064"
+                        ],
+                        "media": "n-e1b104",
+                        "title": "n-0d9027"
+                    },
+                    {
+                        "id": "7403b6b1-7f6a-4931-bb54-41993ca4826e",
+                        "featureId": "191642b6-5b6e-4e43-adc9-ce9313975e80",
+                        "contents": [
+                            "n-122ce6"
+                        ],
+                        "media": "n-54da62",
+                        "title": "n-dc8785"
+                    },
+                    {
+                        "id": "ec6da68f-7b66-4693-afda-86127305878f",
+                        "featureId": "32216bab-fcb6-4529-b648-a866b606a154",
+                        "contents": [
+                            "n-278bb0"
+                        ],
+                        "media": "n-441e0a",
+                        "title": "n-5957e0"
+                    },
+                    {
+                        "id": "3c439c84-3e78-45d8-9ee4-1c374723b68d",
+                        "featureId": "07662f82-7922-4845-b814-ec7268c747cf",
+                        "contents": [
+                            "n-bf03ae"
+                        ],
+                        "media": "n-d565a2",
+                        "title": "n-cf39e9"
+                    },
+                    {
+                        "id": "3c2d0c87-4746-4f3a-bf47-b2a4e19f7dc6",
+                        "featureId": "c91b6263-9201-478d-a211-535f7731c9bd",
+                        "contents": [
+                            "n-383ee5"
+                        ],
+                        "media": "n-3e6dca",
+                        "title": "n-44dd7a"
+                    },
+                    {
+                        "id": "f0b3a844-2cbd-4b67-9785-f41b42e0326d",
+                        "featureId": "561769ae-208c-4236-8437-5c42fb0c8330",
+                        "contents": [
+                            "n-27bbc5"
+                        ],
+                        "media": "n-a65bdf",
+                        "title": "n-65b703"
+                    },
+                    {
+                        "id": "e78e7fe5-5e36-4d80-ab5f-25223f614e8c",
+                        "featureId": "8e5bb8a5-c936-46c2-8376-3c9ef3861026",
+                        "contents": [
+                            "n-bfbe97"
+                        ],
+                        "media": "n-84a095",
+                        "title": "n-7802d3"
+                    },
+                    {
+                        "id": "75abc3e7-432f-4dec-9c35-33fbfa3b60c5",
+                        "featureId": "6360ccb3-218a-4e13-80cb-13c67acf57a8",
+                        "contents": [
+                            "n-7bf59a"
+                        ],
+                        "media": "n-39a06e",
+                        "title": "n-1e2565"
+                    },
+                    {
+                        "id": "5d6df66b-6455-422b-a5cd-4817125f3533",
+                        "featureId": "9860d296-c05f-45c2-ad9b-fbd245a9e9e9",
+                        "contents": [
+                            "n-e37120"
+                        ],
+                        "media": "n-caad66",
+                        "title": "n-77ac26"
+                    },
+                    {
+                        "id": "9053cd60-0a31-4aad-a93f-aceb0a2b3e45",
+                        "featureId": "abcd81e0-610f-44e9-98c9-5706fe275dd4",
+                        "contents": [
+                            "n-2f87f3"
+                        ],
+                        "media": "n-5ac31d",
+                        "title": "n-eeec51"
+                    },
+                    {
+                        "id": "375ec2f9-25c1-453c-8ea7-ea59ed15feae",
+                        "featureId": "85b5e191-50e2-475a-a33b-bdd979e9c651",
+                        "contents": [
+                            "n-88eb66"
+                        ],
+                        "media": "n-b909be",
+                        "title": "n-c2a074"
                     }
                 ],
                 "narrativePanelSize": "large",
                 "accentColor": "#f9f794"
             }
         },
-        "n-00cd02": {
+        "n-ef580f": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "2002 NAIP begins as a pilot project",
+                "text": "Puesto",
                 "textAlignment": "start"
             }
         },
-        "n-5b9920": {
+        "n-b8b2fb": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "The NAIP imagery program began as a pilot project in 2002. The pilot compared 35mm slides to imagery from mapping cameras. As illustrated on the map 1m and 2m partial natural color film photography was acquired.",
+                "text": "New wave Mexican restaurant in the upscale new Headquarters, an adaptive re-use of a historic police station. Lively, interesting space with large patio. Tuesday evening deals on tacos & drinks are popular with locals. There's a small museum opposite where you can go into one of the building's original cell blocks. ",
                 "textAlignment": "start"
             }
         },
-        "n-86d28f": {
+        "n-a2ec0d": {
             "type": "image",
             "data": {
-                "image": "r-13d631"
+                "image": "r-509344",
+                "attribution": "Courtesy of Jaime Partners/Christopher W. Mayer"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-889814": {
+        "n-882d18": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-86d28f"
+                "n-a2ec0d"
             ]
         },
-        "n-037ae6": {
+        "n-ececb7": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "2003 NAIP program begins.",
+                "text": "The Lion's Share",
                 "textAlignment": "start"
             }
         },
-        "n-5dbcb0": {
+        "n-884cb6": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "The NAIP imagery is acquired on a 5 year cycle.  Imagery is natural color and color infrared collected at both 2m and 1m spatial resolution.  2m states were collected for compliance purposes.",
+                "text": "This creative, atmospheric, small gastropub attracts a fun local yuppie crowd and is a good choice if you are staying in nearby hotels and don't want to walk to the Gaslamp Quarter. Great artwork. It's adjacent to the undigitizable junction where Kettner Blvd, G Street, three train tracks, a bike path, and a trolley station all intersect.",
                 "textAlignment": "start"
             }
         },
-        "n-87690a": {
+        "n-3a12c0": {
             "type": "image",
             "data": {
-                "image": "r-494502"
+                "image": "r-0d82d9",
+                "attribution": "Google Plus/The Lion's Share"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-30432b": {
+        "n-0bd1d1": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-87690a"
+                "n-3a12c0"
             ]
         },
-        "n-40c342": {
+        "n-90487e": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "2004 NAIP digital imagery acquisition takes hold.",
+                "text": "The Fish Market",
                 "textAlignment": "start"
             }
         },
-        "n-f133fb": {
+        "n-10e811": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "Coverage for 2004 is mainly film based consisting of 1m and 2m acquisitions in both natural color and color infrared.  ID, LA, MT, TX, and WY are digital acquisitions.  2004 is also the beginning of a 3 year indefinite delivery, indefinite quantity (IDIQ) contract.  There were 10 vendors flying NAIP imagery under this contract.",
+                "text": "Big, busy seafood place with nice views of San Diego bay. Huge menu. There's a popular bar and deck, an oyster bar, and a sushi bar. Upstairs is their quieter but more expensive Top Of the Market restaurant. It's a short walk northwest along the waterfront from the Convention Center hotels. The USS Midway aircraft carrier musuem is adjacent.",
                 "textAlignment": "start"
             }
         },
-        "n-59c661": {
+        "n-55d4d3": {
             "type": "image",
             "data": {
-                "image": "r-46c6d3"
+                "image": "r-362612",
+                "attribution": "MyCityWay"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-898fcd": {
+        "n-5052f4": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-59c661"
+                "n-55d4d3"
             ]
         },
-        "n-5a5bf6": {
+        "n-7d952f": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "2005 NAIP",
+                "text": "Cafe 222",
                 "textAlignment": "start"
             }
         },
-        "n-f358ee": {
+        "n-163d00": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "The 2005 NAIP acquisition features more states with full coverage and digital acquisition doubles to 10 states (CA, LA, FL, MS, MT, WA, ND, MI, TX, and SC).  Compressed county mosaics (CCM) compression ratio was changed from 50:1 to 15:1.",
+                "text": "European-style breakfast and lunch place in cool building designed by local architect Rob Wellington Quigley. Famous pancakes and waffles. Gets busy for breakfast so get there early. Two blocks north of the Convention Center. Rob Quigley also designed the nearby New Children's Museum with its solar panel roof, and San Diego's new downtown library.",
                 "textAlignment": "start"
             }
         },
-        "n-f8116f": {
+        "n-9228a0": {
             "type": "image",
             "data": {
-                "image": "r-329d55"
+                "image": "r-c36566",
+                "attribution": "Courtesy of Melissa Stiles Rowland/designerbakery.blogspot.com"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-56d123": {
+        "n-77fe34": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-f8116f"
+                "n-9228a0"
             ]
         },
-        "n-63a60d": {
+        "n-d75575": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "2006 NAIP pilot for absolute accuracy specification",
+                "text": "The Field",
                 "textAlignment": "start"
             }
         },
-        "n-eadb19": {
+        "n-51f59e": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "Pilot is conducted using Utah imagery to test changing spatial accuracy determination from relative accuracy (image to image) to absolute control (photo identifiable ground control points). Testing spatial accuracy of imagery using absolute control methods is an industry standard and introduces less error than relative accuracy.",
+                "text": "One of several Irish pubs in the Gaslamp Quarter, downtown San Diego's entertainment, dining, and partying district, centered along Fifth Avenue between the Convention Center to the south and Broadway to the north. The Field is smaller and cosier than the other pubs. Good food and occasional live music. The interior of the pub was shipped over from Ireland. Creaky stairs. ",
                 "textAlignment": "start"
             }
         },
-        "n-3973f1": {
+        "n-b9b7a9": {
             "type": "image",
             "data": {
-                "image": "r-ac6710"
+                "image": "r-8ee76a",
+                "attribution": "Facebook/The Field"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-bf49c9": {
+        "n-4c4601": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-3973f1"
+                "n-b9b7a9"
             ]
         },
-        "n-7e03ac": {
+        "n-30da75": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "2007 NAIP first 4 band spectral resolution state.",
+                "text": "Searsucker",
                 "textAlignment": "start"
             }
         },
-        "n-65c0d5": {
+        "n-888cef": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "The default spectral resolution for NAIP was natural color (Red, Green, and Blue, or RGB) but beginning in 2007 some states were delivered with four bands of data: RGB and Near Infrared.  Arizona was delivered as 1m 4 bands.",
+                "text": "There's no shortage of restaurants along Fifth Avenue in the Gaslamp Quarter, and this is a good one. It's a trendy urban space with an interesting menu, a good mix of locals and visitors, and some quirky furniture. Gets pricey though for dinner. Better value for lunch and weekend brunch.",
                 "textAlignment": "start"
             }
         },
-        "n-efe557": {
+        "n-03e364": {
             "type": "image",
             "data": {
-                "image": "r-9c1b5f"
+                "image": "r-318bb9",
+                "attribution": "Searsucker website"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-6e49c6": {
+        "n-84401c": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-efe557"
+                "n-03e364"
             ]
         },
-        "n-0f2ba1": {
+        "n-178fa4": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "2008 NAIP first year all states acquired with 1 meter ground sample distance",
+                "text": "Vin De Syrah Spirit &amp; Wine Parlor",
                 "textAlignment": "start"
             }
         },
-        "n-16b44e": {
+        "n-73300d": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "2008 marks the first year that the program acquires all imagery with a 1 meter ground sample distance (GSD).  ",
+                "text": "A whimiscal yet luxurious basement bar and nightclub with a hidden door. The decor is Alice-in-Wonderland meets Prohibition. They focus on wine and spirits here, with a light food menu. This is a great place to go on to after dinner downtown, or go early for happy hour deals.  <a href='https://links.esri.com/sandiego/places/syrah' style='color:red' target='_blank' rel='nofollow ugc noopener noreferrer'>Website</a><br /><hr /><font size='2'>Neighborhood: <b>Gaslamp Quarter</b><br />901 Fifth Ave, San Diego, CA 92101 on the corner with E Street. Go down the stairs and see if you can find the door.</font><br /><font size='1' color='Grey'><i>Photo: Courtesy of Vin De Syrah / Andrew Jorgensen</i></font>\n",
                 "textAlignment": "start"
             }
         },
-        "n-dc6bf3": {
+        "n-13c03f": {
             "type": "image",
             "data": {
-                "image": "r-e8eedb"
+                "image": "r-d6c4a6"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-10ef98": {
+        "n-1b6bb9": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-dc6bf3"
+                "n-13c03f"
             ]
         },
-        "n-895159": {
+        "n-bdde3b": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "2009 NAIP first year all states are acquired with complete coverage and all states move to the absolute accuracy specification.",
+                "text": "Tajima Ramen, East Village",
                 "textAlignment": "start"
             }
         },
-        "n-2e40e5": {
+        "n-306bae": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "2009 provides complete 1 meter coverage for all states acquired.  Absolute control is used to determine the spatial accuracy of the imagery in all states.  ",
+                "text": "Ramen is getting popular in San Diego and this is some of the best in town. Tajima specializes in handmade ramen and delicious small rice bowls. They have craft brews, sake and sodas, friendly, fun staff, and an interior by prolific local designer and fabricator Paul Basile. <a href='http://tajimasandiego.com/' style='color: red; outline: none;' target='_blank' rel='nofollow ugc noopener noreferrer'>Website</a><br /><hr /><font size='2'>Neighborhood: <b>East Village</b><br />901 E Street, San Diego, CA 92101 at 9th Avenue.</font><br /><font size='1' color='Grey'><i>Photo: Tajima San Diego website</i></font>\n",
                 "textAlignment": "start"
             }
         },
-        "n-8606ad": {
+        "n-f57cc1": {
             "type": "image",
             "data": {
-                "image": "r-f5fdb1"
+                "image": "r-96179f"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-6af5a7": {
+        "n-f1e72e": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-8606ad"
+                "n-f57cc1"
             ]
         },
-        "n-d805bb": {
+        "n-a769b0": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "NAIP 2010 first year all states 4 band digital coverage",
+                "text": "The Neighborhood",
                 "textAlignment": "start"
             }
         },
-        "n-42aa25": {
+        "n-209126": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "2010 is the first year that all states are acquired digitally with four bands of data.  2010 is also the first year that imagery is served out as state based web services both internally to FSA and to the public.",
+                "text": "Walk a few blocks east of the busy Gaslamp Quarter and you're in the East Village, downtown San Diego's gentrifying warehouse district. Restaurants here are less expensive than in the Gaslamp and have a local, less touristy feel. The Neighborhood is a small friendly gastropub with excellent food, and its own secret speakeasy, Noble Experiment, behind a hidden door inside.",
                 "textAlignment": "start"
             }
         },
-        "n-35a1cf": {
+        "n-2c546e": {
             "type": "image",
             "data": {
-                "image": "r-0c3010"
+                "image": "r-5f6015",
+                "attribution": "Courtesy of The Neighborhood/Zack Benson"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-b38b6f": {
+        "n-592e87": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-35a1cf"
+                "n-2c546e"
             ]
         },
-        "n-82f1c3": {
+        "n-5199ba": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "2011 NAIP first year state based seam line shapefile is available.",
+                "text": "Cafe Chloe",
                 "textAlignment": "start"
             }
         },
-        "n-2122a4": {
+        "n-985f39": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "All coverage is 1m 4 band (Natural Color/Color Infrared).  First year a state based seam line shapefile is available providing information about imagery collection.  The information is available as a web service and as digital files.",
+                "text": "Two blocks further east along G Street from The Neighborhood you'll find this small French bistro. Good food and atmosphere makes it popular with local creatives and urban professionals. It's a particular favorite of Allen Carroll, the Esri Story Maps team leader, when he's in town.",
                 "textAlignment": "start"
             }
         },
-        "n-cd6333": {
+        "n-a92886": {
             "type": "image",
             "data": {
-                "image": "r-30fb27"
+                "image": "r-b23f38",
+                "attribution": "Cafe Chloe website"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-1a71cf": {
+        "n-a61f7b": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-cd6333"
+                "n-a92886"
             ]
         },
-        "n-f7ef1b": {
+        "n-296218": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "2012 NAIP ",
+                "text": "Coffee &amp; Tea Collective",
                 "textAlignment": "start"
             }
         },
-        "n-743130": {
+        "n-c89be7": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "2012 marks the beginning of a new five year IDIQ contract using three prime vendors.",
+                "text": "An artisan coffee atelier in a cool industrial warehouse. This is the second location for the craft Coffee &amp; Tea Collective (the first is in the hip North Park neighborhood).  <a href='http://www.coffeeandteacollective.com/' style='color:red' target='_blank' rel='nofollow ugc noopener noreferrer'>Website</a><br /><hr /><font size='2'>Neighborhood: <b>East Village</b><br />631 9th Avenue, CA 92101 at Market Street.</font><br /><font size='1' color='Grey'><i>Photo: Rupert Essinger / Esri</i></font>\n",
                 "textAlignment": "start"
             }
         },
-        "n-fd4b2b": {
+        "n-a32efb": {
             "type": "image",
             "data": {
-                "image": "r-3c2f49"
+                "image": "r-317371"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-120264": {
+        "n-6d5df1": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-fd4b2b"
+                "n-a32efb"
             ]
         },
-        "n-84fe38": {
+        "n-325ada": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "2013 NAIP first 1/2 meter state",
+                "text": "The Mission",
                 "textAlignment": "start"
             }
         },
-        "n-f5cb58": {
+        "n-55a111": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "2013 marks the first 1/2 meter state (ID) to be delivered as part of the NAIP imagery program.  The 1/2 meter ground sample distance (GSD) was a buy-up option since 2011.",
+                "text": "Inexpensive, lively place serving excellent breakfast and lunch in historic building. The walk from the business district is worth it because you'll be rewarded with beautifully presented, eclectic food, and great coffee. Local arty and urban pioneer crowd. Try the rosemary potatoes or the french toast made with fresh-baked cinnamon bread. Rob Quigley, who designed the new library one block away, just moved in next door.",
                 "textAlignment": "start"
             }
         },
-        "n-8d1f51": {
+        "n-9ce324": {
             "type": "image",
             "data": {
-                "image": "r-a589b2"
+                "image": "r-fbdab5",
+                "attribution": "Ivan Holmes"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-60ad7c": {
+        "n-f243ac": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-8d1f51"
+                "n-9ce324"
             ]
         },
-        "n-f484ca": {
+        "n-b77628": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "2014 NAIP",
+                "text": "Il Fornaio",
                 "textAlignment": "start"
             }
         },
-        "n-f05341": {
+        "n-34a53e": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "NAIP 2014 imagery coverage consists of 25 states at 1 meter resolution.  2014 marks a continuation of the FSA early access project which allows FSA employees and partner agencies access to imagery in a vendor produced web service 3 to 5 days after the imagery is acquired.  All states except OR, TN, MS, and NC are part of the early access pilot continuation.  2014 is also a transition year for NAIP status maps from ArcGIS Server web maps to ArcGIS Online hosted web maps.",
+                "text": "On the other side of San Diego Bay from downtown you'll find the Coronado Island Ferry Landing and this branch of the upscale Il Fornaio chain. The great building, food, and views of downtown makes this one of the best deals in town. Eat in the huge dining room or on one of the two patios. It's like having dinner in a Roman villa. A trip here is especially fun using the Coronado public ferry or the San Diego Water Taxi. Or get a cab in downtown for the short ride over the bridge.",
                 "textAlignment": "start"
             }
         },
-        "n-fbc921": {
+        "n-6138c6": {
             "type": "image",
             "data": {
-                "image": "r-faf44e"
+                "image": "r-5b7df3",
+                "attribution": "Courtesy of Il Fornaio"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-7dd356": {
+        "n-fcdf16": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-fbc921"
+                "n-6138c6"
             ]
         },
-        "n-ff8f26": {
+        "n-93d2bf": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "2015 NAIP",
+                "text": "Extraordinary Desserts",
                 "textAlignment": "start"
             }
         },
-        "n-4e2d9a": {
+        "n-e4bed7": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "NAIP 2015 imagery coverage consists of 2 states delivered as 1/2 meter resolution and 25 states at 1 meter resolution.",
+                "text": "Possibly the most amazing bakery/cafe you have ever seen. Off the beaten track in a restored industrial building, their beautiful displays of cakes and pastries are an art form. They also serve light meals and cheeses. It's often beseiged by fans, especially Friday and Saturday nights when it's open till midnight. There's a smaller branch near Balboa Park.",
                 "textAlignment": "start"
             }
         },
-        "n-29c68e": {
+        "n-481a85": {
             "type": "image",
             "data": {
-                "image": "r-1f942d"
+                "image": "r-ba5e99",
+                "attribution": "Extraordinary Desserts website"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-78c4e8": {
+        "n-9ed7c9": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-29c68e"
+                "n-481a85"
             ]
         },
-        "n-8b9f61": {
+        "n-1d97a0": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "2016 NAIP first 60cm delivery",
+                "text": "Craft &amp; Commerce",
                 "textAlignment": "start"
             }
         },
-        "n-a2d061": {
+        "n-c409a6": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "2016 marks the first 60cm NAIP acquisition.  14 states will be acquired at 60cm and 8 states at 1 meter.  This will be the final year of a 5 year IDIQ contract which started in 2012.",
+                "text": "This hipster hideaway with very interesting design is cosy and noisy with good food and craft beer. Young local crowd. Afterwards cross over Beech St and check out the live/work block across the road designed by local architects, with a public path running through it. ",
                 "textAlignment": "start"
             }
         },
-        "n-760dce": {
+        "n-60971c": {
             "type": "image",
             "data": {
-                "image": "r-d323c4"
+                "image": "r-80a441",
+                "attribution": "Courtesy of Craft and Commerce/Zack Benson"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-0c7038": {
+        "n-e80336": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-760dce"
+                "n-60971c"
             ]
         },
-        "n-4b59f4": {
+        "n-d5f14a": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "2017 NAIP",
+                "text": "Pappalecco",
                 "textAlignment": "start"
             }
         },
-        "n-1a2430": {
+        "n-a59b98": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "NAIP 2017 imagery coverage includes 26 states. 3 are 60cm resolution and 23 are 1 meter resolution.  NAIP continues to be collected as 4 band imagery (RGBNIR).",
+                "text": "You're in Little Italy, downtown San Diego's coolest and most creative neighborhood. It's a quieter, less hectic alternative to the Gaslamp Quarter, with generally hipper people. Pappalecco is an authentic Italian cafe run by the three Bucci brothers from Pisa, serving delicious coffee, light food and gelato.",
                 "textAlignment": "start"
             }
         },
-        "n-3cf20d": {
+        "n-e2cf31": {
             "type": "image",
             "data": {
-                "image": "r-a37e40"
+                "image": "r-655ff8",
+                "attribution": "Google Plus/Arsham Hatambeiki"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-6ee3af": {
+        "n-4f08ca": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-3cf20d"
+                "n-e2cf31"
             ]
         },
-        "n-09c94d": {
+        "n-889e14": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "2018 NAIP",
+                "text": "Ironside Fish and Oyster",
                 "textAlignment": "start"
             }
         },
-        "n-ccf61a": {
+        "n-996cb5": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "NAIP",
+                "text": "Along India Street between Cedar and Hawthorn you'll find almost all of Little Italy's restaurants and shops. One of the newest restaurants is this fish place inside a converted hardware store. You'll never see it empty like in this photo though because it been jam-packed since day one. The brown wall on the left is covered in tiny model piranha skulls.",
                 "textAlignment": "start"
             }
         },
-        "n-1ddee0": {
+        "n-c50645": {
             "type": "image",
             "data": {
-                "image": "r-0d4a54"
+                "image": "r-6e4526",
+                "attribution": "Courtesy of Ironside Fish and Oyster/Zack Benson"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-16f8fe": {
+        "n-ace0a3": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-1ddee0"
+                "n-c50645"
             ]
         },
-        "n-3d426f": {
+        "n-8d2636": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "2018 NAIP first year all imagery 60cm spatial resolution",
+                "text": "Prepkitchen",
                 "textAlignment": "start"
             }
         },
-        "n-06a564": {
+        "n-184afe": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "This is the first year that all NAIP imagery is 60cm spatial resolution.  This year there is a partnership with the State of Oregon where that state will be acquired through an agreement separate from the rest of the NAIP collection.  Oregon imagery will have a 30cm spatial resolution also a first for the NAIP program .  NAIP continues to be collected as 4 band imagery (RGBNIR).",
+                "text": "It's easy to miss this hip foodie hangout because it's upstairs. The same team runs Whisknladle restaurant in La Jolla, one of the farm-to-table pioneers in San Diego. The big communal tables in the bar area are great for groups of friends. Creative, seasonally-based menu.",
                 "textAlignment": "start"
             }
         },
-        "n-64861e": {
+        "n-8af4a2": {
             "type": "image",
             "data": {
-                "image": "r-014b53"
+                "image": "r-deceb5",
+                "attribution": "Prep Kitchen website"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-3476fc": {
+        "n-f8cf35": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-64861e"
+                "n-8af4a2"
             ]
         },
-        "n-73930e": {
+        "n-b5044a": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "2019 NAIP",
+                "text": "Little Italy Mercato",
                 "textAlignment": "start"
             }
         },
-        "n-45a16e": {
+        "n-545b3c": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "All NAIP imagery acquired in 2019 is 60cm spatial resolution.  60 centimeters is now the default spatial resolution for NAIP imagery.  NAIP continues to be collected as 4 band imagery (RGBNIR). ",
+                "text": "This large open-air street market every Saturday morning, 8am-2pm, is a great San Diego experience. Stalls line Date Street selling all sorts of food (including crepes and paninis), art and crafts. You can eat brunch as you browse. Afterwards head to one of the local cafes and meet the local community.",
                 "textAlignment": "start"
             }
         },
-        "n-9b0edd": {
+        "n-fdd452": {
             "type": "image",
             "data": {
-                "image": "r-a96b73"
+                "image": "r-b89dba",
+                "attribution": "Facebook/Little Italy Mercato"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-afe2fd": {
+        "n-dcb811": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-9b0edd"
+                "n-fdd452"
             ]
         },
-        "n-92b071": {
+        "n-159603": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "2020 NAIP",
+                "text": "NaPizza",
                 "textAlignment": "start"
             }
         },
-        "n-f7522f": {
+        "n-a2444b": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "2020 NAIP imagery has a 60cm spatial resolution.  NAIP continues to be collected as 4 band imagery (RGBNIR).",
+                "text": "In the heart of Little Italy on the corner of India and Date, in the base of the popular La Pensione Hotel, this place is a great deal. Excellent Roman style slow-bake organic pizza al taglio (rectangular slices) and organic salad. Order at the counter. They'll happily put together boxed to-go orders and they deliver locally on their electric bike too.",
                 "textAlignment": "start"
             }
         },
-        "n-0a1754": {
+        "n-e1aeb9": {
             "type": "image",
             "data": {
-                "image": "r-bbe9b2"
+                "image": "r-1e2c79",
+                "attribution": "Facebook/NaPizza"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-2608c1": {
+        "n-95918f": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-0a1754"
+                "n-e1aeb9"
             ]
         },
-        "n-6263ff": {
+        "n-e1253f": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "NAIP 2021",
+                "text": "Caffe Italia",
                 "textAlignment": "start"
             }
         },
-        "n-9738a3": {
+        "n-3eed62": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "2021 NAIP imagery continues to be collected as 4 band imagery (RGBNIR) with a 60cm spatial resolution.  The 2021 collection includes 3 states flown for disaster response at 30cm (LA, MS, AL) spatial resolution. This will be the first year that Hawaii, Puerto Rico and the US Virgin Islands will be collected as part of the NAIP program.   ",
+                "text": "This coffee bar and cafe is the de facto social center of Little Italy. It's a good place to head for after a meal in a nearby restaurant or after browsing the Mercato. On Sunday mornings they serve waffles from 9am-1pm. Free wi-fi and they sell newspapers and magazines too.",
                 "textAlignment": "start"
             }
         },
-        "n-a78010": {
+        "n-2b0bb3": {
             "type": "image",
             "data": {
-                "image": "r-2e842b"
+                "image": "r-75b9a9",
+                "attribution": "Courtesy of Maria Desiderata Montana, Publisher of of sandiegofoodfinds.com"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-2a233c": {
+        "n-20c0f5": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-a78010"
+                "n-2b0bb3"
             ]
         },
-        "n-d1cd93": {
+        "n-bfe562": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "NAIP 2022",
+                "text": "Underbelly",
                 "textAlignment": "start"
             }
         },
-        "n-e66d17": {
+        "n-a4bf73": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "2022 NAIP imagery is collected as 4 band imagery (RGBNIR) with a 60cm spatial resolution.  The 2022 collection includes 1 state flown at 30cm (OR) spatial resolution.  Oregon was acquired at this higher spatial resolution through a cooperative agreement with the state.",
+                "text": "On this block of Fir Street the beautiful contemporary Q building, designed and developed by local architect Jonathan Segal, houses several very cool looking restaurants. Underbelly serves large bowls of Asian fusion noodles. Some of their windows fold flat to make table tops for four (two people sit outside, two inside). ",
                 "textAlignment": "start"
             }
         },
-        "n-908fb0": {
+        "n-ed11b0": {
             "type": "image",
             "data": {
-                "image": "r-b7a907"
+                "image": "r-89af1c",
+                "attribution": "Courtesy of Underbelly/Zack Benson"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-b32c8c": {
+        "n-e0138f": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-908fb0"
+                "n-ed11b0"
             ]
         },
-        "n-10acb6": {
+        "n-77ceef": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "NAIP 2023 most 30cm states delivered in a year",
+                "text": "Monello",
                 "textAlignment": "start"
             }
         },
-        "n-861670": {
+        "n-25ef13": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "2023 NAIP imagery is collected as 4 band imagery (RGBNIR) with 60cm or higher spatial resolution.  The 2022 collection is being acquired by 3 vendors with a variety of 30 to 60 cm imagery.  2023 has a record number of states being delivered at 30 cm spatial resolution.",
+                "text": "The Monello team, led by Guido Nistri, are from Northern Italy. They've created a gorgeous contemporary space in the Q building offering an extensive menu of high quality, reasonably priced \"Italian street food\". Outdoor seating available too. ",
                 "textAlignment": "start"
             }
         },
-        "n-bd801a": {
+        "n-f2d1ce": {
             "type": "image",
             "data": {
-                "image": "r-218dd8"
+                "image": "r-2cfec5",
+                "attribution": "Facebook/Monello"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-6a4b6a": {
+        "n-b5765a": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-bd801a"
+                "n-f2d1ce"
             ]
         },
-        "n-371cec": {
+        "n-8c5e6b": {
             "type": "text",
             "data": {
                 "type": "h3",
-                "text": "NAIP 2024",
+                "text": "Bencotto",
                 "textAlignment": "start"
             }
         },
-        "n-14d644": {
+        "n-06c999": {
             "type": "text",
             "data": {
                 "type": "paragraph",
-                "text": "2024 NAIP imagery is collected as 4 band imagery (RGBNIR) with standard 60cm spatial resolution.  18 full states and 3 partial states are being acquired.  The partial states are will fill in areas of 3 states which were incomplete in 2023 due to weather conditions.  Two states (NM &amp; OR) are being collected at 30cm resolution as part of a contractual buy up.  2024 NAIP is acquired by 3 vendors through the Pine BPA imagery contract.",
+                "text": "Bencotto is owned by the same people as Monello next door. The great atmosphere, good prices, friendly service and cool modern design makes it perhaps the best place to eat in Little Italy. This and Monello are a cut above the more traditional Italian restaurants in this neighborhood. Outdoor seating too.",
                 "textAlignment": "start"
             }
         },
-        "n-f232dd": {
+        "n-84bbb0": {
             "type": "image",
             "data": {
-                "image": "r-c008ae"
+                "image": "r-eefe3b",
+                "attribution": "Google Plus"
             },
             "config": {
                 "size": "standard"
             }
         },
-        "n-4ddc5d": {
+        "n-b32b37": {
             "type": "carousel",
             "config": {},
             "data": {},
             "children": [
-                "n-f232dd"
+                "n-84bbb0"
+            ]
+        },
+        "n-c300b7": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Influx",
+                "textAlignment": "start"
+            }
+        },
+        "n-e2ac3e": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "The floor to ceiling glass walls in this hip small coffee shop on the east corner of the Q building make it a bright, upbeat place to spend some time. The salads and sandwiches are good value here. All the customers seem to work on Apple Mac laptops.",
+                "textAlignment": "start"
+            }
+        },
+        "n-b94d47": {
+            "type": "image",
+            "data": {
+                "image": "r-5c18bb",
+                "attribution": "Google Plus"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-fca9c5": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-b94d47"
+            ]
+        },
+        "n-c4b1f2": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Juniper and Ivy",
+                "textAlignment": "start"
+            }
+        },
+        "n-85e38c": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Executive Chef Richard Blais and team have converted an industrial warehouse in arty North Little Italy ('NoLi') into a simply stunning new restaurant. This part of Kettner Blvd has several interesting art galleries and design shops.",
+                "textAlignment": "start"
+            }
+        },
+        "n-07fd35": {
+            "type": "image",
+            "data": {
+                "image": "r-a22ee2",
+                "attribution": "Courtesy of Juniper and Ivy/Mike Newton"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-60a0fe": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-07fd35"
+            ]
+        },
+        "n-ec9788": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Crack Shack",
+                "textAlignment": "start"
+            }
+        },
+        "n-39d621": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Huge, fun, and very popular indoor &amp; outdoor space specializing in chicken sandwiches and eggs. Started by the people behind the upscale Juniper and Ivy next door, this former industral space in North Little Italy has been deftly converted into a outdoor oriented restaurant, complete with picnic benches, fire pits, and a bocce ball court.  <a href='http://www.crack-shack.com/' style='color:red' target='_blank' rel='nofollow ugc noopener noreferrer'>Website</a><br /><hr /><font size='2'>Neighborhood: <b>North Little Italy</b><br />2266 Kettner Blvd, San Diego, CA 92101 at Juniper Street.</font><br /><font size='1' color='Grey'><i>Photo: Rupert Essinger / Esri</i></font>\n",
+                "textAlignment": "start"
+            }
+        },
+        "n-468bdd": {
+            "type": "image",
+            "data": {
+                "image": "r-bc3be6"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-951d77": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-468bdd"
+            ]
+        },
+        "n-a55b5e": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Ballast Point Tasting Room and Kitchen",
+                "textAlignment": "start"
+            }
+        },
+        "n-af021c": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "This popular brew pub and restaurant run by local craft brewer Ballast Point is helping to expand Little Italy northwards. The large seating area and warehouse style outdoor patio makes this a good place to go with a group of friends. Order your food at the counter and your drinks at the bar, then find a table (if you can).",
+                "textAlignment": "start"
+            }
+        },
+        "n-2f2547": {
+            "type": "image",
+            "data": {
+                "image": "r-9cbde6",
+                "attribution": "Courtesy of Ballast Point Brewing and Spirits/Tim Stahl"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-8aa3cd": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-2f2547"
+            ]
+        },
+        "n-93dd21": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Bankers Hill Bar and Restaurant",
+                "textAlignment": "start"
+            }
+        },
+        "n-760cf0": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "A stylish, casual place for dinner after a visit to Balboa Park, or if you just want to venture out of downtown for an evening with a local over-30s, somewhat hip, yuppie crowd. Cool vertical succulent garden on the patio wall. The restaurant is named after the neighborhood it is in, which was one of the earliest expansions north of the growing city.",
+                "textAlignment": "start"
+            }
+        },
+        "n-e58cb8": {
+            "type": "image",
+            "data": {
+                "image": "r-c70321",
+                "attribution": "Bankers Hill Bar and Restaurant website"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-fd7b56": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-e58cb8"
+            ]
+        },
+        "n-e2d7d6": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "The Prado at Balboa Park",
+                "textAlignment": "start"
+            }
+        },
+        "n-fd1388": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "This is the best place to eat in San Diego's beautiful Balboa Park. This lovely restaurant is in the historic House Of Hospitality overlooking some gardens and adjacent to all the museums and galleries. Don't miss the Botanical Building and Gardens with its famous lily ponds on the other side of the El Prado promenade. There's valet parking but it is more fun to walk here from Laurel Street to the west.",
+                "textAlignment": "start"
+            }
+        },
+        "n-76469b": {
+            "type": "image",
+            "data": {
+                "image": "r-ba2fe4",
+                "attribution": "Panoramio/LimaTango"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-f628b1": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-76469b"
+            ]
+        },
+        "n-e8a9d5": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Buona Forchetta",
+                "textAlignment": "start"
+            }
+        },
+        "n-be4ff2": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Authentic neighborhood Italian place in 1920s streetscape in the historic South Park neighborhood. It's small and fills up fast with an eclectic local crowd. There are many grand Victorian & California Craftsman houses here, especially on Granada Avenue. ",
+                "textAlignment": "start"
+            }
+        },
+        "n-5e2ee1": {
+            "type": "image",
+            "data": {
+                "image": "r-cf8811",
+                "attribution": "Google Plus"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-a1021c": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-5e2ee1"
+            ]
+        },
+        "n-a09470": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Station Tavern and Burgers",
+                "textAlignment": "start"
+            }
+        },
+        "n-ab2271": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "This informal neighborhood place is popular with locals including families with kids. Burgers and craft beers are served and there's a large beer garden with communal tables. Burlingame's shops and historic Craftsman and Spanish Colonial Revival homes, especially along Kalmia and Laurel streets, were built in the 1920s and 30s. ",
+                "textAlignment": "start"
+            }
+        },
+        "n-c3fdcc": {
+            "type": "image",
+            "data": {
+                "image": "r-535a6d",
+                "attribution": "Station Tavern and Burgers website"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-6a5ed2": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-c3fdcc"
+            ]
+        },
+        "n-ed90ea": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "The Smoking Goat",
+                "textAlignment": "start"
+            }
+        },
+        "n-fb92af": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Welcome to North Park, San Diego's urban hipster neighborhood. This bistro is of one many interesting places to eat along 30th Street between Upas to the south & Adams to the north, which has become the focus of the locally sourced food and craft beer movements in San Diego. No car? Bus route 2 serves South Park & North Park from downtown.",
+                "textAlignment": "start"
+            }
+        },
+        "n-201dcd": {
+            "type": "image",
+            "data": {
+                "image": "r-dcb4f1",
+                "attribution": "Facebook/Smoking Goat"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-b5996a": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-201dcd"
+            ]
+        },
+        "n-408e6e": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Tiger! Tiger!",
+                "textAlignment": "start"
+            }
+        },
+        "n-3a6334": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "This hip and friendly bar and restaurant is perhaps the epicenter of the North Park craft beer and farm-to-table food scene. There's a big communal table for meeting the locals, and a patio incorporating a shipping container. Other foodie standouts on 30th Street in North Park  include The Ritual Tavern, Caffe Calabria, Urban Solace, and Jayne's Gastro Pub.",
+                "textAlignment": "start"
+            }
+        },
+        "n-b1a6eb": {
+            "type": "image",
+            "data": {
+                "image": "r-65daf8",
+                "attribution": "Tiger Tiger website/photorealismstudios.com"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-b38350": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-b1a6eb"
+            ]
+        },
+        "n-5ee474": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Blind Lady Ale House",
+                "textAlignment": "start"
+            }
+        },
+        "n-a4d85f": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "This lively craft beer and pizza place is well worth the journey out to up-and-coming Normal Heights. Great neighborhood feel, and family friendly too. The same folks run Tiger! Tiger! The Hangar 24 craft brewery in their beer menu pictured here is in Redlands, CA, home of Esri. Continue east on Adams to the attractive Kensington neighborhood for more restaurants.",
+                "textAlignment": "start"
+            }
+        },
+        "n-41a6e7": {
+            "type": "image",
+            "data": {
+                "image": "r-042f59",
+                "attribution": "Facebook/Blind Lady Alehouse"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-834abb": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-41a6e7"
+            ]
+        },
+        "n-ae1c62": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Pomegranate",
+                "textAlignment": "start"
+            }
+        },
+        "n-a96487": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Eccentric Russian-Georgian restaurant with wonderful food. Equally eccentric owner and cook. Out-of-this-world borscht, pelmeni (dumplings), chanakhi (lamb stew), etc. Reservations recommended. A few blocks northwest from here on Park Blvd, there's Soltan Banoo, a delightful Persian place in an old cottage.",
+                "textAlignment": "start"
+            }
+        },
+        "n-b7065d": {
+            "type": "image",
+            "data": {
+                "image": "r-2f7e7d",
+                "attribution": "Google Plus"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-b22b91": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-b7065d"
+            ]
+        },
+        "n-f4ac85": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Bread and Cie Bakery Cafe",
+                "textAlignment": "start"
+            }
+        },
+        "n-129306": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Welcome to Hillcrest, the gay-friendly neighborhood centered around University Ave and Fifth Ave. A local institution, Bread and Cie's bread can be found in many San Diego stores and restaurants. Their flagship bakery/cafe is a good informal place to eat in Hillcrest, with sandwiches and salads. There are many other dining options in this area.",
+                "textAlignment": "start"
+            }
+        },
+        "n-e81e29": {
+            "type": "image",
+            "data": {
+                "image": "r-f98c0f",
+                "attribution": "Google Plus/Bread and Cie"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-008789": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-e81e29"
+            ]
+        },
+        "n-26b0de": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Brooklyn Girl",
+                "textAlignment": "start"
+            }
+        },
+        "n-0b6275": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "This large, busy bistro in a bright, airy, high-ceiling modern building is a great place to eat in posh Mission Hills. Go west on Fort Stockton Drive to explore this beautiful neighborhood of 1910s-1920s California Craftsmen and Mission style homes and grab a coffee at charming Espresso Mio.",
+                "textAlignment": "start"
+            }
+        },
+        "n-0348eb": {
+            "type": "image",
+            "data": {
+                "image": "r-3f040f",
+                "attribution": "Beauty and The Feast alexandrasafran.blogspot.com"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-d2589e": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-0348eb"
+            ]
+        },
+        "n-f3a947": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "True Food Kitchen",
+                "textAlignment": "start"
+            }
+        },
+        "n-e71d64": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Let's do the mall! This bustling, spacious restaurant way exceeds the usual fare here at Fashion Valley, San Diego's most upscale mall. The healthy food is based on Dr Andrew Weil's anti-inflammatory food pyramid. The mall also has an Apple Store, a Microsoft store, and its Green Line trolley station makes it simple to get here from downtown.",
+                "textAlignment": "start"
+            }
+        },
+        "n-b161a5": {
+            "type": "image",
+            "data": {
+                "image": "r-cfd608",
+                "attribution": "Google Plus/True Kitchen San Diego"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-e66b2d": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-b161a5"
+            ]
+        },
+        "n-12fa5b": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Hotel Del Coronado",
+                "textAlignment": "start"
+            }
+        },
+        "n-525bbf": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Known locally as the \"Hotel Del\", this National Historic Landmark on the beach on the ocean side of Coronado Island makes a great excursion from downtown. There are several restaurants but try Sheerwater with its lovely patio. Don't miss the hotel's amazing atmospheric, wood-paneled lobby and ancient elevator. You can use the San Diego Water Taxi to get here from downtown or the Coronado Ferry Landing. They'll take you to Glorietta Bay, then you just cross the road to the hotel.",
+                "textAlignment": "start"
+            }
+        },
+        "n-d23990": {
+            "type": "image",
+            "data": {
+                "image": "r-8b522f",
+                "attribution": "San Diego Tourism Authority"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-8a2620": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-d23990"
+            ]
+        },
+        "n-9bd1fc": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Stone Brewing World Bistro &amp; Gardens",
+                "textAlignment": "start"
+            }
+        },
+        "n-ecabec": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Don't miss this great place! Local craft brewer Stone has opened this huge restaurant and beer garden in the redeveloped historic 1920s Naval Training Center. Interesting design throughout. Part of the fun is that there's no sign outside. Prepare to get lost in the colonnades, old barracks, and vast lawns.",
+                "textAlignment": "start"
+            }
+        },
+        "n-2c809f": {
+            "type": "image",
+            "data": {
+                "image": "r-f26467",
+                "attribution": "Stone Brewing website"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-06812e": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-2c809f"
+            ]
+        },
+        "n-eb406c": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Liberty Public Market",
+                "textAlignment": "start"
+            }
+        },
+        "n-7babba": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "This newly opened market hall in historic Liberty Station is a hit. Adjacent to the Stone Brewing World Bistro and Gardens you'll find this popular collection of artisan food vendors. Standouts include FishBone Kitchen for fin fans, the WestBean Coffee Roasters, Mastiff Sausage Company, and Le Parfait Paris, a stylish cafe.  <a href='http://libertypublicmarket.com/' style='color:red' target='_blank' rel='nofollow ugc noopener noreferrer'>Website</a><br /><hr /><font size='2'>Neighborhood: <b>Liberty Station.</b><br />2820 Historic Decatur Road, San Diego, CA 92106 at Sims Road near the east entrance to Liberty Station</font><br /><font size='1' color='Grey'><i>Photo: Liberty Station website</i></font>",
+                "textAlignment": "start"
+            }
+        },
+        "n-6d18c8": {
+            "type": "image",
+            "data": {
+                "image": "r-b127d6"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-6bb911": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-6d18c8"
+            ]
+        },
+        "n-cc2b42": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Con Pane Rustic Breads &amp; Cafe",
+                "textAlignment": "start"
+            }
+        },
+        "n-82e316": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Diagonally across from Liberty Station's Command Center (now a museum) you'll find this excellent bakery. They serve big sandwiches on their delicious bread. It's a great choice for lunch after exploring this historic base, Cabrillo National Monument at the end of Point Loma, or as part of a trip to the airport.",
+                "textAlignment": "start"
+            }
+        },
+        "n-d8ee05": {
+            "type": "image",
+            "data": {
+                "image": "r-51f989",
+                "attribution": "Rupert Essinger/Esri"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-0fd73c": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-d8ee05"
+            ]
+        },
+        "n-509970": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Phil's BBQ",
+                "textAlignment": "start"
+            }
+        },
+        "n-d267a8": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Very popular barbecue place usually besieged with fans. Although San Diego isn't the first place that comes to mind for great barbecue in the USA, Phil's is a local institution. A big part of the user experience here is the long line to get in. Expect long waits at peak times, even though baby back ribs, beef ribs, pulled pork and onion rings aren't exactly what America is supposed to be eating. ",
+                "textAlignment": "start"
+            }
+        },
+        "n-9ed028": {
+            "type": "image",
+            "data": {
+                "image": "r-f4ace1",
+                "attribution": "Facebook/Phils BBQ"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-ff3d7b": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-9ed028"
+            ]
+        },
+        "n-a744e2": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Ocean Beach People's Organic Foods Market",
+                "textAlignment": "start"
+            }
+        },
+        "n-bb8f24": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "This food co-operative's vegetarian deli/bakery is a great place to eat in the diverse, funky, anything-goes community of Ocean Beach (\"OB\"). The bright new building has many green and sustainable features. It's just a few blocks away from the beach and lively Newport Avenue. South of Ocean Beach is Sunset Cliffs park along a rocky coastline. Bus 35 serves OB from Old Town.",
+                "textAlignment": "start"
+            }
+        },
+        "n-7ce399": {
+            "type": "image",
+            "data": {
+                "image": "r-8c6101",
+                "attribution": "Courtesy Hanna Gabriel Wells architects"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-956eb8": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-7ce399"
+            ]
+        },
+        "n-0cf3d4": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Olive Cafe",
+                "textAlignment": "start"
+            }
+        },
+        "n-b5bf8b": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Mission Beach is the quinessential California beach community with the added bonus of lovely, quiet Mission Bay just steps away on the other side of the peninsula. The Olive is a friendly local breakfast and lunch place with a sunny patio. Sarah and staff make everyone welcome. Bus 8 from Old Town gets you to Mission Beach.",
+                "textAlignment": "start"
+            }
+        },
+        "n-203f26": {
+            "type": "image",
+            "data": {
+                "image": "r-f27e58",
+                "attribution": "Rupert Essinger/Esri"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-bbb70a": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-203f26"
+            ]
+        },
+        "n-0d9027": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "The Rubicon Deli",
+                "textAlignment": "start"
+            }
+        },
+        "n-6c0064": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "The enormous sandwiches on the thick bread they bake there work great after exploring, biking, surfing, or sailing in this area. Young, carefree beach crowd typical of this area. Be sure to explore the alleyways with their tiny beach cottages that criss-cross the peninsula between the beach and the bay.",
+                "textAlignment": "start"
+            }
+        },
+        "n-a4b638": {
+            "type": "image",
+            "data": {
+                "image": "r-947ef3",
+                "attribution": "Google Plus"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-e1b104": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-a4b638"
+            ]
+        },
+        "n-dc8785": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "JRDN Restaurant at Tower 23 Hotel",
+                "textAlignment": "start"
+            }
+        },
+        "n-122ce6": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Walk or bike north on the Mission Beach boardwalk and you'll hit Pacific Beach (\"PB\") with its pier. This restaurant in a beautiful contemporary hotel building is the best place to eat at the beach, without the raucous atmosphere of other beachside places. Large patio for people watching and sunsets. Walk along the pier for perfect sea views. Bus routes 8 or 30 from Old Town serve PB.",
+                "textAlignment": "start"
+            }
+        },
+        "n-bd637c": {
+            "type": "image",
+            "data": {
+                "image": "r-4a3d0e",
+                "attribution": "Courtesy of Tower 23 hotel/JRDN restaurant/Matthew Bennion"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-54da62": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-bd637c"
+            ]
+        },
+        "n-5957e0": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Isabel Cantina",
+                "textAlignment": "start"
+            }
+        },
+        "n-278bb0": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "One block north of busy Garnet Avenue, you'll find this creative, inexpensive restaurant. Asian-Latin American fusion with healthy ingredients. Food & atmosphere are much better than what you'll find along Garnet. Lots of interesting choices for vegetarians too. Breakfast, lunch and dinner. The woodwork is from Bali.",
+                "textAlignment": "start"
+            }
+        },
+        "n-436e2e": {
+            "type": "image",
+            "data": {
+                "image": "r-a5fc0d",
+                "attribution": "Courtesy of Isabel Cruz Restaurants"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-441e0a": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-436e2e"
+            ]
+        },
+        "n-cf39e9": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Brick and Bell Cafe",
+                "textAlignment": "start"
+            }
+        },
+        "n-bf03ae": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "This rambling, inexpensive cafe in a charming 1920s beach cottage has a sunny deck and garden. Mellow young local crowd. Sandwiches, salads, breakfast dishes, etc. Great acai bowls. The garden is a good quiet place to relax after a trip to the beach. Free wi-fi. ",
+                "textAlignment": "start"
+            }
+        },
+        "n-04d598": {
+            "type": "image",
+            "data": {
+                "image": "r-7bff03",
+                "attribution": "Google Plus"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-d565a2": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-04d598"
+            ]
+        },
+        "n-44dd7a": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Pacific Beach Fish Shop",
+                "textAlignment": "start"
+            }
+        },
+        "n-383ee5": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Informal, popular fresh fish place with fish tacos, sandwiches, salads and plates. Lots of parking makes this a good place to stop on your way to or from the beach. Order at the counter. Lively young beach crowd. Large patio.",
+                "textAlignment": "start"
+            }
+        },
+        "n-28ec86": {
+            "type": "image",
+            "data": {
+                "image": "r-c3210a",
+                "attribution": "Facebook/Pacific Fish Shop"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-3e6dca": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-28ec86"
+            ]
+        },
+        "n-65b703": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "El Pescador Fish Market",
+                "textAlignment": "start"
+            }
+        },
+        "n-27bbc5": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "It looks ordinary from the outside but this small fish market serves absolutely the freshest fish in town, in fantastic inexpensive grilled sandwiches, tacos and plates. The friendly staff can tell you who caught the local fish. Popular with surfers (fabled Windansea Beach, home of The Pump House Gang, is nearby) and local celebrities (Mitt Romney's West Coast home is nearby).",
+                "textAlignment": "start"
+            }
+        },
+        "n-f4a07f": {
+            "type": "image",
+            "data": {
+                "image": "r-b0f523",
+                "attribution": "Google Plus/Jordan Smith"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-a65bdf": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-f4a07f"
+            ]
+        },
+        "n-7802d3": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Herringbone",
+                "textAlignment": "start"
+            }
+        },
+        "n-bfbe97": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "La Jolla is San Diego's Beverly Hills but unlike LA's version there's a famous rocky shoreline with seals and a great beach too. There are also many beautiful people and you can join them for lunch or dinner here at Herringbone. Outside, Herringbone is a run down brick warehouse. Inside, it's a wonderful sky-lit space with some 100-year-old olive trees. Bus 30 from Old Town serves La Jolla.",
+                "textAlignment": "start"
+            }
+        },
+        "n-e22fcf": {
+            "type": "image",
+            "data": {
+                "image": "r-523b4e",
+                "attribution": "Facebook/Herringbone/Christopher W. Mayer"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-84a095": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-e22fcf"
+            ]
+        },
+        "n-1e2565": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Whisknladle Bistro and Bar",
+                "textAlignment": "start"
+            }
+        },
+        "n-7bf59a": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "This is the best bet for serious foodies in La Jolla Village, with a changing seasonal menu focusing on local sources. They also run the informal Prep Kitchen a few blocks away, which has branches in Little Italy and Del Mar. There are lots of other restaurants to try in La Jolla Village.",
+                "textAlignment": "start"
+            }
+        },
+        "n-94ce4e": {
+            "type": "image",
+            "data": {
+                "image": "r-b5d403",
+                "attribution": "Facebook/Whisknladle/Zagat"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-39a06e": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-94ce4e"
+            ]
+        },
+        "n-77ac26": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Georges At The Cove - Ocean Terrace",
+                "textAlignment": "start"
+            }
+        },
+        "n-e37120": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "This is a true Southern California experience. This elegant, all-outdoor restaurant has beautiful people and beautiful views over La Jolla Cove and the ocean. There is a separate, more formal restaurant downstairs in a gorgeous room, and an ocean view bar. Reservations recommended.",
+                "textAlignment": "start"
+            }
+        },
+        "n-14fd21": {
+            "type": "image",
+            "data": {
+                "image": "r-d54071",
+                "attribution": "Courtesy of eateveryday.blogspot.com"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-caad66": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-14fd21"
+            ]
+        },
+        "n-eeec51": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "The Marine Room",
+                "textAlignment": "start"
+            }
+        },
+        "n-2f87f3": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "Welcome to La Jolla Shores, San Diego's best beach for relaxing, swimming, kayaking, learning to surf, and viewing the many (harmless) leopard sharks. The Marine Room is an expensive treat right literally on the beach with ridiculous ocean views, especially at high tide like you see here. Bus route 30 from Old Town serves La Jolla Shores via Pacific Beach and La Jolla Village.",
+                "textAlignment": "start"
+            }
+        },
+        "n-cd857e": {
+            "type": "image",
+            "data": {
+                "image": "r-ac839c",
+                "attribution": "Google Plus"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-5ac31d": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-cd857e"
+            ]
+        },
+        "n-c2a074": {
+            "type": "text",
+            "data": {
+                "type": "h3",
+                "text": "Caroline's Seaside Cafe",
+                "textAlignment": "start"
+            }
+        },
+        "n-88eb66": {
+            "type": "text",
+            "data": {
+                "type": "paragraph",
+                "text": "This is the best place for breakfast or lunch at La Jolla Shores. Inexpensive and with an unbeatable view of the coast and surf. It is actually on the campus of the famous UCSD Scripps Institution of Oceanography, and that's their pier. ",
+                "textAlignment": "start"
+            }
+        },
+        "n-060bc6": {
+            "type": "image",
+            "data": {
+                "image": "r-3780ad",
+                "attribution": "Facebook/Carolines Seaside Cafe"
+            },
+            "config": {
+                "size": "standard"
+            }
+        },
+        "n-b909be": {
+            "type": "carousel",
+            "config": {},
+            "data": {},
+            "children": [
+                "n-060bc6"
             ]
         }
     },
     "resources": {
-        "r-8a43f6": {
+        "r-2cd37f": {
             "type": "story-theme",
             "data": {
                 "themeId": "summit"
             }
         },
-        "r-13d631": {
+        "r-509344": {
             "type": "image",
             "data": {
-                "resourceId": "place_001_YOa18w.jpg",
+                "resourceId": "place_001_YAmnAg.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-494502": {
+        "r-0d82d9": {
             "type": "image",
             "data": {
-                "resourceId": "place_002_fxwyww.jpg",
+                "resourceId": "place_002_cBBZLA.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-46c6d3": {
+        "r-362612": {
             "type": "image",
             "data": {
-                "resourceId": "place_003_8gPaCA.jpg",
+                "resourceId": "place_003_OTV25w.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-329d55": {
+        "r-c36566": {
             "type": "image",
             "data": {
-                "resourceId": "place_004_sf4ENw.jpg",
+                "resourceId": "place_004_YmHm9g.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-ac6710": {
+        "r-8ee76a": {
             "type": "image",
             "data": {
-                "resourceId": "place_005_sB_NMw.jpg",
+                "resourceId": "place_005_i-ryYQ.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-9c1b5f": {
+        "r-318bb9": {
             "type": "image",
             "data": {
-                "resourceId": "place_006_E-mOsw.jpg",
+                "resourceId": "place_006_69dNdg.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-e8eedb": {
+        "r-d6c4a6": {
             "type": "image",
             "data": {
-                "resourceId": "place_007_z-lHZg.jpg",
+                "resourceId": "place_007_YgZ5wg.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-f5fdb1": {
+        "r-96179f": {
             "type": "image",
             "data": {
-                "resourceId": "place_008_K_y3CA.jpg",
+                "resourceId": "place_008_GlAPTw.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-0c3010": {
+        "r-5f6015": {
             "type": "image",
             "data": {
-                "resourceId": "place_009_dhU4Ag.jpg",
+                "resourceId": "place_009_Lyhreg.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-30fb27": {
+        "r-b23f38": {
             "type": "image",
             "data": {
-                "resourceId": "place_010_FAyenA.jpg",
+                "resourceId": "place_010_MRv6nw.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-3c2f49": {
+        "r-317371": {
             "type": "image",
             "data": {
-                "resourceId": "place_011_qt1Iog.jpg",
+                "resourceId": "place_011_30mfsw.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-a589b2": {
+        "r-fbdab5": {
             "type": "image",
             "data": {
-                "resourceId": "place_012_-UzWcg.jpg",
+                "resourceId": "place_012_rTKfYA.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-faf44e": {
+        "r-5b7df3": {
             "type": "image",
             "data": {
-                "resourceId": "place_013_-X-1Xg.jpg",
+                "resourceId": "place_013_vHA3gg.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-1f942d": {
+        "r-ba5e99": {
             "type": "image",
             "data": {
-                "resourceId": "place_014_laTl6g.jpg",
+                "resourceId": "place_014_FhLh5Q.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-d323c4": {
+        "r-80a441": {
             "type": "image",
             "data": {
-                "resourceId": "place_015_oz6w2A.jpg",
+                "resourceId": "place_015_kfuDsQ.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-a37e40": {
+        "r-655ff8": {
             "type": "image",
             "data": {
-                "resourceId": "place_016_9G7kkA.jpg",
+                "resourceId": "place_016_xwQViA.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-0d4a54": {
+        "r-6e4526": {
             "type": "image",
             "data": {
-                "resourceId": "place_017_TQSZrw.jpg",
+                "resourceId": "place_017_1rit3A.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-014b53": {
+        "r-deceb5": {
             "type": "image",
             "data": {
-                "resourceId": "place_018_qRDdhg.jpg",
+                "resourceId": "place_018_eYDB-Q.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-a96b73": {
+        "r-b89dba": {
             "type": "image",
             "data": {
-                "resourceId": "place_019_PNbmAQ.jpg",
+                "resourceId": "place_019_d1fSHQ.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-bbe9b2": {
+        "r-1e2c79": {
             "type": "image",
             "data": {
-                "resourceId": "place_020_CfDdpA.jpg",
+                "resourceId": "place_020_Gx_Y_g.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-2e842b": {
+        "r-75b9a9": {
             "type": "image",
             "data": {
-                "resourceId": "place_021_LT_tEQ.jpg",
+                "resourceId": "place_021_djWc6w.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-b7a907": {
+        "r-89af1c": {
             "type": "image",
             "data": {
-                "resourceId": "place_022_7sCqqg.jpg",
+                "resourceId": "place_022_omYVYw.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-218dd8": {
+        "r-2cfec5": {
             "type": "image",
             "data": {
-                "resourceId": "place_023_7R_hqg.jpg",
+                "resourceId": "place_023_b-O_AQ.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-c008ae": {
+        "r-eefe3b": {
             "type": "image",
             "data": {
-                "resourceId": "place_024_aEmm0g.jpg",
+                "resourceId": "place_024_9TUQhA.jpg",
                 "provider": "item-resource",
                 "height": 1024,
                 "width": 1024
             }
         },
-        "r-819f05": {
+        "r-5c18bb": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_025_alX7sw.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-a22ee2": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_026_8mfEbg.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-bc3be6": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_027_EHq-0A.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-9cbde6": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_028_FDoFoA.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-c70321": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_029_Zqpm-Q.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-ba2fe4": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_030_9sAzdg.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-cf8811": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_031_ER_iaQ.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-535a6d": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_032_AfuJZw.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-dcb4f1": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_033_b4kbBg.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-65daf8": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_034_cTAPww.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-042f59": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_035_6rlB9g.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-2f7e7d": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_036_XrZl9g.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-f98c0f": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_037_9o2T6Q.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-3f040f": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_038_htDrYw.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-cfd608": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_039_PjggNA.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-8b522f": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_040_gVTcnA.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-f26467": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_041_V9Yc7g.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-b127d6": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_042_eE48OQ.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-51f989": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_043_eIx0Zg.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-f4ace1": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_044_TMiYUQ.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-8c6101": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_045_-BR-LA.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-f27e58": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_046_4UYk1Q.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-947ef3": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_047_zgFOsA.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-4a3d0e": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_048_1JG-OQ.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-a5fc0d": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_049_keLQHQ.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-7bff03": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_050_CgysDA.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-c3210a": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_051_QDgnHg.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-b0f523": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_052_8w5QOw.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-523b4e": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_053_wVahPw.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-b5d403": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_054_eQpWEQ.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-d54071": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_055_VfzH3A.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-ac839c": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_056_cISZjw.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-3780ad": {
+            "type": "image",
+            "data": {
+                "resourceId": "place_057_AelZ_g.jpg",
+                "provider": "item-resource",
+                "height": 1024,
+                "width": 1024
+            }
+        },
+        "r-cec512": {
             "type": "webmap",
             "data": {
                 "type": "minimal",
-                "itemId": "6d117f2ede424ace93917e2bc88202b3",
+                "itemId": "a2b7ddbc37d7462090353522e10b1b4a",
                 "itemType": "webmap"
             }
         }

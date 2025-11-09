@@ -1217,6 +1217,13 @@ class MapTourJSONConverter:
         except (KeyError, TypeError):
             pass
 
+    def _get_feature_id(self, attrs):
+        # Try all possible id keys
+        for key in ["__OBJECTID", "objectid", "id", "ID", "FID", "fid", "ObjectID", "Object_Id", "OBJECTID", "OBJECTID_1"]:
+            if key in attrs:
+                return str(attrs[key]).strip()
+        return None    
+
     def convert(self) -> Dict[str, Any]:
         # Get classic attibutes
         item_attrs = self.classic_json.get('values', {})
@@ -1229,9 +1236,9 @@ class MapTourJSONConverter:
         versionCreationStr = f"(created with v{templateCreationVersion})" if templateCreationVersion else ""
         print(
             f"Template: {templateName} {versionStr} {versionCreationStr}\n"
-            f" / Classic title: {title}\n"
-            f" / Classic subtitle: {subtitle}\n"
-            f" / Webmap ID: {self.classic_json['values']['webmap']}"
+            f" Classic title: {title}\n"
+            f" Classic subtitle: {subtitle}\n"
+            f" Webmap ID: {self.classic_json['values']['webmap']}"
         )
 
         # Get features 
@@ -1279,13 +1286,41 @@ class MapTourJSONConverter:
         )
         tour_node_id = self.builder.create_detached_node(tour_node)
 
-        # Transfer images
-        if feature_set:
-            image_resource_map = self._transfer_images(self.webmap_json, feature_set)
-            self.image_resource_map = image_resource_map
+        # Build a lookup for features by id
+        places_list = self.classic_json.get('values', {}).get('order', [])
+        feature_by_id = {}
+        for feature in features:
+            fid = self._get_feature_id(feature["attributes"])
+            if fid is not None:
+                feature_by_id[fid] = feature
 
-        # For each feature, create content nodes and build place dict
-        for i, feature in enumerate(features):
+        # Filter features to only those referenced in the order list
+        filtered_features = []
+        for place_entry in places_list:
+            pid = str(place_entry.get('id'))
+            if pid in feature_by_id:
+                filtered_features.append(feature_by_id[pid])
+
+
+        # Transfer images only for filtered features and build feature_id to filename mapping
+        feature_id_to_filename = {}
+        if filtered_features:
+            image_resource_map = self._transfer_images(self.webmap_json, {"features": filtered_features})
+            self.image_resource_map = image_resource_map
+            # Build mapping from feature id to filename
+            for feature, filename in zip(filtered_features, self.filenames_per_feature):
+                fid = self._get_feature_id(feature["attributes"])
+                if fid is not None:
+                    feature_id_to_filename[fid] = filename
+
+
+        # Now create places for filtered features
+        for place_entry in places_list:
+            place_id = str(place_entry.get('id')).strip()
+            is_visible = place_entry.get('visible', True)
+            feature = feature_by_id.get(place_id)
+            if not feature:
+                continue
             geom_id = str(uuid.uuid4())
             x = feature["geometry"]["x"]
             y = feature["geometry"]["y"]
@@ -1301,7 +1336,7 @@ class MapTourJSONConverter:
                 id=geom_id,
                 long=long,
                 lat=lat,
-                type="POINT_NUMBERED_TOUR"
+                type="POINT_NUMBERED_TOUR" # options ["POINT_NUMBERED_TOUR", "POINT_REGULAR_TOUR"]
             )
             geometries[geom_id] = geom
 
@@ -1320,7 +1355,7 @@ class MapTourJSONConverter:
             contents = [content_node_id]
 
             # Place Media node (image inside a carousel)
-            pic_filename = self.filenames_per_feature[i]
+            pic_filename = feature_id_to_filename.get(place_id, "")
             resource_name = self.image_resource_map.get(pic_filename, pic_filename)
             image_node_id = self.builder.create_detached_node(create_image_node(resource_name, attribution=attribution_text))
             media_node_id = self.builder.create_detached_node(create_carousel_node([image_node_id]))
@@ -1331,7 +1366,8 @@ class MapTourJSONConverter:
                 feature_id=geom_id,
                 contents=contents,
                 media=media_node_id,
-                title=title_node_id
+                title=title_node_id,
+                visible=is_visible
             )
             places.append(place)
 
@@ -1403,13 +1439,59 @@ class MapTourJSONConverter:
                 layers = webmap_json.get('operationalLayers', [])
                 source_layer = self.classic_json.get('values', {}).get('sourceLayer')
                 print(f"Source layer name: {source_layer}")
-                if not source_layer:
-                    print("Warning: No 'sourceLayer' found in classic_json['values'].")
+                # Prefer layer with title 'Map Tour layer'
+                map_tour_layer = None
+                for layer in layers:
+                    if layer.get('title', '').lower() == 'map tour layer':
+                        map_tour_layer = layer
+                        break
+                if map_tour_layer:
+                    # Try exact or partial id match with sourceLayer
+                    layer_id = map_tour_layer.get('id', '')
+                    if source_layer and (layer_id == source_layer or source_layer in layer_id or layer_id in source_layer):
+                        print(f"Found 'Map Tour layer' with id matching or partially matching sourceLayer: {layer_id}")
+                    else:
+                        print(f"Found 'Map Tour layer' but id does not exactly match sourceLayer. Proceeding anyway.")
+                    # Case 1: featureCollection
+                    if 'featureCollection' in map_tour_layer:
+                        print(f"Converting featureCollection from 'Map Tour layer'")
+                        fc = map_tour_layer.get('featureCollection')
+                        if fc:
+                            for fc_layer in fc.get('layers', []):
+                                if 'featureSet' in fc_layer:
+                                    return fc_layer['featureSet']
+                    # Case 2: Feature service (url or URL)
+                    feature_service_url = map_tour_layer.get('url') or map_tour_layer.get('URL')
+                    if feature_service_url:
+                        # Ensure https protocol
+                        if feature_service_url.startswith('http://'):
+                            feature_service_url = 'https://' + feature_service_url[len('http://'):]
+                        print(f"Converting Feature Service from 'Map Tour layer': {feature_service_url}")
+                        query_url = f"{feature_service_url}/query"
+                        params = {
+                            "where": "1=1",
+                            "outFields": "*",
+                            "f": "json"
+                        }
+                        headers = {"User-Agent": "Mozilla/5.0"}
+                        response = requests.get(query_url, params=params, headers=headers)
+                        if response.status_code == 200:
+                            fs_json = response.json()
+                            if "features" in fs_json:
+                                return {"features": fs_json["features"]}
+                            else:
+                                print("Feature service response missing 'features' key.")
+                        else:
+                            print(f"Failed to fetch feature service: {feature_service_url}")
+                    print("No featureCollection or url found in 'Map Tour layer'.")
                 else:
+                    print("Warning: No layer with title 'Map Tour layer' found in webmap_json operationalLayers.")
+                # Fallback: try partial id match with sourceLayer in any layer
+                if source_layer:
                     for layer in layers:
-                        if layer.get('id') == source_layer or layer.get('title') == source_layer:
-                            print(f"Found layer with title matching sourceLayer: {source_layer}")
-                            # Case 1: featureCollection
+                        layer_id = layer.get('id', '')
+                        if source_layer in layer_id or layer_id in source_layer:
+                            print(f"Found layer with partial id match to sourceLayer: {layer_id}")
                             if 'featureCollection' in layer:
                                 print(f"Converting featureCollection")
                                 fc = layer.get('featureCollection')
@@ -1443,18 +1525,6 @@ class MapTourJSONConverter:
                                     print(f"Failed to fetch feature service: {feature_service_url}")
                             print("No featureCollection or url found in matched layer.")
                             break
-                # If not found by title, fallback to first featureSet found
-                for layer in layers:
-                    fc = layer.get('featureCollection')
-                    if fc:
-                        for fc_layer in fc.get('layers', []):
-                            if 'featureSet' in fc_layer:
-                                return fc_layer['featureSet']
-            # Fallback: look for featureSet directly
-            # Unsure, but I don't think this will ever be the case. Features were never stored in the MapTour item
-            # I think they were always stored in the webmap as a FeatureSet within a FeatureCollection or as a Feature Service
-            if 'featureSet' in self.classic_json:
-                return self.classic_json['featureSet']
         except Exception as ex:
             print(f"Error in _get_feature_set: {ex}")
         return None
