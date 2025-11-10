@@ -21,6 +21,7 @@ import {
   transferImages,
   updateImageUrlsInJson,
 } from "../api/image-transfer";
+import { saveJsonToFile } from '../converter/utils';
 
 type Status =
   | "idle"
@@ -71,9 +72,14 @@ export default function Converter() {
       // 3. Convert to new JSON
       setStatus("converting");
       setMessage("Converting classic story to new format...");
-      let newStorymapJson = convertClassicToJson(classicData, "summit");
+      let newStorymapJson = await convertClassicToJson(classicData, "summit");
 
-      // 3.1 Retrieve story title
+      // 3.1 Save JSON for debugging
+      saveJsonToFile(classicData, 'classic.json');
+      saveJsonToFile(classicData.webmapJson, 'webmap.json');
+      saveJsonToFile(convertedData, 'storymap.json');
+
+      // 3.2 Retrieve story title
       const coverTitle = classicData.values?.title || "Untitled Story";
 
       // 3.5 Create an empty draft StoryMap

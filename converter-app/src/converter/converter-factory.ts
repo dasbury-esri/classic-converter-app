@@ -7,6 +7,7 @@
 import type { ClassicStoryMapJSON } from '../types/storymap';
 import { JournalSeriesConverter } from './journal-converter';
 import { CascadeConverter } from './cascade-converter';
+import { MapTourConverter } from './maptour-converter';
 
 export class ConverterFactory {
   /**
@@ -15,11 +16,19 @@ export class ConverterFactory {
   static getConverter(
     classicJson: ClassicStoryMapJSON,
     themeId: string = 'summit'
-  ): JournalSeriesConverter | CascadeConverter {
+  ): JournalSeriesConverter | CascadeConverter | MapTourConverter {
     const values = classicJson.values;
 
     if (!values) {
-      throw new Error('Invalid classic story JSON: missing values');
+      throw new Error('Invalid classic story JSON: missing "values" key');
+    }
+
+    // Check for Map Tour
+  let rawTemplate = (values as any).template || (values as any).templateName || (values as any).name || '';
+  if (typeof rawTemplate !== 'string') rawTemplate = String(rawTemplate);
+  const template = rawTemplate.toLowerCase();
+    if (template.includes('map tour')) {
+        return new MapTourConverter(classicJson, themeId);
     }
 
     // Check for Journal/Series
@@ -43,13 +52,11 @@ export class ConverterFactory {
 /**
  * Main conversion function
  */
-export function convertClassicToJson(
+export async function convertClassicToJson(
   classicJson: ClassicStoryMapJSON,
   themeId: string = 'summit'
-): any {
+): Promise<any> {
   const converter = ConverterFactory.getConverter(classicJson, themeId);
-  const storymapJson = converter.convert();
-
-  return storymapJson;
+  return await converter.convert();
 }
 

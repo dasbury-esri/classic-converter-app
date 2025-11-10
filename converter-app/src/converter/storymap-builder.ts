@@ -32,6 +32,12 @@ import { generateNodeId, generateResourceId } from './utils';
 
 export class StoryMapJSONBuilder {
   private storymap: any;
+  /**
+   * Public getter for storymap property
+   */
+  getStorymap(): any {
+    return this.storymap;
+  }
   public localImages: string[] = [];
 
   constructor(_themeId: string = 'summit') {

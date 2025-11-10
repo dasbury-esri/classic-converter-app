@@ -510,3 +510,115 @@ export function setTheme(storymap: StoryMapJSON, themeId: string): void {
   }
 }
 
+/**
+ * Create a tour-map geometry
+ * Matches Python create_tour_map_geometry
+ */
+export function createTourMapGeometry(
+  id: string,
+  long: number,
+  lat: number,
+  type: string = 'POINT_NUMBERED_TOUR',
+  scale?: number,
+  viewpoint?: any
+): any {
+  const geometry: any = {
+    id,
+    type,
+    nodes: [
+      { long, lat }
+    ]
+  };
+  if (scale !== undefined) geometry.scale = scale;
+  if (viewpoint !== undefined) geometry.viewpoint = viewpoint;
+  return geometry;
+}
+
+/**
+ * Create a tour-map node
+ * Matches Python create_tour_map_node
+ */
+export function createTourMapNode(
+  geometries: Record<string, any>,
+  mode: string = '2d',
+  basemapType: string = 'name',
+  basemapValue: string = 'worldImagery',
+  alt?: string
+): any {
+  const node: any = {
+    type: 'tour-map',
+    data: {
+      geometries,
+      mode,
+      basemap: {
+        type: basemapType,
+        value: basemapValue
+      }
+    }
+  };
+  if (alt) node.data.alt = alt;
+  return node;
+}
+
+/**
+ * Create a carousel node
+ * Matches Python create_carousel_node
+ */
+export function createCarouselNode(children: any[]): any {
+  return {
+    type: 'carousel',
+    config: {},
+    data: {},
+    children: children.slice(0, 5) // up to 5 images
+  };
+}
+
+/**
+ * Create a tour node
+ * Matches Python create_tour_node
+ */
+export function createTourNode(
+  places: any[],
+  mapNodeId: string,
+  accentColor: string,
+  narrativePanelPosition: string = 'start',
+  narrativePanelSize: string = 'medium',
+  tourType: string = 'guided-tour',
+  subtype: string = 'media-focused'
+): any {
+  return {
+    type: 'tour',
+    data: {
+      type: tourType,
+      subtype,
+      narrativePanelPosition,
+      map: mapNodeId,
+      places,
+      narrativePanelSize,
+      accentColor
+    }
+  };
+}
+/**
+ * Create a single place node for a tour
+ * Matches Python create_tour_place
+ */
+export function createTourPlace(
+  id: string,
+  featureId: string,
+  contents: string[],
+  media: string,
+  title: string,
+  visible: boolean = true
+): any {
+  if (!media || !title) throw new Error('Media and title are required for a tour place');
+  const place: any = {
+    id,
+    featureId,
+    contents,
+    media,
+    title
+  };
+  if (!visible) place.config = { isHidden: true };
+  return place;
+}
