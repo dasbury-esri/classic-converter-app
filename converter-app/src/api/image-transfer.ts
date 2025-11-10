@@ -209,7 +209,7 @@ export function collectImageUrls(storymapJson: any): string[] {
         for (const resource of Object.values<any>(storymapJson.resources)) {
             if (resource.type === 'image') {
                 const url = resource.data?.url || resource.data?.src;
-                if (url && isAgoResource(url)) {
+                if (url) { 
                     imageUrls.add(url);
                 }
             }

@@ -210,7 +210,7 @@ To ease user workflow, added a button to do authentication via ArcGIS Online OAu
 - Normalized image resource urls during mapping when transferring images in image-transfer.ts
 - Modified transferResults in Converter.tsx to handle the array
 - Preserve original story title while creating a unique AGO item name to prevent REST api errors
-### davi6569/maptour-converter
+### davi6569/maptour-converter-python
 - attempting to create a converter for classic Map Tours
 - testing first with Python before converting to React
 - added a few json samples from Classic Map Tours
@@ -225,7 +225,8 @@ To ease user workflow, added a button to do authentication via ArcGIS Online OAu
 - added MapTourConverter notebook for testing
 - Conversion is _mostly_ working but there seems to be an issue with how the map instantiates and updates. Need to closely review json schema.
 - Guessing we'll need to add a secondary config page in the React app to allow users to modify AGSM MapTour layouts
-
+### davi6569/maptour-converter
+- converted python workflow to typescript/React
 
 ## Environment Notes
 

@@ -13,6 +13,8 @@ import { generateNodeId } from './utils';
 import { transferImages } from '../api/image-transfer';
 
 export class MapTourConverter {
+  private username: string;
+  private token: string;
   // Helper to get root node id
   private getRootNodeId(): string {
   // @ts-ignore
@@ -79,8 +81,16 @@ export class MapTourConverter {
       .map((p: any) => featureById[String(p.id)])
       .filter(Boolean);
 
+    // Log to browser console
+    console.log('filteredFeatures:', filteredFeatures);
+
+    // Create image map
+    const imageMap = await this.createImageResourceMap(filteredFeatures);
+    console.log('imageMap:', imageMap);
+
     // Transfer images
-    this.imageResourceMap = await this.transferImages(filteredFeatures);
+    const imageResourceMap = await this.transferImagesFromMap(imageMap);
+    console.log('imageResourceMap:', imageResourceMap);
 
     // Geometry creation
     const geometries: Record<string, any> = {};
@@ -97,7 +107,7 @@ export class MapTourConverter {
       geometries[geomId] = createTourMapGeometry(geomId, long, lat, 'POINT_NUMBERED_TOUR');
 
       // Place content nodes (detached)
-      const attrs = feature.attributes;
+      const attrs = feature.attributes || {};
       const titleText = this.getAttrFromList(attrs, ['name', 'NAME', 'Name']);
       const descText = this.getAttrFromList(attrs, [
         'description',
@@ -110,7 +120,6 @@ export class MapTourConverter {
         'FULL_Caption'
       ]);
       const attributionText = this.getAttrFromList(attrs, ['PHOTO_CREDIT']);
-
       const titleNodeId = this.builder.createDetachedNode(
         createTextNode(titleText, 'h3', 'start')
       );
@@ -119,21 +128,35 @@ export class MapTourConverter {
       );
       const contents = [contentNodeId];
 
-      // Media node (image inside carousel)
-      const imgUrl =
-        attrs.url ||
-        attrs.URL ||
-        attrs.pic_url ||
-        attrs.PIC_URL ||
-        '';
-      const picFilename = this.getImageFilenameForFeature(feature, i);
-      const resourceName = this.imageResourceMap[imgUrl] || picFilename;
-      const imageNodeId = this.builder.createDetachedNode(
-        createImageNode(resourceName, undefined, undefined, 'standard', 'start')
-      );
-      const mediaNodeId = this.builder.createDetachedNode(
-        createCarouselNode([imageNodeId])
-      );
+        // Media node (image inside carousel)
+        const imageUrls: string[] = [];
+        ['pic_url', 'thumb_url', 'url', 'URL'].forEach(key => {
+        const val = attrs[key];
+        if (val && typeof val === 'string' && val.trim()) imageUrls.push(val.trim());
+        });
+
+        const imageNodeIds: string[] = [];
+        for (const imgUrl of imageUrls) {
+        const imageResource = {
+            type: "image",
+            data: {
+            src: imgUrl,
+            provider: "uri",
+            height: 1024,
+            width: 1024
+            }
+        };
+        const imageResourceId = this.builder.addResource(imageResource);
+        imageNodeIds.push(
+            this.builder.createDetachedNode(
+            createImageNode(imageResourceId, undefined, undefined, 'standard', 'start')
+            )
+        );
+        }
+
+        const mediaNodeId = this.builder.createDetachedNode(
+        createCarouselNode(imageNodeIds)
+        );
 
       // Place node
       places.push({
@@ -209,13 +232,14 @@ export class MapTourConverter {
       const { updateImageUrlsInJson } = await import('../api/image-transfer');
       const updatedJson = updateImageUrlsInJson(storymapJson, this.imageResourceMap);
       return updatedJson;
-    return this.builder.getJson();
-  }
-
+    }
   private async extractFeatures(): Promise<any[]> {
     const values = this.classicJson.values || {};
+    console.log('classicItemValues:', values);
     const webmapJson = (this.classicJson as any).webmapJson || (values as any).webmapJson || {};
+    console.log('webmapJson:', webmapJson);
     const layers = webmapJson.operationalLayers || [];
+    console.log('operationalLayers:', layers);
     const sourceLayer = (this.classicJson as any).sourceLayer || (values as any).sourceLayer;
     let mapTourLayer: any = null;
     for (const layer of layers) {
@@ -304,35 +328,49 @@ export class MapTourConverter {
     console.error('No features found in classic Map Tour data.');
     return [];
   }
+}  
 
-  private async transferImages(features: any[]): Promise<Record<string, string>> {
-    const imageUrls: string[] = [];
-    for (const feature of features) {
-      const attrs = feature.attributes || {};
-      const imgUrl =
-        attrs.url ||
-        attrs.URL ||
-        attrs.pic_url ||
-        attrs.PIC_URL ||
-        '';
-      if (imgUrl && typeof imgUrl === 'string' && imgUrl.trim()) {
-        imageUrls.push(imgUrl.trim());
-      }
+private createImageResourceMap(features: any[]): Record<string, { url: string, filename: string }> {
+  const imageMap: Record<string, { url: string, filename: string }> = {};
+  for (let i = 0; i < features.length; i++) {
+    const feature = features[i];
+    const fid = this.getFeatureId(feature.attributes);
+    const attrs = feature.attributes || {};
+    const imgUrl =
+      attrs.pic_url ||
+      attrs.thumb_url ||
+      attrs.url ||
+      attrs.URL ||
+      '';
+    if (fid && imgUrl) {
+      imageMap[fid] = {
+        url: imgUrl,
+        filename: this.getImageFilenameForFeature(feature, i)
+      };
     }
-      const targetItemId = this.getStorymapId();
-      // Username/token not available, pass undefined
-      const transferResultsArray = await transferImages(
-        imageUrls,
-        targetItemId,
-        '',
-        ''
-      );
-    const transferResults: Record<string, string> = {};
-    for (const result of transferResultsArray) {
-      transferResults[result.originalUrl] = result.resourceName;
-    }
-    return transferResults;
   }
+  return imageMap;
+}
+
+private async transferImagesFromMap(
+  imageMap: Record<string, { url: string, filename: string }>
+): Promise<Record<string, string>> {
+  const imageUrls = Object.values(imageMap).map(entry => entry.url);
+  console.log('imageUrls:',imageUrls)
+  const targetItemId = this.getStorymapId();
+  const transferResultsArray = await transferImages(
+    imageUrls,
+    targetItemId,
+    this.username,
+    this.token
+  );
+  const transferResults: Record<string, string> = {};
+  for (const result of transferResultsArray) {
+    transferResults[result.originalUrl] = result.resourceName;
+  }
+  return transferResults;
+}
+  
 
   private getFeatureId(attrs: any): string | undefined {
     for (const key of [
@@ -347,7 +385,7 @@ export class MapTourConverter {
       'OBJECTID',
       'OBJECTID_1'
     ]) {
-      if (attrs[key]) return String(attrs[key]).trim();
+      if (attrs[key] !== undefined && attrs[key] !== null) return String(attrs[key]).trim();
     }
     return undefined;
   }

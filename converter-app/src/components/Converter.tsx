@@ -69,15 +69,22 @@ export default function Converter() {
       setMessage("Fetching classic story data...");
       const classicData = await getItemData(classicItemId, token);
 
+      // 2.5 Fetch classic webmap data
+      if (classicData.values.webmap) {
+        setMessage("Fetching classic webmap data...");
+        const webmapId = classicData.values.webmap;
+        classicData.webmapJson = await getItemData(webmapId, token);
+      }
+
       // 3. Convert to new JSON
       setStatus("converting");
       setMessage("Converting classic story to new format...");
       let newStorymapJson = await convertClassicToJson(classicData, "summit");
 
       // 3.1 Save JSON for debugging
-      saveJsonToFile(classicData, 'classic.json');
-      saveJsonToFile(classicData.webmapJson, 'webmap.json');
-      saveJsonToFile(convertedData, 'storymap.json');
+      // saveJsonToFile(classicData, 'classic_json.json');
+      // saveJsonToFile(classicData.webmapJson, 'webmap_json.json');
+      // saveJsonToFile(newStorymapJson, 'converted_storymap_json.json');
 
       // 3.2 Retrieve story title
       const coverTitle = classicData.values?.title || "Untitled Story";
@@ -89,6 +96,7 @@ export default function Converter() {
 
       // 4. Transfer images from classic to target story
       const imageUrls = collectImageUrls(newStorymapJson);
+      console.log('Collected image URLs:', imageUrls);
       if (imageUrls.length > 0) {
         setStatus("transferring");
         setMessage(
@@ -104,6 +112,7 @@ export default function Converter() {
             setMessage(`Transferring images (${current}/${total}): ${msg}`);
           }
         );
+        console.log('Transfer results array:', transferResultsArray);
 
         // Convert array to mapping
         const transferResults: Record<string, string> = {};
