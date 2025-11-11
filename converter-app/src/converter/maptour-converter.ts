@@ -2,52 +2,35 @@ import type { ClassicStoryMapJSON } from '../types/storymap';
 import { StoryMapJSONBuilder } from './storymap-builder';
 import {
   createTourMapNode,
-  createTourNode,
-  createTourMapGeometry,
+  createMapResource,
   createTextNode,
   createImageNode,
   createCarouselNode,
-  createMapResource
+  createTourNode
 } from './storymap-schema';
+import { transferImages, updateImageUrlsInJson } from '../api/image-transfer';
 import { generateNodeId } from './utils';
-import { transferImages } from '../api/image-transfer';
 
 export class MapTourConverter {
   private username: string;
   private token: string;
-  // Helper to get root node id
-  private getRootNodeId(): string {
-  // @ts-ignore
-  return this.builder.getStorymap().root;
-  }
-
-  // Helper to set root children
-  private setRootChildren(children: string[]): void {
-  // @ts-ignore
-  this.builder.getStorymap().nodes[this.getRootNodeId()].children = children;
-  }
-
-  // Helper to get storymap id
-  private getStorymapId(): string {
-    // @ts-ignore
-    return this.builder.storymap.id;
-  }
   private classicJson: ClassicStoryMapJSON;
   private themeId: string;
   private builder: StoryMapJSONBuilder;
   private imageResourceMap: Record<string, string> = {};
 
-  constructor(classicJson: ClassicStoryMapJSON, themeId: string = 'summit') {
+  constructor(classicJson: ClassicStoryMapJSON, themeId: string = 'summit', username: string = '', token: string = '') {
     this.classicJson = classicJson;
     this.themeId = themeId;
+    this.username = username;
+    this.token = token;
     this.builder = new StoryMapJSONBuilder(themeId);
     this.detectTheme();
   }
 
   private detectTheme(): void {
     try {
-      const themeMajor =
-        this.classicJson.values?.settings?.theme?.colors?.themeMajor;
+      const themeMajor = this.classicJson.values?.settings?.theme?.colors?.themeMajor;
       const themeMapping: Record<string, string> = {
         dark: 'obsidian',
         light: 'summit'
@@ -60,16 +43,25 @@ export class MapTourConverter {
     }
   }
 
+  private getRootNodeId(): string {
+    return this.builder.getStorymap().root;
+  }
+
+  private setRootChildren(children: string[]): void {
+    this.builder.getStorymap().nodes[this.getRootNodeId()].children = children;
+  }
+
+  private getStorymapId(): string {
+    return this.builder.storymap.id;
+  }
+
   async convert(): Promise<any> {
     const values = this.classicJson.values || {};
-    const title = values.title || 'Untitled MapTour';
-    const subtitle = (values as any).subtitle || '';
-    const layout = (values as any).layout || 'three-panel';
-    const placesList = (values as any).order || [];
+    const layout = values.layout || 'integrated';
+    const title = values.title || 'Untitled Story';
+    const subtitle = values.subtitle || '';
+    const placesList = values.order || [];
     const features = await this.extractFeatures();
-    if (!features || features.length === 0) {
-      throw new Error('No features found in classic Map Tour data. Please check the source or webmap configuration.');
-    }
 
     // Feature ordering
     const featureById: Record<string, any> = {};
@@ -81,45 +73,22 @@ export class MapTourConverter {
       .map((p: any) => featureById[String(p.id)])
       .filter(Boolean);
 
-    // Log to browser console
-    console.log('filteredFeatures:', filteredFeatures);
-
-    // Create image map
-    const imageMap = await this.createImageResourceMap(filteredFeatures);
+    // Image resource mapping
+    const imageMap = this.createImageResourceMap(filteredFeatures);
+    this.imageResourceMap = await this.transferImagesFromMap(imageMap);
     console.log('imageMap:', imageMap);
+    console.log('imageResourceMap', this.imageResourceMap);
 
-    // Transfer images
-    const imageResourceMap = await this.transferImagesFromMap(imageMap);
-    console.log('imageResourceMap:', imageResourceMap);
-
-    // Geometry creation
-    const geometries: Record<string, any> = {};
+    // Place nodes
     const places: any[] = [];
+    const geometries: any[] = [];
     for (let i = 0; i < filteredFeatures.length; i++) {
       const feature = filteredFeatures[i];
-      const placeEntry = placesList[i];
-      const isVisible = placeEntry.visible !== false;
-      const geomId = generateNodeId();
-      const { x, y } = feature.geometry;
-      const [long, lat] = this.isWebMercator(x, y)
-        ? this.webMercatorToWgs84(x, y)
-        : [x, y];
-      geometries[geomId] = createTourMapGeometry(geomId, long, lat, 'POINT_NUMBERED_TOUR');
-
-      // Place content nodes (detached)
       const attrs = feature.attributes || {};
-      const titleText = this.getAttrFromList(attrs, ['name', 'NAME', 'Name']);
-      const descText = this.getAttrFromList(attrs, [
-        'description',
-        'DESCRIPTION',
-        'Description',
-        'DESC1',
-        'caption',
-        'CAPTION',
-        'Caption',
-        'FULL_Caption'
-      ]);
-      const attributionText = this.getAttrFromList(attrs, ['PHOTO_CREDIT']);
+      const titleText = attrs.name || attrs.title || `Place ${i + 1}`;
+      const descText = attrs.description || '';
+      const isVisible = placesList[i]?.visible !== false;
+
       const titleNodeId = this.builder.createDetachedNode(
         createTextNode(titleText, 'h3', 'start')
       );
@@ -128,35 +97,48 @@ export class MapTourConverter {
       );
       const contents = [contentNodeId];
 
-        // Media node (image inside carousel)
-        const imageUrls: string[] = [];
-        ['pic_url', 'thumb_url', 'url', 'URL'].forEach(key => {
+      // Media node (image inside carousel)
+      const imageUrls: string[] = [];
+      ['pic_url', 'thumb_url', 'url', 'URL'].forEach(key => {
         const val = attrs[key];
         if (val && typeof val === 'string' && val.trim()) imageUrls.push(val.trim());
-        });
+      });
 
-        const imageNodeIds: string[] = [];
-        for (const imgUrl of imageUrls) {
+      const imageNodeIds: string[] = [];
+      for (const imgUrl of imageUrls) {
         const imageResource = {
-            type: "image",
-            data: {
+          type: "image",
+          data: {
             src: imgUrl,
             provider: "uri",
             height: 1024,
             width: 1024
-            }
+          }
         };
         const imageResourceId = this.builder.addResource(imageResource);
         imageNodeIds.push(
-            this.builder.createDetachedNode(
+          this.builder.createDetachedNode(
             createImageNode(imageResourceId, undefined, undefined, 'standard', 'start')
-            )
+          )
         );
-        }
+      }
 
-        const mediaNodeId = this.builder.createDetachedNode(
+      const mediaNodeId = this.builder.createDetachedNode(
         createCarouselNode(imageNodeIds)
-        );
+      );
+
+      // Geometry
+      const x = attrs.long || attrs.longitude || attrs.x;
+      const y = attrs.lat || attrs.latitude || attrs.y;
+      let geomId = '';
+      if (x !== undefined && y !== undefined) {
+        let coords: [number, number] = [x, y];
+        if (this.isWebMercator(x, y)) {
+          coords = this.webMercatorToWgs84(x, y);
+        }
+        geometries.push({ coords });
+        geomId = generateNodeId();
+      }
 
       // Place node
       places.push({
@@ -170,7 +152,7 @@ export class MapTourConverter {
     }
 
     // Basemap resource creation and assignment
-      const webmapId = (this.classicJson as any).webmap || (values as any).webmap;
+    const webmapId = (this.classicJson as any).webmap || (values as any).webmap;
     let tourMapNode = createTourMapNode(geometries);
     if (webmapId) {
       const basemapResourceId = this.builder.addResource(createMapResource(webmapId));
@@ -208,38 +190,28 @@ export class MapTourConverter {
 
     // Add tour and tour-map nodes to story root in correct order
     const rootId = this.getRootNodeId();
-  const rootNode = this.builder.getStorymap().nodes[rootId];
-    // Find cover, navigation, credits node IDs
+    const rootNode = this.builder.getStorymap().nodes[rootId];
     const children = rootNode.children || [];
-  const storymapNodes = this.builder.getStorymap().nodes;
-  const coverId = children.find((id: string) => storymapNodes[id]?.type === 'storycover');
-  const navId = children.find((id: string) => storymapNodes[id]?.type === 'navigation');
-  const creditsId = children.find((id: string) => storymapNodes[id]?.type === 'credits');
-    // Set correct order: cover, navigation, tour, tour-map, credits
+    const storymapNodes = this.builder.getStorymap().nodes;
+    const coverId = children.find((id: string) => storymapNodes[id]?.type === 'storycover');
+    const navId = children.find((id: string) => storymapNodes[id]?.type === 'navigation');
+    const creditsId = children.find((id: string) => storymapNodes[id]?.type === 'credits');
     this.setRootChildren([coverId, navId, tourNodeId, tourMapNodeId, creditsId].filter(Boolean));
 
     // Set cover and theme
     this.builder.setCover(`(CONVERSION) ${title}`, subtitle);
     this.builder.setTheme(this.themeId);
-      // Update image resource references to match uploaded resources
-      const storymapJson = this.builder.getJson();
-      // Use imageResourceMap to update resource references
-      // updateImageUrlsInJson expects a map of originalUrl -> resourceName
-      // If transfer failed, resourceName will be the original URL
-      // This ensures resourceId/provider are set correctly
-      // (import from image-transfer)
-      // @ts-ignore
-      const { updateImageUrlsInJson } = await import('../api/image-transfer');
-      const updatedJson = updateImageUrlsInJson(storymapJson, this.imageResourceMap);
-      return updatedJson;
-    }
+
+    // Update image resource references to match uploaded resources
+    const storymapJson = this.builder.getJson();
+    const updatedJson = updateImageUrlsInJson(storymapJson, this.imageResourceMap);
+    return updatedJson;
+  }
+
   private async extractFeatures(): Promise<any[]> {
     const values = this.classicJson.values || {};
-    console.log('classicItemValues:', values);
     const webmapJson = (this.classicJson as any).webmapJson || (values as any).webmapJson || {};
-    console.log('webmapJson:', webmapJson);
     const layers = webmapJson.operationalLayers || [];
-    console.log('operationalLayers:', layers);
     const sourceLayer = (this.classicJson as any).sourceLayer || (values as any).sourceLayer;
     let mapTourLayer: any = null;
     for (const layer of layers) {
@@ -254,13 +226,9 @@ export class MapTourConverter {
         for (const fcLayer of fc.layers || []) {
           if (fcLayer.featureSet) {
             const feats = fcLayer.featureSet.features || [];
-            if (feats.length === 0) {
-              console.error('No features found in Map Tour featureCollection.');
-            }
             return feats;
           }
         }
-        console.error('No featureSet found in Map Tour featureCollection.');
       }
       const featureServiceUrl = mapTourLayer.url || mapTourLayer.URL;
       if (featureServiceUrl) {
@@ -272,9 +240,6 @@ export class MapTourConverter {
           if (response.ok) {
             const fsJson = await response.json();
             if (fsJson.features) {
-              if (fsJson.features.length === 0) {
-                console.error('No features found in Map Tour feature service response.');
-              }
               return fsJson.features;
             }
           }
@@ -282,7 +247,6 @@ export class MapTourConverter {
           console.error('Error fetching features from Map Tour feature service:', err);
         }
       }
-      console.error('No features found in Map Tour layer.');
     } else if (sourceLayer) {
       for (const layer of layers) {
         const layerId = layer.id || '';
@@ -292,13 +256,9 @@ export class MapTourConverter {
             for (const fcLayer of fc.layers || []) {
               if (fcLayer.featureSet) {
                 const feats = fcLayer.featureSet.features || [];
-                if (feats.length === 0) {
-                  console.error('No features found in fallback featureCollection.');
-                }
                 return feats;
               }
             }
-            console.error('No featureSet found in fallback featureCollection.');
           }
           const featureServiceUrl = layer.url || layer.URL;
           if (featureServiceUrl) {
@@ -310,9 +270,6 @@ export class MapTourConverter {
               if (response.ok) {
                 const fsJson = await response.json();
                 if (fsJson.features) {
-                  if (fsJson.features.length === 0) {
-                    console.error('No features found in fallback feature service response.');
-                  }
                   return fsJson.features;
                 }
               }
@@ -323,54 +280,49 @@ export class MapTourConverter {
           break;
         }
       }
-      console.error('No features found in fallback layers.');
     }
-    console.error('No features found in classic Map Tour data.');
     return [];
   }
-}  
 
-private createImageResourceMap(features: any[]): Record<string, { url: string, filename: string }> {
-  const imageMap: Record<string, { url: string, filename: string }> = {};
-  for (let i = 0; i < features.length; i++) {
-    const feature = features[i];
-    const fid = this.getFeatureId(feature.attributes);
-    const attrs = feature.attributes || {};
-    const imgUrl =
-      attrs.pic_url ||
-      attrs.thumb_url ||
-      attrs.url ||
-      attrs.URL ||
-      '';
-    if (fid && imgUrl) {
-      imageMap[fid] = {
-        url: imgUrl,
-        filename: this.getImageFilenameForFeature(feature, i)
-      };
+  private createImageResourceMap(features: any[]): Record<string, { url: string, filename: string }> {
+    const imageMap: Record<string, { url: string, filename: string }> = {};
+    for (let i = 0; i < features.length; i++) {
+      const feature = features[i];
+      const fid = this.getFeatureId(feature.attributes);
+      const attrs = feature.attributes || {};
+      const imgUrl =
+        attrs.pic_url ||
+        attrs.thumb_url ||
+        attrs.url ||
+        attrs.URL ||
+        '';
+      if (fid && imgUrl) {
+        imageMap[fid] = {
+          url: imgUrl,
+          filename: this.getImageFilenameForFeature(feature, i)
+        };
+      }
     }
+    return imageMap;
   }
-  return imageMap;
-}
 
-private async transferImagesFromMap(
-  imageMap: Record<string, { url: string, filename: string }>
-): Promise<Record<string, string>> {
-  const imageUrls = Object.values(imageMap).map(entry => entry.url);
-  console.log('imageUrls:',imageUrls)
-  const targetItemId = this.getStorymapId();
-  const transferResultsArray = await transferImages(
-    imageUrls,
-    targetItemId,
-    this.username,
-    this.token
-  );
-  const transferResults: Record<string, string> = {};
-  for (const result of transferResultsArray) {
-    transferResults[result.originalUrl] = result.resourceName;
+  private async transferImagesFromMap(
+    imageMap: Record<string, { url: string, filename: string }>
+  ): Promise<Record<string, string>> {
+    const imageUrls = Object.values(imageMap).map(entry => entry.url);
+    const targetItemId = this.getStorymapId();
+    const transferResultsArray = await transferImages(
+      imageUrls,
+      targetItemId,
+      this.username,
+      this.token
+    );
+    const transferResults: Record<string, string> = {};
+    for (const result of transferResultsArray) {
+      transferResults[result.originalUrl] = result.resourceName;
+    }
+    return transferResults;
   }
-  return transferResults;
-}
-  
 
   private getFeatureId(attrs: any): string | undefined {
     for (const key of [

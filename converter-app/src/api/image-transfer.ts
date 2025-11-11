@@ -90,52 +90,43 @@ export async function transferImage(
     imageUrl: string,
     targetItemId: string,
     username: string,
-    token: string,
-    onProgress?: (message: string) => void
-): Promise<ImageTransferResult> {
-    // If it's not an AGO resource, mark as not transferred
-    if (!isAgoResource(imageUrl)) {
-        return {
-            originalUrl: imageUrl,
-            resourceName: imageUrl,
-            isTransferred: false
-        };
+    token: string
+): Promise<{ originalUrl: string; resourceName: string; isTransferred: boolean }> {
+  try {
+    let blob: Blob;
+    let originalName: string;
+
+    if (isAgoResource(imageUrl)) {
+      // AGO resource: fetch with token
+      blob = await fetchImageAsBlob(imageUrl, token);
+      originalName = extractResourceName(imageUrl);
+    } else {
+      // External image: fetch as blob
+      const response = await fetch(imageUrl);
+      if (!response.ok) throw new Error(`Failed to fetch external image: ${response.statusText}`);
+      blob = await response.blob();
+      originalName = extractResourceName(imageUrl);
     }
 
-    try {
-        if (onProgress) {
-            onProgress(`Downloading image: ${extractResourceName(imageUrl)}`);
-        }
+    // Generate a new resource name for AGO
+    const newResourceName = generateResourceName(originalName);
 
-        // Fetch the image
-        const blob = await fetchImageAsBlob(imageUrl, token);
+    // Upload to AGO story item
+    await addResource(targetItemId, username, blob, newResourceName, token);
 
-        // Generate new resource name
-        const originalName = extractResourceName(imageUrl);
-        const newResourceName = generateResourceName(originalName);
-
-        if (onProgress) {
-            onProgress(`Uploading image as: ${newResourceName}`);
-        }
-
-        // Upload to target story
-        await addResource(targetItemId, username, blob, newResourceName, token);
-
-        // Return the resource NAME (not full URL)
-        return {
-            originalUrl: imageUrl,
-            resourceName: newResourceName,
-            isTransferred: true
-        };
-    } catch (error) {
-        console.error(`Failed to transfer image ${imageUrl}:`, error);
-        // Fall back to original URL
-        return {
-            originalUrl: imageUrl,
-            resourceName: imageUrl,
-            isTransferred: false
-        };
-    }
+    return {
+      originalUrl: imageUrl,
+      resourceName: newResourceName,
+      isTransferred: true
+    };
+  } catch (error) {
+    console.error(`Failed to transfer image ${imageUrl}:`, error);
+    return {
+      originalUrl: imageUrl,
+      resourceName: imageUrl,
+      isTransferred: false
+    };
+  }
 }
 
 /**
@@ -171,28 +162,24 @@ export async function transferImage(
 //     return results;
 // }
 
+/**
+ * Transfer multiple images (batch processing with progress)
+ */
 export async function transferImages(
   imageUrls: string[],
   targetItemId: string,
-  username?: string,
-  token?: string
-): Promise<{ originalUrl: string; resourceName: string }[]> {
-  const results: { originalUrl: string; resourceName: string }[] = [];
-  for (const url of imageUrls) {
-    try {
-      // If credentials are provided, use them; otherwise, try unauthenticated
-      if (username && token) {
-        // Authenticated transfer logic here
-      } else {
-        // Unauthenticated transfer (e.g., fetch or copy public image)
-      }
-      // Assume resourceName is derived from url or transfer result
-      results.push({ originalUrl: url, resourceName: /* resourceName */ url });
-    } catch (err) {
-      // Log error and fallback to original URL
-      console.warn(`Image transfer failed for ${url}: ${err}`);
-      results.push({ originalUrl: url, resourceName: url });
+  username: string,
+  token: string,
+  onProgress?: (current: number, total: number, msg: string) => void
+): Promise<{ originalUrl: string; resourceName: string; isTransferred: boolean }[]> {
+  const results: { originalUrl: string; resourceName: string; isTransferred: boolean }[] = [];
+  for (let i = 0; i < imageUrls.length; i++) {
+    const imageUrl = imageUrls[i];
+    if (onProgress) {
+      onProgress(i + 1, imageUrls.length, `Transferring image ${i + 1} of ${imageUrls.length}`);
     }
+    const result = await transferImage(imageUrl, targetItemId, username, token);
+    results.push(result);
   }
   return results;
 }

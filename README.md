@@ -227,6 +227,10 @@ To ease user workflow, added a button to do authentication via ArcGIS Online OAu
 - Guessing we'll need to add a secondary config page in the React app to allow users to modify AGSM MapTour layouts
 ### davi6569/maptour-converter
 - converted python workflow to typescript/React
+- made convertClassicToJson() responsible for the entire image workflow:
+  - username, token, and targetStoryId are arguments.
+  - After building the initial JSON, call collectImageUrls() internally.
+  - Transfer images and update resources before returning the final JSON.
 
 ## Environment Notes
 

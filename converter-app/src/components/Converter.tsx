@@ -76,23 +76,21 @@ export default function Converter() {
         classicData.webmapJson = await getItemData(webmapId, token);
       }
 
-      // 3. Convert to new JSON
-      setStatus("converting");
-      setMessage("Converting classic story to new format...");
-      let newStorymapJson = await convertClassicToJson(classicData, "summit");
-
-      // 3.1 Save JSON for debugging
-      // saveJsonToFile(classicData, 'classic_json.json');
-      // saveJsonToFile(classicData.webmapJson, 'webmap_json.json');
-      // saveJsonToFile(newStorymapJson, 'converted_storymap_json.json');
-
-      // 3.2 Retrieve story title
-      const coverTitle = classicData.values?.title || "Untitled Story";
-
-      // 3.5 Create an empty draft StoryMap
+      // 3. Create an empty draft StoryMap
       setMessage("Creating new StoryMap draft...");
+      const coverTitle = classicData.values?.title || "Untitled Story";
       const itemTitle = `(Converted) ${coverTitle}`;
       const targetStoryId = await createDraftStoryMap(token, username, itemTitle);
+
+      // 3.5 Convert to new JSON
+      setStatus("converting");
+      setMessage("Converting classic story to new format...");
+      let newStorymapJson = await convertClassicToJson(
+        classicData, 
+        "summit", 
+        username,
+        token,
+        targetStoryId);
 
       // 4. Transfer images from classic to target story
       const imageUrls = collectImageUrls(newStorymapJson);
@@ -165,6 +163,11 @@ export default function Converter() {
         const newKeywords = [...currentKeywords, "smconverter:online-app"];
         await updateItemKeywords(targetStoryId, username, newKeywords, token);
       }
+
+      // 3.1 Save JSON for debugging
+      saveJsonToFile(classicData, 'classic_json.json');
+      saveJsonToFile(classicData.webmapJson, 'webmap_json.json');
+      saveJsonToFile(newStorymapJson, 'converted_storymap_json.json');
 
       // Success!
       setStatus("success");

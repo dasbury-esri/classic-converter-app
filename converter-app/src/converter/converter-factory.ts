@@ -8,6 +8,7 @@ import type { ClassicStoryMapJSON } from '../types/storymap';
 import { JournalSeriesConverter } from './journal-converter';
 import { CascadeConverter } from './cascade-converter';
 import { MapTourConverter } from './maptour-converter';
+import { collectImageUrls, transferImages, updateImageUrlsInJson } from '../api/image-transfer';
 
 export class ConverterFactory {
   /**
@@ -54,9 +55,32 @@ export class ConverterFactory {
  */
 export async function convertClassicToJson(
   classicJson: ClassicStoryMapJSON,
-  themeId: string = 'summit'
+  themeId: string = 'summit',
+  username: string,
+  token: string,
+  targetStoryId: string
 ): Promise<any> {
-  const converter = ConverterFactory.getConverter(classicJson, themeId);
-  return await converter.convert();
+  const converter = ConverterFactory.getConverter(classicJson, themeId, username, token);
+  let storymapJson = await converter.convert();
+
+  // 1. Collect image URLs before any update
+  const imageUrls = collectImageUrls(storymapJson);
+
+  // 2. Transfer images and get mapping
+  const transferResultsArray = await transferImages(
+    imageUrls,
+    targetStoryId,
+    username,
+    token
+  );
+  const transferResults: Record<string, string> = {};
+  for (const result of transferResultsArray) {
+    transferResults[result.originalUrl] = result.resourceName;
+  }
+
+  // 3. Update resources in JSON
+  storymapJson = updateImageUrlsInJson(storymapJson, transferResults);
+
+  return storymapJson;
 }
 
