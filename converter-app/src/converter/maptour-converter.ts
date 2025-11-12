@@ -14,7 +14,8 @@ import { transferImage } from '../api/image-transfer';
 import { 
   generateNodeId, 
   generateUUID,
-  getAttrFromList 
+  getAttrFromList,
+  ensureHttpsProtocol 
 } from './utils';
 
 // Attribute key lists (update here as needed)
@@ -90,13 +91,25 @@ export class MapTourConverter {
     const values = this.classicJson.values || {};
     const mtValues = values as MapTourValues;
     // Directly extract layout, subtitle, and order from values
-    const layout = mtValues.layout || 'integrated';
+    const layout = mtValues.layout || 'integrated'; // classic options were; "three-panel", "integrated", "side-panel"
     const title = mtValues.title || 'Untitled Story';
     const subtitle = mtValues.subtitle || '';
     const placesList = mtValues.order || mtValues.places || [];
     const placardPosition = mtValues.placardPosition || 'start';
-    //const accentColor = mtValues.colors ? mtValues.colors.split(';')[0] : '#f9f794'; // fallback color
-    const accentColor = '#f9f794'; // fallback color
+    const headerColor = mtValues.colors ? mtValues.colors.split(';')[0] : '#FFFFFF'; // fallback to white. Classic Map Tour had a very simple theme "header". "content" (i.e. slide) and "footer" (i.e. silde carousel)
+    const slideColor = mtValues.colors ? mtValues.colors.split(';')[1] : '#FFFFFF'; // thumbnail background color
+    const carouselColor = mtValues.colors ? mtValues.colors.split(';')[2] : '#FFFFFF'; // thumbnail carousel background color
+    const zoomLevel = mtValues.zoomLevel || ''; // map zoom level after navigating to a point. Need to translate the zoomLevel [0-22?] to a scale for AGSM (enum?) 
+    const locateButton = mtValues.locationButton || ''; // option to show the location button in the UI
+    const customLogoImageUrl = mtValues.logoURL || '';
+    const customLogoClickThroughLink = mtValues.logoTarget || '';
+    const customHeaderText = mtValues.headerLinkText || '';
+    const customHeaderClickThroughLink = mtValues.headerLinkUrl || '';
+    const socialButtonFacebook = mtValues.social.facebook || ''; // boolean
+    const socialButtonTwitter = mtValues.social.twitter || ''; // boolean
+    const socialButtonBitly = mtValues.social.bitly || ''; // boolean
+    const firstRecordAsIntro = mtValues.firstRecordAsIntro || ''; // option to make the first feature/point a splash page. During conversion we can make this data the cover.
+    const accentColor = '#f9f794'; // in classic Map Tour, each point could have a customized marker color. AGSM doesn't have this option. fallback color
     const features = await this.extractFeatures();
 
     // Feature ordering
@@ -330,7 +343,8 @@ export class MapTourConverter {
           // Direct fetch
           const queryUrl = `${url}/query?where=1=1&outFields=*&f=json`;
           // const response = await fetch(queryUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-          const proxyUrl = `http://localhost:3001/proxy-feature?url=${encodeURIComponent(queryUrl)}`;
+          const httpsUrl = ensureHttpsProtocol(queryUrl)
+          const proxyUrl = `http://localhost:3001/proxy-feature?url=${encodeURIComponent(httpsUrl)}`;
           const response = await fetch(proxyUrl);
           if (response.ok) {
             const fsJson = await response.json();
@@ -362,7 +376,8 @@ export class MapTourConverter {
             try {
               const queryUrl = `${url}/query?where=1=1&outFields=*&f=json`;
               // const response = await fetch(queryUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-              const proxyUrl = `http://localhost:3001/proxy-feature?url=${encodeURIComponent(queryUrl)}`;
+              const httpsUrl = ensureHttpsProtocol(queryUrl)
+              const proxyUrl = `http://localhost:3001/proxy-feature?url=${encodeURIComponent(httpsUrl)}`;
               const response = await fetch(proxyUrl);
               if (response.ok) {
                 const fsJson = await response.json();
