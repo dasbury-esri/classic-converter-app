@@ -60,17 +60,16 @@ export function createBaseStorymapJson(): any {
   return {
     root: rootId,
     nodes: {
-      [rootId]: {
-        type: 'story',
-        data: {
-          storyTheme: themeId
-        },
-        children: [coverId, navId, creditsId]
-      },
       [coverId]: {
         type: 'storycover',  // NOT 'cover'
         data: {
-          type: 'minimal'
+          type: 'minimal',
+          title: '',
+          summary: '',
+          byline: '',
+          titlePanelVerticalPosition: 'top',
+          titlePanelHorizontalPosition: 'start',
+          titlePanelStyle: 'gradient'
         }
       },
       [navId]: {
@@ -85,20 +84,72 @@ export function createBaseStorymapJson(): any {
       [creditsId]: {
         type: 'credits',
         children: []
+      },
+      [rootId]: {
+        type: 'story',
+        data: {
+          storyTheme: themeId
+        },
+        config: {
+          coverDate: ''
+        },
+        children: [coverId, navId, creditsId]
       }
     },
     resources: {
       [themeId]: {
         type: 'story-theme',
         data: {
-          themeId: 'summit'
+          themeId: 'summit',
+          themeBaseVariableOverrides: {}
         }
       }
-    },
-    config: {
-      size: 'large'
     }
   };
+}
+
+/**
+ * Create a credits node with three children: heading, paragraph, attribution
+ */
+export function createCreditsNode(
+  heading: string = '',
+  paragraph: string = '',
+  attribution: string = ''
+): { creditsId: string; childIds: string[]; nodes: Record<string, any> } {
+  const creditsId = generateNodeId();
+  const headingId = generateNodeId();
+  const paragraphId = generateNodeId();
+  const attributionId = generateNodeId();
+
+  const nodes: Record<string, any> = {
+    [headingId]: {
+      type: 'text',
+      data: {
+        text: heading,
+        type: 'h4'
+      }
+    },
+    [paragraphId]: {
+      type: 'text',
+      data: {
+        text: paragraph,
+        type: 'paragraph'
+      }
+    },
+    [attributionId]: {
+      type: 'attribution',
+      data: {
+        content: '',
+        attribution: attribution
+      }
+    },
+    [creditsId]: {
+      type: 'credits',
+      children: [headingId, paragraphId, attributionId]
+    }
+  };
+
+  return { creditsId, childIds: [headingId, paragraphId, attributionId], nodes };
 }
 
 /**
@@ -115,6 +166,9 @@ export function createTextNode(
       type: style,
       text: text,
       textAlignment: alignment
+    },
+    config: {
+      size: 'wide'
     }
   };
 }
@@ -132,11 +186,11 @@ export function createImageNode(
 ): any {
   const node: any = {
     type: 'image',
-    config: {
-      size: display
-    },
     data: {
       image: resourceId
+    },
+    config: {
+      size: display
     }
   };
 
@@ -482,7 +536,10 @@ export function setCoverData(
       type: imageResourceId ? 'full' : 'minimal',
       title: title,
       summary: summary,
-      byline: byLine
+      byline: byLine,
+      titlePanelVerticalPosition: 'top',
+      titlePanelHorizontalPosition: 'start',
+      titlePanelStyle: 'gradient',
     };
 
     if (imageResourceId) {
@@ -567,8 +624,6 @@ export function createTourMapNode(
 export function createCarouselNode(children: any[]): any {
   return {
     type: 'carousel',
-    config: {},
-    data: {},
     children: children.slice(0, 5) // up to 5 images
   };
 }

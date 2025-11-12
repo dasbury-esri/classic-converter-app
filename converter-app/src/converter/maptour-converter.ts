@@ -8,7 +8,8 @@ import {
   createTextNode,
   createImageNode,
   createCarouselNode,
-  createTourNode
+  createTourNode,
+  createCreditsNode
 } from './storymap-schema';
 import { transferImage } from '../api/image-transfer';
 import { 
@@ -112,6 +113,34 @@ export class MapTourConverter {
     const accentColor = '#f9f794'; // in classic Map Tour, each point could have a customized marker color. AGSM doesn't have this option. fallback color
     const features = await this.extractFeatures();
 
+    // Track node IDs to enforce proper order
+    const orderedNodeIds: string[] = [];
+    // Create nodes
+    const rootId = this.getRootNodeId();
+    const storymapNodes = this.builder.getStorymap().nodes;
+    const children = storymapNodes[rootId].children || [];
+    const coverId = Object.keys(storymapNodes).find(id => storymapNodes[id]?.type === 'storycover');
+    const navId = Object.keys(storymapNodes).find(id => storymapNodes[id]?.type === 'navigation');
+  // Create credits node and its children
+  const { creditsId, childIds, nodes: creditsNodes } = createCreditsNode('', '', '');
+  // Add creditsNodes to storymap nodes
+  Object.assign(storymapNodes, creditsNodes);
+
+  // Ensure storycover and navigation are first
+  if (coverId) orderedNodeIds.push(coverId);
+  if (navId) orderedNodeIds.push(navId);
+
+  const rootChildren = storymapNodes[rootId].children || [];
+  const oldCreditsId = rootChildren.find(id => storymapNodes[id]?.type === 'credits' && id !== creditsId);
+
+  if (oldCreditsId) {
+    // Remove from nodes
+    delete storymapNodes[oldCreditsId];
+    // Remove from root children
+    const idx = rootChildren.indexOf(oldCreditsId);
+    if (idx !== -1) rootChildren.splice(idx, 1);
+  }
+
     // Feature ordering
     const featureById: Record<string, any> = {};
     for (const feature of features) {
@@ -125,6 +154,7 @@ export class MapTourConverter {
     console.log("Number of places:", filteredFeatures.length)  
 
     // 1. Build image/thumb map and upload resources
+    // For each place, add image, carousel, title, contents nodes in order
     for (let i = 0; i < filteredFeatures.length; i++) {
       const feature = filteredFeatures[i];
       const fid = this.getFeatureId(feature.attributes);
@@ -144,8 +174,8 @@ export class MapTourConverter {
         imageResourceId = this.builder.addResource({
           type: "image",
           data: {
+            resourceId: imageTransferResult.resourceName,            
             provider: "item-resource",
-            resourceId: imageTransferResult.resourceName,
             height: 1024,
             width: 1024
           }
@@ -196,6 +226,27 @@ export class MapTourConverter {
         [long, lat] = this.webMercatorToWgs84(long, lat);
       } 
 
+      const resourceInfo = fid ? this.uploadedResources[fid] : undefined;
+
+      const imageNodeId = resourceInfo?.imageResourceId
+        ? this.builder.createDetachedNode(
+            createImageNode(resourceInfo.imageResourceId, undefined, undefined, 'standard', 'start')
+          )
+        : undefined;
+
+      const thumbNodeId = resourceInfo?.thumbResourceId
+        ? this.builder.createDetachedNode(
+            createImageNode(resourceInfo.thumbResourceId, undefined, undefined, 'standard', 'start')
+          )
+        : undefined;
+
+      const imageNodeIds: string[] = [];
+      if (imageNodeId) imageNodeIds.push(imageNodeId);
+      if (thumbNodeId) imageNodeIds.push(thumbNodeId);
+
+      const mediaNodeId = this.builder.createDetachedNode(
+        createCarouselNode(imageNodeIds)
+      );
       const titleNodeId = this.builder.createDetachedNode(
         createTextNode(titleText, 'h3', 'start')
       );
@@ -203,27 +254,6 @@ export class MapTourConverter {
         createTextNode(descText, 'paragraph', 'start')
       );
       const contents = [contentNodeId];
-
-      // Media node: carousel of image and thumbnail
-      const imageNodeIds: string[] = [];
-      const resourceInfo = fid ? this.uploadedResources[fid] : undefined;
-      if (resourceInfo?.imageResourceId) {
-        imageNodeIds.push(
-          this.builder.createDetachedNode(
-            createImageNode(resourceInfo.imageResourceId, undefined, undefined, 'standard', 'start')
-          )
-        );
-      }
-      if (resourceInfo?.thumbResourceId) {
-        imageNodeIds.push(
-          this.builder.createDetachedNode(
-            createImageNode(resourceInfo.thumbResourceId, undefined, undefined, 'standard', 'start')
-          )
-        );
-      }
-      const mediaNodeId = this.builder.createDetachedNode(
-        createCarouselNode(imageNodeIds)
-      );
 
       // Geometry
       let geomId = generateUUID();
@@ -236,6 +266,12 @@ export class MapTourConverter {
           viewpoint: {}
         };
       }
+  // Push its NodeIds to orderedNodeIds in the proper order
+  if (imageNodeId) orderedNodeIds.push(imageNodeId);
+  if (thumbNodeId) orderedNodeIds.push(thumbNodeId);
+  orderedNodeIds.push(mediaNodeId);
+  orderedNodeIds.push(titleNodeId);
+  orderedNodeIds.push(contentNodeId);
 
       // Place node
       places.push({
@@ -294,21 +330,35 @@ export class MapTourConverter {
     );
     const tourNodeId = this.builder.createDetachedNode(tourNode);
 
-    // Add tour and tour-map nodes to story root in correct order
-    const rootId = this.getRootNodeId();
-    const rootNode = this.builder.getStorymap().nodes[rootId];
-    const children = rootNode.children || [];
-    const storymapNodes = this.builder.getStorymap().nodes;
-    const coverId = children.find((id: string) => storymapNodes[id]?.type === 'storycover');
-    const navId = children.find((id: string) => storymapNodes[id]?.type === 'navigation');
-    const creditsId = children.find((id: string) => storymapNodes[id]?.type === 'credits');
-    this.setRootChildren([coverId, navId, tourNodeId, tourMapNodeId, creditsId].filter(Boolean));
+    // Add tour-map and tour nodes
+    orderedNodeIds.push(tourMapNodeId);
+    orderedNodeIds.push(tourNodeId);
+
+    // Add credits children and credits node immediately before story node
+    for (const childId of childIds) {
+      orderedNodeIds.push(childId);
+    }
+    orderedNodeIds.push(creditsId);
+    orderedNodeIds.push(rootId);
+
+    // Rebuild nodes object in this order
+    const nodes = this.builder.getStorymap().nodes;
+    const reordered: Record<string, any> = {};
+    for (const id of orderedNodeIds) {
+      if (nodes[id]) reordered[id] = nodes[id];
+    }
+    // Optionally, add any remaining nodes not referenced (orphaned nodes)
+    for (const id of Object.keys(nodes)) {
+      if (!reordered[id]) reordered[id] = nodes[id];
+    }
+    this.builder.getStorymap().nodes = reordered;
+
+  this.setRootChildren([coverId, navId, tourNodeId, tourMapNodeId, creditsId].filter(Boolean));
 
     // Set cover and theme
     this.builder.setCover(`(CONVERSION) ${title}`, subtitle);
     this.builder.setTheme(this.themeId);
 
-    // Update image resource references to match uploaded resources
     const storymapJson = this.builder.getJson();
     return storymapJson;
   }

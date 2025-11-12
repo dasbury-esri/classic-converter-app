@@ -97,6 +97,7 @@ export default function Converter() {
         token,
         targetStoryId);
 
+      console.log("***JSON***",newStorymapJson)
       // 4. Transfer images from classic to target story
       const imageUrls = collectImageUrls(newStorymapJson);
       console.log('Collected image URLs:', imageUrls);
