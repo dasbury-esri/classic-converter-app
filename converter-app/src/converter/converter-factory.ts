@@ -16,7 +16,10 @@ export class ConverterFactory {
    */
   static getConverter(
     classicJson: ClassicStoryMapJSON,
-    themeId: string = 'summit'
+    themeId: string = 'summit',
+    username?: string,
+    token?: string,
+    targetStoryId?: string
   ): JournalSeriesConverter | CascadeConverter | MapTourConverter {
     const values = classicJson.values;
 
@@ -24,28 +27,24 @@ export class ConverterFactory {
       throw new Error('Invalid classic story JSON: missing "values" key');
     }
 
-    // Check for Map Tour
+    // Detect Map Tour
   let rawTemplate = (values as any).template || (values as any).templateName || (values as any).name || '';
   if (typeof rawTemplate !== 'string') rawTemplate = String(rawTemplate);
-  const template = rawTemplate.toLowerCase();
+    const template = rawTemplate.toLowerCase();
     if (template.includes('map tour')) {
-        return new MapTourConverter(classicJson, themeId);
+      return new MapTourConverter(classicJson, themeId, username || '', token || '', targetStoryId || '');
     }
-
-    // Check for Journal/Series
+    // Detect Journal/Series
     if (values.story) {
       const story = values.story;
       if (story.sections || story.entries) {
         return new JournalSeriesConverter(classicJson, themeId);
       }
     }
-
-    // Check for Cascade
+    // DetectCascade
     if (values.sections) {
-      // Cascade has sections directly in values
       return new CascadeConverter(classicJson, themeId);
     }
-
     throw new Error('Unknown classic story type');
   }
 }
@@ -60,7 +59,7 @@ export async function convertClassicToJson(
   token: string,
   targetStoryId: string
 ): Promise<any> {
-  const converter = ConverterFactory.getConverter(classicJson, themeId, username, token);
+  const converter = ConverterFactory.getConverter(classicJson, themeId, username, token, targetStoryId);
   let storymapJson = await converter.convert();
 
   // 1. Collect image URLs before any update

@@ -222,3 +222,14 @@ export interface ClassicMedia {
   frameTag?: string;
 }
 
+export interface MapTourValues {
+  title?: string;
+  subtitle?: string;
+  layout?: string;
+  order?: any[];
+  places?: any[];
+  placardPosition?: string;
+  colors?: string;
+  webmap?: string;
+  [key: string]: any; // Allow extra keys
+}

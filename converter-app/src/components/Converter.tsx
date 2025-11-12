@@ -82,6 +82,11 @@ export default function Converter() {
       const itemTitle = `(Converted) ${coverTitle}`;
       const targetStoryId = await createDraftStoryMap(token, username, itemTitle);
 
+      if (targetStoryId) {
+        console.log("Target Story ID is set!")
+        console.log("targetStoryId:", targetStoryId);
+      }
+
       // 3.5 Convert to new JSON
       setStatus("converting");
       setMessage("Converting classic story to new format...");
@@ -110,7 +115,7 @@ export default function Converter() {
             setMessage(`Transferring images (${current}/${total}): ${msg}`);
           }
         );
-        console.log('Transfer results array:', transferResultsArray);
+        console.log('[Converter.tsx] Transfer results array:', transferResultsArray);
 
         // Convert array to mapping
         const transferResults: Record<string, string> = {};

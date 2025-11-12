@@ -1,4 +1,6 @@
 import type { ClassicStoryMapJSON } from '../types/storymap';
+import type { MapTourValues } from '../types/storymap';
+
 import { StoryMapJSONBuilder } from './storymap-builder';
 import {
   createTourMapNode,
@@ -8,22 +10,50 @@ import {
   createCarouselNode,
   createTourNode
 } from './storymap-schema';
-import { transferImages, updateImageUrlsInJson } from '../api/image-transfer';
-import { generateNodeId } from './utils';
+import { transferImage } from '../api/image-transfer';
+import { 
+  generateNodeId, 
+  generateUUID,
+  getAttrFromList 
+} from './utils';
+
+// Attribute key lists (update here as needed)
+const IMAGE_URL_KEYS = ['pic_url', 'Pic_url', 'PIC_URL', 'url', 'Url', 'URL'] as const;
+const THUMB_URL_KEYS = ['thumb_url', 'Thumb_url', 'THUMB_URL'] as const;
+const TITLE_KEYS = ['name', 'Name', 'NAME', 'title', 'Title', 'TITLE'] as const;
+const DESC_KEYS = [
+  'description', 'Description', 'DESCRIPTION',
+  'desc', 'Desc', 'DESC', 'desc1', 'Desc1', 'DESC1',
+  'caption', 'Caption', 'CAPTION', 'FULL_Caption'
+] as const;
+const ATTR_KEYS = ['PHOTO_CREDIT', 'photo_credit', 'credit', 'attribution'] as const;
+const LON_KEYS = ['long', 'Long', 'LONG', 'LON', 'longitude', 'Longitude', 'LONGITUDE', 'x'] as const;
+const LAT_KEYS = ['lat', 'Lat', 'LAT', 'latitude', 'Latitude', 'LATITUDE', 'y'] as const;
 
 export class MapTourConverter {
+  private targetStoryId: string;
   private username: string;
   private token: string;
   private classicJson: ClassicStoryMapJSON;
   private themeId: string;
   private builder: StoryMapJSONBuilder;
-  private imageResourceMap: Record<string, string> = {};
+  // Map featureId to uploaded image/thumb resource info
+  private uploadedResources: Record<string, {
+    imageUrl: string;
+    thumbUrl: string;
+    imageFilename: string;
+    thumbFilename: string;
+    imageResourceId?: string;
+    thumbResourceId?: string;
+  }> = {};
 
-  constructor(classicJson: ClassicStoryMapJSON, themeId: string = 'summit', username: string = '', token: string = '') {
+  constructor(classicJson: ClassicStoryMapJSON, themeId: string = 'summit', username: string = '', token: string = '', targetStoryId: string = '') {
+    console.log('[MapTourConverter] Constructor targetStoryId:', targetStoryId);
     this.classicJson = classicJson;
     this.themeId = themeId;
     this.username = username;
     this.token = token;
+    this.targetStoryId = targetStoryId;
     this.builder = new StoryMapJSONBuilder(themeId);
     this.detectTheme();
   }
@@ -52,15 +82,21 @@ export class MapTourConverter {
   }
 
   private getStorymapId(): string {
-    return this.builder.storymap.id;
+    console.log('[MapTourConverter] getStorymapId:', this.targetStoryId);
+    return this.targetStoryId;
   }
 
   async convert(): Promise<any> {
     const values = this.classicJson.values || {};
-    const layout = values.layout || 'integrated';
-    const title = values.title || 'Untitled Story';
-    const subtitle = values.subtitle || '';
-    const placesList = values.order || [];
+    const mtValues = values as MapTourValues;
+    // Directly extract layout, subtitle, and order from values
+    const layout = mtValues.layout || 'integrated';
+    const title = mtValues.title || 'Untitled Story';
+    const subtitle = mtValues.subtitle || '';
+    const placesList = mtValues.order || mtValues.places || [];
+    const placardPosition = mtValues.placardPosition || 'start';
+    //const accentColor = mtValues.colors ? mtValues.colors.split(';')[0] : '#f9f794'; // fallback color
+    const accentColor = '#f9f794'; // fallback color
     const features = await this.extractFeatures();
 
     // Feature ordering
@@ -73,21 +109,79 @@ export class MapTourConverter {
       .map((p: any) => featureById[String(p.id)])
       .filter(Boolean);
 
-    // Image resource mapping
-    const imageMap = this.createImageResourceMap(filteredFeatures);
-    this.imageResourceMap = await this.transferImagesFromMap(imageMap);
-    console.log('imageMap:', imageMap);
-    console.log('imageResourceMap', this.imageResourceMap);
+    console.log("Number of places:", filteredFeatures.length)  
 
-    // Place nodes
+    // 1. Build image/thumb map and upload resources
+    for (let i = 0; i < filteredFeatures.length; i++) {
+      const feature = filteredFeatures[i];
+      const fid = this.getFeatureId(feature.attributes);
+      if (!fid) continue;
+      const attrs = feature.attributes || {};
+      const imageUrl = getAttrFromList(attrs, IMAGE_URL_KEYS, '');
+      const thumbUrl = getAttrFromList(attrs, THUMB_URL_KEYS, '');
+      // Generate unique filenames
+      const imageFilename = this.generateUniqueFilename(fid, 'image', imageUrl);
+      const thumbFilename = thumbUrl ? this.generateUniqueFilename(fid, 'thumb', thumbUrl) : '';
+      // Upload image
+      let imageResourceId: string | undefined;
+      if (imageUrl) {
+        console.log('[MapTourConverter] Preparing to transfer image:', { imageUrl, imageFilename });
+        const imageTransferResult = await this.transferSingleImage(imageUrl, imageFilename);
+        console.log('[MapTourConverter] Image transfer result:', imageTransferResult);
+        imageResourceId = this.builder.addResource({
+          type: "image",
+          data: {
+            provider: "item-resource",
+            resourceId: imageTransferResult.resourceName,
+            height: 1024,
+            width: 1024
+          }
+        });
+        console.log('[MapTourConverter] Added image resource:', { imageResourceId, resourceName: imageTransferResult.resourceName });
+      }
+      // Upload thumbnail
+      let thumbResourceId: string | undefined;
+      if (thumbUrl) {
+        // const thumbTransferResult = await this.transferSingleImage(thumbUrl, thumbFilename);
+        // thumbResourceId = this.builder.addResource({
+        //   type: "image",
+        //   data: {
+        //     provider: "item-resource",
+        //     resourceId: thumbTransferResult.resourceName,
+        //     height: 256,
+        //     width: 256
+        //   }
+        // });
+      }
+      this.uploadedResources[fid] = {
+        imageUrl,
+        thumbUrl,
+        imageFilename,
+        thumbFilename,
+        imageResourceId,
+        thumbResourceId
+      };
+    }
+
+    // 2. Build place nodes with carousel media
     const places: any[] = [];
-    const geometries: any[] = [];
+    // Build geometries for tour-map
+    const geometries: Record<string, any> = {};   
+    
     for (let i = 0; i < filteredFeatures.length; i++) {
       const feature = filteredFeatures[i];
       const attrs = feature.attributes || {};
-      const titleText = attrs.name || attrs.title || `Place ${i + 1}`;
-      const descText = attrs.description || '';
+      const fid = this.getFeatureId(attrs);
+      const titleText = getAttrFromList(attrs, TITLE_KEYS, `Place ${i + 1}`);
+      const descText = getAttrFromList(attrs, DESC_KEYS, '');
+      const attributionText = getAttrFromList(attrs, ATTR_KEYS, '');
       const isVisible = placesList[i]?.visible !== false;
+      const coords = this.getFeatureCoords(feature);
+      if (!coords) continue; // skip if no valid coordinates 
+      let { long, lat } = coords;
+      if (this.isWebMercator(long, lat)) {
+        [long, lat] = this.webMercatorToWgs84(long, lat);
+      } 
 
       const titleNodeId = this.builder.createDetachedNode(
         createTextNode(titleText, 'h3', 'start')
@@ -97,47 +191,37 @@ export class MapTourConverter {
       );
       const contents = [contentNodeId];
 
-      // Media node (image inside carousel)
-      const imageUrls: string[] = [];
-      ['pic_url', 'thumb_url', 'url', 'URL'].forEach(key => {
-        const val = attrs[key];
-        if (val && typeof val === 'string' && val.trim()) imageUrls.push(val.trim());
-      });
-
+      // Media node: carousel of image and thumbnail
       const imageNodeIds: string[] = [];
-      for (const imgUrl of imageUrls) {
-        const imageResource = {
-          type: "image",
-          data: {
-            src: imgUrl,
-            provider: "uri",
-            height: 1024,
-            width: 1024
-          }
-        };
-        const imageResourceId = this.builder.addResource(imageResource);
+      const resourceInfo = fid ? this.uploadedResources[fid] : undefined;
+      if (resourceInfo?.imageResourceId) {
         imageNodeIds.push(
           this.builder.createDetachedNode(
-            createImageNode(imageResourceId, undefined, undefined, 'standard', 'start')
+            createImageNode(resourceInfo.imageResourceId, undefined, undefined, 'standard', 'start')
           )
         );
       }
-
+      if (resourceInfo?.thumbResourceId) {
+        imageNodeIds.push(
+          this.builder.createDetachedNode(
+            createImageNode(resourceInfo.thumbResourceId, undefined, undefined, 'standard', 'start')
+          )
+        );
+      }
       const mediaNodeId = this.builder.createDetachedNode(
         createCarouselNode(imageNodeIds)
       );
 
       // Geometry
-      const x = attrs.long || attrs.longitude || attrs.x;
-      const y = attrs.lat || attrs.latitude || attrs.y;
-      let geomId = '';
-      if (x !== undefined && y !== undefined) {
-        let coords: [number, number] = [x, y];
-        if (this.isWebMercator(x, y)) {
-          coords = this.webMercatorToWgs84(x, y);
-        }
-        geometries.push({ coords });
-        geomId = generateNodeId();
+      let geomId = generateUUID();
+      if (coords && coords.long !== undefined && coords.lat !== undefined) {
+        geometries[geomId] = {
+          id: geomId,
+          type: "POINT_NUMBERED_TOUR",
+          nodes: [{ long, lat }],
+          scale: 4514,
+          viewpoint: {}
+        };
       }
 
       // Place node
@@ -152,9 +236,18 @@ export class MapTourConverter {
     }
 
     // Basemap resource creation and assignment
-    const webmapId = (this.classicJson as any).webmap || (values as any).webmap;
+    const webmapJson = (this.classicJson as any).webmapJson || (mtValues as any).webmapJson || {};
+    const webmapId = (this.classicJson as any).webmap || (mtValues as any).webmap;
     let tourMapNode = createTourMapNode(geometries);
-    if (webmapId) {
+    if (webmapJson && typeof webmapJson.version === 'string' && parseFloat(webmapJson.version) < 2.0) {
+      // Use basemap name for old webmaps
+      const basemapTitle = webmapJson.baseMap?.title?.toLowerCase() || 'topographic';
+      tourMapNode.data.basemap = {
+        type: 'name',
+        value: basemapTitle
+      };
+    } else if (webmapId) {
+      // Use webmap resource for newer webmaps
       const basemapResourceId = this.builder.addResource(createMapResource(webmapId));
       tourMapNode.data.basemap = {
         type: 'resource',
@@ -162,7 +255,7 @@ export class MapTourConverter {
       };
     }
     const tourMapNodeId = this.builder.createDetachedNode(tourMapNode);
-
+  
     // Tour node (detached)
     const tourType =
       layout === 'integrated'
@@ -180,8 +273,8 @@ export class MapTourConverter {
     const tourNode = createTourNode(
       places,
       tourMapNodeId,
-      '#f9f794',
-      'start',
+      accentColor,
+      placardPosition,
       'large',
       tourType,
       subtype
@@ -204,13 +297,12 @@ export class MapTourConverter {
 
     // Update image resource references to match uploaded resources
     const storymapJson = this.builder.getJson();
-    const updatedJson = updateImageUrlsInJson(storymapJson, this.imageResourceMap);
-    return updatedJson;
+    return storymapJson;
   }
 
   private async extractFeatures(): Promise<any[]> {
     const values = this.classicJson.values || {};
-    const webmapJson = (this.classicJson as any).webmapJson || (values as any).webmapJson || {};
+    const webmapJson = (this.classicJson as any).webmapJson || (mtValues as any).webmapJson || {};
     const layers = webmapJson.operationalLayers || [];
     const sourceLayer = (this.classicJson as any).sourceLayer || (values as any).sourceLayer;
     let mapTourLayer: any = null;
@@ -235,8 +327,11 @@ export class MapTourConverter {
         let url = featureServiceUrl;
         if (url.startsWith('http://')) url = 'https://' + url.slice(7);
         try {
+          // Direct fetch
           const queryUrl = `${url}/query?where=1=1&outFields=*&f=json`;
-          const response = await fetch(queryUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+          // const response = await fetch(queryUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+          const proxyUrl = `http://localhost:3001/proxy-feature?url=${encodeURIComponent(queryUrl)}`;
+          const response = await fetch(proxyUrl);
           if (response.ok) {
             const fsJson = await response.json();
             if (fsJson.features) {
@@ -266,7 +361,9 @@ export class MapTourConverter {
             if (url.startsWith('http://')) url = 'https://' + url.slice(7);
             try {
               const queryUrl = `${url}/query?where=1=1&outFields=*&f=json`;
-              const response = await fetch(queryUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+              // const response = await fetch(queryUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+              const proxyUrl = `http://localhost:3001/proxy-feature?url=${encodeURIComponent(queryUrl)}`;
+              const response = await fetch(proxyUrl);
               if (response.ok) {
                 const fsJson = await response.json();
                 if (fsJson.features) {
@@ -282,46 +379,6 @@ export class MapTourConverter {
       }
     }
     return [];
-  }
-
-  private createImageResourceMap(features: any[]): Record<string, { url: string, filename: string }> {
-    const imageMap: Record<string, { url: string, filename: string }> = {};
-    for (let i = 0; i < features.length; i++) {
-      const feature = features[i];
-      const fid = this.getFeatureId(feature.attributes);
-      const attrs = feature.attributes || {};
-      const imgUrl =
-        attrs.pic_url ||
-        attrs.thumb_url ||
-        attrs.url ||
-        attrs.URL ||
-        '';
-      if (fid && imgUrl) {
-        imageMap[fid] = {
-          url: imgUrl,
-          filename: this.getImageFilenameForFeature(feature, i)
-        };
-      }
-    }
-    return imageMap;
-  }
-
-  private async transferImagesFromMap(
-    imageMap: Record<string, { url: string, filename: string }>
-  ): Promise<Record<string, string>> {
-    const imageUrls = Object.values(imageMap).map(entry => entry.url);
-    const targetItemId = this.getStorymapId();
-    const transferResultsArray = await transferImages(
-      imageUrls,
-      targetItemId,
-      this.username,
-      this.token
-    );
-    const transferResults: Record<string, string> = {};
-    for (const result of transferResultsArray) {
-      transferResults[result.originalUrl] = result.resourceName;
-    }
-    return transferResults;
   }
 
   private getFeatureId(attrs: any): string | undefined {
@@ -342,14 +399,6 @@ export class MapTourConverter {
     return undefined;
   }
 
-  private getAttrFromList(attrs: any, keys: string[], def: string = ''): string {
-    for (const key of keys) {
-      const value = attrs[key];
-      if (value !== undefined && String(value).trim() !== '') return value;
-    }
-    return def;
-  }
-
   private isWebMercator(x: number, y: number): boolean {
     return Math.abs(x) > 180 || Math.abs(y) > 90;
   }
@@ -362,19 +411,71 @@ export class MapTourConverter {
     return [lon, lat];
   }
 
-  private getImageFilenameForFeature(feature: any, idx: number): string {
-    const attrs = feature.attributes || {};
-    const imgUrl =
-      attrs.url ||
-      attrs.URL ||
-      attrs.pic_url ||
-      attrs.PIC_URL ||
-      '';
-    if (imgUrl && typeof imgUrl === 'string') {
-      const parts = imgUrl.split(/[\/]/);
-      const filename = parts[parts.length - 1].split('?')[0];
-      if (filename) return filename;
-    }
-    return `place_${idx + 1}.jpg`;
+  // Generate a unique filename for image or thumb
+  private generateUniqueFilename(fid: string, type: 'image' | 'thumb', url: string): string {
+    const extMatch = url.match(/\.([a-zA-Z0-9]+)(\?|$)/);
+    const ext = extMatch ? extMatch[1] : 'jpg';
+    const uid = this.randomUrlSafeBase64String();
+    const fidPadded = fid.padStart(3, '0');
+    return `place_${fidPadded}_${type}_${uid}.${ext}`;
   }
+
+  // Secure random UID generator
+  private randomUrlSafeBase64String(): string {
+    const bytes = new Uint8Array(4);
+    if (typeof window !== 'undefined' && window.crypto) {
+      window.crypto.getRandomValues(bytes);
+      return btoa(String.fromCharCode(...bytes))
+        .replace(/\+/g, '-')
+        .replace(/\//g, '_')
+        .replace(/=+$/, '')
+        .slice(0, 6);
+    } else {
+      // Node.js fallback
+      // Use Buffer and crypto
+      const crypto = require('crypto');
+      crypto.randomFillSync(bytes);
+      return Buffer.from(bytes)
+        .toString('base64')
+        .replace(/\+/g, '-')
+        .replace(/\//g, '_')
+        .replace(/=+$/, '')
+        .slice(0, 6);
+    }
+  }
+
+  // Transfer a single image and return transfer result
+  private async transferSingleImage(url: string, filename: string): Promise<{ originalUrl: string; resourceName: string; isTransferred: boolean }> {
+    // You may want to pass filename to transferImage if your API supports it
+    // Otherwise, transferImage will generate a resource name
+    if (!this.getStorymapId()) {
+      throw new Error("Target StoryMap item ID is missing!");
+    }
+    return await transferImage(url, this.getStorymapId(), this.username, this.token, filename);
+  }
+
+  // Robustly get coordinates
+  private getFeatureCoords(feature: any): { long: number, lat: number } | undefined {
+    const attrs = feature.attributes || {};
+    // Try attribute-based extraction
+    const longStr = getAttrFromList(attrs, LON_KEYS, '');
+    const latStr = getAttrFromList(attrs, LAT_KEYS, '');
+    let long = Number(longStr);
+    let lat = Number(latStr);
+
+    // If valid numbers, use them
+    if (!isNaN(long) && !isNaN(lat) && long !== 0 && lat !== 0) {
+      return { long, lat };
+    }
+
+    // Fallback to geometry object
+    if (feature.geometry && typeof feature.geometry.x === 'number' && typeof feature.geometry.y === 'number') {
+      return { long: feature.geometry.x, lat: feature.geometry.y };
+    }
+
+    // No valid coordinates found
+    console.warn("No valid coordinates found for feature", feature);
+    return undefined;
+  }
+
 }

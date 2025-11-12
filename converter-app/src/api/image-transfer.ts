@@ -90,9 +90,11 @@ export async function transferImage(
     imageUrl: string,
     targetItemId: string,
     username: string,
-    token: string
+    token: string,
+    filename?: string
 ): Promise<{ originalUrl: string; resourceName: string; isTransferred: boolean }> {
   try {
+    console.log('[transferImage] Starting transfer:', { imageUrl, filename, targetItemId });
     let blob: Blob;
     let originalName: string;
 
@@ -101,26 +103,34 @@ export async function transferImage(
       blob = await fetchImageAsBlob(imageUrl, token);
       originalName = extractResourceName(imageUrl);
     } else {
-      // External image: fetch as blob
-      const response = await fetch(imageUrl);
-      if (!response.ok) throw new Error(`Failed to fetch external image: ${response.statusText}`);
-      blob = await response.blob();
-      originalName = extractResourceName(imageUrl);
+      // External image: try direct fetch first
+      try {
+        const response = await fetch(imageUrl);
+        if (!response.ok) throw new Error(`Failed to fetch external image: ${response.statusText}`);
+        blob = await response.blob();
+        originalName = extractResourceName(imageUrl);
+      } catch (err) {
+        // Fallback to proxy if direct fetch fails (likely CORS)
+        console.warn('[transferImage] Direct fetch failed, trying proxy:', { imageUrl, error: err });
+        blob = await fetchImageWithProxy(imageUrl);
+        originalName = extractResourceName(imageUrl);
+      }
     }
 
     // Generate a new resource name for AGO
-    const newResourceName = generateResourceName(originalName);
-
+    const newResourceName = filename || generateResourceName(originalName);
     // Upload to AGO story item
+    console.log('[transferImage] Uploading to AGO:', { newResourceName, blob });
     await addResource(targetItemId, username, blob, newResourceName, token);
 
+    console.log('[transferImage] Transfer successful:', { imageUrl, newResourceName });    
     return {
       originalUrl: imageUrl,
       resourceName: newResourceName,
       isTransferred: true
     };
   } catch (error) {
-    console.error(`Failed to transfer image ${imageUrl}:`, error);
+    console.error('[transferImage] Transfer failed:', { imageUrl, error });
     return {
       originalUrl: imageUrl,
       resourceName: imageUrl,
@@ -172,6 +182,7 @@ export async function transferImages(
   token: string,
   onProgress?: (current: number, total: number, msg: string) => void
 ): Promise<{ originalUrl: string; resourceName: string; isTransferred: boolean }[]> {
+  console.log('[transferImages] Starting batch transfer:', { imageUrls, targetItemId });  
   const results: { originalUrl: string; resourceName: string; isTransferred: boolean }[] = [];
   for (let i = 0; i < imageUrls.length; i++) {
     const imageUrl = imageUrls[i];
@@ -182,6 +193,16 @@ export async function transferImages(
     results.push(result);
   }
   return results;
+}
+
+/**
+ * Fetch an image using a local proxy server to avoid CORS errors
+ */
+async function fetchImageWithProxy(imageUrl: string): Promise<Blob> {
+  const proxyUrl = `http://localhost:3001/proxy-image?url=${encodeURIComponent(imageUrl)}`;
+  const response = await fetch(proxyUrl);
+  if (!response.ok) throw new Error('Failed to fetch image via proxy');
+  return await response.blob();
 }
 
 /**

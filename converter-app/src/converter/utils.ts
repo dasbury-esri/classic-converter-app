@@ -165,6 +165,34 @@ export function generateResourceId(): string {
 }
 
 /**
+ * Generate a UUID for Map Tour geometries
+ */
+export function generateUUID(): string {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+    // Modern browsers and Node.js v16.17+
+    return crypto.randomUUID();
+  }
+  // Fallback for older environments
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
+/**
+ * Helper to allow a flexible list of attributes from different classic versions
+ */
+export function getAttrFromList(attrs: Record<string, any>, keys: string[], fallback: string = ''): string {
+  for (const key of keys) {
+    if (attrs[key] !== undefined && attrs[key] !== null && String(attrs[key]).trim() !== '') {
+      return String(attrs[key]).trim();
+    }
+  }
+  return fallback;
+}
+
+/**
  * Parse HTML and extract text content
  */
 export function parseHtmlText(html: string): string {
