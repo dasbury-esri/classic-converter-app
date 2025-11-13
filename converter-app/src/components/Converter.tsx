@@ -171,9 +171,9 @@ export default function Converter() {
       }
 
       // 3.1 Save JSON for debugging
-      saveJsonToFile(classicData, 'classic_json.json');
-      saveJsonToFile(classicData.webmapJson, 'webmap_json.json');
-      saveJsonToFile(newStorymapJson, 'converted_storymap_json.json');
+      // saveJsonToFile(classicData, 'classic_json.json');
+      // saveJsonToFile(classicData.webmapJson, 'webmap_json.json');
+      // saveJsonToFile(newStorymapJson, 'converted_storymap_json.json');
 
       // Success!
       setStatus("success");

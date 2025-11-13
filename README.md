@@ -239,6 +239,7 @@ To ease user workflow, added a button to do authentication via ArcGIS Online OAu
 - Added Map Tour specific node creators 
 - added a few helper functions to utils for Map Tour
 - added a Node proxy server to handle CORS errors
+- Commented out local downloads
 
 ## Environment Notes
 
