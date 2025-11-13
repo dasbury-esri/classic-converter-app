@@ -1,22 +1,7 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { UserSession } from "@esri/arcgis-rest-auth";
-import { clientId, redirectUri, SESSION_KEY, saveSession, restoreSession, getTokenFromHash } from "./authUtils";
-
-type AuthContextType = {
-  session: UserSession | null;
-  token: string | null;
-  signIn: () => void;
-  signOut: () => void;
-  loading: boolean;
-};
-
-const AuthContext = createContext<AuthContextType>({
-  session: null,
-  token: null,
-  signIn: () => {},
-  signOut: () => {},
-  loading: false,
-});
+import { clientId, redirectUri, SESSION_KEY, saveSession, restoreSession, getTokenFromHash } from "./AuthUtils";
+import { AuthContext } from "./AuthContext";
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [session, setSession] = useState<UserSession | null>(restoreSession());

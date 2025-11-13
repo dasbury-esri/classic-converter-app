@@ -99,7 +99,6 @@ export class MapTourConverter {
     const layout = mtValues.layout || 'integrated'; // classic options were; "three-panel", "integrated", "side-panel"
     const title = mtValues.title || 'Untitled Story';
     const subtitle = mtValues.subtitle || '';
-    const placesList = mtValues.order || mtValues.places || [];
     const placardPosition = mtValues.placardPosition || 'start';
     // const headerColor = mtValues.colors ? mtValues.colors.split(';')[0] : '#FFFFFF'; // fallback to white. Classic Map Tour had a very simple theme "header". "content" (i.e. slide) and "footer" (i.e. silde carousel)
     // const slideColor = mtValues.colors ? mtValues.colors.split(';')[1] : '#FFFFFF'; // thumbnail background color
@@ -146,6 +145,29 @@ export class MapTourConverter {
   }
 
     // Feature ordering
+    const placesArr = Array.isArray(mtValues.places) ? mtValues.places : [];
+    const orderArr = Array.isArray(mtValues.order) ? mtValues.order : [];
+
+    // Build ordered/filtered places list
+    let placesList: MapTourPlace[];
+    if (orderArr.length > 0 && placesArr.length > 0) {
+      // Use order array to order and filter places
+      const placeById = Object.fromEntries(placesArr.map(p => [String(p.id), p]));
+      placesList = orderArr
+        .map((o) => {
+          const place = placeById[String(o.id)];
+          if (place) {
+            // Attach visibility from order if present
+            return { ...place, visible: o.visible !== false };
+          }
+          return undefined;
+        })
+        .filter(Boolean) as MapTourPlace[];
+    } else {
+      // Fallback: use places array as-is
+      placesList = placesArr;
+    }
+    // Use placesList for feature ordering
     const featureById: Record<string, MapTourFeature> = {};
     for (const feature of features) {
       const fid = this.getFeatureId(feature.attributes);

@@ -247,6 +247,7 @@ export interface MapTourPlace {
     y?: number;
     [key: string]: unknown;
   };
+  visible?: boolean;
   [key: string]: unknown; // For any additional properties
 }
 export interface MapTourValues {
