@@ -3,6 +3,3 @@
 # Required for all converters
 beautifulsoup4>=4.9.0
 
-# Optional: For test script
-# (uses arcgis + python-dotenv)
-
