@@ -227,10 +227,18 @@ To ease user workflow, added a button to do authentication via ArcGIS Online OAu
 - Guessing we'll need to add a secondary config page in the React app to allow users to modify AGSM MapTour layouts
 ### davi6569/maptour-converter
 - converted python workflow to typescript/React
-- made convertClassicToJson() responsible for the entire image workflow:
-  - username, token, and targetStoryId are arguments.
-  - After building the initial JSON, call collectImageUrls() internally.
-  - Transfer images and update resources before returning the final JSON.
+- handling images from Classic Map Tours is significantly more complex than just copying from one item to another
+- So maptour-converter.ts convert() uses its own method to download images from the classic app and upload them to the target story
+- modified transferImage() and transferIamges() within image-transfer.ts to take username/token variables. This may be unnecessary, but I did it awhile ago and don't remember at the moment why.
+- Modified order of operations in Converter.tsx to accomodate Map Tour specific needs. This was also done awhile ago and may have little actual impact
+- Added local downloads for json files for debugging 
+- Added MapTourConverter to converter-factory
+- Modified getConverter() to accept username, token and targetStoryId. Required by MapTourConverter
+- Added createCarouselNode() to utils.ts
+- modified storymap-schema.ts to mimic the AGSM Builder json schema exactly, including a createCreditsNode(). Some of this may be unnecessary, but wanted to see if the issues I was having were caused by malformed json.
+- Added Map Tour specific node creators 
+- added a few helper functions to utils for Map Tour
+- added a Node proxy server to handle CORS errors
 
 ## Environment Notes
 
