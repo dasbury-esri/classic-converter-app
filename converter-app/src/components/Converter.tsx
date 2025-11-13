@@ -3,7 +3,7 @@
  * Minimal form interface for conversion
  */
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { useAuth } from "../auth/AuthProvider";
 import {
   getItemData,
@@ -192,7 +192,7 @@ export default function Converter() {
     <div style={{ maxWidth: "600px", margin: "0 auto", padding: "20px" }}>
       <h1>Classic StoryMap Converter</h1>
       <p>
-        Convert Classic StoryMaps (MapJournal, MapSeries, Cascade) to ArcGIS
+        Convert Classic StoryMaps (Map Tour, Map Journal, Map Series, Cascade) to ArcGIS
         StoryMaps
       </p>
 
@@ -213,6 +213,7 @@ export default function Converter() {
             fontSize: "14px",
             border: "1px solid #ccc",
             borderRadius: "4px",
+            boxSizing: "border-box" 
           }}
         />
       </div>
@@ -255,20 +256,20 @@ export default function Converter() {
               status === "error"
                 ? "#ffe6e6"
                 : status === "success"
-                ? "#e6ffe6"
+                ? "#2B5B2B" //"#e6ffe6"
                 : "#e6f3ff",
             border: `1px solid ${
               status === "error"
                 ? "#ff0000"
                 : status === "success"
-                ? "#00cc00"
+                ? "#2B5B2B"
                 : "#0079c1"
             }`,
             color:
               status === "error"
                 ? "#cc0000"
                 : status === "success"
-                ? "#006600"
+                ? "#e3ffe3ff"
                 : "#003d5c",
           }}
         >
@@ -284,15 +285,23 @@ export default function Converter() {
       )}
 
       {convertedUrl && (
-        <div style={{ marginTop: "10px" }}>
-          <a
-            href={convertedUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: "#0079c1", textDecoration: "underline" }}
+        <div style={{ marginTop: "20px" }}>
+          <button
+            style={{
+              width: "100%",
+              padding: "12px",
+              fontSize: "16px",
+              fontWeight: "bold",
+              color: "white",
+              backgroundColor: "#28a745",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer"
+            }}
+            onClick={() => window.open(convertedUrl, '_blank')}
           >
             Click to Finish Publishing →
-          </a>
+          </button>
         </div>
       )}
 
@@ -301,7 +310,7 @@ export default function Converter() {
         <ol>
           <li>Sign in to ArcGIS Online using the sign-in button above.</li>
           <li>
-            Enter the Item ID of your Classic Story (MapJournal, MapSeries, or
+            Enter the Item ID of your Classic Story (Map Tour, Map Journal, Map Series, or
             Cascade)
           </li>
           <li>
