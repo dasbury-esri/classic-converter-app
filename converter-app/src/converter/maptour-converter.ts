@@ -394,7 +394,7 @@ export class MapTourConverter {
           const queryUrl = `${url}/query?where=1=1&outFields=*&f=json`;
           // const response = await fetch(queryUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } });
           const httpsUrl = ensureHttpsProtocol(queryUrl)
-          const proxyUrl = `http://localhost:3001/proxy-feature?url=${encodeURIComponent(httpsUrl)}`;
+          const proxyUrl = `/api/proxy-feature?url=${encodeURIComponent(httpsUrl)}`;
           const response = await fetch(proxyUrl);
           if (response.ok) {
             const fsJson = await response.json();
@@ -427,7 +427,7 @@ export class MapTourConverter {
               const queryUrl = `${url}/query?where=1=1&outFields=*&f=json`;
               // const response = await fetch(queryUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } });
               const httpsUrl = ensureHttpsProtocol(queryUrl)
-              const proxyUrl = `http://localhost:3001/proxy-feature?url=${encodeURIComponent(httpsUrl)}`;
+              const proxyUrl = `/api/proxy-feature?url=${encodeURIComponent(httpsUrl)}`;
               const response = await fetch(proxyUrl);
               if (response.ok) {
                 const fsJson = await response.json();
