@@ -222,14 +222,41 @@ export interface ClassicMedia {
   frameTag?: string;
 }
 
+interface MapTourFeature {
+  attributes: Record<string, unknown>;
+  geometry?: {
+    x?: number;
+    y?: number;
+    [key: string]: unknown;
+  };
+}
+
+export interface MapTourOrderItem {
+  id: string | number;
+  visible?: boolean;
+}
+
+export interface MapTourPlace {
+  id: string | number;
+  name?: string;
+  description?: string;
+  pic_url?: string;
+  thumb_url?: string;
+  geometry?: {
+    x?: number;
+    y?: number;
+    [key: string]: unknown;
+  };
+  [key: string]: unknown; // For any additional properties
+}
 export interface MapTourValues {
   title?: string;
   subtitle?: string;
   layout?: string;
-  order?: any[];
-  places?: any[];
+  order?: MapTourOrderItem[];
+  places?: MapTourPlace[];
   placardPosition?: string;
   colors?: string;
   webmap?: string;
-  [key: string]: any; // Allow extra keys
+  [key: string]: unknown; // Allow extra keys
 }

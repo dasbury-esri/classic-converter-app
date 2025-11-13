@@ -1,6 +1,6 @@
 import './App.css'
 import Converter from './components/Converter'
-import { useAuth } from './auth/AuthProvider'
+import { useAuth } from './auth/useAuth'
 
 function App() {
   const { token, signIn, signOut, loading } = useAuth();

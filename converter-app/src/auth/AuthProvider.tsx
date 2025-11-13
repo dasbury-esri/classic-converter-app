@@ -1,9 +1,6 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { UserSession } from "@esri/arcgis-rest-auth";
-
-const clientId = "wJK4zhJHaHyFzyQ2";
-const redirectUri = "https://regal-sable-0a6dde.netlify.app/";
-const SESSION_KEY = "arcgis_session";
+import { clientId, redirectUri, SESSION_KEY, saveSession, restoreSession, getTokenFromHash } from "./authUtils";
 
 type AuthContextType = {
   session: UserSession | null;
@@ -20,40 +17,6 @@ const AuthContext = createContext<AuthContextType>({
   signOut: () => {},
   loading: false,
 });
-
-export const useAuth = () => useContext(AuthContext);
-
-function saveSession(session: UserSession) {
-  try {
-    const serialized = session.serialize();
-    sessionStorage.setItem(SESSION_KEY, serialized);
-  } catch (error) {
-    console.warn("Could not serialize session:", error);
-  }
-}
-
-function restoreSession(): UserSession | null {
-  const serialized = sessionStorage.getItem(SESSION_KEY);
-  if (serialized) {
-    try {
-      return UserSession.deserialize(serialized);
-    } catch {
-      sessionStorage.removeItem(SESSION_KEY);
-    }
-  }
-  return null;
-}
-
-function getTokenFromHash(): { token: string | null; expires: number | null } {
-  const hash = window.location.hash.substring(1);
-  const params = new URLSearchParams(hash);
-  const token = params.get("access_token");
-  const expiresIn = params.get("expires_in");
-  return {
-    token,
-    expires: expiresIn ? Date.now() + parseInt(expiresIn, 10) * 1000 : null,
-  };
-}
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [session, setSession] = useState<UserSession | null>(restoreSession());

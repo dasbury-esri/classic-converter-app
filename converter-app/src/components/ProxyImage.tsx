@@ -10,7 +10,7 @@ async function fetchProxyImage(imageUrl: string): Promise<string> {
 }
 
 // Usage in a React component
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export function ProxyImage({ imageUrl }: { imageUrl: string }) {
   const [src, setSrc] = useState<string>('');

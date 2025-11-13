@@ -4,7 +4,7 @@
  */
 
 import { useState } from "react";
-import { useAuth } from "../auth/AuthProvider";
+import { useAuth } from "../auth/useAuth";
 import {
   getItemData,
   getItemDetails,

@@ -1,5 +1,9 @@
-import type { ClassicStoryMapJSON } from '../types/storymap';
-import type { MapTourValues } from '../types/storymap';
+import type { ClassicStoryMapJSON, StoryMapJSON } from '../types/storymap';
+import type { 
+  MapTourValues,
+  MapTourFeature,
+  MapTourPlace 
+} from '../types/storymap';
 
 import { StoryMapJSONBuilder } from './storymap-builder';
 import {
@@ -88,7 +92,7 @@ export class MapTourConverter {
     return this.targetStoryId;
   }
 
-  async convert(): Promise<any> {
+  async convert(): Promise<StoryMapJSON> {
     const values = this.classicJson.values || {};
     const mtValues = values as MapTourValues;
     // Directly extract layout, subtitle, and order from values
@@ -142,13 +146,13 @@ export class MapTourConverter {
   }
 
     // Feature ordering
-    const featureById: Record<string, any> = {};
+    const featureById: Record<string, MapTourFeature> = {};
     for (const feature of features) {
       const fid = this.getFeatureId(feature.attributes);
       if (fid) featureById[fid] = feature;
     }
     const filteredFeatures = placesList
-      .map((p: any) => featureById[String(p.id)])
+      .map((p: MapTourPlace) => featureById[String(p.id)])
       .filter(Boolean);
 
     console.log("Number of places:", filteredFeatures.length)  
@@ -256,7 +260,7 @@ export class MapTourConverter {
       const contents = [contentNodeId];
 
       // Geometry
-      let geomId = generateUUID();
+      const geomId = generateUUID();
       if (coords && coords.long !== undefined && coords.lat !== undefined) {
         geometries[geomId] = {
           id: geomId,
@@ -287,7 +291,7 @@ export class MapTourConverter {
     // Basemap resource creation and assignment
     const webmapJson = (this.classicJson as any).webmapJson || (mtValues as any).webmapJson || {};
     const webmapId = (this.classicJson as any).webmap || (mtValues as any).webmap;
-    let tourMapNode = createTourMapNode(geometries);
+    const tourMapNode = createTourMapNode(geometries);
     if (webmapJson && typeof webmapJson.version === 'string' && parseFloat(webmapJson.version) < 2.0) {
       // Use basemap name for old webmaps
       const basemapTitle = webmapJson.baseMap?.title?.toLowerCase() || 'topographic';
@@ -480,33 +484,9 @@ export class MapTourConverter {
   private generateUniqueFilename(fid: string, type: 'image' | 'thumb', url: string): string {
     const extMatch = url.match(/\.([a-zA-Z0-9]+)(\?|$)/);
     const ext = extMatch ? extMatch[1] : 'jpg';
-    const uid = this.randomUrlSafeBase64String();
+    const uid = Math.random().toString(36).substring(2, 8);
     const fidPadded = fid.padStart(3, '0');
     return `place_${fidPadded}_${type}_${uid}.${ext}`;
-  }
-
-  // Secure random UID generator
-  private randomUrlSafeBase64String(): string {
-    const bytes = new Uint8Array(4);
-    if (typeof window !== 'undefined' && window.crypto) {
-      window.crypto.getRandomValues(bytes);
-      return btoa(String.fromCharCode(...bytes))
-        .replace(/\+/g, '-')
-        .replace(/\//g, '_')
-        .replace(/=+$/, '')
-        .slice(0, 6);
-    } else {
-      // Node.js fallback
-      // Use Buffer and crypto
-      const crypto = require('crypto');
-      crypto.randomFillSync(bytes);
-      return Buffer.from(bytes)
-        .toString('base64')
-        .replace(/\+/g, '-')
-        .replace(/\//g, '_')
-        .replace(/=+$/, '')
-        .slice(0, 6);
-    }
   }
 
   // Transfer a single image and return transfer result
@@ -525,8 +505,8 @@ export class MapTourConverter {
     // Try attribute-based extraction
     const longStr = getAttrFromList(attrs, Array.from(LON_KEYS), '');
     const latStr = getAttrFromList(attrs, Array.from(LAT_KEYS), '');
-    let long = Number(longStr);
-    let lat = Number(latStr);
+    const long = Number(longStr);
+    const lat = Number(latStr);
 
     // If valid numbers, use them
     if (!isNaN(long) && !isNaN(lat) && long !== 0 && lat !== 0) {
