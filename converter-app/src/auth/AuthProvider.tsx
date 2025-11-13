@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { UserSession } from "@esri/arcgis-rest-auth";
 
-const clientId = "9Mtt4klv5XPptTIK";
-const redirectUri = "http://localhost:5173";
+const clientId = "wJK4zhJHaHyFzyQ2";
+const redirectUri = "https://regal-sable-0a6dde.netlify.app/";
 const SESSION_KEY = "arcgis_session";
 
 type AuthContextType = {
