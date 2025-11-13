@@ -28,7 +28,7 @@ const DESC_KEYS = [
   'desc', 'Desc', 'DESC', 'desc1', 'Desc1', 'DESC1',
   'caption', 'Caption', 'CAPTION', 'FULL_Caption'
 ] as const;
-const ATTR_KEYS = ['PHOTO_CREDIT', 'photo_credit', 'credit', 'attribution'] as const;
+// const ATTR_KEYS = ['PHOTO_CREDIT', 'photo_credit', 'credit', 'attribution'] as const;
 const LON_KEYS = ['long', 'Long', 'LONG', 'LON', 'longitude', 'Longitude', 'LONGITUDE', 'x'] as const;
 const LAT_KEYS = ['lat', 'Lat', 'LAT', 'latitude', 'Latitude', 'LATITUDE', 'y'] as const;
 
@@ -97,19 +97,19 @@ export class MapTourConverter {
     const subtitle = mtValues.subtitle || '';
     const placesList = mtValues.order || mtValues.places || [];
     const placardPosition = mtValues.placardPosition || 'start';
-    const headerColor = mtValues.colors ? mtValues.colors.split(';')[0] : '#FFFFFF'; // fallback to white. Classic Map Tour had a very simple theme "header". "content" (i.e. slide) and "footer" (i.e. silde carousel)
-    const slideColor = mtValues.colors ? mtValues.colors.split(';')[1] : '#FFFFFF'; // thumbnail background color
-    const carouselColor = mtValues.colors ? mtValues.colors.split(';')[2] : '#FFFFFF'; // thumbnail carousel background color
-    const zoomLevel = mtValues.zoomLevel || ''; // map zoom level after navigating to a point. Need to translate the zoomLevel [0-22?] to a scale for AGSM (enum?) 
-    const locateButton = mtValues.locationButton || ''; // option to show the location button in the UI
-    const customLogoImageUrl = mtValues.logoURL || '';
-    const customLogoClickThroughLink = mtValues.logoTarget || '';
-    const customHeaderText = mtValues.headerLinkText || '';
-    const customHeaderClickThroughLink = mtValues.headerLinkUrl || '';
-    const socialButtonFacebook = mtValues.social.facebook || ''; // boolean
-    const socialButtonTwitter = mtValues.social.twitter || ''; // boolean
-    const socialButtonBitly = mtValues.social.bitly || ''; // boolean
-    const firstRecordAsIntro = mtValues.firstRecordAsIntro || ''; // option to make the first feature/point a splash page. During conversion we can make this data the cover.
+    // const headerColor = mtValues.colors ? mtValues.colors.split(';')[0] : '#FFFFFF'; // fallback to white. Classic Map Tour had a very simple theme "header". "content" (i.e. slide) and "footer" (i.e. silde carousel)
+    // const slideColor = mtValues.colors ? mtValues.colors.split(';')[1] : '#FFFFFF'; // thumbnail background color
+    // const carouselColor = mtValues.colors ? mtValues.colors.split(';')[2] : '#FFFFFF'; // thumbnail carousel background color
+    // const zoomLevel = mtValues.zoomLevel || ''; // map zoom level after navigating to a point. Need to translate the zoomLevel [0-22?] to a scale for AGSM (enum?) 
+    // const locateButton = mtValues.locationButton || ''; // option to show the location button in the UI
+    // const customLogoImageUrl = mtValues.logoURL || '';
+    // const customLogoClickThroughLink = mtValues.logoTarget || '';
+    // const customHeaderText = mtValues.headerLinkText || '';
+    // const customHeaderClickThroughLink = mtValues.headerLinkUrl || '';
+    // const socialButtonFacebook = mtValues.social.facebook || ''; // boolean
+    // const socialButtonTwitter = mtValues.social.twitter || ''; // boolean
+    // const socialButtonBitly = mtValues.social.bitly || ''; // boolean
+    // const firstRecordAsIntro = mtValues.firstRecordAsIntro || ''; // option to make the first feature/point a splash page. During conversion we can make this data the cover.
     const accentColor = '#f9f794'; // in classic Map Tour, each point could have a customized marker color. AGSM doesn't have this option. fallback color
     const features = await this.extractFeatures();
 
@@ -118,7 +118,7 @@ export class MapTourConverter {
     // Create nodes
     const rootId = this.getRootNodeId();
     const storymapNodes = this.builder.getStorymap().nodes;
-    const children = storymapNodes[rootId].children || [];
+    // const children = storymapNodes[rootId].children || [];
     const coverId = Object.keys(storymapNodes).find(id => storymapNodes[id]?.type === 'storycover');
     const navId = Object.keys(storymapNodes).find(id => storymapNodes[id]?.type === 'navigation');
   // Create credits node and its children
@@ -131,7 +131,7 @@ export class MapTourConverter {
   if (navId) orderedNodeIds.push(navId);
 
   const rootChildren = storymapNodes[rootId].children || [];
-  const oldCreditsId = rootChildren.find(id => storymapNodes[id]?.type === 'credits' && id !== creditsId);
+  const oldCreditsId = rootChildren.find((id: string) => storymapNodes[id]?.type === 'credits' && id !== creditsId);
 
   if (oldCreditsId) {
     // Remove from nodes
@@ -160,8 +160,8 @@ export class MapTourConverter {
       const fid = this.getFeatureId(feature.attributes);
       if (!fid) continue;
       const attrs = feature.attributes || {};
-      const imageUrl = getAttrFromList(attrs, IMAGE_URL_KEYS, '');
-      const thumbUrl = getAttrFromList(attrs, THUMB_URL_KEYS, '');
+      const imageUrl = getAttrFromList(attrs, Array.from(IMAGE_URL_KEYS), '');
+      const thumbUrl = getAttrFromList(attrs, Array.from(THUMB_URL_KEYS), '');
       // Generate unique filenames
       const imageFilename = this.generateUniqueFilename(fid, 'image', imageUrl);
       const thumbFilename = thumbUrl ? this.generateUniqueFilename(fid, 'thumb', thumbUrl) : '';
@@ -215,9 +215,9 @@ export class MapTourConverter {
       const feature = filteredFeatures[i];
       const attrs = feature.attributes || {};
       const fid = this.getFeatureId(attrs);
-      const titleText = getAttrFromList(attrs, TITLE_KEYS, `Place ${i + 1}`);
-      const descText = getAttrFromList(attrs, DESC_KEYS, '');
-      const attributionText = getAttrFromList(attrs, ATTR_KEYS, '');
+      const titleText = getAttrFromList(attrs, Array.from(TITLE_KEYS), `Place ${i + 1}`);
+      const descText = getAttrFromList(attrs, Array.from(DESC_KEYS), '');
+      // const attributionText = getAttrFromList(attrs, Array.from(ATTR_KEYS), '');
       const isVisible = placesList[i]?.visible !== false;
       const coords = this.getFeatureCoords(feature);
       if (!coords) continue; // skip if no valid coordinates 
@@ -353,7 +353,7 @@ export class MapTourConverter {
     }
     this.builder.getStorymap().nodes = reordered;
 
-  this.setRootChildren([coverId, navId, tourNodeId, tourMapNodeId, creditsId].filter(Boolean));
+  this.setRootChildren([coverId, navId, tourNodeId, tourMapNodeId, creditsId].filter(Boolean) as string[]);
 
     // Set cover and theme
     this.builder.setCover(`(CONVERSION) ${title}`, subtitle);
@@ -365,7 +365,7 @@ export class MapTourConverter {
 
   private async extractFeatures(): Promise<any[]> {
     const values = this.classicJson.values || {};
-    const webmapJson = (this.classicJson as any).webmapJson || (mtValues as any).webmapJson || {};
+    const webmapJson = (this.classicJson as any).webmapJson || (values as any).webmapJson || {};
     const layers = webmapJson.operationalLayers || [];
     const sourceLayer = (this.classicJson as any).sourceLayer || (values as any).sourceLayer;
     let mapTourLayer: any = null;
@@ -523,8 +523,8 @@ export class MapTourConverter {
   private getFeatureCoords(feature: any): { long: number, lat: number } | undefined {
     const attrs = feature.attributes || {};
     // Try attribute-based extraction
-    const longStr = getAttrFromList(attrs, LON_KEYS, '');
-    const latStr = getAttrFromList(attrs, LAT_KEYS, '');
+    const longStr = getAttrFromList(attrs, Array.from(LON_KEYS), '');
+    const latStr = getAttrFromList(attrs, Array.from(LAT_KEYS), '');
     let long = Number(longStr);
     let lat = Number(latStr);
 

@@ -3,7 +3,7 @@
  * Minimal form interface for conversion
  */
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../auth/AuthProvider";
 import {
   getItemData,
@@ -21,7 +21,7 @@ import {
   transferImages,
   updateImageUrlsInJson,
 } from "../api/image-transfer";
-import { saveJsonToFile } from '../converter/utils';
+// import { saveJsonToFile } from '../converter/utils';
 
 type Status =
   | "idle"

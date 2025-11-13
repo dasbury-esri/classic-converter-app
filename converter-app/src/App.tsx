@@ -3,7 +3,7 @@ import Converter from './components/Converter'
 import { useAuth } from './auth/AuthProvider'
 
 function App() {
-  const { token, signIn, signOut, session, loading } = useAuth();
+  const { token, signIn, signOut, loading } = useAuth();
 
   return (
     <div className="App">

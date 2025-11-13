@@ -16,7 +16,6 @@ import {
   createTextNode,
   createImageNode,
   createImageResource,
-  createCarouselNode,
   createMapNode,
   createMapResource,
   createEmbedNode,

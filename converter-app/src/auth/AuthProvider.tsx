@@ -84,7 +84,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const signOut = () => {
     if (session) {
-      session.logout();
       setSession(null);
       sessionStorage.removeItem(SESSION_KEY);
     }
