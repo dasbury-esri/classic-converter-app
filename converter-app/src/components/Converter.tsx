@@ -38,6 +38,7 @@ export default function Converter() {
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const [convertedUrl, setConvertedUrl] = useState("");
+  const [publishing, setPublishing] = useState(false);
 
   const handleConvert = async () => {
     // Reset state
@@ -181,6 +182,7 @@ export default function Converter() {
       setConvertedUrl(
         `https://storymaps.arcgis.com/stories/${targetStoryId}/edit`
       );
+      setPublishing(true);
     } catch (error: any) {
       setStatus("error");
       setMessage(`Error: ${error.message || "An unknown error occurred"}`);
@@ -221,7 +223,7 @@ export default function Converter() {
       <button
         onClick={handleConvert}
         disabled={
-          status !== "idle" && status !== "error" && status !== "success"
+          publishing || (status !== "idle" && status !== "error" && status !== "success")
         }
         style={{
           width: "100%",
@@ -230,13 +232,13 @@ export default function Converter() {
           fontWeight: "bold",
           color: "white",
           backgroundColor:
-            status !== "idle" && status !== "error" && status !== "success"
+            publishing || (status !== "idle" && status !== "error" && status !== "success")
               ? "#ccc"
               : "#0079c1",
           border: "none",
           borderRadius: "4px",
           cursor:
-            status !== "idle" && status !== "error" && status !== "success"
+            publishing || (status !== "idle" && status !== "error" && status !== "success")
               ? "not-allowed"
               : "pointer",
         }}
@@ -298,7 +300,12 @@ export default function Converter() {
               borderRadius: "4px",
               cursor: "pointer"
             }}
-            onClick={() => window.open(convertedUrl, '_blank')}
+            onClick={() => {
+              window.open(convertedUrl, '_blank');
+              setPublishing(false);
+              setConvertedUrl("");
+            }}
+            disabled={!publishing}
           >
             Click to Finish Publishing →
           </button>
