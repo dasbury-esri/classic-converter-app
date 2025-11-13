@@ -3,12 +3,6 @@
 # Required for all converters
 beautifulsoup4>=4.9.0
 
-# Required for API-based conversion (converter_v2.py)
-arcgis>=2.1.0.2
-
-# Optional: For .env file support (recommended)
-python-dotenv>=0.19.0
-
 # Optional: For test script
 # (uses arcgis + python-dotenv)
 
