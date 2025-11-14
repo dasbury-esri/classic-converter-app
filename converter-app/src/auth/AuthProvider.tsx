@@ -3,6 +3,10 @@ import { UserSession } from "@esri/arcgis-rest-auth";
 import { clientId, redirectUri, SESSION_KEY, saveSession, restoreSession, getTokenFromHash } from "./AuthUtils";
 import { AuthContext } from "./AuthContext";
 
+const authMethod = import.meta.env.VITE_AUTH_METHOD;
+const clientId = import.meta.env.VITE_CLIENT_ID;
+const redirectUri = import.meta.env.VITE_REDIRECT_URI;
+
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [session, setSession] = useState<UserSession | null>(restoreSession());
   const [loading, setLoading] = useState(true);
@@ -27,7 +31,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const signIn = () => {
-    UserSession.beginOAuth2({ clientId, redirectUri, popup: false });
+    // Use different OAuth2 methods for dev and prod
+    if (authMethod === "dev") {
+      UserSession.beginOAuth2({
+        clientId,
+        redirectUri,
+        popup: false // Use popup for dev
+      });
+    } else {
+      UserSession.beginOAuth2({
+        clientId,
+        redirectUri,
+        popup: false // Use redirect for prod
+      });
+    }
   };
 
   const signOut = () => {

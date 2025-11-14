@@ -44,6 +44,8 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+node_modules
+converter-app/node_modules/
 dist-ssr
 *.local
 

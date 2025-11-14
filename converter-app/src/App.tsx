@@ -30,8 +30,8 @@ function App() {
           <button
             onClick={signOut}
             style={{
-              opacity: 0.5,
-              cursor: "not-allowed",
+              opacity: 1,
+              cursor: "pointer",
               padding: "10px 24px",
               fontSize: "16px",
               fontWeight: "bold",
@@ -40,7 +40,6 @@ function App() {
               border: "none",
               borderRadius: "4px",
             }}
-            disabled
           >
             Sign Out of ArcGIS
           </button>

@@ -23,6 +23,8 @@ import {
   ensureHttpsProtocol 
 } from './utils';
 
+const proxyBaseUrl = import.meta.env.VITE_PROXY_BASE_URL;
+
 // Attribute key lists (update here as needed)
 const IMAGE_URL_KEYS = ['pic_url', 'Pic_url', 'PIC_URL', 'url', 'Url', 'URL'] as const;
 const THUMB_URL_KEYS = ['thumb_url', 'Thumb_url', 'THUMB_URL'] as const;
@@ -96,7 +98,7 @@ export class MapTourConverter {
     const values = this.classicJson.values || {};
     const mtValues = values as MapTourValues;
     // Directly extract layout, subtitle, and order from values
-    const layout = mtValues.layout || 'integrated'; // classic options were; "three-panel", "integrated", "side-panel"
+    const layout = mtValues.layout || 'integrated'; // classic options were; "three-panel" -> guided-tour/media-focused, "integrated" -> guided-tour/map-focused, "side-panel" -> guided-tour/media-focused
     const title = mtValues.title || 'Untitled Story';
     const subtitle = mtValues.subtitle || '';
     const placardPosition = mtValues.placardPosition || 'start';
@@ -420,7 +422,7 @@ export class MapTourConverter {
           const queryUrl = `${url}/query?where=1=1&outFields=*&f=json`;
           // const response = await fetch(queryUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } });
           const httpsUrl = ensureHttpsProtocol(queryUrl)
-          const proxyUrl = `/api/proxy-feature?url=${encodeURIComponent(httpsUrl)}`;
+          const proxyUrl = `${proxyBaseUrl}/proxy-feature?url=${encodeURIComponent(httpsUrl)}`;
           const response = await fetch(proxyUrl);
           if (response.ok) {
             const fsJson = await response.json();
@@ -453,7 +455,7 @@ export class MapTourConverter {
               const queryUrl = `${url}/query?where=1=1&outFields=*&f=json`;
               // const response = await fetch(queryUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } });
               const httpsUrl = ensureHttpsProtocol(queryUrl)
-              const proxyUrl = `/api/proxy-feature?url=${encodeURIComponent(httpsUrl)}`;
+              const proxyUrl = `${proxyBaseUrl}/proxy-feature?url=${encodeURIComponent(httpsUrl)}`;
               const response = await fetch(proxyUrl);
               if (response.ok) {
                 const fsJson = await response.json();

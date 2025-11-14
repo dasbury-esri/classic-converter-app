@@ -1,6 +1,8 @@
+const proxyBaseUrl = import.meta.env.VITE_PROXY_BASE_URL;
+
 // Example: Fetch and display image from Netlify function
 async function fetchProxyImage(imageUrl: string): Promise<string> {
-  const proxyUrl = `/api/proxy-image?url=${encodeURIComponent(imageUrl)}`;
+  const proxyUrl = `${proxyBaseUrl}/proxy-image?url=${encodeURIComponent(imageUrl)}`;
   const response = await fetch(proxyUrl);
   if (!response.ok) throw new Error('Failed to fetch image');
   const contentType = response.headers.get('Content-Type') || 'image/jpeg';
