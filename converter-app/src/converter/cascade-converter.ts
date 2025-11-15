@@ -8,12 +8,13 @@
 
 import type { ClassicStoryMapJSON } from '../types/storymap';
 import { StoryMapJSONBuilder } from './storymap-builder';
+import { createCreditsNode } from './storymap-schema';
 import {
   determineScaleZoomLevel,
   ensureHttpsProtocol,
   isNonEmptyString,
   extractProviderUrl,
-  // detectTheme
+  detectTheme
 } from './utils';
 import { TEXT_STYLES, ALIGNMENTS, createImageResource, createImageNode, createEmbedNode, createMapResource, createMapNode } from './storymap-schema';
 
@@ -26,7 +27,7 @@ export class CascadeConverter {
     this.classicJson = classicJson;
     this.themeId = themeId;
     this.builder = new StoryMapJSONBuilder(themeId);
-    this.detectTheme();
+    detectTheme(this.classicJson, 'cascade');
   }
 
   /**
@@ -70,7 +71,7 @@ export class CascadeConverter {
         this.processTitle(section);
         break;
       case 'credits':
-        this.processCredits(section);
+        createCreditsNode(section);
         break;
     }
   }

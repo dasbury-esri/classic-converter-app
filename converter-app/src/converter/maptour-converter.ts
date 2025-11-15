@@ -349,7 +349,17 @@ export class MapTourConverter {
       'integrated': { tourType: 'guided-tour', subtype: 'map-focused' }
     };
     // Create Tour node (detached)  
-    const { tourType, subtype } = layoutMapping[layout] || { tourType: 'explorer', subtype: 'grid' };
+    // Use explorer/grid if more than 15 places
+    let tourType: string;
+    let subtype: string;
+    if (places.length > 15) {
+      tourType = 'explorer';
+      subtype = 'grid';
+    } else {
+      const layoutConfig = layoutMapping[layout] || { tourType: 'explorer', subtype: 'grid' };
+      tourType = layoutConfig.tourType;
+      subtype = layoutConfig.subtype;
+    }
 
     const tourNode = createTourNode(
       places,
