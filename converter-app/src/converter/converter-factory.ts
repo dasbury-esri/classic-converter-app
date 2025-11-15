@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /**
  * Converter Factory
  * Selects appropriate converter based on classic story type
@@ -5,10 +7,16 @@
  */
 
 import type { ClassicStoryMapJSON } from '../types/storymap';
-import { JournalSeriesConverter } from './journal-converter';
+import { BasicConverter} from './basic-converter';
 import { CascadeConverter } from './cascade-converter';
+import { CrowdsourceConverter } from './crowdsource-converter';
+import { MapJournalConverter } from './mapjournal-converter';
+import { MapSeriesConverter } from './mapseries-converter';
 import { MapTourConverter } from './maptour-converter';
+import { ShortlistConverter} from './shortlist-converter';
+import { SwipeConverter } from './swipe-converter';
 import { collectImageUrls, transferImages, updateImageUrlsInJson } from '../api/image-transfer';
+import { detectClassicAppType } from './utils';
 
 export class ConverterFactory {
   /**
@@ -20,32 +28,33 @@ export class ConverterFactory {
     username?: string,
     token?: string,
     targetStoryId?: string
-  ): JournalSeriesConverter | CascadeConverter | MapTourConverter {
+  ): BasicConverter | CascadeConverter | CrowdsourceConverter | MapJournalConverter | MapSeriesConverter | 
+  MapTourConverter | ShortlistConverter | SwipeConverter {
     const values = classicJson.values;
-
     if (!values) {
       throw new Error('Invalid classic story JSON: missing "values" key');
     }
-
-    // Detect Map Tour
-  let rawTemplate = (values as any).template || (values as any).templateName || (values as any).name || '';
-  if (typeof rawTemplate !== 'string') rawTemplate = String(rawTemplate);
-    const template = rawTemplate.toLowerCase();
-    if (template.includes('map tour')) {
-      return new MapTourConverter(classicJson, themeId, username || '', token || '', targetStoryId || '');
+    const appType = detectClassicAppType(classicJson);
+    switch (appType) {
+      case 'maptour':
+        return new MapTourConverter(classicJson, themeId, username || '', token || '', targetStoryId || '');
+      case 'mapjournal':
+        return new MapJournalConverter(classicJson, themeId);
+      case 'mapseries':
+        return new MapSeriesConverter(classicJson, themeId);
+      case 'cascade':
+        return new CascadeConverter(classicJson, themeId);
+      case 'swipe':
+        return new SwipeConverter(classicJson, themeId);
+      case 'shortlist':
+        return new ShortlistConverter(classicJson, themeId);
+      case 'crowdsource':
+        return new CrowdsourceConverter(classicJson, themeId); // this is a placeholder
+      case 'basic':
+        return new BasicConverter(classicJson, themeId);
+      default:
+        throw new Error(`Unknown classic story type: ${appType}`);
     }
-    // Detect Journal/Series
-    if (values.story) {
-      const story = values.story;
-      if (story.sections || story.entries) {
-        return new JournalSeriesConverter(classicJson, themeId);
-      }
-    }
-    // DetectCascade
-    if (values.sections) {
-      return new CascadeConverter(classicJson, themeId);
-    }
-    throw new Error('Unknown classic story type');
   }
 }
 

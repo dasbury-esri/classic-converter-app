@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /**
  * Utility functions for StoryMap conversion
  * Ported from converter_json.py
@@ -11,6 +13,155 @@ import type { Extent } from '../types/storymap';
 export function isNonEmptyString(str: string): boolean {
   return str.trim().length > 0;
 }
+
+/**
+ * Detect theme from settings
+ */
+// export function detectTheme(): void {
+//   try {
+//     const themeMajor =
+//       this.classicJson.values?.settings?.theme?.colors?.themeMajor;
+//     const themeMapping: Record<string, string> = {
+//       dark: 'obsidian',
+//       light: 'summit'
+//     };
+//     if (themeMajor && themeMapping[themeMajor]) {
+//       this.themeId = themeMapping[themeMajor];
+//     }
+//   } catch {
+//     // Use default theme
+//   }
+// }
+
+/**
+ * Detect the classic app template type from classicJson.
+ * Returns one of: 'maptour', 'mapjournal', 'mapseries', 'cascade', 'swipe', 'shortlist', 'crowdsource', 'basic', or 'unknown'.
+ */
+export function detectClassicAppType(classicJson: any): string {
+  const values = classicJson.values || {};
+
+  // 1. Check explicit template fields
+  let rawTemplate = values.template || values.templateName || values.name || '';
+  if (typeof rawTemplate !== 'string') rawTemplate = String(rawTemplate);
+  const template = rawTemplate.toLowerCase();
+
+  if (template.includes('map tour')) return 'maptour';
+  if (template.includes('journal')) return 'mapjournal';
+  if (template.includes('series')) return 'mapseries';
+  if (template.includes('cascade')) return 'cascade';
+  if (template.includes('swipe')) return 'swipe';
+  if (template.includes('shortlist')) return 'shortlist';
+  if (template.includes('crowdsource')) return 'crowdsource';
+  if (template.includes('basic')) return 'basic';
+
+  // 2. Structural clues
+  if (values.story?.sections) return 'mapjournal';
+  if (values.story?.entries) return 'mapseries';
+  if (values.sections) return 'cascade';
+  if (values.webmaps && Array.isArray(values.webmaps)) return 'swipe';
+  if (values.tabs && Array.isArray(values.tabs)) return 'shortlist';
+  if (values.dataModel === 'TWO_LAYERS') return 'swipe';
+  if (values.layout && typeof values.layout === 'string' && values.layout.toLowerCase().includes('swipe')) return 'swipe';
+  if (values.dataModel === 'CROWD') return 'crowdsource';
+
+  // 3. Map Tour: colors and order fields, or operationalLayers with featureCollection
+  if (values.colors && typeof values.colors === 'string' && values.order) return 'maptour';
+
+  // 4. Fallback: check for known keys
+  if (values.settings?.theme?.colors) {
+    // Could be journal, series, cascade, shortlist, crowdsource, basic
+    // Try to guess from other keys
+    if (values.settings?.theme?.colors?.themeMajor) {
+      const major = values.settings.theme.colors.themeMajor.toLowerCase();
+      if (major === 'dark' || major === 'light') return 'cascade';
+    }
+  }
+
+  // 5. Unknown
+  return 'unknown';
+}
+
+
+/**
+ * Refactored detectTheme to account for all template versions
+ */
+export interface NormalizedTheme {
+  headerColor?: string;
+  backgroundColor?: string;
+  carouselColor?: string;
+  themeMajor?: string;
+  [key: string]: string | undefined;
+}
+
+export function detectTheme(classicJson: any, appType: string): NormalizedTheme {
+  const values = classicJson.values || {};
+  let theme: NormalizedTheme = {};
+
+  if (appType === "mapjournal" || appType === "mapseries" || appType === "cascade") {
+    const colors = values.settings?.theme?.colors;
+    if (colors) {
+      theme.themeMajor = colors.themeMajor;
+      theme.headerColor = colors.header;
+      theme.backgroundColor = colors.panel || colors.bgMain;
+      theme.textColor = colors.text;
+      theme.linkColor = colors.textLink;
+      // Add more as needed
+    }
+  } else if (appType === "maptour") {
+    // Map Tour: colors is a semicolon-separated string
+    const colorStr = values.colors || "";
+    const colorArr = colorStr.split(";");
+    theme.headerColor = colorArr[0] || undefined;
+    theme.backgroundColor = colorArr[1] || undefined;
+    theme.carouselColor = colorArr[2] || undefined;
+  } else if (appType === "swipe") {
+    // Swipe: colors is a semicolon-separated string
+    const colorStr = values.colors || "";
+    const colorArr = colorStr.split(";");
+    theme.headerColor = colorArr[0] || undefined;
+    theme.backgroundColor = colorArr[1] || undefined;
+  } else if (appType === "crowdsource") {
+    // Crowdsource: theme is under "values/settings/layout"
+    theme = values.settings.layout.theme || undefined;
+} else if (appType === "shortlist") {
+  // Get header color from settings.themeOptions.headerColor
+  const headerColor = values.settings?.themeOptions?.headerColor;
+  if (headerColor) {
+    theme.headerColor = headerColor;
+  }
+  // Collect tab colors if present
+  const tabs = values.tabs || {};
+  theme.tabColors = [];
+  for (const tabKey of Object.keys(tabs)) {
+    const tab = tabs[tabKey];
+    if (tab && tab.color) {
+      theme.tabColors.push(tab.color);
+    }
+  }
+  // Fallback: Try values.colors or settings.theme.colors if headerColor not found
+  if (!theme.headerColor) {
+    const colorStr = values.colors || "";
+    if (colorStr) {
+      const colorArr = colorStr.split(";");
+      theme.headerColor = colorArr[0] || undefined;
+      theme.backgroundColor = colorArr[1] || undefined;
+    } else {
+      const colors = values.settings?.theme?.colors;
+      if (colors) {
+        theme.headerColor = colors.header;
+        theme.backgroundColor = colors.panel || colors.bgMain;
+      }
+    }
+  }
+  } else if (appType === "basic") {
+    // Basic didn't always have themed colors
+    theme.backgroundColor = values.background || undefined;
+    theme.textColor = values.color || undefined;
+  }
+
+  return theme;
+}
+
 
 /**
  * Remove non-essential HTML tags from content
@@ -114,7 +265,7 @@ export function determineScaleZoomLevel(
 
   const ymax = extent.ymax;
   const ymin = extent.ymin;
-  let mapScale = (ymax - ymin) * scaleCoefficient;
+  const mapScale = (ymax - ymin) * scaleCoefficient;
 
   let selectedScale = SCALE_ZOOM_LEVELS[0].scale;
   let selectedZoom = SCALE_ZOOM_LEVELS[0].zoom;

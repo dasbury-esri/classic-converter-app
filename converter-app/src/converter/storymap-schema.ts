@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /**
  * StoryMap JSON schema utilities
  * Node and resource creators following official ArcGIS StoryMap schema
@@ -553,7 +555,7 @@ export function setCoverData(
  */
 export function setTheme(storymap: StoryMapJSON, themeId: string): void {
   // Find theme resource
-  for (const [_resourceId, resource] of Object.entries(storymap.resources)) {
+  for (const [ resource ] of Object.entries(storymap.resources)) {
     if (resource.type === 'story-theme') {
       if (STANDARD_THEMES.includes(themeId)) {
         resource.data.themeId = themeId;
@@ -637,9 +639,9 @@ export function createTourNode(
   mapNodeId: string,
   accentColor: string,
   narrativePanelPosition: string = 'start',
-  narrativePanelSize: string = 'medium',
-  tourType: string = 'guided-tour',
-  subtype: string = 'media-focused'
+  narrativePanelSize: string,
+  tourType: string,
+  subtype: string
 ): any {
   return {
     type: 'tour',

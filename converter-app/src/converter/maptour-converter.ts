@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import type { ClassicStoryMapJSON, StoryMapJSON } from '../types/storymap';
 import type { 
   MapTourValues,
@@ -115,7 +117,7 @@ export class MapTourConverter {
     // const socialButtonTwitter = mtValues.social.twitter || ''; // boolean
     // const socialButtonBitly = mtValues.social.bitly || ''; // boolean
     // const firstRecordAsIntro = mtValues.firstRecordAsIntro || ''; // option to make the first feature/point a splash page. During conversion we can make this data the cover.
-    const accentColor = '#f9f794'; // in classic Map Tour, each point could have a customized marker color. AGSM doesn't have this option. fallback color
+    const accentColor = '#f9f794'; // in classic Map Tour, each point could have one of four marker colors (red, blue, green, purple). AGSM doesn't have this option. AGSM color is derived from Theme "accentColor1" 
     const features = await this.extractFeatures();
 
     // Track node IDs to enforce proper order
@@ -147,7 +149,11 @@ export class MapTourConverter {
   }
 
     // Feature ordering
-    const placesArr = Array.isArray(mtValues.places) ? mtValues.places : [];
+    const placesArr: MapTourPlace[] = features.map(f => ({
+      id: this.getFeatureId(f.attributes),
+      ...f.attributes,
+      geometry: f.geometry
+    }));
     const orderArr = Array.isArray(mtValues.order) ? mtValues.order : [];
 
     // Build ordered/filtered places list
@@ -333,19 +339,17 @@ export class MapTourConverter {
     }
     const tourMapNodeId = this.builder.createDetachedNode(tourMapNode);
   
-    // Tour node (detached)
-    const tourType =
-      layout === 'integrated'
-        ? 'guided-tour'
-        : layout === 'three-panel' || layout === 'side-panel'
-        ? 'guided-tour'
-        : 'explorer';
-    const subtype =
-      layout === 'integrated'
-        ? 'map-focused'
-        : layout === 'three-panel' || layout === 'side-panel'
-        ? 'media-focused'
-        : 'grid';
+    // Classic layout options were: 
+    // "three-panel" -> convert to AGSM guided-tour/media-focused, 
+    // "integrated" -> convert to AGSM guided-tour/map-focused, 
+    // "side-panel" -> convert to AGSM guided-tour/media-focused
+    const layoutMapping: Record<string, { tourType: string; subtype: string }> = {
+      'three-panel': { tourType: 'guided-tour', subtype: 'media-focused' },
+      'side-panel': { tourType: 'guided-tour', subtype: 'media-focused' },
+      'integrated': { tourType: 'guided-tour', subtype: 'map-focused' }
+    };
+    // Create Tour node (detached)  
+    const { tourType, subtype } = layoutMapping[layout] || { tourType: 'explorer', subtype: 'grid' };
 
     const tourNode = createTourNode(
       places,
@@ -391,88 +395,89 @@ export class MapTourConverter {
     return storymapJson;
   }
 
-  private async extractFeatures(): Promise<any[]> {
+  private async extractFeatures(): Promise<MapTourFeature[]> {
     const values = this.classicJson.values || {};
     const webmapJson = (this.classicJson as any).webmapJson || (values as any).webmapJson || {};
     const layers = webmapJson.operationalLayers || [];
+    // Try to use sourceLayer from classicJson
     const sourceLayer = (this.classicJson as any).sourceLayer || (values as any).sourceLayer;
-    let mapTourLayer: any = null;
-    for (const layer of layers) {
-      if ((layer.title || '').toLowerCase() === 'map tour layer') {
-        mapTourLayer = layer;
-        break;
-      }
-    }
-    if (mapTourLayer) {
-      if (mapTourLayer.featureCollection) {
-        const fc = mapTourLayer.featureCollection;
-        for (const fcLayer of fc.layers || []) {
-          if (fcLayer.featureSet) {
-            const feats = fcLayer.featureSet.features || [];
-            return feats;
-          }
-        }
-      }
-      const featureServiceUrl = mapTourLayer.url || mapTourLayer.URL;
-      if (featureServiceUrl) {
-        let url = featureServiceUrl;
-        if (url.startsWith('http://')) url = 'https://' + url.slice(7);
-        try {
-          // Direct fetch
-          const queryUrl = `${url}/query?where=1=1&outFields=*&f=json`;
-          // const response = await fetch(queryUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-          const httpsUrl = ensureHttpsProtocol(queryUrl)
-          const proxyUrl = `${proxyBaseUrl}/proxy-feature?url=${encodeURIComponent(httpsUrl)}`;
-          const response = await fetch(proxyUrl);
-          if (response.ok) {
-            const fsJson = await response.json();
-            if (fsJson.features) {
-              return fsJson.features;
-            }
-          }
-        } catch (err) {
-          console.error('Error fetching features from Map Tour feature service:', err);
-        }
-      }
-    } else if (sourceLayer) {
+    if (sourceLayer) {
       for (const layer of layers) {
+        // Match by id 
         const layerId = layer.id || '';
-        if (layerId.includes(sourceLayer) || sourceLayer.includes(layerId)) {
+        if (
+          layerId === sourceLayer ||
+          layerId.includes(sourceLayer) ||
+          sourceLayer.includes(layerId)
+        ) {
           if (layer.featureCollection) {
-            const fc = layer.featureCollection;
-            for (const fcLayer of fc.layers || []) {
-              if (fcLayer.featureSet) {
-                const feats = fcLayer.featureSet.features || [];
-                return feats;
+            for (const fcLayer of layer.featureCollection.layers || []) {
+              if (fcLayer.featureSet && Array.isArray(fcLayer.featureSet.features)) {
+                return fcLayer.featureSet.features;
               }
             }
           }
+          // Fallback: try feature service
           const featureServiceUrl = layer.url || layer.URL;
           if (featureServiceUrl) {
-            let url = featureServiceUrl;
-            if (url.startsWith('http://')) url = 'https://' + url.slice(7);
             try {
-              const queryUrl = `${url}/query?where=1=1&outFields=*&f=json`;
-              // const response = await fetch(queryUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-              const httpsUrl = ensureHttpsProtocol(queryUrl)
-              const proxyUrl = `${proxyBaseUrl}/proxy-feature?url=${encodeURIComponent(httpsUrl)}`;
+              const queryUrl = `${ensureHttpsProtocol(featureServiceUrl)}/query?where=1=1&outFields=*&f=json`;
+              const proxyUrl = `${proxyBaseUrl}/proxy-feature?url=${encodeURIComponent(queryUrl)}`;
               const response = await fetch(proxyUrl);
               if (response.ok) {
                 const fsJson = await response.json();
-                if (fsJson.features) {
-                  return fsJson.features;
-                }
+                if (fsJson.features) return fsJson.features;
               }
             } catch (err) {
-              console.error('Error fetching features from fallback feature service:', err);
+              console.error('Error fetching features from feature service:', err);
             }
           }
-          break;
         }
       }
     }
+
+    // Fuzzy title search if no sourceLayer
+    const fuzzyTitles = [
+      "map tour layer",
+      "maptour-layer",
+      "maptour layer",
+      "map tour",
+      "maptour"
+    ];
+    for (const layer of layers) {
+      const title = (layer.title || '').toLowerCase();
+      if (
+        fuzzyTitles.some(ft => title.includes(ft)) ||
+        /^maptour-layer/i.test(layer.id || '')
+      ) {
+        if (layer.featureCollection) {
+          for (const fcLayer of layer.featureCollection.layers || []) {
+            if (fcLayer.featureSet && Array.isArray(fcLayer.featureSet.features)) {
+              return fcLayer.featureSet.features;
+            }
+          }
+        }
+        // Fallback: try feature service
+        const featureServiceUrl = layer.url || layer.URL;
+        if (featureServiceUrl) {
+          try {
+            const queryUrl = `${ensureHttpsProtocol(featureServiceUrl)}/query?where=1=1&outFields=*&f=json`;
+            const proxyUrl = `${proxyBaseUrl}/proxy-feature?url=${encodeURIComponent(queryUrl)}`;
+            const response = await fetch(proxyUrl);
+            if (response.ok) {
+              const fsJson = await response.json();
+              if (fsJson.features) return fsJson.features;
+            }
+          } catch (err) {
+            console.error('Error fetching features from feature service:', err);
+          }
+        }
+      }
+    }
+
+    // 3. No features found
     return [];
-  }
+}
 
   private getFeatureId(attrs: any): string | undefined {
     for (const key of [

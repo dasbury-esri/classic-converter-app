@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /**
  * Cascade JSON Converter
  * Converts Cascade stories to StoryMap JSON
@@ -10,7 +12,8 @@ import {
   determineScaleZoomLevel,
   ensureHttpsProtocol,
   isNonEmptyString,
-  extractProviderUrl
+  extractProviderUrl,
+  // detectTheme
 } from './utils';
 import { TEXT_STYLES, ALIGNMENTS, createImageResource, createImageNode, createEmbedNode, createMapResource, createMapNode } from './storymap-schema';
 
@@ -24,25 +27,6 @@ export class CascadeConverter {
     this.themeId = themeId;
     this.builder = new StoryMapJSONBuilder(themeId);
     this.detectTheme();
-  }
-
-  /**
-   * Detect theme from cascade settings
-   */
-  private detectTheme(): void {
-    try {
-      const themeMajor =
-        this.classicJson.values?.settings?.theme?.colors?.themeMajor;
-      const themeMapping: Record<string, string> = {
-        dark: 'obsidian',
-        light: 'summit'
-      };
-      if (themeMajor && themeMapping[themeMajor]) {
-        this.themeId = themeMapping[themeMajor];
-      }
-    } catch {
-      // Use default theme
-    }
   }
 
   /**
@@ -306,10 +290,10 @@ export class CascadeConverter {
   /**
    * Process credits section (currently disabled)
    */
-  private processCredits(_section: any): void {
-    // Credits functionality is disabled due to API limitations
-    return;
-  }
+//  private processCredits(_section: any): void {
+//    // Credits functionality is disabled due to API limitations
+//    return;
+//  }
 
   /**
    * Process a content block

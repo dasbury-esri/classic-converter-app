@@ -61,5 +61,6 @@ dist-ssr
 *.sw?
 
 # temp files
-storymap_json_schema_DA.py
-converter_json_DA.py
+classic_json.json
+converted_storymap_json.json
+webmap_json.json

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /**
  * TypeScript interfaces for ArcGIS StoryMap JSON structures
  * Based on official ArcGIS StoryMaps schema
@@ -166,23 +168,136 @@ export interface MapLayer {
 }
 
 // Classic StoryMap types
+// export interface ClassicStoryMapJSON {
+//   values: {
+//     title?: string;
+//     story?: {
+//       sections?: ClassicSection[];
+//       entries?: ClassicSection[];
+//     };
+//     sections?: ClassicSection[];
+//     settings?: {
+//       theme?: {
+//         colors?: {
+//           themeMajor?: string;
+//         };
+//       };
+//     };
+//   };
+// }
+
+/**
+ * Refactored version of Classic StoryMap type accounting for all templates 
+ */
 export interface ClassicStoryMapJSON {
+  source?: string;
+  folderId?: string | null;
+  _ssl?: any;
+
   values: {
+    // Common fields
+    template?: string | Record<string, any>; // Map Journal uses a Record, with "name" as a subkey
+    templateName?: string;
+    name?: string;
     title?: string;
-    story?: {
-      sections?: ClassicSection[];
-      entries?: ClassicSection[];
-    };
-    sections?: ClassicSection[];
+    subtitle?: string; 
+    description?: string;
+    sidePanelDescription?: string;    
+    layout?: string; // Swipe ["swipe" or "spyglass"], Map Tour ["integrated", "three-panel", "side-panel"]
+    colors?: string; // Map Tour, Swipe (semicolon-separated)
+    webmap?: string; // Basic, Map Tour, Shortlist, Swipe
     settings?: {
       theme?: {
-        colors?: {
-          themeMajor?: string;
-        };
+        colors?: Record<string, string>;
+        fonts?: Record<string, any>;
+        themeMajor?: string;
       };
+      themeOptions?: {
+        headerColor?: string; // Shortlist
+      };
+      layoutOptions?: Record<string, any>; // Shortlist description
+      generalOptions?: Record<string, any>; // Shortlist settings
+      header?: Record<string, {
+        linkText?: Record<string, any>;
+        linkUrl?: Record<string, any>;
+        logoUrl?: Record<string, any>;
+        logoTarget?: Record<string, any>;
+        social?: Record<string, {
+          facebook?: Record<string, any>;
+          twitter?: Record<string, any>;
+          bitly?: Record<string, any>;
+        }>;
+      }>; 
+      components?: { // Crowdsource
+        common: Record<string, any>;
+        contribute: Record<string, any>;
+        gallery: Record<string, any>;
+        header: Record<string, any>;
+        intro: Record<string, any>;
+        map: {
+          crowdsourceLayer: {
+            id: string;
+          };
+          webmap: string;
+        };
+        shareDisplay: Record<string, any>;
+      };
+      layout?: Record<string, any>; // Crowdsource
     };
+
+    // Map Tour
+    order?: Array<{ id: string | number; visible?: boolean }>; // Map Tour
+    firstRecordAsIntro?: bool; // Use media for cover image
+
+    // Map Journal or Map Series
+    story?: {
+      sections?: any[];
+      entries?: any[];
+    };
+
+    // Map Series (some versions)
+    series?: any[];
+
+    // Cascade
+    sections?: any[];
+
+    // Older versions don't have a "settings" key
+    headerLinkText?: Record<string, any>;
+    headerLinkURL?: Record<string, any>;
+    logoURL?: Record<string, any>;
+    logoTarget?: Record<string, any>;
+    social?: Record<string, {
+      facebook?: Record<string, any>;
+      twitter?: Record<string, any>;
+      bitly?: Record<string, any>;
+    }>;
+
+    // Shortlist (sometimes an object keyed by tab index, sometimes an array
+    tabs?: Record<string, {
+      title?: string;
+      id?: number | string;
+      color?: string;
+      extent?: any;
+    }> | Array<{
+      title?: string;
+      id?: number | string;
+      color?: string;
+      extent?: any;
+    }>;
+    shortlistLayerId?: Record<string, any>;
+
+    // Swipe
+    dataModel?: string; // "TWO_WEBMAPS" or "TWO_LAYERS" for Swipe
+    webmaps?: any[]; // same as "webmap" above if "TWO_LAYERS" 
+    layers?: any[]; // don't remember what this is for exactly
+    popupColors?: string[];
+    series?: any[] // need to find an example of this
+
+    // Basic
+    [key: string]: any; // Allow for unknown fields in basic and future templates
   };
 }
+
 
 export interface ClassicSection {
   title?: string;

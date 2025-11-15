@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /**
  * Classic StoryMap to ArcGIS StoryMaps Converter UI
  * Minimal form interface for conversion
@@ -21,7 +23,7 @@ import {
   transferImages,
   updateImageUrlsInJson,
 } from "../api/image-transfer";
-// import { saveJsonToFile } from '../converter/utils';
+import { saveJsonToFile } from '../converter/utils';
 
 type Status =
   | "idle"
@@ -172,9 +174,9 @@ export default function Converter() {
       }
 
       // 3.1 Save JSON for debugging
-      // saveJsonToFile(classicData, 'classic_json.json');
-      // saveJsonToFile(classicData.webmapJson, 'webmap_json.json');
-      // saveJsonToFile(newStorymapJson, 'converted_storymap_json.json');
+       saveJsonToFile(classicData, 'classic_json.json');
+       saveJsonToFile(classicData.webmapJson, 'webmap_json.json');
+       saveJsonToFile(newStorymapJson, 'converted_storymap_json.json');
 
       // Success!
       setStatus("success");
@@ -264,8 +266,8 @@ export default function Converter() {
               status === "error"
                 ? "#ff0000"
                 : status === "success"
-                ? "#2B5B2B"
-                : "#0079c1"
+                ? "none"
+                : "none"
             }`,
             color:
               status === "error"
@@ -302,6 +304,8 @@ export default function Converter() {
             }}
             onClick={() => {
               window.open(convertedUrl, '_blank');
+              setStatus("idle");
+              setMessage("");
               setPublishing(false);
               setConvertedUrl("");
             }}

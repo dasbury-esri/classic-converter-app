@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+
 /**
  * Journal/Series JSON Converter
  * Converts MapJournal and MapSeries to StoryMap JSON
@@ -16,7 +19,7 @@ import {
 } from './utils';
 import { EMBEDLY_TYPES } from './storymap-schema';
 
-export class JournalSeriesConverter {
+export class MapJournalConverter {
   private classicJson: ClassicStoryMapJSON;
   private themeId: string;
   private builder: StoryMapJSONBuilder;
