@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { UserSession } from "@esri/arcgis-rest-auth";
-import { clientId, redirectUri, SESSION_KEY, saveSession, restoreSession, getTokenFromHash } from "./AuthUtils";
-import { AuthContext } from "./AuthContext";
+import { clientId, redirectUri, SESSION_KEY, saveSession, restoreSession, getTokenFromHash, getUserDetails } from "./AuthUtils";
+import { AuthContext, UserInfo } from "./AuthContext";
 
 const authMethod = import.meta.env.VITE_AUTH_METHOD;
 const clientId = import.meta.env.VITE_CLIENT_ID;
@@ -10,6 +10,7 @@ const redirectUri = import.meta.env.VITE_REDIRECT_URI;
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [session, setSession] = useState<UserSession | null>(restoreSession());
   const [loading, setLoading] = useState(true);
+  const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
 
   useEffect(() => {
     const { token, expires } = getTokenFromHash();
@@ -25,6 +26,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       saveSession(s);
       setLoading(false);
       window.history.replaceState({}, document.title, redirectUri);
+
+      // Fetch and set user info after successful sign-in
+      getUserDetails(token).then(details => {
+        setUserInfo({
+          username: details.username,
+          role: details.role,
+          userType: details.userLicenseTypeId
+        });
+      }).catch(() => setUserInfo(null));
+
       return;
     }
     setLoading(false);
@@ -55,7 +66,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   return (
-    <AuthContext.Provider value={{ session, token: session?.token ?? null, signIn, signOut, loading }}>
+    <AuthContext.Provider value={{ 
+      session, 
+      token: session?.token ?? null, 
+      signIn, 
+      signOut, 
+      loading,
+      userInfo,
+      setUserInfo }}>
       {children}
     </AuthContext.Provider>
   );

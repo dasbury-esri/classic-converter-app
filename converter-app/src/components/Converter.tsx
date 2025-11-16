@@ -10,7 +10,6 @@ import { useAuth } from "../auth/useAuth";
 import {
   getItemData,
   getItemDetails,
-  getUsername,
   findDraftResourceName,
   removeResource,
   addResource,
@@ -55,18 +54,10 @@ export default function Converter() {
       return;
     }
 
-    // // Validate inputs
-    // if (!classicItemId.trim()) {
-    //   setStatus("error");
-    //   setMessage("Please enter a Classic Story Item ID");
-    //   return;
-    // }
-
     try {
       // 1. Get username
-      setStatus("fetching");
-      setMessage("Getting user information...");
-      const username = await getUsername(token);
+      //setStatus("fetching");
+      //setMessage("Getting user information...");      
 
       // 2. Fetch classic item data
       setMessage("Fetching classic story data...");
@@ -194,7 +185,7 @@ export default function Converter() {
 
   return (
     <div style={{ maxWidth: "600px", margin: "0 auto", padding: "20px" }}>
-      <h1>Classic StoryMap Converter</h1>
+ <h1>Classic StoryMap Converter</h1>
       <p>
         Convert Classic StoryMaps (Map Tour, Map Journal, Map Series, Cascade) to ArcGIS
         StoryMaps

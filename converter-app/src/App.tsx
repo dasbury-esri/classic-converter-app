@@ -3,7 +3,7 @@ import Converter from './components/Converter'
 import { useAuth } from './auth/useAuth'
 
 function App() {
-  const { token, signIn, signOut, loading } = useAuth();
+  const { token, signIn, signOut, loading, userInfo } = useAuth();
 
   return (
     <div className="App">
@@ -45,6 +45,11 @@ function App() {
           </button>
         )}
       </div>
+      {userInfo && (
+        <div style={{ margin: "10px 0", fontSize: "14px", color: "#0079c1" }}>
+          You are signed in as: "<strong>{userInfo.username}</strong>" (User Role: <strong>{userInfo.role}</strong> / User Type: <strong>{userInfo.userType}</strong>)
+        </div>
+      )}
       <Converter />
     </div>
   );

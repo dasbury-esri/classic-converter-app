@@ -35,3 +35,13 @@ export function getTokenFromHash(): { token: string | null; expires: number | nu
     expires: expiresIn ? Date.now() + parseInt(expiresIn, 10) * 1000 : null,
   };
 }
+
+export async function getUserDetails(token: string) {
+  const res = await fetch(`https://www.arcgis.com/sharing/rest/community/self?f=json&token=${token}`);
+  const json = await res.json();
+  return {
+    username: json.username,
+    role: json.role,
+    userLicenseTypeId: json.userLicenseTypeId
+  };
+}
