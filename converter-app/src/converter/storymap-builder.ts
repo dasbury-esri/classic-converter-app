@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+
 /**
  * StoryMap JSON Builder
  * Builds StoryMap JSON structure without using the Python API
@@ -22,13 +25,12 @@ import {
   createGalleryNode,
   createSeparatorNode,
   createSidecarStructure,
-  createSlideStructure,
   addChildToNode,
   insertNodeBeforeCredits,
   setCoverData,
   setTheme
 } from './storymap-schema';
-import { generateNodeId, generateResourceId } from './utils';
+import { generateNodeId, generateResourceId, getImageDimensions } from './utils';
 
 export class StoryMapJSONBuilder {
   private storymap: any;
@@ -76,6 +78,171 @@ export class StoryMapJSONBuilder {
     const nodeId = generateNodeId();
     this.storymap.nodes[nodeId] = node;
     return nodeId;
+  }
+
+  /**
+   * Create a detached narrative panel (used when manually assembling slides)
+   */
+  private createNarrativePanelDetached(): string {
+    const id = generateNodeId();
+    this.storymap.nodes[id] = {
+      type: 'immersive-narrative-panel',
+      data: {
+        panelStyle: 'themed'
+      },
+      children: []
+    };
+    return id;
+  }
+
+  /**
+   * Add a text node (detached) with optional wide config
+   */
+  addTextDetached(
+    text: string,
+    style: string = 'paragraph',
+    alignment: string = 'start',
+    wide: boolean = true
+  ): string {
+    const node = createTextNode(text, style, alignment);
+    const id = this.createDetachedNode(node);
+    if (wide) {
+      this.storymap.nodes[id].config = { size: 'wide' };
+    }
+    return id;
+  }
+
+  // /**
+  //  * Add an image node (detached) with optional wide config
+  //  */
+  // addImageDetached(
+  //   url: string,
+  //   caption?: string,
+  //   alt?: string,
+  //   display: 'standard' | 'wide' = 'wide'
+  // ): string {
+  //   const res = createImageResource(url);
+  //   const resId = this.addResource(res);
+  //   const node = createImageNode(resId, caption, alt, display);
+  //   const id = this.createDetachedNode(node);
+  //   if (display === 'wide') {
+  //     this.storymap.nodes[id].config = { size: 'wide' };
+  //   }
+  //   return id;
+  // }
+
+  /**
+   * Add an image node (detached) with actual image dimensions
+   */
+  async addImageDetached(
+    url: string,
+    caption?: string,
+    alt?: string,
+    display: 'standard' | 'wide' = 'wide'
+  ): Promise<string> {
+    let width = 1024, height = 1024;
+    console.log('[addImageDetached] Checking image dimensions for:', url);
+    try {
+      const dims = await getImageDimensions(url);
+      console.log('[addImageDetached] getImageDimensions returned:', dims);
+      width = dims.width;
+      height = dims.height;
+      // If dimensions are zero, try to extract from filename
+      if (!width || !height) {
+        const match = url.match(/__w(\d+)\.(jpg|jpeg|png|gif|webp|bmp|tif|tiff)$/i);
+        if (match) {
+          width = parseInt(match[1], 10);
+          height = width;
+          console.log('[addImageDetached] Fallback to filename width:', width);        
+        }
+      } else {
+        console.log('[addImageDetached] No width found in filename, using default 1024');
+      }
+    } catch (err) {
+    console.warn('[addImageDetached] Could not get image dimensions for', url, err);
+      // Try to extract from filename as fallback
+      const match = url.match(/__w(\d+)\.(jpg|jpeg|png|gif|webp|bmp|tif|tiff)$/i);
+      if (match) {
+        width = parseInt(match[1], 10);
+        height = width;
+        console.log('[addImageDetached] Fallback to filename width in catch:', width);
+      } else {
+      console.log('[addImageDetached] No width found in filename in catch, using default 1024');
+      }
+    }
+    console.log('[addImageDetached] Final width/height for', url, width, height);
+    const res = createImageResource(url, true, width, height);
+    const resId = this.addResource(res);
+    const node = createImageNode(resId, caption, alt, display);
+    const id = this.createDetachedNode(node);
+    if (display === 'wide') {
+      this.storymap.nodes[id].config = { size: 'wide' };
+    }
+    return id;
+  }
+
+  /**
+   * Add an embed node (detached) with optional wide config
+   */
+  addEmbedDetached(
+    url: string,
+    embedType: 'video' | 'link' | 'rich',
+    display: 'inline' | 'card' = 'inline',
+    caption?: string,
+    alt?: string,
+    title?: string,
+    description?: string,
+    thumbnailUrl?: string,
+    providerUrl?: string,
+    wide: boolean = true
+  ): string {
+    const node = createEmbedNode(
+      url,
+      embedType,
+      display,
+      caption,
+      alt,
+      title,
+      description,
+      thumbnailUrl,
+      providerUrl
+    );
+    const id = this.createDetachedNode(node);
+    if (wide) {
+      this.storymap.nodes[id].config = { size: 'wide' };
+    }
+    return id;
+  }
+
+  /**
+   * Add a slide to existing sidecar (narrative first, media second)
+   * children: [narrativePanelId, mediaNodeId]
+   */
+  addSlideToSidecar(
+    sidecarId: string,
+    mediaNodeId?: string,
+    narrativeContentIds?: string[]
+  ): { slideId: string; narrativeId: string } {
+    if (!this.storymap.nodes[sidecarId]) {
+      throw new Error('Invalid sidecarId');
+    }
+    // Create narrative panel, attach content
+    const narrativeId = this.createNarrativePanelDetached();
+    if (narrativeContentIds && narrativeContentIds.length) {
+      this.storymap.nodes[narrativeId].children = narrativeContentIds;
+    }
+    // Create slide
+    const slideId = generateNodeId();
+    this.storymap.nodes[slideId] = {
+      type: 'immersive-slide',
+      data: {
+        transition: 'fade'
+      },
+      children: mediaNodeId ? [narrativeId, mediaNodeId] : [narrativeId]
+    };
+    // Append slide to sidecar
+    this.storymap.nodes[sidecarId].children.push(slideId);
+    return { slideId, narrativeId };
   }
 
   /**
@@ -281,7 +448,7 @@ export class StoryMapJSONBuilder {
   /**
    * Add a detached gallery node (not added to story root, useful for sidecars)
    */
-  addGalleryDetached(
+  async addGalleryDetached(
     imagePaths: string[],
     caption?: string,
     alt?: string,
@@ -291,7 +458,7 @@ export class StoryMapJSONBuilder {
     // Create detached image nodes for each image
     const imageNodeIds: string[] = [];
     for (const imagePath of imagePaths) {
-      const nodeId = this.addImageDetached(imagePath, undefined, undefined, 'standard', 'start', isItemResource);
+      const nodeId = await this.addImageDetached(imagePath, undefined, undefined, 'standard', 'start', isItemResource);
       imageNodeIds.push(nodeId);
     }
 
@@ -325,35 +492,6 @@ export class StoryMapJSONBuilder {
     insertNodeBeforeCredits(this.storymap, sidecarId);
 
     return { sidecarId, slideId, narrativeId };
-  }
-
-  /**
-   * Add a slide to an existing sidecar
-   */
-  addSlideToSidecar(
-    sidecarId: string,
-    mediaNodeId?: string,
-    narrativeContentIds?: string[]
-  ): { slideId: string; narrativeId: string } {
-    const { slideId, narrativeId, nodes } = createSlideStructure();
-
-    // Add narrative content
-    if (narrativeContentIds) {
-      nodes[narrativeId].children = narrativeContentIds;
-    }
-
-    // Add media node as child of slide
-    if (mediaNodeId) {
-      nodes[slideId].children!.push(mediaNodeId);
-    }
-
-    // Add nodes to storymap
-    Object.assign(this.storymap.nodes, nodes);
-
-    // Add slide to sidecar
-    addChildToNode(this.storymap, sidecarId, slideId);
-
-    return { slideId, narrativeId };
   }
 
   /**

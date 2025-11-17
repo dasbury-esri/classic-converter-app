@@ -9,6 +9,7 @@
 import type { ClassicStoryMapJSON } from '../types/storymap';
 import { StoryMapJSONBuilder } from './storymap-builder';
 import { createCreditsNode } from './storymap-schema';
+import { collectImageUrls, transferImages, updateImageUrlsInJson } from '../api/image-transfer';
 import {
   determineScaleZoomLevel,
   ensureHttpsProtocol,
@@ -22,18 +23,30 @@ export class CascadeConverter {
   private classicJson: ClassicStoryMapJSON;
   private themeId: string;
   private builder: StoryMapJSONBuilder;
+  private username: string;
+  private token: string;
+  private targetStoryId: string;
 
-  constructor(classicJson: ClassicStoryMapJSON, themeId: string = 'summit') {
+  constructor(
+    classicJson: ClassicStoryMapJSON, 
+    themeId: string = 'summit',
+    username: string,
+    token: string,
+    targetStoryId: string  
+  ) {
     this.classicJson = classicJson;
     this.themeId = themeId;
     this.builder = new StoryMapJSONBuilder(themeId);
+    this.username = username;
+    this.token = token;
+    this.targetStoryId = targetStoryId;
     detectTheme(this.classicJson, 'cascade');
   }
 
   /**
    * Main conversion method
    */
-  convert(): any {
+  async convert(): Promise<any> {
     const sections = this.classicJson.values?.sections || [];
 
     if (sections.length === 0) {
@@ -48,6 +61,27 @@ export class CascadeConverter {
     // Set theme
     this.builder.setTheme(this.themeId);
 
+    // Get the current storymap JSON
+    let storymapJson = this.builder.getJson();
+
+    // Collect image URLs 
+    const imageUrls = collectImageUrls(storymapJson);
+
+    // Transfer images and get mapping
+    const transferResultsArray = await transferImages(
+      imageUrls,
+      this.targetStoryId,
+      this.username,
+      this.token
+    );
+    const transferResults: Record<string, string> = {};
+    for (const result of transferResultsArray) {
+      transferResults[result.originalUrl] = result.resourceName;
+    }
+
+    // Update resources in JSON
+    storymapJson = updateImageUrlsInJson(storymapJson, transferResults);
+    
     return this.builder.getJson();
   }
 

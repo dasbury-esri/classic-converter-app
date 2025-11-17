@@ -27,8 +27,9 @@ export function restoreSession(): UserSession | null {
 
 export function getTokenFromHash(): { token: string | null; expires: number | null } {
   const hash = window.location.hash.substring(1);
+  console.log("[AuthUtils.ts]Hash: ", hash)
   const params = new URLSearchParams(hash);
-  const token = params.get("access_token");
+  const token = params.get("access_token") || params.get("token");
   const expiresIn = params.get("expires_in");
   return {
     token,

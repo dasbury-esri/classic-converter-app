@@ -162,6 +162,18 @@ export function detectTheme(classicJson: any, appType: string): NormalizedTheme 
   return theme;
 }
 
+/**
+ * Get image size 
+ */
+export async function getImageDimensions(url: string): Promise<{ width: number; height: number }> {
+  const base =
+    import.meta.env.MODE === 'production'
+      ? '/.netlify/functions/image-dimensions'
+      : `${import.meta.env.VITE_PROXY_BASE_URL}/image-dimensions`;
+  const resp = await fetch(`${base}?url=${encodeURIComponent(url)}`);
+  if (!resp.ok) throw new Error('Failed to get image dimensions');
+  return await resp.json();
+}
 
 /**
  * Remove non-essential HTML tags from content

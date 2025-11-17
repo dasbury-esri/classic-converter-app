@@ -5,7 +5,7 @@
  */
 import { createBaseStorymapJson } from "./storymap-schema";
 
-export async function createDraftStoryMap(token: string, username: string, title: string) {
+export async function createDraftStoryMap(username: string, token: string, title: string) {
   const timestamp = Date.now();
   const draftResourceName = `draft_${timestamp}.json`;
   const typeKeywords = [

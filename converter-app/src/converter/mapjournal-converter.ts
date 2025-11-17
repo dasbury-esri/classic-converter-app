@@ -1,21 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-
 /**
- * Journal/Series JSON Converter
- * Converts MapJournal and MapSeries to StoryMap JSON
+ * Journal JSON Converter
+ * Converts Map Journal to StoryMap JSON
  * Ported from JournalSeriesJSONConverter class in converter_json.py
  */
 
 import type { ClassicStoryMapJSON, ClassicSection } from '../types/storymap';
 import { StoryMapJSONBuilder } from './storymap-builder';
+import { collectImageUrls, transferImages, updateImageUrlsInJson } from '../api/image-transfer';
 import {
   determineScaleZoomLevel,
   ensureHttpsProtocol,
-  parseHtmlText,
   removeSpanTags,
   isNonEmptyString,
-  extractProviderUrl
+  extractProviderUrl,
+  detectTheme
 } from './utils';
 import { EMBEDLY_TYPES } from './storymap-schema';
 
@@ -23,71 +23,103 @@ export class MapJournalConverter {
   private classicJson: ClassicStoryMapJSON;
   private themeId: string;
   private builder: StoryMapJSONBuilder;
-  private classicType: 'journal' | 'series';
+  private username: string;
+  private token: string;
+  private targetStoryId: string;
 
-  constructor(classicJson: ClassicStoryMapJSON, themeId: string = 'summit') {
+  constructor(
+    classicJson: ClassicStoryMapJSON, 
+    themeId: string = 'summit',
+    username: string,
+    token: string,
+    targetStoryId: string
+  ) {
     this.classicJson = classicJson;
     this.themeId = themeId;
     this.builder = new StoryMapJSONBuilder(themeId);
-    this.classicType = this.detectType();
+    this.username = username;
+    this.token = token;
+    this.targetStoryId = targetStoryId;
+    detectTheme(this.classicJson, 'mapjournal');
   }
 
   /**
-   * Detect if this is a Journal or Series
-   */
-  private detectType(): 'journal' | 'series' {
-    const story = this.classicJson.values?.story;
-    if (story?.sections) {
-      return 'journal';
-    } else if (story?.entries) {
-      return 'series';
-    }
-    return 'journal'; // default
-  }
-
-  /**
-   * Main conversion method
-   */
-  convert(): any {
+  * Main conversion method
+  */
+  async convert(): any {
     // Get title
     const coverTitle = this.classicJson.values?.title || 'Untitled Story';
 
     // Create sidecar
     const { sidecarId, slideId: initialSlideId, narrativeId: initialNarrativeId } =
       this.builder.addSidecar('docked-panel');
+    // Sidecar data fields
+    (this.builder.getJson().nodes[sidecarId].data.narrativePanelPosition = 'start');
+    (this.builder.getJson().nodes[sidecarId].data.narrativePanelSize = 'small');
 
     // Get sections
     const sections =
-      this.classicType === 'journal'
-        ? this.classicJson.values?.story?.sections || []
-        : this.classicJson.values?.story?.entries || [];
+      (this.classicJson.values?.story?.sections as ClassicSection[]) || [];
 
     const hasSections = sections.length > 0;
-
+    console.log("# of Journal sections", sections.length)
     // Process each section as a slide
     for (const section of sections) {
-      this.processSection(section, sidecarId);
+      await this.processSection(section, sidecarId);
     }
 
-    // Remove initial empty slide if we added real slides
+    // Remove initial empty slide produced by addSidecar if we added real slides
     if (hasSections) {
       const storymap = this.builder.getJson();
       const sidecarNode = storymap.nodes[sidecarId];
-      if (sidecarNode.children) {
-        const index = sidecarNode.children.indexOf(initialSlideId);
-        if (index !== -1) {
-          sidecarNode.children.splice(index, 1);
-        }
-      }
+      const idx = sidecarNode.children.indexOf(initialSlideId);
+      if (idx > -1) sidecarNode.children.splice(idx, 1);
+
+      // if (sidecarNode.children) {
+      //   const index = sidecarNode.children.indexOf(initialSlideId);
+      //   if (index !== -1) {
+      //     sidecarNode.children.splice(index, 1);
+      //   }
+      // }
       delete storymap.nodes[initialSlideId];
       delete storymap.nodes[initialNarrativeId];
     }
 
     // Set cover
     this.builder.setCover(`${coverTitle}`);
-
     // Set theme
     this.builder.setTheme(this.themeId);
+
+    // Image transfer (optional – skip if handled externally)
+    // Get the current storymap JSON
+    let storymapJson = this.builder.getJson();
+    // Collect image URLs 
+    const imageUrls = collectImageUrls(storymapJson);
+    // Transfer images and get mapping
+    if (imageUrls.length > 0 && this.token && this.token !== this.username) {
+      const transfers = await transferImages(
+        imageUrls,
+        this.targetStoryId,
+        this.username,
+        this.token
+      );
+      const mapping: Record<string, string> = {};
+      transfers.forEach(t => (mapping[t.originalUrl] = t.resourceName));
+      storymapJson = updateImageUrlsInJson(storymapJson, mapping);
+    }
+    // const transferResultsArray = await transferImages(
+    //   imageUrls,
+    //   this.targetStoryId,
+    //   this.username,
+    //   this.token
+    // );
+    // const transferResults: Record<string, string> = {};
+    // for (const result of transferResultsArray) {
+    //   transferResults[result.originalUrl] = result.resourceName;
+    // }
+    // // Update resources in JSON
+    // storymapJson = updateImageUrlsInJson(storymapJson, transferResults);
+
 
     return this.builder.getJson();
   }
@@ -95,15 +127,168 @@ export class MapJournalConverter {
   /**
    * Process a single section as a sidecar slide
    */
-  private processSection(section: ClassicSection, sidecarId: string): void {
+  private async processSection(section: ClassicSection, sidecarId: string): Promise<void> {
     // Get media
     const mediaNodeId = this.processSectionMedia(section);
-
     // Get narrative content
-    const narrativeContentIds = this.processNarrativeContent(section);
-
+    const narrativeContentIds = await this.buildNarrative(section);
     // Add slide to sidecar
     this.builder.addSlideToSidecar(sidecarId, mediaNodeId, narrativeContentIds);
+  }
+
+/**
+   * Build ordered narrative: title first, then parsed elements
+   */
+  private async buildNarrative(section: ClassicSection): Promise<string[]> {
+    const out: string[] = [];
+    const titleText = section.title || '';
+    if (titleText) {
+      const cleanedTitle = titleText.replace(/&nbsp;/g, '').trim();
+      if (isNonEmptyString(cleanedTitle)) {
+        const titleId = this.builder.addTextDetached(cleanedTitle, 'h2', 'start', true);
+        out.push(titleId);
+      }
+    }
+    // if (titleHtml) {
+    //   const titleText = parseHtmlText(titleHtml).trim();
+    //   if (titleText) {
+    //     const titleId = this.builder.addTextDetached(titleText, 'h3', 'start', true);
+    //     out.push(titleId);
+    //   }
+    // }
+
+    const raw = section.content || '';
+    if (!raw) return out;
+
+    // Parse HTML; do NOT inject whole raw content separately (avoid duplicates)
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(raw, 'text/html');
+
+    for (const el of Array.from(doc.body.children)) {
+      const ids = await this.extractElementNodes(el);
+      out.push(...ids);
+    }
+    return out;
+  }
+
+  /**
+   * Map a single HTML element to detached nodes (wide by default)
+   */
+  private async extractElementNodes(element: Element): Promise<string[]> {
+    const ids: string[] = [];
+
+    // FIGURE (possibly nested)
+    if (element.tagName === 'FIGURE') {
+      // If this figure contains another figure, process the deepest one only
+      const inner = element.querySelector('figure figure');
+      if (inner) {
+        return this.extractElementNodes(inner);
+      }
+      const img = element.querySelector('img');
+      if (img) {
+        const url = img.getAttribute('src') || '';
+        const alt = img.getAttribute('alt') || undefined;
+        const captionEl = element.querySelector('figcaption');
+        let caption: string | undefined;
+        if (captionEl) {
+          const rawCaption = captionEl.innerHTML.replace(/&nbsp;/g, ' ').trim();
+          if (rawCaption.length > 0) caption = rawCaption;
+        }
+        ids.push(await this.builder.addImageDetached(url, caption, alt, 'wide'));
+      }
+      return ids;
+    }
+
+    // Skip standalone figcaption (handled in figure)
+    if (element.tagName === 'FIGCAPTION') {
+      return ids;
+    }
+
+    // IMG alone
+    if (element.tagName === 'IMG') {
+      const url = element.getAttribute('src') || '';
+      const alt = element.getAttribute('alt') || undefined;
+      ids.push(await this.builder.addImageDetached(url, undefined, alt, 'wide'));
+      return ids;
+    }
+
+    // Paragraph
+    if (element.tagName === 'P') {
+      // Inline images
+      for (const img of element.querySelectorAll('img')) {
+        const url = img.getAttribute('src') || '';
+        const alt = img.getAttribute('alt') || undefined;
+        ids.push(await this.builder.addImageDetached(url, undefined, alt, 'wide'));
+      };
+      let html = removeSpanTags(element.innerHTML);
+      if (/^(\s|&nbsp;|<br\s*\/?>)*$/i.test(html)) return ids; // empty
+      html = html.replace(/&nbsp;/g, ' ').trim();
+      if (isNonEmptyString(html)) {
+        ids.push(this.builder.addTextDetached(html, 'paragraph', 'start', true));
+      }
+      return ids;
+    }
+
+    // Containers that just wrap images/figures/captions
+    if (element.classList.contains('image-container') || element.classList.contains('caption')) {
+      for (const child of Array.from(element.children)) {
+        const childIds = await this.extractElementNodes(child);
+        ids.push(...childIds);
+      }
+      return ids;
+    }
+
+    // Iframe/embed container
+    if (element.classList.contains('iframe-container')) {
+      const iframe = element.querySelector('iframe');
+      if (iframe) {
+        let url = (iframe.getAttribute('src') || '').trim().replace(/\/$/, '');
+        url = ensureHttpsProtocol(url);
+        const embedlyType = element.classList.contains('mj-video-by-url') ? 'video' : 'link';
+        const display = embedlyType === 'video' ? 'inline' : 'card';
+        const providerUrl = extractProviderUrl(url);
+        ids.push(
+          this.builder.addEmbedDetached(
+            url,
+            embedlyType,
+            display,
+            undefined,
+            undefined,
+            iframe.getAttribute('title') || undefined,
+            undefined,
+            undefined,
+            providerUrl,
+            true
+          )
+        );
+      }
+      return ids;
+    }
+
+    // Generic DIV (avoid double-processing figures/images already handled)
+    if (element.tagName === 'DIV') {
+      // If it only wraps figures/images, recurse children
+      if (
+        element.querySelector('figure') &&
+        !element.textContent?.trim().replace(/\u00a0/g, '')
+      ) {
+        for (const child of Array.from(element.children)) {
+          const childIds = await this.extractElementNodes(child);
+          ids.push(...childIds);
+        }
+        return ids;
+      }
+      let html = removeSpanTags(element.innerHTML);
+      if (!/^(\s|&nbsp;|<br\s*\/?>)*$/i.test(html)) {
+        html = html.replace(/&nbsp;/g, ' ').trim();
+        if (isNonEmptyString(html)) {
+          ids.push(this.builder.addTextDetached(html, 'paragraph', 'start', true));
+        }
+      }
+      return ids;
+    }
+
+    return ids;
   }
 
   /**
@@ -176,7 +361,7 @@ export class MapJournalConverter {
   /**
    * Process image media
    */
-  private processImageMedia(media: any): string | undefined {
+  private async processImageMedia(media: any): Promise<string[]> {
     const imageData = media.image;
     if (!imageData) return undefined;
 
@@ -186,7 +371,7 @@ export class MapJournalConverter {
 
     // In browser, we can't download cross-origin images, so just pass URL
     // Add as detached node for sidecar (don't add to story root)
-    const nodeId = this.builder.addImageDetached(url, caption, alt);
+    const nodeId = await this.builder.addImageDetached(url, caption, alt);
 
     return nodeId;
   }
@@ -239,145 +424,151 @@ export class MapJournalConverter {
     return nodeId;
   }
 
-  /**
-   * Process narrative content for a section
-   */
-  private processNarrativeContent(section: ClassicSection): string[] {
-    const contentIds: string[] = [];
+  // /**
+  //  * Process narrative content for a section
+  //  */
+  // private processNarrativeContent(section: ClassicSection): string[] {
+  //   const contentIds: string[] = [];
 
-    // Add title
-    const title = section.title || '';
-    if (title) {
-      const titleText = parseHtmlText(title);
-      if (titleText.trim()) {
-        // Use detached node for sidecar narrative content
-        const titleId = this.builder.addTextDetached(titleText, 'h2', 'start');
-        contentIds.push(titleId);
-      }
-    }
+  //   // Add title
+  //   const title = section.title || '';
+  //   if (title) {
+  //     const titleText = parseHtmlText(title);
+  //     if (titleText.trim()) {
+  //       // Use detached node for sidecar narrative content
+  //       const titleId = this.builder.addTextDetached(titleText, 'h2', 'start');
+  //       contentIds.push(titleId);
+  //     }
+  //   }
 
-    // Get content
-    const content =
-      this.classicType === 'journal'
-        ? section.content || ''
-        : section.description || '';
+  //   // Get content
+  //   const content =
+  //     this.classicType === 'journal'
+  //       ? section.content || ''
+  //       : section.description || '';
 
-    if (!content) {
-      return contentIds;
-    }
+  //   if (!content) {
+  //     return contentIds;
+  //   }
 
-    // Parse HTML content
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(content, 'text/html');
+  //   // Always add a paragraph node for the raw content (even if not HTML)
+  //   const cleanedContent = removeSpanTags(content);
+  //   if (isNonEmptyString(cleanedContent)) {
+  //     const paragraphId = this.builder.addTextDetached(cleanedContent, 'paragraph', 'start');
+  //     contentIds.push(paragraphId);
+  //   }
+  //   // Parse HTML content
+  //   const parser = new DOMParser();
+  //   const doc = parser.parseFromString(content, 'text/html');
 
-    for (const element of Array.from(doc.body.children)) {
-      try {
-        const nodeIds = this.processContentElement(element);
-        contentIds.push(...nodeIds);
-      } catch (ex) {
-        console.error('Error processing content element:', ex);
-      }
-    }
+  //   for (const element of Array.from(doc.body.children)) {
+  //     try {
+  //       const nodeIds = this.processContentElement(element);
+  //       contentIds.push(...nodeIds);
+  //     } catch (ex) {
+  //       console.error('Error processing content element:', ex);
+  //     }
+  //   }
 
-    return contentIds;
-  }
+  //   return contentIds;
+  // }
 
-  /**
-   * Process a single content element
-   */
-  private processContentElement(element: Element): string[] {
-    const nodeIds: string[] = [];
+  // /**
+  //  * Process a single content element
+  //  */
+  // private processContentElement(element: Element): string[] {
+  //   const nodeIds: string[] = [];
 
-    // Handle images
-    if (element.tagName === 'IMG') {
-      const url = element.getAttribute('src') || '';
-      const alt = element.getAttribute('alt') || undefined;
-      // Use detached node for sidecar narrative content
-      const nodeId = this.builder.addImageDetached(url, undefined, alt, 'wide');
-      nodeIds.push(nodeId);
-    }
-    // Handle paragraphs
-    else if (element.tagName === 'P') {
-      // Check for images in paragraph
-      const images = element.querySelectorAll('img');
-      images.forEach((img) => {
-        const url = img.getAttribute('src') || '';
-        const alt = img.getAttribute('alt') || undefined;
-        // Use detached node for sidecar narrative content
-        const nodeId = this.builder.addImageDetached(url, undefined, alt, 'wide');
-        nodeIds.push(nodeId);
-      });
+  //   // Handle images
+  //   if (element.tagName === 'IMG') {
+  //     const url = element.getAttribute('src') || '';
+  //     const alt = element.getAttribute('alt') || undefined;
+  //     // Use detached node for sidecar narrative content
+  //     const nodeId = this.builder.addImageDetached(url, undefined, alt, 'wide');
+  //     nodeIds.push(nodeId);
+  //   }
+  //   // Handle paragraphs
+  //   else if (element.tagName === 'P') {
+  //     // Check for images in paragraph
+  //     const images = element.querySelectorAll('img');
+  //     images.forEach((img) => {
+  //       const url = img.getAttribute('src') || '';
+  //       const alt = img.getAttribute('alt') || undefined;
+  //       // Use detached node for sidecar narrative content
+  //       const nodeId = this.builder.addImageDetached(url, undefined, alt, 'wide');
+  //       nodeIds.push(nodeId);
+  //     });
 
-      // Get text content (use innerHTML to avoid the outer <p> tag)
-      const text = element.innerHTML;
-      if (text && text.length > 0) {
-        const cleanedText = removeSpanTags(text);
-        if (isNonEmptyString(cleanedText)) {
-          // Use detached node for sidecar narrative content
-          const nodeId = this.builder.addTextDetached(cleanedText, 'paragraph', 'start');
-          nodeIds.push(nodeId);
-        }
-      }
-    }
-    // Handle elements with classes (check this BEFORE generic divs)
-    else if (element.classList.length > 0) {
-      if (
-        element.classList.contains('caption') ||
-        element.classList.contains('image-container')
-      ) {
-        // Process all direct children of the container
-        // This handles cases where the container has both text and images
-        const children = Array.from(element.children);
-        for (const child of children) {
-          const childNodeIds = this.processContentElement(child);
-          nodeIds.push(...childNodeIds);
-        }
-      } else if (element.classList.contains('iframe-container')) {
-        const iframe = element.querySelector('iframe');
-        if (iframe) {
-          let url = (iframe.getAttribute('src') || '').trim().replace(/\/$/, '');
-          url = ensureHttpsProtocol(url);
+  //     // Get text content (use innerHTML to avoid the outer <p> tag)
+  //     const text = element.innerHTML;
+  //     if (text && text.length > 0) {
+  //       const cleanedText = removeSpanTags(text);
+  //       if (isNonEmptyString(cleanedText)) {
+  //         // Use detached node for sidecar narrative content
+  //         const nodeId = this.builder.addTextDetached(cleanedText, 'paragraph', 'start');
+  //         nodeIds.push(nodeId);
+  //       }
+  //     }
+  //   }
+  //   // Handle elements with classes (check this BEFORE generic divs)
+  //   else if (element.classList.length > 0) {
+  //     if (
+  //       element.classList.contains('caption') ||
+  //       element.classList.contains('image-container')
+  //     ) {
+  //       // Process all direct children of the container
+  //       // This handles cases where the container has both text and images
+  //       const children = Array.from(element.children);
+  //       for (const child of children) {
+  //         const childNodeIds = this.processContentElement(child);
+  //         nodeIds.push(...childNodeIds);
+  //       }
+  //     } else if (element.classList.contains('iframe-container')) {
+  //       const iframe = element.querySelector('iframe');
+  //       if (iframe) {
+  //         let url = (iframe.getAttribute('src') || '').trim().replace(/\/$/, '');
+  //         url = ensureHttpsProtocol(url);
 
-          // Determine type
-          const embedlyType = element.classList.contains('mj-video-by-url')
-            ? 'video'
-            : 'link';
-          const display = element.classList.contains('mj-video-by-url')
-            ? 'inline'
-            : 'card';
+  //         // Determine type
+  //         const embedlyType = element.classList.contains('mj-video-by-url')
+  //           ? 'video'
+  //           : 'link';
+  //         const display = element.classList.contains('mj-video-by-url')
+  //           ? 'inline'
+  //           : 'card';
 
-          const title = iframe.getAttribute('title') || undefined;
-          const providerUrl = extractProviderUrl(url);
+  //         const title = iframe.getAttribute('title') || undefined;
+  //         const providerUrl = extractProviderUrl(url);
 
-          // Use detached node for sidecar narrative content
-          const nodeId = this.builder.addEmbedDetached(
-            url,
-            embedlyType,
-            display,
-            undefined,
-            undefined,
-            title,
-            undefined,
-            undefined,
-            providerUrl
-          );
-          nodeIds.push(nodeId);
-        }
-      }
-    }
-    // Handle generic divs (after checking for specific classes)
-    else if (element.tagName === 'DIV') {
-      const text = element.innerHTML;
-      const cleanedText = removeSpanTags(text);
-      if (isNonEmptyString(cleanedText)) {
-        // Use detached node for sidecar narrative content
-        const nodeId = this.builder.addTextDetached(cleanedText, 'paragraph', 'start');
-        nodeIds.push(nodeId);
-      }
-    }
+  //         // Use detached node for sidecar narrative content
+  //         const nodeId = this.builder.addEmbedDetached(
+  //           url,
+  //           embedlyType,
+  //           display,
+  //           undefined,
+  //           undefined,
+  //           title,
+  //           undefined,
+  //           undefined,
+  //           providerUrl
+  //         );
+  //         nodeIds.push(nodeId);
+  //       }
+  //     }
+  //   }
+  //   // Handle generic divs (after checking for specific classes)
+  //   else if (element.tagName === 'DIV') {
+  //     const text = element.innerHTML;
+  //     const cleanedText = removeSpanTags(text);
+  //     if (isNonEmptyString(cleanedText)) {
+  //       // Use detached node for sidecar narrative content
+  //       const nodeId = this.builder.addTextDetached(cleanedText, 'paragraph', 'start');
+  //       nodeIds.push(nodeId);
+  //     }
+  //   }
 
-    return nodeIds;
-  }
+  //   return nodeIds;
+  // }
 
   /**
    * Get list of local images for cleanup

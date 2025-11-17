@@ -34,7 +34,7 @@ type Status =
   | "error";
 
 export default function Converter() {
-  const { token } = useAuth();
+  const { token, userInfo } = useAuth();
   const [classicItemId, setClassicItemId] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
@@ -56,8 +56,9 @@ export default function Converter() {
 
     try {
       // 1. Get username
-      //setStatus("fetching");
-      //setMessage("Getting user information...");      
+      setStatus("fetching");
+      setMessage("Getting user information...");      
+      const username = userInfo?.username || "";
 
       // 2. Fetch classic item data
       setMessage("Fetching classic story data...");
@@ -67,6 +68,7 @@ export default function Converter() {
       if (classicData.values.webmap) {
         setMessage("Fetching classic webmap data...");
         const webmapId = classicData.values.webmap;
+        console.log("[Converter.tsx]Session token: ", token);
         classicData.webmapJson = await getItemData(webmapId, token);
       }
 
@@ -74,7 +76,7 @@ export default function Converter() {
       setMessage("Creating new StoryMap draft...");
       const coverTitle = classicData.values?.title || "Untitled Story";
       const itemTitle = `(Converted) ${coverTitle}`;
-      const targetStoryId = await createDraftStoryMap(token, username, itemTitle);
+      const targetStoryId = await createDraftStoryMap(username, token, itemTitle);
 
       if (targetStoryId) {
         console.log("Target Story ID is set!")
@@ -92,38 +94,49 @@ export default function Converter() {
         targetStoryId);
 
       console.log("***JSON***",newStorymapJson)
+
+      // Skip image transfer if resources already have item-resource references
+      const needsTransfer = Object.values<any>(newStorymapJson.resources || {})
+        .some(r => r.type === "image" && r.data?.src); // src means still original URL
+
       // 4. Transfer images from classic to target story
-      const imageUrls = collectImageUrls(newStorymapJson);
-      console.log('Collected image URLs:', imageUrls);
-      if (imageUrls.length > 0) {
-        setStatus("transferring");
-        setMessage(
-          `Transferring ${imageUrls.length} image(s) from classic story...`
-        );
+      if (needsTransfer) {
+        if (!token || token === (userInfo?.username || '') ) {
+          console.warn('[Converter] Skip image transfer: invalid token detected', { token, username: userInfo?.username });
+        } else {
+        const imageUrls = collectImageUrls(newStorymapJson);
+        console.log('Collected image URLs:', imageUrls);
+          if (imageUrls.length > 0) {
+            setStatus("transferring");
+            setMessage(
+              `Transferring ${imageUrls.length} image(s) from classic story...`
+            );
 
-        const transferResultsArray = await transferImages(
-          imageUrls,
-          targetStoryId,
-          username,
-          token,
-          (current, total, msg) => {
-            setMessage(`Transferring images (${current}/${total}): ${msg}`);
+            const transferResultsArray = await transferImages(
+              imageUrls,
+              targetStoryId,
+              username,
+              token,
+              (current, total, msg) => {
+                setMessage(`Transferring images (${current}/${total}): ${msg}`);
+              }
+            );
+            console.log('[Converter.tsx] Transfer results array:', transferResultsArray);
+
+            // Convert array to mapping
+            const transferResults: Record<string, string> = {};
+            for (const result of transferResultsArray) {
+              transferResults[result.originalUrl] = result.resourceName;
+            }
+
+            // Update JSON to use proper resource structure
+            // (resourceId + provider for uploaded, src + provider for external)
+            newStorymapJson = updateImageUrlsInJson(
+              newStorymapJson,
+              transferResults
+            );
           }
-        );
-        console.log('[Converter.tsx] Transfer results array:', transferResultsArray);
-
-        // Convert array to mapping
-        const transferResults: Record<string, string> = {};
-        for (const result of transferResultsArray) {
-          transferResults[result.originalUrl] = result.resourceName;
         }
-
-        // Update JSON to use proper resource structure
-        // (resourceId + provider for uploaded, src + provider for external)
-        newStorymapJson = updateImageUrlsInJson(
-          newStorymapJson,
-          transferResults
-        );
       }
 
       // 5. Fetch target draft details

@@ -57,7 +57,13 @@ export class MapTourConverter {
     thumbResourceId?: string;
   }> = {};
 
-  constructor(classicJson: ClassicStoryMapJSON, themeId: string = 'summit', username: string = '', token: string = '', targetStoryId: string = '') {
+  constructor(
+    classicJson: ClassicStoryMapJSON, 
+    themeId: string = 'summit', 
+    username: string = '', 
+    token: string = '', 
+    targetStoryId: string = ''
+  ) {
     console.log('[MapTourConverter] Constructor targetStoryId:', targetStoryId);
     this.classicJson = classicJson;
     this.themeId = themeId;

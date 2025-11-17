@@ -23,9 +23,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         portal: "https://www.arcgis.com/sharing/rest",
       });
       setSession(s);
+      console.log("Session token:",session?.token)
       saveSession(s);
       setLoading(false);
-      window.history.replaceState({}, document.title, redirectUri);
 
       // Fetch and set user info after successful sign-in
       getUserDetails(token).then(details => {
@@ -35,11 +35,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           userType: details.userLicenseTypeId
         });
       }).catch(() => setUserInfo(null));
-
+      // Clear the hash from the window
+      window.history.replaceState({}, document.title, redirectUri);
       return;
     }
     setLoading(false);
   }, []);
+
+  // Display the updated token
+  useEffect(() => {
+    if (session) {
+      console.log("Session token (updated):", session.token);
+    }
+  }, [session]);
+
 
   const signIn = () => {
     // Use different OAuth2 methods for dev and prod
@@ -47,12 +56,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       UserSession.beginOAuth2({
         clientId,
         redirectUri,
-        popup: false // Use popup for dev
+        responseType: "token",
+        popup: false // Use redirect
       });
     } else {
       UserSession.beginOAuth2({
         clientId,
         redirectUri,
+        responseType: "token",
         popup: false // Use redirect for prod
       });
     }

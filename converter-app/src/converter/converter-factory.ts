@@ -15,7 +15,6 @@ import { MapSeriesConverter } from './mapseries-converter';
 import { MapTourConverter } from './maptour-converter';
 import { ShortlistConverter} from './shortlist-converter';
 import { SwipeConverter } from './swipe-converter';
-import { collectImageUrls, transferImages, updateImageUrlsInJson } from '../api/image-transfer';
 import { detectClassicAppType } from './utils';
 
 export class ConverterFactory {
@@ -39,19 +38,19 @@ export class ConverterFactory {
       case 'maptour':
         return new MapTourConverter(classicJson, themeId, username || '', token || '', targetStoryId || '');
       case 'mapjournal':
-        return new MapJournalConverter(classicJson, themeId);
+        return new MapJournalConverter(classicJson, themeId, username || '', token || '', targetStoryId || '');
       case 'mapseries':
-        return new MapSeriesConverter(classicJson, themeId);
+        return new MapSeriesConverter(classicJson, themeId, username || '', token || '', targetStoryId || '');
       case 'cascade':
-        return new CascadeConverter(classicJson, themeId);
+        return new CascadeConverter(classicJson, themeId, username || '', token || '', targetStoryId || '');
       case 'swipe':
-        return new SwipeConverter(classicJson, themeId);
+        return new SwipeConverter(classicJson, themeId, username || '', token || '', targetStoryId || '');
       case 'shortlist':
-        return new ShortlistConverter(classicJson, themeId);
+        return new ShortlistConverter(classicJson, themeId, username || '', token || '', targetStoryId || '');
       case 'crowdsource':
-        return new CrowdsourceConverter(classicJson, themeId); // this is a placeholder
+        return new CrowdsourceConverter(classicJson, themeId, username || '', token || '', targetStoryId || ''); // this is a placeholder
       case 'basic':
-        return new BasicConverter(classicJson, themeId);
+        return new BasicConverter(classicJson, themeId, username || '', token || '', targetStoryId || '');
       default:
         throw new Error(`Unknown classic story type: ${appType}`);
     }
@@ -69,25 +68,25 @@ export async function convertClassicToJson(
   targetStoryId: string
 ): Promise<any> {
   const converter = ConverterFactory.getConverter(classicJson, themeId, username, token, targetStoryId);
-  let storymapJson = await converter.convert();
+  const storymapJson = await converter.convert(username, token, targetStoryId);
 
-  // 1. Collect image URLs before any update
-  const imageUrls = collectImageUrls(storymapJson);
+  // // 1. Collect image URLs before any update
+  // const imageUrls = collectImageUrls(storymapJson);
 
-  // 2. Transfer images and get mapping
-  const transferResultsArray = await transferImages(
-    imageUrls,
-    targetStoryId,
-    username,
-    token
-  );
-  const transferResults: Record<string, string> = {};
-  for (const result of transferResultsArray) {
-    transferResults[result.originalUrl] = result.resourceName;
-  }
+  // // 2. Transfer images and get mapping
+  // const transferResultsArray = await transferImages(
+  //   imageUrls,
+  //   targetStoryId,
+  //   username,
+  //   token
+  // );
+  // const transferResults: Record<string, string> = {};
+  // for (const result of transferResultsArray) {
+  //   transferResults[result.originalUrl] = result.resourceName;
+  // }
 
-  // 3. Update resources in JSON
-  storymapJson = updateImageUrlsInJson(storymapJson, transferResults);
+  // // 3. Update resources in JSON
+  // storymapJson = updateImageUrlsInJson(storymapJson, transferResults);
 
   return storymapJson;
 }

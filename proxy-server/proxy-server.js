@@ -2,7 +2,22 @@
 
 import express from 'express';
 import fetch from 'node-fetch'; // npm install node-fetch@2
+import sizeOf from 'image-size' // npm isntall image-size
 const app = express();
+
+app.get('/image-dimensions', async (req, res) => {
+  const imageUrl = req.query.url;
+  if (!imageUrl) return res.status(400).json({ error: 'Missing url parameter' });
+  try {
+    const response = await fetch(imageUrl);
+    if (!response.ok) return res.status(response.status).json({ error: 'Failed to fetch image' });
+    const buffer = await response.buffer();
+    const dimensions = sizeOf(buffer);
+    res.json(dimensions); // { width: ..., height: ... }
+  } catch (err) {
+    res.status(500).json({ error: 'Error fetching image or reading dimensions' });
+  }
+});
 
 app.get('/proxy-image', async (req, res) => {
   const imageUrl = req.query.url;

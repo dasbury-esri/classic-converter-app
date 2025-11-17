@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /**
  * Image Transfer Utilities
  * Handle downloading images from classic story and uploading to new story
@@ -42,16 +44,48 @@ export function extractResourceName(url: string): string {
 /**
  * Generate a unique resource name for the new story
  */
-export function generateResourceName(originalName: string): string {
-    const extension = originalName.split('.').pop() || 'jpg';
-    const uuid = Math.random().toString(36).substring(2, 15);
-    return `${uuid}.${extension}`;
+export function generateResourceName(originalName: string, forcedExt?: string): string {
+  const recognized = ['jpg','jpeg','png','gif','webp','bmp','tif','tiff'];
+  let ext = forcedExt;
+  if (!ext) {
+    const tail = originalName.split('.').pop() || '';
+    ext = recognized.includes(tail.toLowerCase()) ? tail.toLowerCase() : 'jpg';
+  }
+  if (ext === 'jpeg') ext = 'jpg';
+  if (ext === 'tiff') ext = 'tif';
+  const uuid = Math.random().toString(36).substring(2, 15);
+  return `${uuid}.${ext}`;
+}
+
+function normalizeExtension(ext: string): string {
+  if (!ext) return '.jpg';
+  const e = ext.toLowerCase();
+  if (['.jpg','.jpeg','.png','.gif','.webp','.bmp','.tif','.tiff'].includes(e)) {
+    if (e === '.jpeg') return '.jpg';
+    if (e === '.tiff') return '.tif';
+    return e;
+  }
+  return '.jpg';
+}
+
+/**
+ * Validate token
+ */
+export function looksLikeUsername(value: string): boolean {
+  return !!value && value.length < 40 && /[_a-z]/i.test(value) && !/[.=]/.test(value);
 }
 
 /**
  * Fetch image from AGO resource and convert to Blob
  */
 export async function fetchImageAsBlob(url: string, token: string): Promise<Blob> {
+    if (!token) {
+        throw new Error('Missing token for image fetch');
+    }
+    if (looksLikeUsername(token)) {
+        console.warn('[fetchImageAsBlob] Token looks like a username, aborting fetch:', token);
+        throw new Error('Invalid token (looks like username)');
+    }
     // Ensure URL has https protocol
     let fullUrl = url;
     if (url.startsWith('//')) {
@@ -70,6 +104,43 @@ export async function fetchImageAsBlob(url: string, token: string): Promise<Blob
     }
 
     return response.blob();
+}
+
+function resolveExtension(urlPath: string, contentType?: string, contentDisposition?: string): string {
+  // Try Content-Disposition
+  if (contentDisposition) {
+    const m = /filename="?([^";]+)"?/i.exec(contentDisposition);
+    if (m) {
+      const fn = m[1].toLowerCase();
+      const extMatch = fn.match(/\.(jpg|jpeg|png|gif|webp|bmp|tif|tiff)$/);
+      if (extMatch) return extMatch[0].replace('.jpeg', '.jpg').replace('.tiff', '.tif');
+    }
+  }
+  // Try resolved URL path
+  const extMatch = urlPath.toLowerCase().match(/\.(jpg|jpeg|png|gif|webp|bmp|tif|tiff)$/);
+  if (extMatch) return extMatch[0].replace('.jpeg', '.jpg').replace('.tiff', '.tif');
+
+  // Fallback to content-type
+  if (contentType && /^image\//i.test(contentType)) {
+    const subtype = contentType.split('/')[1].toLowerCase();
+    if (['jpg','jpeg','png','gif','webp','bmp','tiff','tif'].includes(subtype)) {
+      return '.' + (subtype === 'jpeg' ? 'jpg' : subtype === 'tiff' ? 'tif' : subtype);
+    }
+    return '.jpg';
+  }
+  return '.bin';
+}
+
+async function fetchImage(url: string, token?: string) {
+  const u = token ? `${url}?token=${encodeURIComponent(token)}` : url;
+  const resp = await fetch(u);
+  if (!resp.ok) throw new Error(`Image fetch failed ${resp.status}`);
+  const cd = resp.headers.get('content-disposition') || undefined;
+  const ct = resp.headers.get('content-type') || undefined;
+  const resolvedUrl = resp.url; // after redirect
+  const blob = await resp.blob();
+  const extension = resolveExtension(resolvedUrl, ct, cd);
+  return { blob, extension };
 }
 
 /**
@@ -95,30 +166,46 @@ export async function transferImage(
 ): Promise<{ originalUrl: string; resourceName: string; isTransferred: boolean }> {
   try {
     console.log('[transferImage] Starting transfer:', { imageUrl, filename, targetItemId });
+    
+    // Derive original base name (for fallback)
+    const originalName = extractResourceName(imageUrl);   
+    let extension: string = '.jpg'; 
+    // Unified fetch (uses token only for AGO resources)
     let blob: Blob;
-    let originalName: string;
 
-    if (isAgoResource(imageUrl)) {
-      // AGO resource: fetch with token
-      blob = await fetchImageAsBlob(imageUrl, token);
-      originalName = extractResourceName(imageUrl);
-    } else {
-      // External image: try direct fetch first
-      try {
-        const response = await fetch(imageUrl);
-        if (!response.ok) throw new Error(`Failed to fetch external image: ${response.statusText}`);
-        blob = await response.blob();
-        originalName = extractResourceName(imageUrl);
-      } catch (err) {
-        // Fallback to proxy if direct fetch fails (likely CORS)
-        console.warn('[transferImage] Direct fetch failed, trying proxy:', { imageUrl, error: err });
-        blob = await fetchImageWithProxy(imageUrl);
-        originalName = extractResourceName(imageUrl);
-      }
+    try {
+      const fetched = await fetchImage(imageUrl, isAgoResource(imageUrl) ? token : undefined);
+      blob = fetched.blob;
+      extension = normalizeExtension(fetched.extension); 
+    } catch (primaryErr) {
+      console.warn('[transferImage] Primary fetch failed, trying proxy:', { imageUrl, error: primaryErr });
+      blob = await fetchImageWithProxy(imageUrl);
+      // Derive extension from originalName or fallback
+      const match = originalName.toLowerCase().match(/\.(jpg|jpeg|png|gif|webp|bmp|tif|tiff)$/);
+      extension = normalizeExtension(match ? match[0] : '.jpg');
     }
 
-    // Generate a new resource name for AGO
-    const newResourceName = filename || generateResourceName(originalName);
+    // Final guard: eliminate any residual non-image extension
+    if (!/^\.(jpg|png|gif|webp|bmp|tif)$/i.test(extension)) {
+      extension = '.jpg';
+    }
+
+    // If caller supplied filename, keep it; else generate with proper extension
+    let newResourceName: string;
+    if (filename) {
+      // Ensure supplied filename has a valid image extension
+      const fnMatch = filename.toLowerCase().match(/\.(jpg|jpeg|png|gif|webp|bmp|tif|tiff)$/);
+      if (fnMatch) {
+        const norm = normalizeExtension(fnMatch[0]);
+        newResourceName = filename.replace(/\.[^.]+$/i, norm);
+      } else {
+        newResourceName = `${filename}${extension}`;
+      }
+    } else {
+      // Generate with resolved extension (strip dot)
+      newResourceName = generateResourceName(originalName, extension.replace('.', ''));
+    }
+
     // Upload to AGO story item
     console.log('[transferImage] Uploading to AGO:', { newResourceName, blob });
     await addResource(targetItemId, username, blob, newResourceName, token);
@@ -227,35 +314,66 @@ export function collectImageUrls(storymapJson: any): string[] {
     return Array.from(imageUrls);
 }
 
+function extractWidthFromFilename(filename: string | undefined): number | undefined {
+  if (!filename) return undefined;
+  const match = filename.match(/__w(\d+)\.(jpg|jpeg|png|gif|webp|bmp|tif|tiff)$/i);
+  return match ? parseInt(match[1], 10) : undefined;
+}
+
 /**
  * Update StoryMap JSON to fix image resource structures
  * For transferred images: use resourceId + provider: "item-resource"
  * For external images: use src + provider: "uri"
  */
 export function updateImageUrlsInJson(storymapJson: any, transferResults: Record<string, string>) {
-  // Normalize urls
-  const normalizeUrl = (url: string) => decodeURIComponent(url);  
-    // For each image resource, if its src matches a transferred URL, update it
-    if (storymapJson.resources) {
-        for (const [resourceId, resource] of Object.entries<any>(storymapJson.resources)) {
-            if (resource.type === "image" && resource.data?.src) {
-                const originalUrl = resource.data.src;
-                // Try to match with normalized URLs
-                const matchKey = Object.keys(transferResults).find(
-                    k => normalizeUrl(k) === normalizeUrl(originalUrl)
-                );
-                if (matchKey) {
-                    // Change 'src' to 'resourceId' and set provider to 'item-resource'
-                    resource.data.resourceId = transferResults[matchKey];
-                    delete resource.data.src;
-                    resource.data.provider = "item-resource";
-                } else {
-                    console.log(`No match for resource ${resourceId}: ${originalUrl}`);
-                }
-            }
-        }
+  const normalizeUrl = (url: string) => decodeURIComponent(url);
+
+  if (!storymapJson.resources) return storymapJson;
+
+  for (const [resourceId, resource] of Object.entries<any>(storymapJson.resources)) {
+    if (resource.type !== 'image') continue;
+
+    // Preserve original before mutation
+    const originalUrl = resource.data.url || resource.data.src;
+    if (!originalUrl) continue;
+
+    const matchKey = Object.keys(transferResults).find(
+      k => normalizeUrl(k) === normalizeUrl(originalUrl)
+    );
+
+    if (matchKey) {
+      // Transferred image
+      const transferredName = transferResults[matchKey]; // new filename
+      const widthFromOriginal = extractWidthFromFilename(originalUrl);
+      console.log('[updateImageUrlsInJson] transferred:', {
+        resourceId,
+        originalUrl,
+        transferredName,
+        widthFromOriginal
+      });
+
+      // Mutate structure
+      resource.data.resourceId = transferredName;
+      delete resource.data.url;
+      delete resource.data.src;
+      resource.data.provider = 'item-resource';
+      resource.data.width = widthFromOriginal || 1024;
+      resource.data.height = widthFromOriginal || 1024;
+    } else {
+      // External / not transferred
+      const widthFromOriginal = extractWidthFromFilename(originalUrl);
+      console.log('[updateImageUrlsInJson] external/unchanged:', {
+        resourceId,
+        originalUrl,
+        widthFromOriginal
+      });
+      resource.data.provider = 'uri';
+      // Keep existing url/src as-is
+      resource.data.width = widthFromOriginal || 1024;
+      resource.data.height = widthFromOriginal || 1024;
     }
-    return storymapJson;
+  }
+  return storymapJson;
 }
 
 // export function updateImageUrlsInJson(

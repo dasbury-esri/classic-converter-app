@@ -37,7 +37,7 @@ export class MapSeriesConverter {
   convert(): { storymaps: any[]; collection: any } {
     const values = this.classicJson.values || {};
     const entries: ClassicSection[] = values.story?.entries || [];
-    const title = values.title || 'Untitled Map Series';
+    const title = values.title || 'Untitled Story';
     const subtitle = values.subtitle || '';
 
     // Theme mapping (Python: determine_theme)
@@ -90,11 +90,11 @@ export class MapSeriesConverter {
    * Convert main stage media to StoryMap node
    * Python: convert_mainstage
    */
-  private processMedia(media: any, builder: StoryMapJSONBuilder): string | undefined {
+  private async processMedia(media: any, builder: StoryMapJSONBuilder): string | undefined {
     const mediaType = media.type;
     if (mediaType === 'image' && media.image?.url) {
       const url = ensureHttpsProtocol(media.image.url);
-      return builder.addImageDetached(url, media.image.caption, media.image.alt, 'wide');
+      return await builder.addImageDetached(url, media.image.caption, media.image.alt, 'wide');
     } else if (mediaType === 'webmap' && media.webmap?.id) {
       const mapId = media.webmap.id;
       const extent = media.webmap.extent;
