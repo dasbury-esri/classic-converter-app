@@ -1,0 +1,33 @@
+{
+    "title": "Testing for converstion",
+    "baseThemeId": "mesa",
+    "isFromOrgTheme": false,
+    "variables": {
+        "headerFooterBackgroundColor": "#ffffff",
+        "backgroundColor": "#faf2e6",
+        "titleFontId": "notoSans",
+        "titleColor": "#131940",
+        "titleColorDark": "#131940",
+        "titleColorLight": "#ffffff",
+        "bodyFontId": "notoSans",
+        "bodyColor": "#574237",
+        "bodyColorDark": "#574237",
+        "bodyColorLight": "#ffffff",
+        "bodyMutedColor": "#3A4F64",
+        "themeColor1": "#d13e37",
+        "themeColor2": "#5d6b8f",
+        "themeColor3": "#ad7300",
+        "borderRadius": 0,
+        "shape": "hexagon",
+        "colorRamps": [
+            "div-lightblue-gray-bright",
+            "seq-orange-red-light",
+            "seq-dark-to-light-green-bright-reversed",
+            "seq-brown-to-tan-bright-reversed"
+        ],
+        "basemapPrimary": "modernAntique",
+        "basemapAlt": "humanGeographyLight",
+        "basemapImagery": "worldImagery"
+    },
+    "resources": {}
+}

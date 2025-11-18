@@ -63,6 +63,30 @@ export class MapJournalConverter {
       console.warn('[MapJournalConverter] Theme creation failed', e);
     }    
 
+    // Map classic layout "side" | "float" -> sidecar subtype
+    const classicLayoutId = (this.classicJson.values?.settings?.layout?.id || '').toLowerCase();
+    const subtypeMap: Record<string,string> = {
+      float: 'floating-panel',
+      side: 'side-panel'
+    };
+    const sidecarSubtype = subtypeMap[classicLayoutId] || 'side-panel';
+
+    // Create sidecar with mapped subtype
+    const { sidecarId, slideId: initialSlideId, narrativeId: initialNarrativeId } =
+      this.builder.addSidecar(sidecarSubtype);
+
+    // Map classic side panel size/position
+    const layoutCfg = this.classicJson.values?.settings?.layoutOptions?.layoutCfg || {};
+    const classicSize = (layoutCfg.size || '').toLowerCase(); // small|medium|large
+    const classicPos = (layoutCfg.position || '').toLowerCase(); // left|right
+
+    const sizeMap = new Set(['small','medium','large']);
+    const sidecarSize = sizeMap.has(classicSize) ? classicSize : 'small';
+    const sidecarPos = classicPos === 'right' ? 'end' : 'start'; // default left->start
+
+    const sidecarNode = this.builder.getJson().nodes[sidecarId];
+    sidecarNode.data.narrativePanelSize = sidecarSize;
+    sidecarNode.data.narrativePanelPosition = sidecarPos;
 
     // Get sections
     const sections =

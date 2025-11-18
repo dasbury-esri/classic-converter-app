@@ -327,50 +327,60 @@ function extractWidthFromFilename(filename: string | undefined): number | undefi
  */
 export function updateImageUrlsInJson(storymapJson: any, transferResults: Record<string, string>) {
   const normalizeUrl = (url: string) => decodeURIComponent(url);
-
   if (!storymapJson.resources) return storymapJson;
 
-  for (const [resourceId, resource] of Object.entries<any>(storymapJson.resources)) {
+  for (const [resource] of Object.entries<any>(storymapJson.resources)) {
     if (resource.type !== 'image') continue;
-
-    // Preserve original before mutation
     const originalUrl = resource.data.url || resource.data.src;
     if (!originalUrl) continue;
+
+    const widthExisting = resource.data.width;
+    const heightExisting = resource.data.height;
 
     const matchKey = Object.keys(transferResults).find(
       k => normalizeUrl(k) === normalizeUrl(originalUrl)
     );
 
     if (matchKey) {
-      // Transferred image
-      const transferredName = transferResults[matchKey]; // new filename
+      // Transferred
+      const transferredName = transferResults[matchKey];
       const widthFromOriginal = extractWidthFromFilename(originalUrl);
-      console.log('[updateImageUrlsInJson] transferred:', {
-        resourceId,
-        originalUrl,
-        transferredName,
-        widthFromOriginal
-      });
 
-      // Mutate structure
       resource.data.resourceId = transferredName;
       delete resource.data.url;
       delete resource.data.src;
       resource.data.provider = 'item-resource';
-      resource.data.width = widthFromOriginal || 1024;
-      resource.data.height = widthFromOriginal || 1024;
+
+      // Preserve meaningful dimensions (>0 and not default 1024)
+      resource.data.width =
+        widthExisting && widthExisting !== 1024
+          ? widthExisting
+          : (widthFromOriginal || widthExisting || 1024);
+
+      resource.data.height =
+        heightExisting && heightExisting !== 1024
+          ? heightExisting
+          : (heightExisting && heightExisting !== 0
+              ? heightExisting
+              : (widthExisting && widthExisting !== 1024 && heightExisting === 0
+                  ? heightExisting
+                  : 1024));
     } else {
       // External / not transferred
       const widthFromOriginal = extractWidthFromFilename(originalUrl);
-      console.log('[updateImageUrlsInJson] external/unchanged:', {
-        resourceId,
-        originalUrl,
-        widthFromOriginal
-      });
       resource.data.provider = 'uri';
-      // Keep existing url/src as-is
-      resource.data.width = widthFromOriginal || 1024;
-      resource.data.height = widthFromOriginal || 1024;
+
+      resource.data.width =
+        widthExisting && widthExisting !== 1024
+          ? widthExisting
+          : (widthFromOriginal || widthExisting || 1024);
+
+      resource.data.height =
+        heightExisting && heightExisting !== 1024
+          ? heightExisting
+          : (heightExisting && heightExisting !== 0
+              ? heightExisting
+              : 1024);
     }
   }
   return storymapJson;

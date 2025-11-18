@@ -16,7 +16,7 @@ import {
   updateItemKeywords,
 } from "../api/arcgis-client";
 import { convertClassicToJson } from "../converter/converter-factory";
-import { createDraftStoryMap } from "../converter/storymap-draft-creator"
+import { createDraftStoryMap, createDerivedTheme } from "../converter/storymap-draft-creator"
 import {
   collectImageUrls,
   transferImages,
@@ -55,16 +55,16 @@ export default function Converter() {
     }
 
     try {
-      // 1. Get username
+      // Get username
       setStatus("fetching");
       setMessage("Getting user information...");      
       const username = userInfo?.username || "";
 
-      // 2. Fetch classic item data
+      // Fetch classic item data
       setMessage("Fetching classic story data...");
       const classicData = await getItemData(classicItemId, token);
 
-      // 2.5 Fetch classic webmap data
+      // Fetch classic webmap data
       if (classicData.values.webmap) {
         setMessage("Fetching classic webmap data...");
         const webmapId = classicData.values.webmap;
@@ -72,23 +72,32 @@ export default function Converter() {
         classicData.webmapJson = await getItemData(webmapId, token);
       }
 
-      // 3. Create an empty draft StoryMap
+      // Create an empty draft StoryMap
       setMessage("Creating new StoryMap draft...");
       const coverTitle = classicData.values?.title || "Untitled Story";
       const itemTitle = `(Converted) ${coverTitle}`;
       const targetStoryId = await createDraftStoryMap(username, token, itemTitle);
-
+      // console logs for troubleshooting
       if (targetStoryId) {
         console.log("Target Story ID is set!")
         console.log("targetStoryId:", targetStoryId);
       }
 
-      // 3.5 Convert to new JSON
+      // Create derived theme
+      let themeItemId: string | undefined;
+      try {
+        setMessage("Creating derived theme...");
+        themeItemId = await createDerivedTheme(username, token, classicData);
+      } catch {
+        console.warn('Derived theme failed; using summit');
+      }
+
+      // Convert to new JSON
       setStatus("converting");
       setMessage("Converting classic story to new format...");
       let newStorymapJson = await convertClassicToJson(
         classicData, 
-        "summit", 
+        themeItemId || "summit", 
         username,
         token,
         targetStoryId);

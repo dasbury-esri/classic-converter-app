@@ -42,8 +42,12 @@ export class StoryMapJSONBuilder {
   }
   public localImages: string[] = [];
 
-  constructor(_themeId: string = 'summit') {
+  constructor(initialThemeId: string = 'summit') {
     this.storymap = createBaseStorymapJson();
+    // Apply initial theme (standard or custom item id)
+    if (initialThemeId) {
+      setTheme(this.storymap, initialThemeId);
+    }
   }
 
   /**
@@ -267,17 +271,17 @@ export class StoryMapJSONBuilder {
     return this.addNode(node, parentId);
   }
 
-  /**
-   * Add a detached text node (not added to story root, useful for sidecars)
-   */
-  addTextDetached(
-    text: string,
-    style: string = 'paragraph',
-    alignment: string = 'start'
-  ): string {
-    const node = createTextNode(text, style, alignment);
-    return this.createDetachedNode(node);
-  }
+  // /**
+  //  * Add a detached text node (not added to story root, useful for sidecars)
+  //  */
+  // addTextDetached(
+  //   text: string,
+  //   style: string = 'paragraph',
+  //   alignment: string = 'start'
+  // ): string {
+  //   const node = createTextNode(text, style, alignment);
+  //   return this.createDetachedNode(node);
+  // }
 
   /**
    * Add an image node with resource
@@ -300,25 +304,25 @@ export class StoryMapJSONBuilder {
     return this.addNode(node, parentId);
   }
 
-  /**
-   * Add a detached image node (not added to story root, useful for sidecars)
-   */
-  addImageDetached(
-    imagePath: string,
-    caption?: string,
-    alt?: string,
-    display: string = 'standard',
-    floatAlignment: string = 'start',
-    isItemResource: boolean = false
-  ): string {
-    // Create resource
-    const resource = createImageResource(imagePath, isItemResource);
-    const resourceId = this.addResource(resource);
+  // /**
+  //  * Add a detached image node (not added to story root, useful for sidecars)
+  //  */
+  // addImageDetached(
+  //   imagePath: string,
+  //   caption?: string,
+  //   alt?: string,
+  //   display: string = 'standard',
+  //   floatAlignment: string = 'start',
+  //   isItemResource: boolean = false
+  // ): string {
+  //   // Create resource
+  //   const resource = createImageResource(imagePath, isItemResource);
+  //   const resourceId = this.addResource(resource);
 
-    // Create node
-    const node = createImageNode(resourceId, caption, alt, display, floatAlignment);
-    return this.createDetachedNode(node);
-  }
+  //   // Create node
+  //   const node = createImageNode(resourceId, caption, alt, display, floatAlignment);
+  //   return this.createDetachedNode(node);
+  // }
 
   /**
    * Add a map node with resource
@@ -394,33 +398,33 @@ export class StoryMapJSONBuilder {
     return this.addNode(node, parentId);
   }
 
-  /**
-   * Add a detached embed node (not added to story root, useful for sidecars)
-   */
-  addEmbedDetached(
-    url: string,
-    embedType: string = 'video',
-    display: string = 'card',
-    caption?: string,
-    alt?: string,
-    title?: string,
-    description?: string,
-    thumbnailUrl?: string,
-    providerUrl?: string
-  ): string {
-    const node = createEmbedNode(
-      url,
-      embedType,
-      display,
-      caption,
-      alt,
-      title,
-      description,
-      thumbnailUrl,
-      providerUrl
-    );
-    return this.createDetachedNode(node);
-  }
+  // /**
+  //  * Add a detached embed node (not added to story root, useful for sidecars)
+  //  */
+  // addEmbedDetached(
+  //   url: string,
+  //   embedType: string = 'video',
+  //   display: string = 'card',
+  //   caption?: string,
+  //   alt?: string,
+  //   title?: string,
+  //   description?: string,
+  //   thumbnailUrl?: string,
+  //   providerUrl?: string
+  // ): string {
+  //   const node = createEmbedNode(
+  //     url,
+  //     embedType,
+  //     display,
+  //     caption,
+  //     alt,
+  //     title,
+  //     description,
+  //     thumbnailUrl,
+  //     providerUrl
+  //   );
+  //   return this.createDetachedNode(node);
+  // }
 
   /**
    * Add a gallery node with image nodes
@@ -452,13 +456,12 @@ export class StoryMapJSONBuilder {
     imagePaths: string[],
     caption?: string,
     alt?: string,
-    layout: string = 'square-dynamic',
-    isItemResource: boolean = false
-  ): string {
+    layout: string = 'square-dynamic'
+  ): Promise<string> {
     // Create detached image nodes for each image
     const imageNodeIds: string[] = [];
     for (const imagePath of imagePaths) {
-      const nodeId = await this.addImageDetached(imagePath, undefined, undefined, 'standard', 'start', isItemResource);
+      const nodeId = await this.addImageDetached(imagePath, undefined, undefined, 'standard');
       imageNodeIds.push(nodeId);
     }
 

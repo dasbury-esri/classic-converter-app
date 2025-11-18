@@ -163,16 +163,72 @@ export function detectTheme(classicJson: any, appType: string): NormalizedTheme 
 }
 
 /**
- * Get image size 
+ * Get image size (multi-strategy)
+ * 1. Try backend (proxy or Netlify function) for accurate dimensions.
+ * 2. Fallback: load in browser and use naturalWidth/naturalHeight.
+ * 3. Fallback: infer width from __wNNN pattern in filename; keep height undefined.
  */
 export async function getImageDimensions(url: string): Promise<{ width: number; height: number }> {
-  const base =
-    import.meta.env.MODE === 'production'
-      ? '/.netlify/functions/image-dimensions'
-      : `${import.meta.env.VITE_PROXY_BASE_URL}/image-dimensions`;
-  const resp = await fetch(`${base}?url=${encodeURIComponent(url)}`);
-  if (!resp.ok) throw new Error('Failed to get image dimensions');
-  return await resp.json();
+  // Normalize protocol-relative URLs
+  if (url.startsWith('//')) {
+    url = 'https:' + url;
+  }
+  // Helper: filename pattern
+  const widthFromName = (() => {
+    const m = url.match(/__w(\d+)\.(jpg|jpeg|png|gif|webp|bmp|tif|tiff)$/i);
+    return m ? parseInt(m[1], 10) : undefined;
+  })();
+
+  // Strategy 1: backend dimension service
+  try {
+    const base =
+      import.meta.env.MODE === 'production'
+        ? '/.netlify/functions/image-dimensions'
+        : `${import.meta.env.VITE_PROXY_BASE_URL}/image-dimensions`;
+    const resp = await fetch(`${base}?url=${encodeURIComponent(url)}`);
+    if (resp.ok) {
+      const json = await resp.json();
+      if (json?.width && json?.height) {
+        return { width: json.width, height: json.height };
+      }
+    }
+  } catch {
+    // ignore and fallback
+  }
+
+  // Strategy 2: browser load
+  try {
+    const dims = await new Promise<{ width: number; height: number }>((resolve, reject) => {
+      const img = new Image();
+      // crossOrigin not required for naturalWidth/Height, but safe to set
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        if (img.naturalWidth && img.naturalHeight) {
+          resolve({ width: img.naturalWidth, height: img.naturalHeight });
+        } else {
+          reject(new Error('natural dimensions unavailable'));
+        }
+      };
+      img.onerror = () => reject(new Error('image load error'));
+      // cache-buster
+      const sep = url.includes('?') ? '&' : '?';
+      img.src = `${url}${sep}_dim=${Date.now()}`;
+    });
+    if (dims.width && dims.height) {
+      return dims;
+    }
+  } catch {
+    // ignore and fallback
+  }
+
+  // Strategy 3: filename width only
+  if (widthFromName) {
+    // Do NOT force height = width; allow downstream to keep prior height or default.
+    return { width: widthFromName, height: 0 };
+  }
+
+  // Final fallback
+  return { width: 1024, height: 1024 };
 }
 
 /**

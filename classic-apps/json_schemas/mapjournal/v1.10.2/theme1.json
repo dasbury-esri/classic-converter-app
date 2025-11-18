@@ -1,0 +1,23 @@
+            "theme": {
+                "colors": {
+                    "name": "side-default-2",
+                    "themeMajor": "white",
+                    "dotNav": "#726458",
+                    "panel": "#FFF8E9",
+                    "media": "#C9C1B9",
+                    "text": "#000000",
+                    "textLink": "#555",
+                    "softText": "#c0c0c0",
+                    "softBtn": "#444",
+                    "esriLogo": "black"
+                },
+                "fonts": {
+                    "sectionTitle": {
+                        "id": "default",
+                        "value": "font-family:'open_sansregular', sans-serif;"
+                    },
+                    "sectionContent": {
+                        "id": "default",
+                        "value": "font-family:'open_sansregular', sans-serif;"
+                    }
+                }
