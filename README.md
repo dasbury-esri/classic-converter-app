@@ -4,6 +4,14 @@
 
 Convert Classic ArcGIS StoryMaps (MapJournal, MapSeries, Cascade) to the new ArcGIS StoryMaps format.
 
+## Historical Reference
+
+This repository preserves the earlier converter implementations and experiments.
+The canonical project continues in
+[ArcGIS-StoryMaps-Classic-Converter-App](https://github.com/dasbury-esri/ArcGIS-StoryMaps-Classic-Converter-App).
+Its status and session records are the source for current work. No branches or
+implementation files were removed as part of the tracking handoff.
+
 ## How to Use
 
 **API-Based Conversion:**
