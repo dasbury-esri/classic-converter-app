@@ -1,0 +1,84 @@
+#!/bin/sh
+# pre-commit — block a commit that would stage an invalid STATUS.md.
+#
+# Authoring-time guard (ADR-001 "write time" call site): catches a bad enum
+# value (e.g. state: 'archivede') BEFORE it is committed, instead of letting
+# aggregate_status.py drop the project from the digest at read time, where a
+# typo can sit unnoticed.
+#
+# Degrade-don't-break (D11):
+#   - Only staged STATUS.md files are looked at; every other file is ignored,
+#     so this hook never interferes with an unrelated commit.
+#   - Exit 1 (block) ONLY on a real validation failure.
+#   - If the environment can't validate (no python, no PyYAML, validator or
+#     schema not found), it warns loudly and ALLOWS the commit — a missing
+#     tool is the owner's problem to fix, not a reason to wedge every commit.
+#
+# Cross-platform: POSIX sh, so it runs under Git Bash on the Windows work VM
+# as well as on Linux (asker). Python is invoked as python3, falling back to
+# python (Git Bash ships it as `python`).
+#
+# Installed by scripts/install-hooks.sh. This file is the source of truth;
+# the copy in .git/hooks/ is generated.
+
+set -u
+
+# --- staged STATUS.md files (Added / Copied / Modified only) ----------------
+staged=$(git diff --cached --name-only --diff-filter=ACM | grep -E '(^|/)STATUS\.md$' || true)
+if [ -z "$staged" ]; then
+    exit 0
+fi
+
+# --- pick a python interpreter ----------------------------------------------
+if command -v python3 >/dev/null 2>&1; then
+    PY=python3
+elif command -v python >/dev/null 2>&1; then
+    PY=python
+else
+    echo "pre-commit: warning: no python3/python found; skipping STATUS.md validation." >&2
+    echo "            install Python + PyYAML to re-enable the authoring-time check." >&2
+    exit 0
+fi
+
+# --- locate validate_status.py ----------------------------------------------
+# Prefer this repo's own copy (project-tracking); otherwise fall back to the
+# canonical one under PERSONAL_CLONE_ROOT, so the same hook works when copied
+# into any other tracked project repo.
+repo_root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+validator=""
+for cand in \
+    "$repo_root/scripts/validate_status.py" \
+    "${PERSONAL_CLONE_ROOT:-}/project-tracking/scripts/validate_status.py"
+do
+    if [ -n "$cand" ] && [ -f "$cand" ]; then
+        validator="$cand"
+        break
+    fi
+done
+
+if [ -z "$validator" ]; then
+    echo "pre-commit: warning: validate_status.py not found (looked in this repo and" >&2
+    echo "            \$PERSONAL_CLONE_ROOT/project-tracking); skipping validation." >&2
+    exit 0
+fi
+
+# --- validate ---------------------------------------------------------------
+# validate_status.py exit codes: 0 = valid, 1 = invalid, 2 = environment error
+# (schema/PyYAML missing). Block only on 1; degrade on 2.
+# shellcheck disable=SC2086
+"$PY" "$validator" $staged
+rc=$?
+
+if [ "$rc" -eq 0 ]; then
+    exit 0
+elif [ "$rc" -eq 1 ]; then
+    echo "" >&2
+    echo "pre-commit: commit BLOCKED — a staged STATUS.md failed schema validation." >&2
+    echo "            fix the field(s) above (see schema/status-v1.yaml), then re-commit." >&2
+    echo "            to override in an emergency: git commit --no-verify" >&2
+    exit 1
+else
+    echo "pre-commit: warning: validator could not run (exit $rc); allowing commit." >&2
+    echo "            check that PyYAML is installed and schema/status-v1.yaml exists." >&2
+    exit 0
+fi
